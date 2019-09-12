@@ -1,0 +1,45 @@
+image: node:latest
+
+stages:
+  - install
+  - test
+  - build
+  - publish
+
+install:
+  stage: install
+  script:
+    - npm install
+  artifacts:
+    paths:
+      - node_modules/
+
+test:
+  stage: test
+  script:
+    - npm run test
+  artifacts:
+    paths:
+      - node_modules/
+
+build:
+  stage: build
+  before_script:
+    - apt-get update -qq && apt-get install -y -qq rsync
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist
+
+publish:
+  stage: publish
+  only:
+    - master
+  artifacts:
+    paths:
+      - dist
+  script:
+    - npm config set registry http://lab.antoniodiaz.me:4873
+    - echo "//lab.antoniodiaz.me:4873/:_authToken=\"$K8S_SECRET_NPM\"" > .npmrc
+    - npm publish
