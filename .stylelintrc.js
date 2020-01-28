@@ -127,7 +127,7 @@ module.exports = {
       'user-select',
       'resize',
     ],
-    'rule-empty-line-before': 'always',
+    // 'rule-empty-line-before': 'always',
     'max-empty-lines': 1,
     indentation: 2,
     'number-leading-zero': 'always',

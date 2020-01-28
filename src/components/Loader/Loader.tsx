@@ -1,7 +1,7 @@
 import React from 'react';
 import './Loader.less';
 
-const Loader = () => {
+const Loader: React.FC = () => {
   return (
     <div className="Loader">
       <div className="Loader-inner1" />

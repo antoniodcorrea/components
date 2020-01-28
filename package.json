@@ -4,7 +4,9 @@
   "description": "Components library from antoniodcorrea",
   "scripts": {
     "build": "tsc -d && cd src && find .  -name '*.less' -exec rsync -R {} ../dist ';' && cd ..",
-    "test": "jest -u"
+    "test": "jest -u",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "author": {
     "name": "Antonio Diaz",
@@ -17,20 +19,33 @@
     "library"
   ],
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@storybook/addon-actions": "^5.3.9",
+    "@storybook/addon-links": "^5.3.9",
+    "@storybook/addons": "^5.3.9",
+    "@storybook/react": "^5.3.9",
+    "@types/jest": "^25.1.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "expect": "^24.9.0",
     "jest": "^24.9.0",
+    "less-loader": "^5.0.0",
+    "react-dom": "^16.9.0",
     "react-test-renderer": "^16.9.0",
-    "ts-jest": "^24.0.2",
-    "typescript": "^3.6.2",
-    "react-dom": "^16.9.0"
+    "ts-jest": "^24.3.0",
+    "typescript": "^3.6.2"
   },
   "dependencies": {
+    "css-loader": "^3.4.2",
+    "less": "^3.10.3",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
+    "style-loader": "^1.1.3",
+    "styled-components": "^5.0.0",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
-    "stylelint-order": "^3.1.0"
+    "stylelint-order": "^3.1.1"
   }
 }

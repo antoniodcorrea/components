@@ -8,7 +8,7 @@ module.exports = {
       tsConfig: './tools/jest/tsconfig.json',
     },
   },
-  testRegex: './src/*/.*test.js$',
+  testRegex: './src/*/.*test.tsx$',
   setupFiles: ['<rootDir>/tools/jest/setupTests.js'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2)$': '<rootDir>/tools/jest/fileMock.js',

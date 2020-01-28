@@ -9,4 +9,5 @@ node_modules
 ehthumbs.db
 Thumbs.db
 dist/*
+.vscode
 __snapshots__
