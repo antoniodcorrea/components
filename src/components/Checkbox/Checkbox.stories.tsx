@@ -18,4 +18,4 @@ export const Default = () => {
   return <Checkbox {...defaultProps} />;
 };
 
-export const Pinned = () => <Checkbox {...defaultProps} state="checked" />;
+export const Checked = () => <Checkbox {...defaultProps} state="checked" />;

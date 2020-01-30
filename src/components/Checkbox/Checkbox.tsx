@@ -2,15 +2,15 @@ import React from 'react';
 import './Checkbox.less';
 
 interface Props {
+  state: string;
   id: string;
   title: string;
-  state: string;
   onArchiveTask: (id: string) => void;
 }
 
-const Task: React.FC<Props> = ({ id, title, state, onArchiveTask }) => {
+const Checkbox: React.FC<Props> = ({ id, title, state, onArchiveTask }) => {
   return (
-    <div className={'Checkbox ' + state ? 'Checkbox-' + state : ''} onClick={() => onArchiveTask(id)}>
+    <div className={'Checkbox ' + (state ? 'Checkbox-' + state : '')} onClick={() => onArchiveTask(id)}>
       <label className="Checkbox-label">
         <input defaultChecked={state === 'checked'} type="checkbox" />
       </label>
@@ -21,4 +21,4 @@ const Task: React.FC<Props> = ({ id, title, state, onArchiveTask }) => {
   );
 };
 
-export default Task;
+export default Checkbox;

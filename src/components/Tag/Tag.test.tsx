@@ -1,0 +1,19 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import Tag from './Tag';
+
+const defaultProps = {};
+
+describe('Tag (Snapshot)', () => {
+  it('Tag renders properly', () => {
+    const component = shallow(<Tag {...defaultProps} />);
+    expect(component).toMatchSnapshot();
+  });
+});
+
+describe('Tag', () => {
+  it('Tag is a myComponent type <div>', () => {
+    const component = shallow(<Tag {...defaultProps} />);
+    expect(component.type()).toEqual('div');
+  });
+});
