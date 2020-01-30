@@ -1,71 +1,85 @@
-import * as React from 'react';
+import React, { Fragment, Component } from 'react';
 import './Pagination.less';
-
-const createPages = (from, to, totalPages): number[] => {
-  let i: number = from;
-  const range: number[] = [];
-
-  while (i <= to) {
-    range.push(i);
-    i += 1;
-  }
-  if (range[0] !== 1) range.unshift(1);
-  if (range[-1] !== totalPages) range.push(totalPages);
-  return range;
-};
-
-const PAGE_NEIGHBOURS = 1;
 
 interface Props {
   totalItems: number;
   itemsPerPage: number;
   page: number;
   path: string;
+  pageNeighbours: number;
 }
 
-const Pagination: React.FC<Props> = ({ page, totalItems, itemsPerPage, path }) => {
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
-  const startPage = Math.max(2, page - PAGE_NEIGHBOURS);
-  const endPage = Math.min(totalPages - 1, page + PAGE_NEIGHBOURS);
-  const pages = createPages(startPage, endPage, totalPages);
-  const href = path + '?page=' + page;
-  let prev = 0;
+class Pagination extends Component<Props> {
+  tempPreviousPage: number = 0;
 
-  return (
-    <div className="Pagination">
-      {pages.map(item => {
-        if (item - 1 !== prev && item !== 1) {
-          prev = item;
-          return (
-            <>
-              <div className="Pagination-dots">...</div>
-              <a className="Pagination-link" href={href}>
-                {item}
-              </a>
-            </>
-          );
-        }
-        if (item === page) {
-          prev += 1;
+  static defaultProps = {
+    pageNeighbours: 1,
+  };
 
-          return (
-            <>
-              <a className="Pagination-link Pagination-link--active" href={href}>
-                {item}
-              </a>
-            </>
-          );
-        }
+  createPages = (from: number, to: number, totalPages: number): number[] => {
+    let i: number = from;
+    const range: number[] = [];
 
-        prev += 1;
-        return (
-          <a className="Pagination-link" href={href}>
-            {item}
-          </a>
-        );
-      })}
-    </div>
-  );
-};
+    while (i <= to) {
+      range.push(i);
+      i += 1;
+    }
+    if (range[0] !== 1) range.unshift(1);
+    if (range[-1] !== totalPages) range.push(totalPages);
+    return range;
+  };
+
+  renderNonConsecutiveItem = (item: number, href: string): JSX.Element => {
+    this.tempPreviousPage = item;
+
+    return (
+      <Fragment key={item}>
+        <span className="Pagination-dots">...</span>
+        <a className="Pagination-link" href={href}>
+          {item}
+        </a>
+      </Fragment>
+    );
+  };
+
+  renderConsecutiveItem = (item: number, href: string, page: number): JSX.Element => {
+    this.tempPreviousPage += 1;
+
+    return (
+      <a
+        className={'Pagination-link active' + (item === page ? ' Pagination-link--active' : '')}
+        href={href}
+        key={item}
+      >
+        {item}
+      </a>
+    );
+  };
+
+  renderItems = (item: number, href: string, page: number): JSX.Element => {
+    if (this.tempPreviousPage !== item - 1 && item !== 1) {
+      return this.renderNonConsecutiveItem(item, href);
+    }
+
+    return this.renderConsecutiveItem(item, href, page);
+  };
+
+  render = (): JSX.Element => {
+    const { page, totalItems, itemsPerPage, path, pageNeighbours } = this.props;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const startPage = Math.max(2, page - pageNeighbours);
+    const endPage = Math.min(totalPages - 1, page + pageNeighbours);
+    const pages = this.createPages(startPage, endPage, totalPages);
+    const href = path + '?page=' + page;
+
+    return (
+      <div className="Pagination">
+        {pages.map(item => {
+          return this.renderItems(item, href, page);
+        })}
+      </div>
+    );
+  };
+}
 
 export default Pagination;
