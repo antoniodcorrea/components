@@ -1,5 +1,11 @@
 @import '../../css/imports.less';
 
+@totalAnim: 3s;
+@squareLen: 100;
+@calculatedSquareLen: (@squareLen * 113) / 100;
+@stroke-width: 2px;
+@strokes: 1;
+
 @c: .Loader;
 
 @{c} {
@@ -21,50 +27,53 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: @c-white--transparent--hard;
+    background: @c-gray--transparent;
   }
 
-  &-inner1,
-  &-inner2 {
-    position: fixed;
-    height: 30px;
-    width: 30px;
-    background: @c-black;
-    animation: animation1 1.5s infinite;
-    border-radius: 50%;
+  &-square {
+    position: relative;
+    height: unit(@calculatedSquareLen, px);
+    width: unit(@calculatedSquareLen, px);
   }
 
-  &-inner2 {
-    background: @c-black;
-    animation: animation2 1.5s infinite;
+  &-svg {
+    height: 100%;
+    width: 100%;
   }
 
-  @keyframes animation1 {
+  &-pathStatic {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    stroke-width: @stroke-width;
+    stroke: @c-black;
+  }
+
+  &-pathAnimated {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    stroke-width: @stroke-width;
+    stroke: @c-white;
+    stroke-dasharray: @calculatedSquareLen / @strokes;
+    animation: square-anim @totalAnim ease infinite;
+  }
+
+  @keyframes square-anim {
     0% {
-      opacity: 1;
-      transform: scale(1);
+      stroke-dashoffset: -@calculatedSquareLen;
+    }
+
+    50% {
+      stroke-dashoffset: 0;
     }
 
     100% {
-      opacity: 0;
-      transform: scale(1.5);
-    }
-  }
-
-  @keyframes animation2 {
-    0% {
-      opacity: 0;
-      transform: scale(0.3);
-    }
-
-    66% {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    100% {
-      opacity: 1;
-      transform: scale(1);
+      stroke-dashoffset: @calculatedSquareLen;
     }
   }
 }
