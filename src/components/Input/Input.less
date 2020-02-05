@@ -1,0 +1,96 @@
+@import '../../css/imports.less';
+
+@c: .Input;
+
+@{c} {
+  display: flex;
+  position: relative;
+  width: 100%;
+  text-align: left;
+
+  &-label {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 0 0 6px;
+    font-size: 18px;
+    opacity: 0.5;
+    transform-origin: left top;
+    transition: transform @td-fast @ease, color @td-fast @ease, opacity @td-slow @ease;
+    pointer-events: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-input {
+    width: 100%;
+    padding: 23px 0 3px;
+    font-size: 18px;
+    background-color: transparent;
+    background-image: linear-gradient(to bottom, @c-transparent 50%, @c-blue 50%);
+    background-size: 0% 5%;
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    border: none;
+    border-bottom: 1px solid @c-black--transparent;
+    transition: all @td-normal @ease;
+    box-shadow: none;
+
+    &:hover {
+      border-bottom: 1px solid @c-black;
+    }
+
+    &:focus,
+    @{c}--withValue & {
+      border-bottom: 1px solid @c-blue--dark--accent;
+      outline: none;
+      box-shadow: none;
+
+      & + label {
+        color: @c-blue;
+        transform: translateY(-20px);
+      }
+    }
+
+    &:focus {
+      & + label {
+        opacity: 1;
+      }
+    }
+  }
+
+  &--item {
+    margin-top: 20px;
+    font-size: 14px;
+
+    @{c}-input,
+    @{c}-label {
+      padding: 0 0 6px;
+      font-size: 14px;
+    }
+
+    @{c}-input {
+      padding: 17px 0 3px;
+
+      &:focus,
+      @{c}--withValue & {
+        & + label {
+          transform: translateY(-18px) !important;
+        }
+      }
+    }
+
+    &@{c}--withValue {
+      label {
+        transform: translateY(-18px) !important;
+      }
+    }
+
+    @{c}-label {
+      padding: 0 0 6px;
+    }
+  }
+}
