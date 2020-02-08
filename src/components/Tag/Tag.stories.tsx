@@ -15,5 +15,5 @@ export const Big = () => {
 };
 
 export const Small = () => {
-  return <Tag>My tag</Tag>;
+  return <Tag size="small">My tag</Tag>;
 };

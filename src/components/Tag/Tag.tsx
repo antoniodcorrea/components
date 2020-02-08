@@ -2,20 +2,15 @@ import React from 'react';
 import './Tag.less';
 
 interface Props {
-  children?: React.ReactNode;
-  size?: string;
-  variant?: string;
-  state?: string;
+  children: string;
+  size?: 'small' | 'medium' | 'big';
+  variant?: 'high' | 'low';
 }
 
-const Tag: React.FC<Props> = ({ children, size, variant, state }) => {
+const Tag: React.FC<Props> = ({ children, size = 'small', variant = 'high' }) => {
   return (
-    <div
-      className={
-        'Tag ' + (state ? 'Tag-' + state : '') + (size ? 'Tag-' + size : '') + (variant ? 'Tag-' + variant : '')
-      }
-    >
-      {children}
+    <div className={'Tag ' + (size ? 'Tag--' + size : '') + (variant ? 'Tag--' + variant : '')}>
+      <div className="Tag-content">{children}</div>
     </div>
   );
 };
