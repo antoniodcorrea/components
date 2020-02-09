@@ -3,13 +3,8 @@ module.exports = {
   extends: 'stylelint-config-standard',
   plugins: ['stylelint-order'],
   rules: {
-    'property-no-unknown': [
-      true,
-      {
-        ignoreProperties: ['composes'],
-      },
-    ],
-
+    'property-no-unknown': null,
+    'color-no-invalid-hex': null,
     'selector-pseudo-class-no-unknown': [
       true,
       {
@@ -18,7 +13,6 @@ module.exports = {
     ],
     'at-rule-no-unknown': null,
     'at-rule-name-case': null,
-    // 'at-rule-empty-line-before': null,
     'selector-pseudo-element-colon-notation': 'single',
     'string-quotes': 'single',
     'block-closing-brace-newline-before': null,
