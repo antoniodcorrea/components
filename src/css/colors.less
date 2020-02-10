@@ -1,29 +1,49 @@
-@c-blue--1: #3c80f1;
-@c-blue--2: #72a4f6;
-@c-blue--3: #97c1ff;
-@c-blue--4: #c7ddff;
-@c-blue--5: #d4e4fc;
-@c-green--1: #2fe87d;
-@c-green--2: #3cec86;
-@c-green--3: #7bf4ae;
-@c-green--4: #b6f7d2;
-@c-green--5: #c8f6db;
-@c-red--1: #ff3e33;
-@c-red--2: #ff625d;
-@c-red--3: #fc8f8b;
-@c-red--4: #ffb8b8;
-@c-red--5: #ffd9d7;
-@c-yellow--1: #ffd354;
-@c-yellow--2: #ffe393;
-@c-yellow--3: #ffebb2;
-@c-yellow--4: #fff5d8;
-@c-yellow--5: #fefaee;
-@c-yellow--6: #fffff9;
-@c-black--1: #272727;
-@c-black--2: #4c4c4c;
-@c-black--3: #999999;
-@c-black--4: #dedede;
-@c-black--5: #f8f8f8;
-@c-black--6: #fcfcfc;
-@c-black--2--trans: #4c4c4c80;
-@c-black--5--trans: #f8f8f880;
+// Colors palette calculator
+// Set base colors, adjust percentages, set transparent colors and pick final colors
+
+// Base colors
+@c-blue: #0059ff;
+@c-green: #00e35f;
+@c-red: red;
+@c-yellow: gold;
+@c-black: black;
+
+// Gradients
+@c-blue-1: lighten(@c-blue, 14%);
+@c-blue-2: lighten(@c-blue, 22%);
+@c-blue-3: lighten(@c-blue, 32%);
+@c-blue-4: lighten(@c-blue, 45%);
+@c-blue-5: lighten(@c-blue, 49%);
+@c-green-1: lighten(@c-green, 14%);
+@c-green-2: lighten(@c-green, 22%);
+@c-green-3: lighten(@c-green, 32%);
+@c-green-4: lighten(@c-green, 45%);
+@c-green-5: lighten(@c-green, 53%);
+@c-red-1: lighten(@c-red, 14%);
+@c-red-2: lighten(@c-red, 22%);
+@c-red-3: lighten(@c-red, 32%);
+@c-red-4: lighten(@c-red, 45%);
+@c-red-5: lighten(@c-red, 49%);
+@c-yellow-1: lighten(@c-yellow, 14%);
+@c-yellow-2: lighten(@c-yellow, 22%);
+@c-yellow-3: lighten(@c-yellow, 32%);
+@c-yellow-4: lighten(@c-yellow, 45%);
+@c-yellow-5: lighten(@c-yellow, 49%);
+@c-black-1: lighten(@c-black, 14%);
+@c-black-2: lighten(@c-black, 40%);
+@c-black-3: lighten(@c-black, 70%);
+@c-black-4: lighten(@c-black, 97%);
+@c-black-5: lighten(@c-black, 99%);
+
+// Transparencies
+@c-black-2--trans: ~'@{c-black-2}80';
+
+// Final colors
+@c-base: @c-black-1;
+@c-light: @c-yellow-5;
+@c-base-transparent: ~'@{c-black-2}80';
+@c-accent: @c-black-2;
+@c-success: @c-green-3;
+@c-alert: @c-yellow-2;
+@c-error: @c-red-2;
+@c-disabled: @c-black-4;
