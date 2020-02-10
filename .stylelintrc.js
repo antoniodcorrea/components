@@ -5,6 +5,7 @@ module.exports = {
   rules: {
     'property-no-unknown': null,
     'color-no-invalid-hex': null,
+    'no-extra-semicolons': null,
     'selector-pseudo-class-no-unknown': [
       true,
       {

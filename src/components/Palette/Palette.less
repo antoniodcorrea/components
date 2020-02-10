@@ -26,7 +26,7 @@
     box-shadow: 0 0 3px transparent;
 
     &:hover {
-      box-shadow: 0 0 10px @c-black-3;
+      box-shadow: 0 0 10px @c-accent;
     }
 
     &:before {
@@ -56,7 +56,7 @@
       content: 'light';
     }
 
-    color: @c-black-1;
+    color: @c-base;
     background: @c-light;
   }
 
@@ -73,7 +73,7 @@
       content: 'success';
     }
 
-    color: @c-black-1;
+    color: @c-base;
     background: @c-success;
   }
 
@@ -82,7 +82,7 @@
       content: 'alert';
     }
 
-    color: @c-black-1;
+    color: @c-base;
     background: @c-alert;
   }
 
@@ -99,274 +99,150 @@
       content: 'disabled';
     }
 
-    color: @c-black-1;
+    color: @c-base;
     background: @c-disabled;
   }
 
   &-item--blue-0 {
-    &:before {
-      content: '@{c-blue}';
-    }
-
-    background: @c-blue;
+    background: @baseColors[blue];
   }
 
   &-item--blue-1 {
-    &:before {
-      content: '@{c-blue-1}';
-    }
-
-    background: @c-blue-1;
+    background: @gradientColors[blue-1];
   }
 
   &-item--blue-2 {
-    &:before {
-      content: '@{c-blue-2}';
-    }
-
-    background: @c-blue-2;
+    background: @gradientColors[blue-2];
   }
 
   &-item--blue-3 {
-    &:before {
-      content: '@{c-blue-3}';
-    }
-
-    color: @c-black-1;
-    background: @c-blue-3;
+    color: @c-base;
+    background: @gradientColors[blue-3];
   }
 
   &-item--blue-4 {
-    &:before {
-      content: '@{c-blue-4}';
-    }
-
-    color: @c-black-1;
-    background: @c-blue-4;
+    color: @c-base;
+    background: @gradientColors[blue-4];
   }
 
   &-item--blue-5 {
-    &:before {
-      content: '@{c-blue-5}';
-    }
-
-    color: @c-black-1;
-    background: @c-blue-5;
+    color: @c-base;
+    background: @gradientColors[blue-5];
   }
 
   &-item--green-0 {
-    &:before {
-      content: '@{c-green}';
-    }
-
-    color: @c-black-1;
-    background: @c-green;
+    color: @c-base;
+    background: @baseColors[green];
   }
 
   &-item--green-1 {
-    &:before {
-      content: '@{c-green-1}';
-    }
-
-    color: @c-black-1;
-    background: @c-green-1;
+    color: @c-base;
+    background: @gradientColors[green-1];
   }
 
   &-item--green-2 {
-    &:before {
-      content: '@{c-green-2}';
-    }
-
-    color: @c-black-1;
-    background: @c-green-2;
+    color: @c-base;
+    background: @gradientColors[green-2];
   }
 
   &-item--green-3 {
-    &:before {
-      content: '@{c-green-3}';
-    }
-
-    color: @c-black-1;
-    background: @c-green-3;
+    color: @c-base;
+    background: @gradientColors[green-3];
   }
 
   &-item--green-4 {
-    &:before {
-      content: '@{c-green-4}';
-    }
-
-    color: @c-black-1;
-    background: @c-green-4;
+    color: @c-base;
+    background: @gradientColors[green-4];
   }
 
   &-item--green-5 {
-    &:before {
-      content: '@{c-green-5}';
-    }
-
-    color: @c-black-1;
-    background: @c-green-5;
+    color: @c-base;
+    background: @gradientColors[green-5];
   }
 
   &-item--red-0 {
-    &:before {
-      content: '@{c-red}';
-    }
-
-    background: @c-red;
+    background: @baseColors[red];
   }
 
   &-item--red-1 {
-    &:before {
-      content: '@{c-red-1}';
-    }
-
-    background: @c-red-1;
+    background: @gradientColors[red-1];
   }
 
   &-item--red-2 {
-    &:before {
-      content: '@{c-red-2}';
-    }
-
-    background: @c-red-2;
+    background: @gradientColors[red-2];
   }
 
   &-item--red-3 {
-    &:before {
-      content: '@{c-red-3}';
-    }
-
-    background: @c-red-3;
+    background: @gradientColors[red-3];
   }
 
   &-item--red-4 {
-    &:before {
-      content: '@{c-red-4}';
-    }
-
-    color: @c-black-1;
-    background: @c-red-4;
+    color: @c-base;
+    background: @gradientColors[red-4];
   }
 
   &-item--red-5 {
-    &:before {
-      content: '@{c-red-5}';
-    }
-
-    color: @c-black-1;
-    background: @c-red-5;
+    color: @c-base;
+    background: @gradientColors[red-5];
   }
 
   &-item--yellow-0 {
-    &:before {
-      content: '@{c-yellow}';
-    }
-
-    color: @c-black-1;
-    background: @c-yellow;
+    color: @c-base;
+    background: @baseColors[yellow];
   }
 
   &-item--yellow-1 {
-    &:before {
-      content: '@{c-yellow-1}';
-    }
-
-    color: @c-black-1;
-    background: @c-yellow-1;
+    color: @c-base;
+    background: @gradientColors[yellow-1];
   }
 
   &-item--yellow-2 {
-    &:before {
-      content: '@{c-yellow-2}';
-    }
-
-    color: @c-black-1;
-    background: @c-yellow-2;
+    color: @c-base;
+    background: @gradientColors[yellow-2];
   }
 
   &-item--yellow-3 {
-    &:before {
-      content: '@{c-yellow-3}';
-    }
-
-    color: @c-black-1;
-    background: @c-yellow-3;
+    color: @c-base;
+    background: @gradientColors[yellow-3];
   }
 
   &-item--yellow-4 {
-    &:before {
-      content: '@{c-yellow-4}';
-    }
-
-    color: @c-black-1;
-    background: @c-yellow-4;
+    color: @c-base;
+    background: @gradientColors[yellow-4];
   }
 
   &-item--yellow-5 {
-    &:before {
-      content: '@{c-yellow-5}';
-    }
-
-    color: @c-black-1;
-    background: @c-yellow-5;
+    color: @c-base;
+    background: @gradientColors[yellow-5];
   }
 
   &-item--black-0 {
-    &:before {
-      content: '@{c-black}';
-    }
-
-    background: @c-black;
+    background: @baseColors[black];
   }
 
   &-item--black-1 {
-    &:before {
-      content: '@{c-black-1}';
-    }
-
-    background: @c-black-1;
+    background: @gradientColors[black-1];
   }
 
   &-item--black-2 {
-    &:before {
-      content: '@{c-black-2}';
-    }
-
-    background: @c-black-2;
+    background: @gradientColors[black-2];
   }
 
   &-item--black-3 {
-    &:before {
-      content: '@{c-black-3}';
-    }
-
-    background: @c-black-3;
+    background: @gradientColors[black-3];
   }
 
   &-item--black-4 {
-    &:before {
-      content: '@{c-black-4}';
-    }
-
-    color: @c-black-1;
-    background: @c-black-4;
+    color: @c-base;
+    background: @gradientColors[black-4];
   }
 
   &-item--black-5 {
-    &:before {
-      content: '@{c-black-5}';
-    }
-
-    color: @c-black-1;
-    background: @c-black-5;
+    color: @c-base;
+    background: @gradientColors[black-5];
   }
 
   &-item--black-transparent-2 {
-    &:before {
-      content: '@{c-black-2--trans}';
-    }
-
-    background: @c-black-2--trans;
+    background: @transparenciesColors[black-2--trans];
   }
 }

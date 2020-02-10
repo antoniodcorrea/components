@@ -1,49 +1,53 @@
-// Colors palette calculator
-// Set base colors, adjust percentages, set transparent colors and pick final colors
+// Local base colors
+@baseColors: {
+  blue: #0059ff;
+  green: #00e35f;
+  red: red;
+  yellow: gold;
+  black: black;
+};
 
-// Base colors
-@c-blue: #0059ff;
-@c-green: #00e35f;
-@c-red: red;
-@c-yellow: gold;
-@c-black: black;
+// Local gradients
+@gradientColors: {
+  blue-1: lighten(@baseColors[blue], 14%);
+  blue-2: lighten(@baseColors[blue], 22%);
+  blue-3: lighten(@baseColors[blue], 32%);
+  blue-4: lighten(@baseColors[blue], 45%);
+  blue-5: lighten(@baseColors[blue], 49%);
+  green-1: lighten(@baseColors[green], 14%);
+  green-2: lighten(@baseColors[green], 22%);
+  green-3: lighten(@baseColors[green], 32%);
+  green-4: lighten(@baseColors[green], 45%);
+  green-5: lighten(@baseColors[green], 53%);
+  red-1: lighten(@baseColors[red], 14%);
+  red-2: lighten(@baseColors[red], 22%);
+  red-3: lighten(@baseColors[red], 32%);
+  red-4: lighten(@baseColors[red], 45%);
+  red-5: lighten(@baseColors[red], 49%);
+  yellow-1: lighten(@baseColors[yellow], 14%);
+  yellow-2: lighten(@baseColors[yellow], 22%);
+  yellow-3: lighten(@baseColors[yellow], 32%);
+  yellow-4: lighten(@baseColors[yellow], 45%);
+  yellow-5: lighten(@baseColors[yellow], 49%);
+  black-1: lighten(@baseColors[black], 14%);
+  black-2: lighten(@baseColors[black], 40%);
+  black-3: lighten(@baseColors[black], 70%);
+  black-4: lighten(@baseColors[black], 97%);
+  black-5: lighten(@baseColors[black], 99%);
+};
 
-// Gradients
-@c-blue-1: lighten(@c-blue, 14%);
-@c-blue-2: lighten(@c-blue, 22%);
-@c-blue-3: lighten(@c-blue, 32%);
-@c-blue-4: lighten(@c-blue, 45%);
-@c-blue-5: lighten(@c-blue, 49%);
-@c-green-1: lighten(@c-green, 14%);
-@c-green-2: lighten(@c-green, 22%);
-@c-green-3: lighten(@c-green, 32%);
-@c-green-4: lighten(@c-green, 45%);
-@c-green-5: lighten(@c-green, 53%);
-@c-red-1: lighten(@c-red, 14%);
-@c-red-2: lighten(@c-red, 22%);
-@c-red-3: lighten(@c-red, 32%);
-@c-red-4: lighten(@c-red, 45%);
-@c-red-5: lighten(@c-red, 49%);
-@c-yellow-1: lighten(@c-yellow, 14%);
-@c-yellow-2: lighten(@c-yellow, 22%);
-@c-yellow-3: lighten(@c-yellow, 32%);
-@c-yellow-4: lighten(@c-yellow, 45%);
-@c-yellow-5: lighten(@c-yellow, 49%);
-@c-black-1: lighten(@c-black, 14%);
-@c-black-2: lighten(@c-black, 40%);
-@c-black-3: lighten(@c-black, 70%);
-@c-black-4: lighten(@c-black, 97%);
-@c-black-5: lighten(@c-black, 99%);
+// Local transparencies
+@transparenciesColors: {
+  black-2--trans: fade(@gradientColors[black-1], 50%);
+};
 
-// Transparencies
-@c-black-2--trans: ~'@{c-black-2}80';
-
-// Final colors
-@c-base: @c-black-1;
-@c-light: @c-yellow-5;
-@c-base-transparent: ~'@{c-black-2}80';
-@c-accent: @c-black-2;
-@c-success: @c-green-3;
-@c-alert: @c-yellow-2;
-@c-error: @c-red-2;
-@c-disabled: @c-black-4;
+// Exported colors
+@c-base: @gradientColors[black-1];
+@c-light: @gradientColors[yellow-5];
+@c-base--transparent: @transparenciesColors[black-2--trans];
+@c-accent: @gradientColors[black-2];
+@c-success: @gradientColors[green-3];
+@c-alert: @gradientColors[yellow-2];
+@c-error: @gradientColors[red-2];
+@c-disabled: @gradientColors[black-4];
+@c-transparent: transparent;

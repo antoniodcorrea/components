@@ -30,27 +30,27 @@
     padding: 23px 0 3px;
     font-size: 18px;
     background-color: transparent;
-    background-image: linear-gradient(to bottom, @c-transparent 50%, @c-blue 50%);
+    background-image: linear-gradient(to bottom, @c-transparent 50%, @c-accent 50%);
     background-size: 0% 5%;
     background-position: 50% 100%;
     background-repeat: no-repeat;
     border: none;
-    border-bottom: 1px solid @c-black--transparent;
+    border-bottom: 1px solid @c-base--transparent;
     transition: all @td-normal @ease;
     box-shadow: none;
 
     &:hover {
-      border-bottom: 1px solid @c-black;
+      border-bottom: 1px solid @c-base;
     }
 
     &:focus,
     @{c}--withValue & {
-      border-bottom: 1px solid @c-blue--dark--accent;
+      border-bottom: 1px solid @c-accent;
       outline: none;
       box-shadow: none;
 
       & + label {
-        color: @c-blue;
+        color: @c-accent;
         transform: translateY(-20px);
       }
     }
