@@ -1,0 +1,19 @@
+.frame-shadow-squared(@borderSize) {
+  @unit: unit(@borderSize, px);
+  @doubleUnit: @unit * 2;
+  @minusUnit: -@unit;
+
+  background: @c-light;
+  border: @unit solid @c-base;
+  box-shadow: @doubleUnit @doubleUnit 0 @minusUnit @c-light, @doubleUnit @doubleUnit 0 0 @c-base;
+}
+
+.frame-shadow-smooth(@borderSize) {
+  @doubleBorderSize: @borderSize * 2;
+  @shadowDisplacement: unit(@doubleBorderSize, px);
+
+  background: @c-light;
+  border-radius: 1px;
+  border: unit(@borderSize, px) solid @c-base;
+  box-shadow: @shadowDisplacement @shadowDisplacement 0 0 @c-base;
+}

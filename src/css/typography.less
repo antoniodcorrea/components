@@ -1,0 +1,28 @@
+/* stylelint-disable */
+
+/* Typography */
+// Font family
+@ff-sans: 'Arial', 'Helvetica', sans-serif;
+@ff-serif: 'Times New Roman', 'Times', serif;
+
+// Font size
+@fs-base: 16px;
+
+// Font weight
+@fw-extraThin: 100;
+@fw-thin: 200;
+@fw-light: 300;
+@fw-regular: 400;
+@fw-medium: 500;
+@fw-semibold: 600;
+@fw-bold: 700;
+@fw-extraBold: 800;
+@fw-black: 900;
+
+.font-size(@sizeValue) {
+  @remValue: @sizeValue;
+  @pxValue: (@sizeValue * 10);
+
+  font-size: ~'@{pxValue}px';
+  font-size: ~'@{remValue}rem';
+}
