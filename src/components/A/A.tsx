@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Input: React.FC<Props> = ({ children, href, styled = false, targetBlank = false, onClick }) => (
-  <a className={styled ? 'A' : ''} href={href} onClick={onClick} target={targetBlank && '_blank'}>
+  <a className={styled ? 'A' : ''} href={href} onClick={onClick} target={targetBlank ? '_blank' : ''}>
     {children}
   </a>
 );

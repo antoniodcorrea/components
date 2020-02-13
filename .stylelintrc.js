@@ -2,6 +2,7 @@
 module.exports = {
   extends: 'stylelint-config-standard',
   plugins: ['stylelint-order'],
+  files: ['**/*.less'],
   rules: {
     'property-no-unknown': null,
     'color-no-invalid-hex': null,

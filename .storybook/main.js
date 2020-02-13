@@ -3,7 +3,7 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   excludeStories: /.*Props$/,
-  addons: ['@storybook/addon-actions', '@storybook/addon-links'],
+  addons: ['@storybook/addon-actions', '@storybook/addon-links', '@storybook/addon-knobs/register'],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
       test: /\.less$/,
