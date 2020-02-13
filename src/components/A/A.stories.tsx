@@ -11,7 +11,6 @@ export default {
 };
 
 const defaultProps = {
-  href: 'http://example.com',
   onClick: action('button-click'),
 };
 

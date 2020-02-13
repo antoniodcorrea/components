@@ -8,12 +8,10 @@ export default {
   decorators: [withKnobs],
 };
 
-const defaultProps = {};
-
 const knobs = {
   text: () => text('Text', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'),
 };
 
 export const Default = () => {
-  return <H3 {...defaultProps}>{knobs.text()}</H3>;
+  return <H3>{knobs.text()}</H3>;
 };

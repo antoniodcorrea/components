@@ -1,26 +1,43 @@
 import React from 'react';
-import { action } from '@storybook/addon-actions';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import Input from './Input';
 
 export default {
   component: Input,
   title: 'Input',
+  decorators: [withKnobs],
 };
 
 const defaultProps = {
-  className: 'Input-input',
-  disabled: false,
-  id: 'Input-1',
-  placeholder: '',
-  readOnly: false,
-  type: 'text',
-  value: 'How',
+  placeholder: 'Placeholder',
 };
 
-export const Empty = () => {
-  return <Input />;
+const knobs = {
+  className: () => text('Class', 'aClass.'),
+  disabled: () => boolean('Disabled', false),
+  readOnly: () => boolean('Read only', false),
+  type: () => text('Type', 'text'),
+  value: () => text('Value', 'How'),
 };
 
-export const Filled = () => {
-  return <Input {...defaultProps} />;
-};
+export const Empty = () => (
+  <Input
+    {...defaultProps}
+    className={knobs.className()}
+    disabled={knobs.disabled()}
+    readOnly={knobs.readOnly()}
+    type={knobs.type()}
+    value={knobs.value()}
+  />
+);
+
+export const Filled = () => (
+  <Input
+    {...defaultProps}
+    className={knobs.className()}
+    disabled={knobs.disabled()}
+    readOnly={knobs.readOnly()}
+    type={knobs.type()}
+    value={knobs.value()}
+  />
+);
