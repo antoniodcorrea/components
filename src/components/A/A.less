@@ -1,0 +1,15 @@
+@import '../../css/imports.less';
+
+@c: .A;
+
+@{c} {
+  text-decoration: underline;
+  color: @c-base;
+  transition: text-decoration-color @td-fastest @ease-custom;
+  text-decoration-color: @c-transparent;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration-color: @c-base;
+  }
+}
