@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import H1 from './H1';
 
 export default {
@@ -10,8 +10,9 @@ export default {
 
 const knobs = {
   text: () => text('Text', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'),
+  bold: () => boolean('Bold', false),
 };
 
 export const Default = () => {
-  return <H1>{knobs.text()}</H1>;
+  return <H1 bold={knobs.bold()}>{knobs.text()}</H1>;
 };

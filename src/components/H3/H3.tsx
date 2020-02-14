@@ -5,6 +5,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Input: React.SFC<Props> = ({ children }) => <span className="H3">{children}</span>;
+const H3: React.SFC<Props> = ({ children }) => <span className="H3">{children}</span>;
 
-export default Input;
+export default H3;
