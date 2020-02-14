@@ -1,6 +1,5 @@
 import React from 'react';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import VerticalSpacer from '../VerticalSpacer/VerticalSpacer';
 import P from './P';
 
 export default {
@@ -10,30 +9,29 @@ export default {
 };
 
 const knobs = {
-  text: () =>
+  text1: () =>
     text(
-      'Text',
+      'Text1',
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet'
     ),
-  bold: () => boolean('Bold', false),
+  text2: () =>
+    text(
+      'Text2',
+      'Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet. Lorem ipsum dolor sit amet consectetur, adipisicing elit. '
+    ),
+  text3: () =>
+    text(
+      'Text3',
+      'Ab doloribus dolore earum laboriosam incidunt eveniet? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet'
+    ),
 };
 
 export const Default = () => {
   return (
     <>
-      <P bold={knobs.bold()}>{knobs.text()}</P>
-      <VerticalSpacer />
-      <P size="small" bold={knobs.bold()}>
-        {knobs.text()}
-      </P>
-      <VerticalSpacer />
-      <P size="micro" bold={knobs.bold()}>
-        {knobs.text()}
-      </P>
-      <VerticalSpacer />
-      <P size="nano" bold={knobs.bold()}>
-        {knobs.text()}
-      </P>
+      <P>{knobs.text1()}</P>
+      <P>{knobs.text2()}</P>
+      <P>{knobs.text3()}</P>
     </>
   );
 };

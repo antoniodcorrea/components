@@ -6,11 +6,18 @@ interface Props {
   href: string;
   styled?: boolean;
   targetBlank?: boolean;
+  disabled?: boolean;
+
   onClick?: (any) => void;
 }
 
-const A: React.FC<Props> = ({ children, href, styled = false, targetBlank = false, onClick }) => (
-  <a className={styled ? 'A' : ''} href={href} onClick={onClick} target={targetBlank ? '_blank' : ''}>
+const A: React.FC<Props> = ({ children, href, styled = true, targetBlank = false, onClick, disabled = false }) => (
+  <a
+    className={(styled ? 'A' : '') + (styled && disabled ? ' A-disabled' : '')}
+    href={href}
+    onClick={onClick}
+    target={targetBlank ? '_blank' : '_self'}
+  >
     {children}
   </a>
 );

@@ -17,17 +17,11 @@ const defaultProps = {
 const knobs = {
   href: () => text('Href', 'http://example.com'),
   text: () => text('Text', 'Click me!'),
-  styled: () => boolean('Styled', false),
+  styled: () => boolean('Styled', true),
   targetBlank: () => boolean('Target', false),
 };
 
 export const Default = () => (
-  <A {...defaultProps} targetBlank={knobs.targetBlank()} href={knobs.href()} styled={knobs.styled()}>
-    {knobs.text()}
-  </A>
-);
-
-export const Styled = () => (
   <A {...defaultProps} targetBlank={knobs.targetBlank()} href={knobs.href()} styled={knobs.styled()}>
     {knobs.text()}
   </A>

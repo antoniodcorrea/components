@@ -3,6 +3,7 @@ module.exports = {
   extends: 'stylelint-config-standard',
   plugins: ['stylelint-order'],
   files: ['**/*.less'],
+  ignoreFiles: ['**/*.ts', '**/*.tsx'],
   rules: {
     'property-no-unknown': null,
     'color-no-invalid-hex': null,

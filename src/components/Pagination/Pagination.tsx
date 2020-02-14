@@ -1,5 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import './Pagination.less';
+import A from '../A/A';
+import Text from '../Text/Text';
 
 interface Props {
   totalItems: number;
@@ -35,9 +37,9 @@ class Pagination extends Component<Props> {
     return (
       <Fragment key={item}>
         <span className="Pagination-dots">...</span>
-        <a className="Pagination-link" href={href}>
+        <A href={href} styled>
           {item}
-        </a>
+        </A>
       </Fragment>
     );
   };
@@ -46,13 +48,9 @@ class Pagination extends Component<Props> {
     this.tempPreviousPage += 1;
 
     return (
-      <a
-        className={'Pagination-link active' + (item === page ? ' Pagination-link--active' : '')}
-        href={href}
-        key={item}
-      >
+      <A href={href} key={item} styled disabled={item === page}>
         {item}
-      </a>
+      </A>
     );
   };
 

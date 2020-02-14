@@ -14,5 +14,9 @@ const defaultProps = {
 };
 
 export const Default = () => {
-  return <Pagination {...defaultProps} />;
+  return (
+    <div style={{ width: '300px' }}>
+      <Pagination {...defaultProps} />
+    </div>
+  );
 };
