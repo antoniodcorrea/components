@@ -17,7 +17,7 @@
     background: @c-background;
     border: 2px solid;
     border-color: @c-base;
-    transition: box-shadow @td-fast @ease-custom, border @td-fast @ease-custom, color @td-fast @ease-custom;
+    transition: box-shadow @td-fast, border @td-fast, color @td-fast, background @td-fast;
     box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
 
     svg {
@@ -43,6 +43,7 @@
     @{c}-content {
       color: @c-background;
       background: @c-base;
+      pointer-events: none;
 
       svg {
         fill: @c-background;
@@ -53,8 +54,10 @@
   &--error {
     @{c}-content {
       color: @c-error;
+      background: @c-background;
       border-color: @c-error;
       box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-error;
+      pointer-events: none;
 
       svg {
         fill: @c-error;
@@ -65,8 +68,10 @@
   &--disabled {
     @{c}-content {
       color: @c-disabled;
+      background: @c-background;
       border-color: @c-disabled;
       box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-disabled;
+      pointer-events: none;
 
       svg {
         fill: @c-disabled;
