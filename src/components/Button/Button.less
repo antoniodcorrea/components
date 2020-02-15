@@ -17,11 +17,11 @@
     font-size: @fs-normal;
     font-weight: @fw-semibold;
     text-transform: uppercase;
-    background: @c-light;
+    background: @c-background;
     border: 2px solid;
     border-color: @c-base;
     transition: box-shadow @td-fast @ease-custom, border @td-fast @ease-custom, color @td-fast @ease-custom;
-    box-shadow: 4px 4px 0 -2px @c-light, 4px 4px 0 0 @c-base;
+    box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
 
     svg {
       height: 20px;
@@ -34,7 +34,7 @@
       color: @c-accent;
       border-color: @c-accent;
       cursor: pointer;
-      box-shadow: 4px 4px 0 -2px @c-light, 4px 4px 0 0 @c-accent;
+      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-accent;
 
       svg {
         fill: @c-accent;
@@ -44,11 +44,11 @@
 
   &--success {
     @{c}-content {
-      color: @c-light;
+      color: @c-background;
       background: @c-base;
 
       svg {
-        fill: @c-light;
+        fill: @c-background;
       }
     }
   }
@@ -57,7 +57,7 @@
     @{c}-content {
       color: @c-error;
       border-color: @c-error;
-      box-shadow: 4px 4px 0 -2px @c-light, 4px 4px 0 0 @c-error;
+      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-error;
 
       svg {
         fill: @c-error;
@@ -69,7 +69,7 @@
     @{c}-content {
       color: @c-disabled;
       border-color: @c-disabled;
-      box-shadow: 4px 4px 0 -2px @c-light, 4px 4px 0 0 @c-disabled;
+      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-disabled;
 
       svg {
         fill: @c-disabled;
