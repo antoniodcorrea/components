@@ -23,7 +23,9 @@ const Button: React.FC<Props> = ({ children, size = 'medium', variant, success, 
         (disabled ? ' Button--disabled' : '')
       }
     >
-      <span className="Button-content">{children}</span>
+      <Text className="Button-content" bold uppercase>
+        {children}
+      </Text>
     </button>
   );
 };

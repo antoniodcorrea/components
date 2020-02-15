@@ -7,16 +7,25 @@ interface Props {
   bold?: boolean;
   uppercase?: boolean;
   disabled?: boolean;
+  className?: string;
 }
 
-const Text: React.SFC<Props> = ({ children, size = 'normal', bold = false, disabled = false, uppercase = false }) => (
+const Text: React.SFC<Props> = ({
+  children,
+  size = 'normal',
+  bold = false,
+  disabled = false,
+  uppercase = false,
+  className,
+}) => (
   <span
     className={
       'Text' +
       (' Text-' + size) +
       (bold ? ' Text--bold' : '') +
       (disabled ? ' Text--disabled' : '') +
-      (uppercase ? ' Text--uppercase' : '')
+      (uppercase ? ' Text--uppercase' : '') +
+      (className ? ' ' + className : '')
     }
   >
     {children}
