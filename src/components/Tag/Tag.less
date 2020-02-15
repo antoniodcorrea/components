@@ -4,17 +4,34 @@
 
 @{c} {
   display: inline-block;
+  height: 25px;
 
   &-content {
+    display: flex;
+    align-items: center;
+    height: calc(100% - 4px);
     margin: 0 4px 4px 0;
-    padding: 4px 5px;
-    font-size: 12px;
+    padding: 0 10px;
     background: @c-light;
-    .frame-shadow-squared(2);
+    border: 2px solid;
+    border-color: @c-base;
+    box-shadow: 4px 4px 0 -2px @c-light, 4px 4px 0 0 @c-base;
+    transition: box-shadow @td-fast @ease-custom, border @td-fast @ease-custom, color @td-fast @ease-custom;
+
+    &:hover {
+      color: @c-accent;
+      cursor: pointer;
+      border-color: @c-accent;
+      box-shadow: 4px 4px 0 -2px @c-light, 4px 4px 0 0 @c-accent;
+    }
   }
 
-  &--small {
-    //
+  &--alternate {
+    @{c}-content {
+      color: @c-light;
+      background: @c-base;
+      box-shadow: 2px 2px 0 0 @c-light, 4px 4px 0 0 @c-base;
+    }
   }
 
   &--big {

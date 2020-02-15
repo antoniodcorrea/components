@@ -1,16 +1,21 @@
 import React from 'react';
 import './Tag.less';
+import Text from '../Text/Text';
 
 interface Props {
   children: string;
   size?: 'small' | 'medium' | 'big';
-  variant?: 'high' | 'low';
+  variant?: 'alternate';
 }
 
-const Tag: React.FC<Props> = ({ children, size = 'small', variant = 'high' }) => {
+const Tag: React.FC<Props> = ({ children, size = 'small', variant }) => {
   return (
-    <div className={'Tag ' + (size ? 'Tag--' + size : '') + (variant ? 'Tag--' + variant : '')}>
-      <div className="Tag-content">{children}</div>
+    <div className={'Tag ' + (size ? 'Tag--' + size : '') + (variant ? ' Tag--' + variant : '')}>
+      <div className="Tag-content">
+        <Text size="micro" bold>
+          {children}
+        </Text>
+      </div>
     </div>
   );
 };

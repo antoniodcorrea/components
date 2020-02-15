@@ -7,13 +7,9 @@ export default {
 };
 
 export const Default = () => {
-  return <Tag>My tag</Tag>;
+  return <Tag>Tag</Tag>;
 };
 
-export const Big = () => {
-  return <Tag size="big">My tag</Tag>;
-};
-
-export const Small = () => {
-  return <Tag size="small">My tag</Tag>;
+export const Alternate = () => {
+  return <Tag variant="alternate">Tag</Tag>;
 };
