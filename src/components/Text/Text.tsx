@@ -5,11 +5,20 @@ interface Props {
   children: React.ReactNode;
   size?: 'normal' | 'small' | 'micro' | 'nano';
   bold?: boolean;
+  uppercase?: boolean;
   disabled?: boolean;
 }
 
-const Text: React.SFC<Props> = ({ children, size = 'normal', bold = false, disabled = false }) => (
-  <span className={'Text' + (' Text-' + size) + (bold ? ' Text-bold' : '') + (disabled ? ' Text-disabled' : '')}>
+const Text: React.SFC<Props> = ({ children, size = 'normal', bold = false, disabled = false, uppercase = false }) => (
+  <span
+    className={
+      'Text' +
+      (' Text-' + size) +
+      (bold ? ' Text--bold' : '') +
+      (disabled ? ' Text--disabled' : '') +
+      (uppercase ? ' Text--uppercase' : '')
+    }
+  >
     {children}
   </span>
 );

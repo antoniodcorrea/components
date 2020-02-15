@@ -106,6 +106,7 @@ module.exports = {
       'border-bottom',
       'border-left',
       'border-right',
+      'border-color',
       'outline',
       'fill',
       'stroke',
