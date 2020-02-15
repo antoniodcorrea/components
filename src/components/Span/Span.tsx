@@ -1,5 +1,5 @@
 import React from 'react';
-import './Text.less';
+import './Span.less';
 
 interface Props {
   children: React.ReactNode;
@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-const Text: React.SFC<Props> = ({
+const Span: React.SFC<Props> = ({
   children,
   size = 'normal',
   bold = false,
@@ -20,11 +20,11 @@ const Text: React.SFC<Props> = ({
 }) => (
   <span
     className={
-      'Text' +
-      (' Text-' + size) +
-      (bold ? ' Text--bold' : '') +
-      (disabled ? ' Text--disabled' : '') +
-      (uppercase ? ' Text--uppercase' : '') +
+      'Span' +
+      (' Span-' + size) +
+      (bold ? ' Span--bold' : '') +
+      (disabled ? ' Span--disabled' : '') +
+      (uppercase ? ' Span--uppercase' : '') +
       (className ? ' ' + className : '')
     }
   >
@@ -32,4 +32,4 @@ const Text: React.SFC<Props> = ({
   </span>
 );
 
-export default Text;
+export default Span;

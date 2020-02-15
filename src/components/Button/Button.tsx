@@ -1,6 +1,6 @@
 import React from 'react';
 import './Button.less';
-import Text from '../Text/Text';
+import Span from '../Span/Span';
 
 interface Props {
   children: string | React.ReactNode | React.ReactNode[];
@@ -23,9 +23,9 @@ const Button: React.FC<Props> = ({ children, size = 'medium', variant, success, 
         (disabled ? ' Button--disabled' : '')
       }
     >
-      <Text className="Button-content" bold uppercase>
+      <Span className="Button-content" bold uppercase>
         {children}
-      </Text>
+      </Span>
     </button>
   );
 };

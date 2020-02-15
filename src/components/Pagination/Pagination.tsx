@@ -1,7 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import './Pagination.less';
 import A from '../A/A';
-import Text from '../Text/Text';
 
 interface Props {
   totalItems: number;

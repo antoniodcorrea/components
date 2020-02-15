@@ -1,6 +1,6 @@
 import React from 'react';
 import './Tag.less';
-import Text from '../Text/Text';
+import Span from '../Span/Span';
 
 interface Props {
   children: string;
@@ -12,9 +12,9 @@ const Tag: React.FC<Props> = ({ children, size = 'small', variant }) => {
   return (
     <div className={'Tag ' + (size ? 'Tag--' + size : '') + (variant ? ' Tag--' + variant : '')}>
       <div className="Tag-content">
-        <Text size="micro" bold>
+        <Span size="micro" bold>
           {children}
-        </Text>
+        </Span>
       </div>
     </div>
   );
