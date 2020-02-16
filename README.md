@@ -37,6 +37,7 @@ Eliminar colores
 
 ## TODO
 
+- Fix Input
 - Rename `warning` to `alert`, and `error` to `warning`
 - Pending components:
   - Fade
