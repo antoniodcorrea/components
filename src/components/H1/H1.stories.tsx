@@ -10,9 +10,8 @@ export default {
 
 const knobs = {
   text: () => text('Text', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'),
-  bold: () => boolean('Bold', false),
 };
 
 export const Default = () => {
-  return <H1 bold={knobs.bold()}>{knobs.text()}</H1>;
+  return <H1>{knobs.text()}</H1>;
 };

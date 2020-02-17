@@ -19,29 +19,34 @@ const knobs = {
   disabled: () => boolean('Disabled', false),
 };
 
-export const Default = () => {
+export const Normal = () => {
   return (
-    <>
-      <P>
-        <Span bold={knobs.bold()} disabled={knobs.disabled()}>
-          {knobs.text()}
-        </Span>
-      </P>
-      <P>
-        <Span size="small" bold={knobs.bold()} disabled={knobs.disabled()}>
-          {knobs.text()}
-        </Span>
-      </P>
-      <P>
-        <Span size="micro" bold={knobs.bold()} disabled={knobs.disabled()}>
-          {knobs.text()}
-        </Span>
-      </P>
-      <P>
-        <Span size="nano" bold={knobs.bold()} disabled={knobs.disabled()}>
-          {knobs.text()}
-        </Span>
-      </P>
-    </>
+    <Span bold={knobs.bold()} disabled={knobs.disabled()}>
+      {knobs.text()}
+    </Span>
+  );
+};
+
+export const Small = () => {
+  return (
+    <Span size="small" bold={knobs.bold()} disabled={knobs.disabled()}>
+      {knobs.text()}
+    </Span>
+  );
+};
+
+export const Micro = () => {
+  return (
+    <Span size="micro" bold={knobs.bold()} disabled={knobs.disabled()}>
+      {knobs.text()}
+    </Span>
+  );
+};
+
+export const Nano = () => {
+  return (
+    <Span size="nano" bold={knobs.bold()} disabled={knobs.disabled()}>
+      {knobs.text()}
+    </Span>
   );
 };
