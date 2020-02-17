@@ -3,15 +3,80 @@
 @c: .Palette;
 
 @{c} {
-  display: flex;
-  flex-wrap: wrap;
-  width: 930px;
-  padding: 50px;
+  &-grid {
+    display: flex;
+    flex-wrap: wrap;
+    width: 930px;
+    padding: 50px;
+  }
 
-  &-hr {
-    width: 100%;
-    margin: 0 0 18px 0;
-    border: none;
+  &-colors {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 20px 0 20px;
+    background: #f3f3f3;
+  }
+
+  &-color {
+    display: flex;
+    height: 75px;
+    width: 225px;
+    margin: 0 20px 20px 0;
+    background: white;
+  }
+
+  &-sample {
+    height: 100%;
+    width: 75px;
+  }
+
+  &-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 15px;
+  }
+
+  &-color--base {
+    @{c}-sample {
+      background: @c-base;
+    }
+  }
+
+  &-color--background {
+    @{c}-sample {
+      background: @c-background;
+    }
+  }
+
+  &-color--accent {
+    @{c}-sample {
+      background: @c-accent;
+    }
+  }
+
+  &-color--success {
+    @{c}-sample {
+      background: @c-success;
+    }
+  }
+
+  &-color--alert {
+    @{c}-sample {
+      background: @c-alert;
+    }
+  }
+
+  &-color--error {
+    @{c}-sample {
+      background: @c-error;
+    }
+  }
+
+  &-color--disabled {
+    @{c}-sample {
+      background: @c-disabled;
+    }
   }
 
   &-item {
@@ -22,7 +87,6 @@
     text-transform: uppercase;
     color: white;
     transition: box-shadow 0.15s ease;
-    border-radius: 15px;
     box-shadow: 0 0 3px transparent;
 
     &:hover {
