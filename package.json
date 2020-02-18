@@ -38,8 +38,10 @@
     "typescript": "^3.6.2"
   },
   "dependencies": {
+    "@storybook/addon-centered": "^5.3.13",
     "@storybook/addon-knobs": "^5.3.13",
     "@storybook/theming": "^5.3.13",
+    "@types/react": "^16.9.20",
     "css-loader": "^3.4.2",
     "less": "^3.10.3",
     "prop-types": "^15.7.2",
