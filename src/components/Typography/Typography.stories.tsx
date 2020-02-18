@@ -59,6 +59,8 @@ export const Default = () => {
       </Span>
       <Hr type="shrink" />
       <Span size="nano">{knobs.SpanNanoRegular()}</Span>
+      <Hr type="transparent" />
+      <Hr />
     </>
   );
 };
