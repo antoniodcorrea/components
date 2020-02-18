@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc -d && cd src && find .  -name '*.less' -exec rsync -R {} ../dist/src ';' && cd ..",
     "test": "jest -u",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s ./src/assets/svg -p 6006",
     "build-storybook": "build-storybook"
   },
   "author": {

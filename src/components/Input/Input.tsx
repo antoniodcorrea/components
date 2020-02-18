@@ -95,7 +95,7 @@ class Input extends Component<Props, State> {
   };
 
   onChange = e => {
-    const value = e.target.value != '' ? e.target.value : null;
+    const value = e.target.value !== '' ? e.target.value : null;
 
     const { onChange, input } = this.props;
 
