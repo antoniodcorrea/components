@@ -1,8 +1,8 @@
 import React from 'react';
 import './Svg.less';
-import { ReactComponent as TriangleSvg } from 'svg/triangle.svg';
-import { ReactComponent as SquareSvg } from 'svg/square.svg';
-import { ReactComponent as CircleSvg } from 'svg/circle.svg';
+import { ReactComponent as TriangleSvg } from './Icons/triangle.svg';
+import { ReactComponent as SquareSvg } from './Icons/square.svg';
+import { ReactComponent as CircleSvg } from './Icons/circle.svg';
 
 export const Svg = svg => ({ ...props }) =>
   React.cloneElement(svg, {

@@ -8,32 +8,17 @@ Components library by antoniodcorrea
 
 To build, run:
 
-    npm run build
+    npm run prepare
 
-The build is done via TypeScript. The full build script is:
+The build is done via TypeScript, a script running lessc, and a set of scripts to copy and remove the css files.
 
-    "build": "tsc -d && cd src && find .  -name '*.less' -exec rsync -R {} ../dist/src ';' && cd ..",
-
-It uses `tsc -d` to build the `.ts|.tsx` files, and then searches `.less` files and copies them to `dist/src`.
-The drawbacks with this setup is that less will be a requirement for the client.
+Once the build has finished, all occurrences of `.less` in `.js` files within `./components` is changed to `.less`.
 
 #### Test
 
     npm run test
 
 ## Colors naming convention
-
-Qué nombres se usan en variables de colores?
-
-    base
-    background
-    primary
-    accent
-    success
-    warning
-    error
-
-Eliminar colores
 
 ## TODO
 
@@ -43,7 +28,6 @@ Eliminar colores
   - Fade
   - TextArea
   - TextEditor
-  - SvgLoader
 
 ## Notes
 
@@ -79,3 +63,5 @@ A webpack config has to be provided for this last solution:
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
+
+#### SvgIcon wrapper component

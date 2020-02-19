@@ -22,19 +22,6 @@ module.exports = {
 
     config.resolve.extensions.push('.ts', '.tsx', '.svg');
 
-    config.resolve.alias = {
-      svg: path.resolve(__dirname, '../src/assets/svg/'),
-    };
-
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: [
-        {
-          loader: '@svgr/webpack',
-        },
-      ],
-    });
-
     return config;
   },
 };
