@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Tag from './Tag';
+import { Tag } from '.';
 
 const defaultProps = {};
 

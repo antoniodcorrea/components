@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LoaderSquaredSmooth from './LoaderSquaredSmooth';
+import { LoaderSquaredSmooth } from '.';
 
 describe('LoaderSquaredSmooth (Snapshot)', () => {
   it('LoaderSquaredSmooth renders properly', () => {

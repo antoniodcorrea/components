@@ -1,6 +1,6 @@
 import React from 'react';
 import './Button.less';
-import Span from '../Span/Span';
+import { Span } from '../Span';
 
 interface Props {
   children: string | React.ReactNode | React.ReactNode[];
@@ -11,7 +11,14 @@ interface Props {
   disabled?: boolean;
 }
 
-const Button: React.FC<Props> = ({ children, size = 'medium', variant, success, error, disabled }): JSX.Element => {
+export const Button: React.FC<Props> = ({
+  children,
+  size = 'medium',
+  variant,
+  success,
+  error,
+  disabled,
+}): JSX.Element => {
   return (
     <button
       className={
@@ -29,5 +36,3 @@ const Button: React.FC<Props> = ({ children, size = 'medium', variant, success, 
     </button>
   );
 };
-
-export default Button;

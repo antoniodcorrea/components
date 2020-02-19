@@ -1,11 +1,11 @@
 import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
-import H1 from '../H1/H1';
-import H2 from '../H2/H2';
-import H3 from '../H3/H3';
-import H4 from '../H4/H4';
-import Span from '../Span/Span';
-import Hr from '../Hr/Hr';
+import { H1 } from '../H1';
+import { H2 } from '../H2';
+import { H3 } from '../H3';
+import { H4 } from '../H4';
+import { Span } from '../Span';
+import { Hr } from '../Hr';
 
 export default {
   title: 'Typography',

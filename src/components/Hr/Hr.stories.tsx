@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import Hr from './Hr';
+import { Hr } from '.';
 
 export default {
   component: Hr,

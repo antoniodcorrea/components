@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import Span from './Span';
+import { Span } from '.';
 
 export default {
   component: Span,

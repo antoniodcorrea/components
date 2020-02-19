@@ -5,7 +5,7 @@ interface Props {
   state?: string;
 }
 
-const LoaderSquaredBrute: React.FC<Props> = ({ state }) => {
+export const LoaderSquaredBrute: React.FC<Props> = ({ state }) => {
   return (
     <div className={'LoaderSquaredBrute' + (state ? 'Tag-' + state : '')}>
       <div className="LoaderSquaredBrute-square2">
@@ -17,5 +17,3 @@ const LoaderSquaredBrute: React.FC<Props> = ({ state }) => {
     </div>
   );
 };
-
-export default LoaderSquaredBrute;

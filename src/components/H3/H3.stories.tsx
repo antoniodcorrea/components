@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, text } from '@storybook/addon-knobs';
-import H3 from './H3';
+import { H3 } from '.';
 
 export default {
   component: H3,

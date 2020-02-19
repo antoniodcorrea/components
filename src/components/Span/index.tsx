@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-const Span: React.SFC<Props> = ({
+export const Span: React.SFC<Props> = ({
   children,
   size = 'normal',
   bold = false,
@@ -31,5 +31,3 @@ const Span: React.SFC<Props> = ({
     {children}
   </span>
 );
-
-export default Span;

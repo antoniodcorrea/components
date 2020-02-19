@@ -32,7 +32,7 @@ interface State {
   id?: string;
 }
 
-class Input extends Component<Props, State> {
+export class Input extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
@@ -172,4 +172,3 @@ class Input extends Component<Props, State> {
     );
   }
 }
-export default Input;

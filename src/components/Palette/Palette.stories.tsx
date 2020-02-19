@@ -1,5 +1,5 @@
 import React from 'react';
-import Palette from './Palette';
+import { Palette } from '.';
 
 export default {
   component: Palette,

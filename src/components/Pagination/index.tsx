@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import './Pagination.less';
-import A from '../A/A';
+import { A } from '../A';
 
 interface Props {
   totalItems: number;
@@ -10,7 +10,7 @@ interface Props {
   pageNeighbours: number;
 }
 
-class Pagination extends Component<Props> {
+export class Pagination extends Component<Props> {
   tempPreviousPage: number = 0;
 
   static defaultProps = {
@@ -78,5 +78,3 @@ class Pagination extends Component<Props> {
     );
   };
 }
-
-export default Pagination;

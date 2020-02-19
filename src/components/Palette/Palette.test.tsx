@@ -1,13 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Palette from './Palette';
+import { Palette } from '.';
 
-const defaultProps = {
-  totalItems: 837246,
-  itemsPerPage: 8,
-  page: 387,
-  path: 'http://example.com',
-};
+const defaultProps = {};
 
 describe('Palette (Snapshot)', () => {
   it('Palette renders properly', () => {

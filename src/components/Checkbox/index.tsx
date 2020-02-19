@@ -8,7 +8,7 @@ interface Props {
   onArchiveTask: (id: string) => void;
 }
 
-const Checkbox: React.FC<Props> = ({ id, title, state, onArchiveTask }) => {
+export const Checkbox: React.FC<Props> = ({ id, title, state, onArchiveTask }) => {
   return (
     <div className={'Checkbox ' + (state ? 'Checkbox-' + state : '')} onClick={() => onArchiveTask(id)}>
       <label className="Checkbox-label">
@@ -20,5 +20,3 @@ const Checkbox: React.FC<Props> = ({ id, title, state, onArchiveTask }) => {
     </div>
   );
 };
-
-export default Checkbox;

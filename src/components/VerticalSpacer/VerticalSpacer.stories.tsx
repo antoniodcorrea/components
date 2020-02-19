@@ -1,6 +1,6 @@
 import React from 'react';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
-import VerticalSpacer from './VerticalSpacer';
+import { withKnobs, select } from '@storybook/addon-knobs';
+import { VerticalSpacer } from '.';
 
 export default {
   component: VerticalSpacer,

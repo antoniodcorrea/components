@@ -11,7 +11,14 @@ interface Props {
   onClick?: (any) => void;
 }
 
-const A: React.FC<Props> = ({ children, href, styled = true, targetBlank = false, onClick, disabled = false }) => (
+export const A: React.FC<Props> = ({
+  children,
+  href,
+  styled = true,
+  targetBlank = false,
+  onClick,
+  disabled = false,
+}) => (
   <a
     className={(styled ? 'A' : '') + (styled && disabled ? ' A-disabled' : '')}
     href={href}
@@ -21,4 +28,3 @@ const A: React.FC<Props> = ({ children, href, styled = true, targetBlank = false
     {children}
   </a>
 );
-export default A;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import SvgIcon from './SvgIcon';
+import { SvgIcon } from '.';
 
 export default {
   component: SvgIcon,
