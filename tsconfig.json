@@ -5,7 +5,8 @@
     "jsx": "react",
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "outDir": "components"
+    "outDir": "components",
+    "rootDir": "src/components"
   },
-  "exclude": ["**/*.stories.*"]
+  "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.config.*"]
 }

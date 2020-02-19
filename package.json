@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "description": "Components library from antoniodcorrea",
   "scripts": {
-    "build": "tsc -d && cd src && find . -name '*.less' -exec rsync -R {} ../ ';' && cd ..",
-    "build2": "tsc -d",
+    "clearComponents": "find components -name '*' -delete",
+    "build": "tsc -d && sh ./tools/less/compile.sh",
+    "copyCss": "cd src && find . -name '*.css' -not -path './css/*' -exec rsync -R {} ../../components ';'",
+    "replaceLessToCss": "find ./components -type f -exec sed -i '' 's#\\.less#\\.css#' *.js {} ';'",
+    "clear": "find src -name '*css' -delete",
+    "prepare": "npm run clearComponents && npm run build && npm run copyCss && npm run replaceLessToCss && npm run clear",
     "test": "jest -u",
     "storybook": "start-storybook -s ./src/assets/svg -p 6006",
     "build-storybook": "build-storybook"
