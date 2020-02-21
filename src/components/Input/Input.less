@@ -7,20 +7,24 @@
 
   display: flex;
   position: relative;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 60px;
   width: 100%;
   text-align: left;
 
   &-label {
+    display: flex;
     position: absolute;
+    align-items: center;
+    height: 40px;
     width: 100%;
     bottom: 0;
     left: 0;
-    padding: 0 0 6px;
-    font-size: 18px;
-    opacity: 0.5;
+    padding-left: 8px;
+    color: @c-disabled;
     transform-origin: left top;
     transition: transform @td-fast @ease, color @td-fast @ease, opacity @td-slow @ease;
-    pointer-events: none;
 
     &:hover {
       cursor: pointer;
@@ -28,71 +32,37 @@
   }
 
   &-input {
+    height: 40px;
     width: 100%;
-    padding: 23px 0 3px;
-    font-size: 18px;
-    background-color: transparent;
-    background-image: linear-gradient(to bottom, @c-transparent 50%, @c-accent 50%);
-    background-size: 0% 5%;
-    background-position: 50% 100%;
-    background-repeat: no-repeat;
-    border: none;
-    border-bottom: 1px solid @c-base--transparent;
-    transition: all @td-normal @ease;
+    padding-left: 6px;
+    font-size: @fs-normal;
+    font-weight: @fw-bold;
+    border: 2px solid @c-base;
+    outline: none;
+    transition: border-color @td-fast @ease;
     box-shadow: none;
 
     &:hover {
-      border-bottom: 1px solid @c-base;
+      //
     }
 
     &:focus,
-    @{c}--withValue & {
-      border-bottom: 1px solid @c-accent;
-      outline: none;
-      box-shadow: none;
-
+    &:not(:placeholder-shown) {
       & + label {
-        color: @c-accent;
-        transform: translateY(-20px);
+        transform: translate(-5px, -25px) scale(0.8);
       }
     }
 
-    &:focus {
-      & + label {
-        opacity: 1;
-      }
-    }
-  }
-
-  &--item {
-    margin-top: 20px;
-    font-size: 14px;
-
-    @{c}-input,
-    @{c}-label {
-      padding: 0 0 6px;
-      font-size: 14px;
+    @{c}--success & {
+      border: 2px solid @c-success;
     }
 
-    @{c}-input {
-      padding: 17px 0 3px;
-
-      &:focus,
-      @{c}--withValue & {
-        & + label {
-          transform: translateY(-18px) !important;
-        }
-      }
+    @{c}--error & {
+      border: 2px solid @c-error;
     }
 
-    &@{c}--withValue {
-      label {
-        transform: translateY(-18px) !important;
-      }
-    }
-
-    @{c}-label {
-      padding: 0 0 6px;
+    &:disabled {
+      border: 2px solid @c-disabled;
     }
   }
 }

@@ -11,11 +11,12 @@ export default {
 const defaultProps = {};
 
 const knobs = {
-  type: () => select('Type', [undefined, 'transparent', 'shrink'], undefined),
+  type: () => select('Type', [undefined, 'spacer', 'shrink'], undefined),
+  size: () => select('Size', [undefined, 'small', 'normal', 'big'], undefined),
 };
 
 export const Default = () => (
   <div style={{ width: '200px' }}>
-    <Hr {...defaultProps} type={knobs.type()} />
+    <Hr {...defaultProps} type={knobs.type()} size={knobs.size()} />
   </div>
 );

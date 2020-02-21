@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { Input } from '.';
+import { Hr } from '../Hr';
+import { H1 } from '../H1';
 
 export default {
   component: Input,
@@ -8,36 +10,37 @@ export default {
   decorators: [withKnobs],
 };
 
-const defaultProps = {
-  placeholder: 'Placeholder',
-};
-
 const knobs = {
-  className: () => text('Class', 'aClass.'),
-  disabled: () => boolean('Disabled', false),
+  name: () => text('Name', 'name'),
+  value: () => text('Value', 'Some value'),
+  placeholder: () => text('Placeholder', 'placeholder'),
+  label: () => text('Label', 'label'),
   readOnly: () => boolean('Read only', false),
-  type: () => text('Type', 'text'),
-  value: () => text('Value', 'How'),
+  error: () => boolean('Error', false),
+  success: () => boolean('Success', false),
+  disabled: () => boolean('Disabled', false),
 };
 
-export const Empty = () => (
-  <Input
-    {...defaultProps}
-    className={knobs.className()}
-    disabled={knobs.disabled()}
-    readOnly={knobs.readOnly()}
-    type={knobs.type()}
-    value={knobs.value()}
-  />
-);
+export const Empty = () => {
+  const [value1, setValue1] = useState('');
+  const [value2, setValue2] = useState('');
+  const [value3, setValue3] = useState('');
 
-export const Filled = () => (
-  <Input
-    {...defaultProps}
-    className={knobs.className()}
-    disabled={knobs.disabled()}
-    readOnly={knobs.readOnly()}
-    type={knobs.type()}
-    value={knobs.value()}
-  />
-);
+  return (
+    <div style={{ width: '300px' }}>
+      <H1>Input</H1>
+      <Hr type="spacer" />
+      <Input
+        name={knobs.name()}
+        label={knobs.label()}
+        value={value1}
+        readOnly={knobs.readOnly()}
+        error={knobs.error()}
+        success={knobs.success()}
+        disabled={knobs.disabled()}
+        onChange={e => setValue1(e.target.value)}
+      />
+      <Hr type="spacer" />
+    </div>
+  );
+};

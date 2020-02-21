@@ -2,7 +2,10 @@ import React from 'react';
 import './Hr.less';
 
 interface Props {
-  type?: 'transparent' | 'shrink';
+  type?: 'spacer' | 'shrink';
+  size?: 'block' | 'micro' | 'small' | 'normal' | 'big' | false;
 }
 
-export const Hr: React.FC<Props> = ({ type }) => <hr className={'Hr' + (type ? ' Hr--' + type : '')} />;
+export const Hr: React.FC<Props> = ({ type, size = 'normal' }) => (
+  <hr className={'Hr' + (type ? ' Hr-' + type : '') + (size ? ' Hr-' + size : '')} />
+);

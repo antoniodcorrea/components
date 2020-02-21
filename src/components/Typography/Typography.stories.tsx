@@ -31,35 +31,35 @@ export const Default = () => {
   return (
     <>
       <H1>{knobs.H1()}</H1>
-      <Hr type="transparent" />
+      <Hr type="spacer" size="micro" />
       <H2>{knobs.H2()}</H2>
-      <Hr type="transparent" />
+      <Hr type="spacer" size="micro" />
       <H3>{knobs.H3()}</H3>
-      <Hr type="transparent" />
+      <Hr type="spacer" size="micro" />
       <H4>{knobs.H4()}</H4>
-      <Hr type="transparent" />
+      <Hr type="spacer" size="micro" />
       <Span bold>{knobs.SpanNormalBold()}</Span>
-      <Hr type="shrink" />
+      <Hr type="spacer" size="micro" />
       <Span>{knobs.SpanNormalRegular()}</Span>
-      <Hr type="transparent" />
+      <Hr type="spacer" size="micro" />
       <Span bold size="small">
         {knobs.SpanSmallBold()}
       </Span>
-      <Hr type="shrink" />
+      <Hr type="spacer" size="block" />
       <Span size="small">{knobs.SpanSmallRegular()}</Span>
-      <Hr type="transparent" />
+      <Hr type="spacer" size="micro" />
       <Span bold size="micro">
         {knobs.SpanMicroBold()}
       </Span>
-      <Hr type="shrink" />
+      <Hr type="spacer" size="block" />
       <Span size="micro">{knobs.SpanMicroRegular()}</Span>
-      <Hr type="transparent" />
+      <Hr type="spacer" size="micro" />
       <Span bold size="nano">
         {knobs.SpanNanoBold()}
       </Span>
-      <Hr type="shrink" />
+      <Hr type="spacer" size="block" />
       <Span size="nano">{knobs.SpanNanoRegular()}</Span>
-      <Hr type="transparent" />
+      <Hr type="spacer" size="micro" />
       <Hr />
     </>
   );

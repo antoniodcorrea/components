@@ -5,15 +5,36 @@
 @{c} {
   .default();
 
+  height: 4px;
   margin: 0;
+  background: @c-base;
   border: none;
-  border-bottom: 4px solid @c-base;
 
-  &--transparent {
-    border-color: @c-transparent;
+  &-spacer {
+    background: @c-transparent;
+
+    &@{c}-block {
+      height: 0;
+    }
+
+    &@{c}-micro {
+      height: 5px;
+    }
+
+    &@{c}-small {
+      height: 10px;
+    }
+
+    &@{c}-normal {
+      height: 20px;
+    }
+
+    &@{c}-big {
+      height: 40px;
+    }
   }
 
-  &--shrink {
+  &-shrink {
     border: none;
   }
 }
