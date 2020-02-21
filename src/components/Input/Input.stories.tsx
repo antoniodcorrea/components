@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { Input } from '.';
 import { Hr } from '../Hr';
@@ -23,8 +23,6 @@ const knobs = {
 
 export const Empty = () => {
   const [value1, setValue1] = useState('');
-  const [value2, setValue2] = useState('');
-  const [value3, setValue3] = useState('');
 
   return (
     <div style={{ width: '300px' }}>

@@ -18,11 +18,13 @@
     position: absolute;
     align-items: center;
     height: 40px;
-    width: 100%;
     bottom: 0;
     left: 0;
-    padding-left: 8px;
+    right: 8px;
+    padding-left: 10px;
+    white-space: nowrap;
     color: @c-disabled;
+    overflow: hidden;
     transform-origin: left top;
     transition: transform @td-fast @ease, color @td-fast @ease, opacity @td-slow @ease;
 
@@ -34,7 +36,8 @@
   &-input {
     height: 40px;
     width: 100%;
-    padding-left: 6px;
+    right: 8px;
+    padding: 0 6px;
     font-size: @fs-normal;
     font-weight: @fw-bold;
     border: 2px solid @c-base;
