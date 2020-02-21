@@ -9,81 +9,113 @@ export const Palette = () => (
       <div className="Palette-color Palette-color--base">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" bold>
+          <Span className="Palette-title" size="small" bold>
             Base
           </Span>
-          <Span className="Palette-html">#242424</Span>
-          <Span className="Palette-rgb">36, 36, 36</Span>
+          <Span className="Palette-html" size="small">
+            #242424
+          </Span>
+          <Span className="Palette-rgb" size="small">
+            36, 36, 36
+          </Span>
         </div>
       </div>
       <div className="Palette-color Palette-color--background">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" bold>
+          <Span className="Palette-title" size="small" bold>
             Background
           </Span>
-          <Span className="Palette-html">#fffefa</Span>
-          <Span className="Palette-rgb">255, 254, 250</Span>
+          <Span className="Palette-html" size="small">
+            #fffefa
+          </Span>
+          <Span className="Palette-rgb" size="small">
+            255, 254, 250
+          </Span>
         </div>
       </div>
       <div className="Palette-color Palette-color--accent">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" bold>
+          <Span className="Palette-title" size="small" bold>
             Accent
           </Span>
-          <Span className="Palette-html">#666666</Span>
-          <Span className="Palette-rgb">102, 102, 102</Span>
+          <Span className="Palette-html" size="small">
+            #666666
+          </Span>
+          <Span className="Palette-rgb" size="small">
+            102, 102, 102
+          </Span>
         </div>
       </div>
       <div className="Palette-color Palette-color--success">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" bold>
+          <Span className="Palette-title" size="small" bold>
             Success
           </Span>
-          <Span className="Palette-html">#a1f0e8</Span>
-          <Span className="Palette-rgb">161, 240, 232</Span>
+          <Span className="Palette-html" size="small">
+            #a1f0e8
+          </Span>
+          <Span className="Palette-rgb" size="small">
+            161, 240, 232
+          </Span>
         </div>
       </div>
       <div className="Palette-color Palette-color--alert">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" bold>
+          <Span className="Palette-title" size="small" bold>
             Alert
           </Span>
-          <Span className="Palette-html">#ffe970</Span>
-          <Span className="Palette-rgb">235, 133, 112</Span>
+          <Span className="Palette-html" size="small">
+            #ffe970
+          </Span>
+          <Span className="Palette-rgb" size="small">
+            235, 133, 112
+          </Span>
         </div>
       </div>
       <div className="Palette-color Palette-color--error">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" bold>
+          <Span className="Palette-title" size="small" bold>
             Error
           </Span>
-          <Span className="Palette-html">#ff7070</Span>
-          <Span className="Palette-rgb">255, 112, 112</Span>
+          <Span className="Palette-html" size="small">
+            #ff7070
+          </Span>
+          <Span className="Palette-rgb" size="small">
+            255, 112, 112
+          </Span>
         </div>
       </div>
       <div className="Palette-color Palette-color--disabled">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" bold>
+          <Span className="Palette-title" size="small" bold>
             Disabled
           </Span>
-          <Span className="Palette-html">#f7f7f7</Span>
-          <Span className="Palette-rgb">247, 247, 247</Span>
+          <Span className="Palette-html" size="small">
+            #f7f7f7
+          </Span>
+          <Span className="Palette-rgb" size="small">
+            247, 247, 247
+          </Span>
         </div>
       </div>
       <div className="Palette-color Palette-color--?">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" bold>
+          <Span className="Palette-title" size="small" bold>
             ?
           </Span>
-          <Span className="Palette-html">#??????</Span>
-          <Span className="Palette-rgb">?, ?, ?</Span>
+          <Span className="Palette-html" size="small">
+            #??????
+          </Span>
+          <Span className="Palette-rgb" size="small">
+            ?, ?, ?
+          </Span>
         </div>
       </div>
     </div>
