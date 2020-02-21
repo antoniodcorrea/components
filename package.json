@@ -6,7 +6,7 @@
     "clearComponents": "find components -name '*' -delete",
     "build": "sh ./tools/build/index.sh",
     "test": "jest -u",
-    "storybook": "start-storybook -s ./src/assets/svg -p 6006",
+    "storybook": "start-storybook -s ./src/assets/svg -p 6006 watch-css",
     "build-storybook": "build-storybook"
   },
   "author": {
