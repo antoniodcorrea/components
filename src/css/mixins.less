@@ -17,3 +17,17 @@
   border: unit(@borderSize, px) solid @c-base;
   box-shadow: @shadowDisplacement @shadowDisplacement 0 0 @c-base;
 }
+
+.notification-color(@c) {
+  @{c}--error& {
+    background: @c-error;
+  }
+
+  @{c}--alert& {
+    background: @c-alert;
+  }
+
+  @{c}--success& {
+    background: @c-success;
+  }
+}
