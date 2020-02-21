@@ -106,13 +106,6 @@ export const Palette = () => (
       <div className="Palette-item Palette-item--blue-4" />
       <div className="Palette-item Palette-item--blue-5" />
       <div className="Palette-item" />
-      <div className="Palette-item Palette-item--green-0" />
-      <div className="Palette-item Palette-item--green-1" />
-      <div className="Palette-item Palette-item--green-2" />
-      <div className="Palette-item Palette-item--green-3" />
-      <div className="Palette-item Palette-item--green-4" />
-      <div className="Palette-item Palette-item--green-5" />
-      <div className="Palette-item" />
       <div className="Palette-item Palette-item--red-0" />
       <div className="Palette-item Palette-item--red-1" />
       <div className="Palette-item Palette-item--red-2" />
