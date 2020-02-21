@@ -42,8 +42,8 @@ export const Palette = () => (
           <Span className="Palette-title" bold>
             Success
           </Span>
-          <Span className="Palette-html">#87ffb9</Span>
-          <Span className="Palette-rgb">135, 255, 185</Span>
+          <Span className="Palette-html">#a1f0e8</Span>
+          <Span className="Palette-rgb">161, 240, 232</Span>
         </div>
       </div>
       <div className="Palette-color Palette-color--alert">
@@ -90,7 +90,7 @@ export const Palette = () => (
     <Hr />
     <div className="Palette-grid">
       <div className="Palette-item Palette-item--base" />
-      <div className="Palette-item Palette-item--light" />
+      <div className="Palette-item Palette-item--background" />
       <div className="Palette-item Palette-item--accent" />
       <div className="Palette-item Palette-item--success" />
       <div className="Palette-item Palette-item--alert" />
