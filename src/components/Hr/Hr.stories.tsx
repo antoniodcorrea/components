@@ -11,7 +11,7 @@ export default {
 const defaultProps = {};
 
 const knobs = {
-  type: () => select('Type', [null, 'transparent', 'shrink'], null),
+  type: () => select('Type', [undefined, 'transparent', 'shrink'], undefined),
 };
 
 export const Default = () => (

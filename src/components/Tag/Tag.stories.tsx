@@ -9,7 +9,7 @@ export default {
 };
 
 const knobs = {
-  notification: () => select('Notification', ['success', 'alert', 'error', null], null),
+  notification: () => select('Notification', ['success', 'alert', 'error', undefined], undefined),
 };
 
 export const Default = () => {

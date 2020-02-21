@@ -11,9 +11,9 @@ export const Notification: React.FC<Props> = ({ className, type, size = 'normal'
   <div
     className={
       'Notification' +
-      (className ? ' ' + className : '') +
-      (size ? ' Notification-' + size : '') +
-      (type ? ' Notification--' + type : '')
+      (' Notification-' + size) +
+      (type ? ' Notification--' + type : '') +
+      (className ? ' ' + className : '')
     }
   />
 );
