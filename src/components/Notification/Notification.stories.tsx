@@ -9,8 +9,8 @@ export default {
 };
 
 const knobs = {
-  size: () => select('Size', ['small', 'normal', 'big', undefined], undefined),
-  type: () => select('Notification', ['success', 'alert', 'error', undefined], undefined),
+  size: () => select('Size', ['small', 'normal', 'big', null], null),
+  type: () => select('Notification', ['success', 'alert', 'error', null], null),
 };
 
 export const Default = () => <Notification type={knobs.type()} size={knobs.size()} />;
