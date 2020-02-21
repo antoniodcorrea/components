@@ -8,9 +8,9 @@ Components library by antoniodcorrea
 
 To build, run:
 
-    npm run prepare
+    npm run storybook
 
-The build is done via TypeScript, a script running lessc, and a set of scripts to copy and remove the css files.
+The build is done via set of scripts to copy run TypeScript, lessc, and bash find to properly locate the css files.
 
 Once the build has finished, all occurrences of `.less` in `.js` files within `./components` is changed to `.less`.
 
@@ -22,12 +22,63 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
 
 ## TODO
 
-- Fix Input
 - Rename `warning` to `alert`, and `error` to `warning`
+- Rename spinner
+
 - Pending components:
-  - Fade
-  - TextArea
-  - TextEditor
+  - Fade: ✗
+  - Button: ✓
+  - A: ✓
+  - H1: ✓
+  - H2: ✓
+  - H3: ✓
+  - H4: ✓
+  - P: ✓
+  - Span: ✓
+  - Hr: ✓
+  - Notification: ✓
+  - Input: ✓
+  - TextArea: ✗
+  - TextEditor: ✗
+  - Radius: ✗
+  - Range: ✗
+  - Select: ✗
+  - Checkbox: ✗
+  - Switch: ✗
+  - TextButton: ✗
+  - Color picker: ✗
+  - Loader: ✗
+  - Spinner: ✓
+  - Upload file: ✗
+  - Upload image: ✗
+  - Link:: ✗
+    - Small: ✗
+    - Medium: ✗
+    - Big: ✗
+    - Card: ✗
+    - Group: ✗
+  - List:: ✗
+    - Small: ✗
+    - Medium: ✗
+    - Big: ✗
+    - Card: ✗
+    - Group: ✗
+  - User:: ✗
+    - Small: ✗
+    - Medium: ✗
+    - Big: ✗
+    - Card: ✗
+    - Group: ✗
+  - Tags:: ✗
+    - Tag: ✗
+    - Group: ✗
+  - Breadcrumb: ✗
+  - Filter/sort: ✗
+  - Modal: ✗
+  - Header: ✗
+  - Footer: ✗
+  - User popup: ✗
+  - Tabs: ✗
 
 ## Notes
 
