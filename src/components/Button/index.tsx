@@ -9,6 +9,7 @@ interface Props {
   success?: boolean;
   error?: boolean;
   disabled?: boolean;
+  onClick?: (value) => void;
 }
 
 export const Button: React.FC<Props> = ({
@@ -18,6 +19,7 @@ export const Button: React.FC<Props> = ({
   success,
   error,
   disabled,
+  onClick,
 }): JSX.Element => {
   return (
     <button
@@ -29,6 +31,7 @@ export const Button: React.FC<Props> = ({
         (error ? ' Button--error' : '') +
         (disabled ? ' Button--disabled' : '')
       }
+      onClick={onClick}
     >
       <Span className="Button-content" bold uppercase>
         {children}

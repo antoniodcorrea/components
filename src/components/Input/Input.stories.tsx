@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+
 import { Input } from '.';
 import { Hr } from '../Hr';
 import { H1 } from '../H1';
+import { Button } from '../Button';
+import { Layout } from '../Layout';
 
 export default {
   component: Input,
@@ -25,14 +29,20 @@ export const Empty = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const [value3, setValue3] = useState('');
+  const [success, setSuccess] = useState(undefined);
+
+  const onSubmit = () => {
+    action('button-click');
+    setSuccess(true);
+  };
 
   return (
-    <div style={{ width: '300px' }}>
+    <div style={{ width: '300px' }} onSubmit={onSubmit}>
       <H1>Input</H1>
       <Hr type="spacer" />
       <Input
         name={knobs.name()}
-        label="First data"
+        label="Name"
         value={value1}
         readOnly={knobs.readOnly()}
         error={knobs.error()}
@@ -42,7 +52,7 @@ export const Empty = () => {
       />
       <Input
         name={knobs.name()}
-        label="Second value"
+        label="Password"
         value={value2}
         readOnly={knobs.readOnly()}
         error={knobs.error()}
@@ -52,7 +62,7 @@ export const Empty = () => {
       />
       <Input
         name={knobs.name()}
-        label="Third value"
+        label="Repeat password"
         value={value3}
         readOnly={knobs.readOnly()}
         error={knobs.error()}
@@ -61,6 +71,11 @@ export const Empty = () => {
         onChange={e => setValue3(e.target.value)}
       />
       <Hr type="spacer" />
+      <Layout horizontal="center">
+        <Button onClick={onSubmit} success={success}>
+          Submit
+        </Button>
+      </Layout>
     </div>
   );
 };
