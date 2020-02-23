@@ -1,6 +1,6 @@
 import React from 'react';
-import './Button.less';
 import { Span } from '../Span';
+import './Button.less';
 
 interface Props {
   children: string | React.ReactNode | React.ReactNode[];

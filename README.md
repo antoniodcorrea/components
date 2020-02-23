@@ -38,13 +38,15 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
   - Hr: ✓
   - Notification: ✓
   - Input: ✓
+  - Radius: ✗
+  - Switch: ✗
+  - DateTime picker
   - TextArea: ✗
   - TextEditor: ✗
-  - Radius: ✗
+  - Search: ✗
   - Range: ✗
   - Select: ✗
   - Checkbox: ✗
-  - Switch: ✗
   - TextButton: ✗
   - Color picker: ✗
   - Loader: ✗
