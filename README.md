@@ -26,8 +26,9 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
 - Rename spinner
 
 - Pending components:
-  - Fade: ✗
+  - Fade: ✓
   - Button: ✓
+  - TextButton: ✗
   - A: ✓
   - H1: ✓
   - H2: ✓
@@ -38,19 +39,17 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
   - Hr: ✓
   - Notification: ✓
   - Input: ✓
-  - Radius: ✗
-  - Switch: ✗
-  - DateTime picker
   - TextArea: ✗
   - TextEditor: ✗
-  - Search: ✗
-  - Range: ✗
   - Select: ✗
+  - Search: ✗
+  - Radio | Switch: ✗
   - Checkbox: ✗
-  - TextButton: ✗
+  - Range: ✗
+  - DateTime picker: ✗
   - Color picker: ✗
-  - Loader: ✗
   - Spinner: ✓
+  - Loader: ✗
   - Upload file: ✗
   - Upload image: ✗
   - Link:: ✗
