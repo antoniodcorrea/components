@@ -95,6 +95,8 @@ It is possible to import the SVGs with `<use>` tag, but has to be done with an a
        {children}
      </svg>
 
+To import svgs the library `react-scripts` is needed
+
 #### SvgIcon wrapper component
 
 A different solution would be to pass the SVG as children within a `SvgIcon` wrapper component, and inside it add the style with `React.cloneElement`.

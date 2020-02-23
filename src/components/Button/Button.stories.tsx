@@ -11,8 +11,8 @@ export default {
 const knobs = {
   text: () => text('Button', 'Click me!'),
   disabled: () => boolean('Disabled', false),
-  error: () => boolean('Error', false),
   success: () => boolean('Success', false),
+  error: () => boolean('Error', false),
 };
 
 export const Default = () => {
