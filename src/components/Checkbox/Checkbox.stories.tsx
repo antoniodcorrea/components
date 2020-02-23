@@ -1,16 +1,32 @@
 import React, { useState } from 'react';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { Checkbox } from '.';
+import { Hr } from '../Hr';
+import { H1 } from '../H1';
+import { Code } from '../Code';
 
 export default {
   component: Checkbox,
   title: 'Checkbox',
-  decorators: [withKnobs],
 };
 
-// export const Checked = () => <Checkbox {...defaultProps} state="checked" />;
 export const Empty = () => {
-  const [value, setValue] = useState(false);
+  const [value1, setValue1] = useState(false);
+  const [value2, setValue2] = useState(false);
+  const [value3, setValue3] = useState(false);
 
-  return <Checkbox value={value} onChange={e => setValue(e.target.checked)} label="Checkbox Label" />;
+  return (
+    <>
+      <H1>Checkbox</H1>
+      <Hr type="spacer" />
+      <Checkbox value={value1} onChange={e => setValue1(e.target.checked)} label="Checkbox 1" />
+      <Hr type="spacer" size="micro" />
+      <Checkbox value={value2} onChange={e => setValue2(e.target.checked)} label="Checkbox 2" />
+      <Hr type="spacer" size="micro" />
+      <Checkbox value={value3} onChange={e => setValue3(e.target.checked)} label="Checkbox 3" />
+      <Hr type="spacer" size="big" />
+      <Hr size="big" />
+      <Hr type="spacer" size="big" />
+      <Code>{JSON.stringify({ value1, value2, value3 }, null, 4)}</Code>
+    </>
+  );
 };

@@ -7,6 +7,7 @@ import { Hr } from '../Hr';
 import { H1 } from '../H1';
 import { Button } from '../Button';
 import { Layout } from '../Layout';
+import { Code } from '../Code';
 
 export default {
   component: Input,
@@ -76,6 +77,10 @@ export const Empty = () => {
           Submit
         </Button>
       </Layout>
+      <Hr type="spacer" size="big" />
+      <Hr size="big" />
+      <Hr type="spacer" size="big" />
+      <Code>{JSON.stringify({ value1, value2, value3 }, null, 4)}</Code>
     </div>
   );
 };

@@ -30,7 +30,7 @@ export const Fade: React.FC<Props> = ({
         in={mounted}
         appear
         unmountOnExit
-        className={'Fade-transition ' + ('Fade-transition--' + speed) + (classname ? classname + '-transition' : '')}
+        className={'Fade-transition Fade-transition--' + speed + (classname ? classname + '-transition' : '')}
         classNames={'Fade'}
         timeout={{
           enter: speedMap[speed],
