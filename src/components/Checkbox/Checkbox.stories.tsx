@@ -1,21 +1,16 @@
-import React from 'react';
-import { action } from '@storybook/addon-actions';
+import React, { useState } from 'react';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { Checkbox } from '.';
 
 export default {
   component: Checkbox,
   title: 'Checkbox',
+  decorators: [withKnobs],
 };
 
-const defaultProps = {
-  id: '1',
-  title: 'Test Checkbox',
-  state: 'default',
-  onArchiveTask: action('onArchiveTask'),
-};
+// export const Checked = () => <Checkbox {...defaultProps} state="checked" />;
+export const Empty = () => {
+  const [value, setValue] = useState(false);
 
-export const Default = () => {
-  return <Checkbox {...defaultProps} />;
+  return <Checkbox value={value} onChange={e => setValue(e.target.checked)} label="Checkbox Label" />;
 };
-
-export const Checked = () => <Checkbox {...defaultProps} state="checked" />;

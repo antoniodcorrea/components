@@ -1,8 +1,6 @@
 import React from 'react';
 import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import { Fade } from '.';
-import { SpinnerCircle } from '../SpinnerCircle';
-import { Hr } from '../Hr';
 import { P } from '../P';
 
 export default {

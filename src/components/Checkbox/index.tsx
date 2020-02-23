@@ -1,22 +1,35 @@
 import React from 'react';
+import uniqueId from 'lodash/uniqueId';
 import './Checkbox.less';
+import { Check } from '../Svg';
 
 interface Props {
-  state: string;
-  id: string;
-  title: string;
-  onArchiveTask: (id: string) => void;
+  id?: any;
+  input?: any;
+  value?: boolean;
+  className?: string;
+  label?: string;
+  onChange?: (e) => void;
 }
 
-export const Checkbox: React.FC<Props> = ({ id, title, state, onArchiveTask }) => {
+export const Checkbox: React.FC<Props> = ({ input, value, className, label, onChange }) => {
+  const id = uniqueId();
+
   return (
-    <div className={'Checkbox ' + (state ? 'Checkbox-' + state : '')} onClick={() => onArchiveTask(id)}>
-      <label className="Checkbox-label">
-        <input defaultChecked={state === 'checked'} type="checkbox" />
+    <div className={'Checkbox' + (className ? ' Checkbox--' + className : '')}>
+      <input
+        className="Checkbox-input"
+        id={'Checkbox-' + id}
+        type="checkbox"
+        onChange={onChange}
+        checked={(input && input.value) || value}
+      />
+      <span className="Checkbox-helper">
+        <Check />
+      </span>
+      <label className="Checkbox-label" htmlFor={'Checkbox-' + id}>
+        {label}
       </label>
-      <div className="Checkbox-title">
-        <input type="text" value={title} readOnly={true} placeholder="Input title" />
-      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Triangle, Circle, Square } from '.';
+import { Triangle, Circle, Square, Check } from '.';
 
 export default {
   component: Triangle,
@@ -18,5 +18,6 @@ export const Icons = () => (
     <Triangle size={knobs.size()} />
     <Square size={knobs.size()} />
     <Circle size={knobs.size()} />
+    <Check size={knobs.size()} />
   </>
 );
