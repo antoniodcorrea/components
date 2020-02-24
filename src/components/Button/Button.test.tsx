@@ -14,6 +14,6 @@ describe('Button (Snapshot)', () => {
 describe('Button', () => {
   it('Button is a myComponent type <div>', () => {
     const component = shallow(<Button {...defaultProps}>Test</Button>);
-    expect(component.type()).toEqual('div');
+    expect(component.type()).toEqual('button');
   });
 });

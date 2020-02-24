@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Checkbox } from '.';
 import { Hr } from '../Hr';
 import { H1 } from '../H1';
-import { Code } from '../Code';
+import { Border } from '../Border';
 
 export default {
   component: Checkbox,
@@ -18,15 +18,34 @@ export const Empty = () => {
     <>
       <H1>Checkbox</H1>
       <Hr type="spacer" />
-      <Checkbox value={value1} onChange={e => setValue1(e.target.checked)} label="Checkbox 1" />
-      <Hr type="spacer" size="micro" />
-      <Checkbox value={value2} onChange={e => setValue2(e.target.checked)} label="Checkbox 2" />
-      <Hr type="spacer" size="micro" />
-      <Checkbox value={value3} onChange={e => setValue3(e.target.checked)} label="Checkbox 3" />
-      <Hr type="spacer" size="big" />
-      <Hr size="big" />
-      <Hr type="spacer" size="big" />
-      <Code>{JSON.stringify({ value1, value2, value3 }, null, 4)}</Code>
+      <Border>
+        <Checkbox
+          value={value1}
+          onChange={e => {
+            setValue1(e.target.checked);
+            console.log(e.target.checked);
+          }}
+          label="Checkbox 1"
+        />
+        <Hr type="spacer" size="micro" />
+        <Checkbox
+          value={value2}
+          onChange={e => {
+            setValue2(e.target.checked);
+            console.log(e.target.checked);
+          }}
+          label="Checkbox 2"
+        />
+        <Hr type="spacer" size="micro" />
+        <Checkbox
+          value={value3}
+          onChange={e => {
+            setValue3(e.target.checked);
+            console.log(e.target.checked);
+          }}
+          label="Checkbox 3"
+        />
+      </Border>
     </>
   );
 };

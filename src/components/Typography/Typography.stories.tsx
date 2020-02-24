@@ -30,6 +30,10 @@ const knobs = {
 export const Default = () => {
   return (
     <>
+      <H1>Typography</H1>
+
+      <Hr type="spacer" />
+      <Hr type="spacer" />
       <H1>{knobs.H1()}</H1>
       <Hr type="spacer" size="micro" />
       <H2>{knobs.H2()}</H2>
@@ -59,7 +63,7 @@ export const Default = () => {
       </Span>
       <Hr type="spacer" size="block" />
       <Span size="nano">{knobs.SpanNanoRegular()}</Span>
-      <Hr type="spacer" size="micro" />
+      <Hr type="spacer" />
       <Hr />
     </>
   );

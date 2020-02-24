@@ -1,6 +1,8 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
 import { Triangle, Circle, Square, Check } from '.';
+import { H1 } from '../H1';
+import { Hr } from '../Hr';
 
 export default {
   component: Triangle,
@@ -15,9 +17,13 @@ const knobs = {
 
 export const Icons = () => (
   <>
-    <Triangle size={knobs.size()} />
-    <Square size={knobs.size()} />
-    <Circle size={knobs.size()} />
-    <Check size={knobs.size()} />
+    <H1>Svg Icons</H1>
+    <Hr type="spacer" />
+    <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto auto', height: '20px' }}>
+      <Triangle size={knobs.size()} />
+      <Square size={knobs.size()} />
+      <Circle size={knobs.size()} />
+      <Check size={knobs.size()} />
+    </div>
   </>
 );

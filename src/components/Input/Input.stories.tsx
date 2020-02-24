@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import { action } from '@storybook/addon-actions';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-
+import { Border } from '../Border';
 import { Input } from '.';
 import { Hr } from '../Hr';
 import { H1 } from '../H1';
 import { Button } from '../Button';
 import { Layout } from '../Layout';
-import { Code } from '../Code';
 
 export default {
   component: Input,
@@ -33,7 +31,7 @@ export const Empty = () => {
   const [success, setSuccess] = useState(undefined);
 
   const onSubmit = () => {
-    action('button-click');
+    console.log({ value1, value2, value3 });
     setSuccess(true);
   };
 
@@ -41,46 +39,44 @@ export const Empty = () => {
     <div style={{ width: '300px' }} onSubmit={onSubmit}>
       <H1>Input</H1>
       <Hr type="spacer" />
-      <Input
-        name={knobs.name()}
-        label="Name"
-        value={value1}
-        readOnly={knobs.readOnly()}
-        error={knobs.error()}
-        success={knobs.success()}
-        disabled={knobs.disabled()}
-        onChange={e => setValue1(e.target.value)}
-      />
-      <Input
-        name={knobs.name()}
-        label="Password"
-        value={value2}
-        readOnly={knobs.readOnly()}
-        error={knobs.error()}
-        success={knobs.success()}
-        disabled={knobs.disabled()}
-        onChange={e => setValue2(e.target.value)}
-      />
-      <Input
-        name={knobs.name()}
-        label="Repeat password"
-        value={value3}
-        readOnly={knobs.readOnly()}
-        error={knobs.error()}
-        success={knobs.success()}
-        disabled={knobs.disabled()}
-        onChange={e => setValue3(e.target.value)}
-      />
+      <Border>
+        <Input
+          name={knobs.name()}
+          label="Name"
+          value={value1}
+          readOnly={knobs.readOnly()}
+          error={knobs.error()}
+          success={knobs.success()}
+          disabled={knobs.disabled()}
+          onChange={e => setValue1(e.target.value)}
+        />
+        <Input
+          name={knobs.name()}
+          label="Password"
+          value={value2}
+          readOnly={knobs.readOnly()}
+          error={knobs.error()}
+          success={knobs.success()}
+          disabled={knobs.disabled()}
+          onChange={e => setValue2(e.target.value)}
+        />
+        <Input
+          name={knobs.name()}
+          label="Repeat password"
+          value={value3}
+          readOnly={knobs.readOnly()}
+          error={knobs.error()}
+          success={knobs.success()}
+          disabled={knobs.disabled()}
+          onChange={e => setValue3(e.target.value)}
+        />
+      </Border>
       <Hr type="spacer" />
       <Layout horizontal="center">
         <Button onClick={onSubmit} success={success}>
           Submit
         </Button>
       </Layout>
-      <Hr type="spacer" size="big" />
-      <Hr size="big" />
-      <Hr type="spacer" size="big" />
-      <Code>{JSON.stringify({ value1, value2, value3 }, null, 4)}</Code>
     </div>
   );
 };

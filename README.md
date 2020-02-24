@@ -26,60 +26,61 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
 - Rename spinner
 
 - Pending components:
-  - Fade: ✓
-  - Button: ✓
+  - Fade: 👌
+  - Button: 👌
   - TextButton: ✗
-  - A: ✓
-  - H1: ✓
-  - H2: ✓
-  - H3: ✓
-  - H4: ✓
-  - P: ✓
-  - Span: ✓
-  - Hr: ✓
-  - Notification: ✓
-  - Input: ✓
-  - TextArea: ✗
-  - TextEditor: ✗
-  - Select: ✗
-  - Search: ✗
-  - Radio | Switch: ✗
-  - Checkbox: ✗
-  - Range: ✗
-  - DateTime picker: ✗
-  - Color picker: ✗
-  - Spinner: ✓
-  - Loader: ✗
-  - Upload file: ✗
-  - Upload image: ✗
-  - Link:: ✗
-    - Small: ✗
-    - Medium: ✗
-    - Big: ✗
-    - Card: ✗
-    - Group: ✗
-  - List:: ✗
-    - Small: ✗
-    - Medium: ✗
-    - Big: ✗
-    - Card: ✗
-    - Group: ✗
-  - User:: ✗
-    - Small: ✗
-    - Medium: ✗
-    - Big: ✗
-    - Card: ✗
-    - Group: ✗
-  - Tags:: ✗
-    - Tag: ✗
-    - Group: ✗
-  - Breadcrumb: ✗
-  - Filter/sort: ✗
-  - Modal: ✗
-  - Header: ✗
-  - Footer: ✗
-  - User popup: ✗
-  - Tabs: ✗
+  - A: 👌
+  - H1: 👌
+  - H2: 👌
+  - H3: 👌
+  - H4: 👌
+  - P: 👌
+  - Span: 👌
+  - Hr: 👌
+  - Notification: 👌
+  - Input: 👌
+  - TextArea: ❌
+  - TextEditor: ❌
+  - Select: ❌
+  - Search: ❌
+  - Radio | Switch: ❌
+  - Checkbox: ❌
+  - Range: ❌
+  - DateTime picker: ❌
+  - Color picker: ❌
+  - Spinner: 👌
+  - Loader: ❌
+  - Upload file: ❌
+  - Upload image: ❌
+  - Border: 👌
+  - Link:: ❌
+    - Small: ❌
+    - Medium: ❌
+    - Big: ❌
+    - Card: ❌
+    - Group: ❌
+  - List:: ❌
+    - Small: ❌
+    - Medium: ❌
+    - Big: ❌
+    - Card: ❌
+    - Group: ❌
+  - User:: ❌
+    - Small: ❌
+    - Medium: ❌
+    - Big: ❌
+    - Card: ❌
+    - Group: ❌
+  - Tags:: ❌
+    - Tag: ❌
+    - Group: ❌
+  - Breadcrumb: ❌
+  - Filter/sort: ❌
+  - Modal: ❌
+  - Header: ❌
+  - Footer: ❌
+  - User popup: ❌
+  - Tabs: ❌
 
 ## Notes
 

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Pagination } from '.';
+import { Border } from '../Border';
+import { H1 } from '../H1';
+import { Hr } from '../Hr';
 
 export default {
   component: Pagination,
@@ -15,8 +18,14 @@ const defaultProps = {
 
 export const Default = () => {
   return (
-    <div style={{ width: '300px' }}>
-      <Pagination {...defaultProps} />
-    </div>
+    <>
+      <H1>Pagination</H1>
+      <Hr type="spacer" />
+      <div style={{ width: '300px' }}>
+        <Border padding="small">
+          <Pagination {...defaultProps} />
+        </Border>
+      </div>
+    </>
   );
 };

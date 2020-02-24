@@ -19,11 +19,6 @@ const knobs = {
       'Text2',
       'Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet. Lorem ipsum dolor sit amet consectetur, adipisicing elit. '
     ),
-  text3: () =>
-    text(
-      'Text3',
-      'Ab doloribus dolore earum laboriosam incidunt eveniet? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet'
-    ),
 };
 
 export const Default = () => {
@@ -31,7 +26,6 @@ export const Default = () => {
     <>
       <P>{knobs.text1()}</P>
       <P>{knobs.text2()}</P>
-      <P>{knobs.text3()}</P>
     </>
   );
 };
