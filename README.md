@@ -22,13 +22,14 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
 
 ## TODO
 
-- Rename `warning` to `alert`, and `error` to `warning`
-- Rename spinner
+- Rename spinner 👌
+- Add grow to components ❌
+- Add attributes vs Values ❌
 
 - Pending components:
   - Fade: 👌
   - Button: 👌
-  - TextButton: ✗
+  - TextButton: ❌
   - A: 👌
   - H1: 👌
   - H2: 👌
@@ -43,8 +44,9 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
   - TextEditor: ❌
   - Select: ❌
   - Search: ❌
-  - Radio | Switch: ❌
-  - Checkbox: ❌
+  - Radio: 👌
+  - Switch: 👌
+  - Checkbox: 👌
   - Range: ❌
   - DateTime picker: ❌
   - Color picker: ❌
@@ -81,6 +83,7 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
   - Footer: ❌
   - User popup: ❌
   - Tabs: ❌
+  - Sortable: ❌
 
 ## Notes
 

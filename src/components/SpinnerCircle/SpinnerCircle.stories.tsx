@@ -23,12 +23,6 @@ export const Default = () => (
       <SpinnerCircle />
     </Fade>
     <div style={{ width: '300px' }}>
-      <Border>
-        <Span bold>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime eos necessitatibus fuga inventore eaque
-          dolorum aliquam. Eius a consectetur ut, assumenda tenetur odio rem, molestiae in quos, excepturi nisi facere.
-        </Span>
-      </Border>
       <Hr type="spacer" />
       <Border>
         <Span bold>

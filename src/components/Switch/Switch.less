@@ -1,0 +1,83 @@
+@import '../../css/imports.less';
+
+@c: .Switch;
+
+@{c} {
+  .default();
+
+  display: inline-block;
+  position: relative;
+  height: 34px;
+  width: 60px;
+
+  &-input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+
+    &:checked {
+      & + @{c}-slider {
+        background: @c-base;
+      }
+
+      & + @{c}-slider:before {
+        transform: translateX(26px);
+      }
+
+      & ~ @{c}-icons @{c}-true {
+        opacity: 1;
+      }
+
+      & ~ @{c}-icons @{c}-false {
+        opacity: 0;
+      }
+    }
+  }
+
+  &-slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: @c-disabled;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      position: absolute;
+      height: 24px;
+      width: 24px;
+      bottom: 5px;
+      left: 5px;
+      background-color: @c-background;
+      transition: transform @td-fastest @ease;
+    }
+  }
+
+  &-icons {
+    display: flex;
+    position: absolute;
+    top: 3px;
+    bottom: 3px;
+    left: 3px;
+    right: 3px;
+    pointer-events: none;
+  }
+
+  &-icon {
+    width: 50%;
+    fill: @c-background;
+    transition: fill @td-fast @ease;
+  }
+
+  &-true {
+    padding: 6px 6px 6px 4px;
+    opacity: 0;
+  }
+
+  &-false {
+    padding: 5px 6px 5px 7px;
+    opacity: 1;
+  }
+}
