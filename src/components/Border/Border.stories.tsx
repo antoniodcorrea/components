@@ -11,7 +11,7 @@ export default {
 
 export const Default = () => {
   return (
-    <div style={{ width: '300px', height: '400px' }}>
+    <div style={{ width: '300px' }}>
       <Border>
         <Span bold>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente reprehenderit consequuntur aliquid ipsum at

@@ -33,15 +33,11 @@
   black-5: lighten(@baseColors[black], 99%);
 };
 
-// Local transparencies
-@transparenciesColors: {
-  black-2--trans: fade(@gradientColors[black-1], 50%);
-};
-
 // Exported colors
 @c-base: @gradientColors[black-1];
 @c-background: @gradientColors[yellow-5];
-@c-base--transparent: @transparenciesColors[black-2--trans];
+@c-traslucid: fade(@baseColors[black], 30%);
+@c-traslucid--light: fade(@baseColors[black], 5%);
 @c-accent: @gradientColors[black-2];
 @c-success: @gradientColors[blue-2];
 @c-alert: @gradientColors[yellow-2];

@@ -1,5 +1,41 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import { SpinnerCircle } from '.';
+import { Fade } from '../Fade';
+import { Span } from '../Span';
+import { Border } from '../Border';
+import { Hr } from '../Hr';
 
-storiesOf('SpinnerCircle', module).add('Default', () => <SpinnerCircle />);
+export default {
+  component: SpinnerCircle,
+  title: 'SpinnerCircle',
+  decorators: [withKnobs],
+};
+
+const knobs = {
+  mounted: () => boolean('Mounted', false),
+  speed: () => select('Speed', [undefined, 'fastest', 'fast', 'normal', 'slow'], 'fast'),
+};
+
+export const Default = () => (
+  <>
+    <Fade mounted={knobs.mounted()} speed={knobs.speed()}>
+      <SpinnerCircle />
+    </Fade>
+    <div style={{ width: '300px' }}>
+      <Border>
+        <Span bold>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime eos necessitatibus fuga inventore eaque
+          dolorum aliquam. Eius a consectetur ut, assumenda tenetur odio rem, molestiae in quos, excepturi nisi facere.
+        </Span>
+      </Border>
+      <Hr type="spacer" />
+      <Border>
+        <Span bold>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime eos necessitatibus fuga inventore eaque
+          dolorum aliquam. Eius a consectetur ut, assumenda tenetur odio rem, molestiae in quos, excepturi nisi facere.
+        </Span>
+      </Border>
+    </div>
+  </>
+);
