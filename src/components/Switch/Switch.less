@@ -7,8 +7,8 @@
 
   display: inline-block;
   position: relative;
-  height: 34px;
-  width: 60px;
+  height: 20px;
+  width: 40px;
 
   &-input {
     height: 0;
@@ -21,7 +21,7 @@
       }
 
       & + @{c}-slider:before {
-        transform: translateX(26px);
+        transform: translateX(20px);
       }
 
       & ~ @{c}-icons @{c}-true {
@@ -44,12 +44,13 @@
     cursor: pointer;
 
     &:before {
+      border-radius: 1px;
       content: '';
       position: absolute;
-      height: 24px;
-      width: 24px;
-      bottom: 5px;
-      left: 5px;
+      height: 16px;
+      width: 16px;
+      bottom: 2px;
+      left: 2px;
       background-color: @c-background;
       transition: transform @td-fastest @ease;
     }
@@ -72,12 +73,12 @@
   }
 
   &-true {
-    padding: 6px 6px 6px 4px;
+    padding: 2px 2px 2px 0;
     opacity: 0;
   }
 
   &-false {
-    padding: 5px 6px 5px 7px;
+    padding: 1px 2px 1px 3px;
     opacity: 1;
   }
 }
