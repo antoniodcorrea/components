@@ -25,6 +25,7 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
 - Rename spinner 👌
 - Add grow to components ❌
 - Add attributes vs Values ❌
+- Bundle modules into independent parts with webpack ❌
 
 - Pending components:
   - Fade: 👌

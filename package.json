@@ -1,12 +1,7 @@
 {
   "name": "@antoniodcorrea/components",
-  "version": "0.3.0",
+  "version": "0.17.0",
   "description": "Components library from antoniodcorrea",
-  "keywords": [
-    "components",
-    "library"
-  ],
-  "license": "MIT",
   "author": {
     "name": "Antonio Diaz",
     "email": "hello@antoniodiaz.me",
@@ -16,7 +11,7 @@
     "build": "sh ./tools/build/index.sh",
     "build-storybook": "build-storybook",
     "clearComponents": "find components -name '*' -delete",
-    "storybook": "start-storybook -s ./src/assets/svg -p 6006 watch-css",
+    "storybook": "start-storybook -s ./src/assets/Svg/Icons -p 6006 watch-css",
     "test": "jest -u"
   },
   "dependencies": {},
@@ -28,28 +23,38 @@
     "@storybook/addon-knobs": "^5.3.13",
     "@storybook/addon-links": "^5.3.9",
     "@storybook/addons": "^5.3.9",
-    "@storybook/react": "^5.3.9",
+    "@storybook/react": "^6.0.0-alpha.19",
     "@storybook/theming": "^5.3.13",
+    "@svgr/webpack": "^5.2.0",
     "@types/jest": "^25.1.0",
     "@types/react": "^16.9.20",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "expect": "^24.9.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^5.1.0",
     "jest": "^24.9.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "raw-loader": "^4.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "^3.4.0",
+    "react-svg-loader": "^3.0.3",
     "react-transition-group": "^4.3.0",
     "style-loader": "^1.1.3",
     "stylelint": "^10.1.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-order": "^3.1.1",
+    "svg-inline-loader": "^0.8.2",
+    "svg-react-loader": "^0.4.6",
+    "svg-url-loader": "^4.0.0",
     "ts-jest": "^24.3.0",
-    "typescript": "^3.6.2"
+    "typescript": "^3.6.2",
+    "webpack-cli": "^3.3.11"
   }
 }

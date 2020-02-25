@@ -10,3 +10,5 @@ node_modules
 tsconfig.json
 src/*
 tools
+webpack.config.js
+README.md
