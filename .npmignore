@@ -12,3 +12,4 @@ src/*
 tools
 webpack.config.js
 README.md
+.storybook

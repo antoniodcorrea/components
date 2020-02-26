@@ -1,6 +1,6 @@
 {
   "name": "@antoniodcorrea/components",
-  "version": "0.17.0",
+  "version": "0.0.2",
   "description": "Components library from antoniodcorrea",
   "author": {
     "name": "Antonio Diaz",
@@ -8,7 +8,7 @@
     "url": "https://antoniodiaz.me"
   },
   "scripts": {
-    "build": "sh ./tools/build/index.sh",
+    "build": "webpack -p --config webpack.config.js",
     "build-storybook": "build-storybook",
     "clearComponents": "find components -name '*' -delete",
     "storybook": "start-storybook -s ./src/assets/Svg/Icons -p 6006 watch-css",

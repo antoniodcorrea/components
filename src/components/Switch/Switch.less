@@ -21,7 +21,7 @@
       }
 
       & + @{c}-slider:before {
-        transform: translateX(20px);
+        transform: translate(22px, 2px);
       }
 
       & ~ @{c}-icons @{c}-true {
@@ -44,15 +44,14 @@
     cursor: pointer;
 
     &:before {
-      border-radius: 1px;
       content: '';
       position: absolute;
       height: 16px;
       width: 16px;
-      bottom: 2px;
-      left: 2px;
       background-color: @c-background;
-      transition: transform @td-fastest @ease;
+      transform: translate(2px, 2px);
+      transition: transform @td-fast @ease;
+      border-radius: 1px;
     }
   }
 

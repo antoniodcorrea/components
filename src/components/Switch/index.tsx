@@ -1,6 +1,5 @@
 import React from 'react';
-import check from '../Svg/Icons/check.svg';
-import cross from '../Svg/Icons/cross.svg';
+import { Check, Cross } from '../Svg';
 import './Switch.less';
 
 interface Props {
@@ -15,8 +14,12 @@ export const Switch: React.SFC<Props> = ({ name, checked, onChange }) => (
     <input className="Switch-input" type="checkbox" name={name} checked={checked} onChange={onChange} />
     <span className="Switch-slider " />
     <span className="Switch-icons">
-      <span className="Switch-icon Switch-true" dangerouslySetInnerHTML={{ __html: check }} />
-      <span className="Switch-icon Switch-false" dangerouslySetInnerHTML={{ __html: cross }} />
+      <span className="Switch-icon Switch-true">
+        <Check />
+      </span>
+      <span className="Switch-icon Switch-false">
+        <Cross />
+      </span>
     </span>
   </label>
 );
