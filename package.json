@@ -14,6 +14,10 @@
     "storybook": "start-storybook -s ./src/assets/Svg/Icons -p 6006 watch-css",
     "test": "jest -u"
   },
+  "files": [
+    "/dist",
+    "index.js"
+  ],
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.8.3",
