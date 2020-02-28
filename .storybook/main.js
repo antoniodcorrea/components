@@ -11,12 +11,19 @@ module.exports = {
       include: path.resolve(__dirname, '../'),
     });
 
-    /* START https://github.com/storybookjs/storybook/issues/5708#issuecomment-467364602 */
+    config.module.rules.push({
+      test: /\.(ts|tsx)$/,
+      use: [
+        {
+          loader: require.resolve('awesome-typescript-loader'),
+        },
+      ],
+    });
 
+    /* START https://github.com/storybookjs/storybook/issues/5708#issuecomment-467364602 */
     config.module.rules.push({
       test: /\.svg$/,
-      loader: 'raw-loader',
-      include: path.resolve(__dirname, '../'),
+      use: ['@svgr/webpack'],
     });
 
     config.resolve.extensions.push('.svg');
@@ -27,19 +34,10 @@ module.exports = {
         return false;
       }
     });
-
     /* END https://github.com/storybookjs/storybook/issues/5708#issuecomment-467364602 */
 
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      use: [
-        {
-          loader: require.resolve('awesome-typescript-loader'),
-        },
-      ],
-    });
-
     config.resolve.extensions.push('.ts', '.tsx', '.svg');
+
     config.resolve.alias = {
       components: path.resolve(__dirname, '../src/components/'),
       svg: path.resolve(__dirname, '../src/assets/svg/'),

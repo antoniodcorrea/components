@@ -1,6 +1,6 @@
 import React from 'react';
 import { Span } from '../Span';
-import { Icon, IconsType } from '../Svg';
+import { SvgIcon, IconsType } from '../Svg';
 import './Button.less';
 
 interface Props {
@@ -41,7 +41,7 @@ export const Button: React.FC<Props> = ({
     >
       <Span className="Button-content" bold uppercase>
         {text}
-        {icon && <Icon name={icon} size="small" className="Button-svg" />}
+        {icon && <SvgIcon name={icon} size="small" className="Button-svg" />}
       </Span>
     </button>
   );
