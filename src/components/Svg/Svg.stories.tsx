@@ -12,7 +12,8 @@ export default {
 
 const knobs = {
   name: () => select('Name', ['square', 'triangle', 'circle'], 'circle'),
-  size: () => select('Size', ['nano', 'micro', 'small', 'normal', 'medium', 'big', 'biggest', 'huge'], 'biggest'),
+  size: () =>
+    select('Size', ['nano', 'micro', 'small', 'normal', 'medium', 'big', 'biggest', 'huge', undefined], undefined),
 };
 
 export const Icons = () => (

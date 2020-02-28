@@ -1,18 +1,38 @@
 import React from 'react';
-import Svg from './Svg';
 import triangle from '../Svg/Icons/triangle.svg';
 import square from '../Svg/Icons/square.svg';
 import circle from '../Svg/Icons/circle.svg';
 import check from '../Svg/Icons/check.svg';
 import cross from '../Svg/Icons/cross.svg';
+import * as Icons from '.';
+import './Svg.less';
 
-interface Props {
+export interface Props {
   size?: 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
   className?: string;
 }
+
+type SvgType = (svg: string) => (props: Props) => JSX.Element;
+
+const Svg: SvgType = svg => ({ className, size = 'normal' }) =>
+  React.createElement('svg', {
+    className: 'Svg ' + (className ? className : '') + (size ? ' Svg--' + size : ''),
+    dangerouslySetInnerHTML: { __html: svg },
+  });
 
 export const Triangle: React.FC<Props> = props => Svg(triangle)(props);
 export const Square: React.FC<Props> = props => Svg(square)(props);
 export const Circle: React.FC<Props> = props => Svg(circle)(props);
 export const Check: React.FC<Props> = props => Svg(check)(props);
 export const Cross: React.FC<Props> = props => Svg(cross)(props);
+
+export type IconsType = 'Triangle' | 'Square' | 'Circle' | 'Check' | 'Cross';
+
+interface IconProps extends Props {
+  name: IconsType;
+}
+
+export const Icon: React.FC<IconProps> = ({ name, size, className }) => {
+  const Component = Icons[name];
+  return <Component size={size} className={className} />;
+};

@@ -73,9 +73,7 @@ export const Empty = () => {
       </Border>
       <Hr type="spacer" />
       <Layout horizontal="center">
-        <Button onClick={onSubmit} success={success}>
-          Submit
-        </Button>
+        <Button text="Submit" onClick={onSubmit} success={success} />
       </Layout>
     </div>
   );

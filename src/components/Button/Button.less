@@ -22,7 +22,7 @@
     transition: box-shadow @td-fast, border @td-fast, color @td-fast, background @td-fast;
     box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
 
-    svg {
+    @{c}-svg {
       height: 15px;
       margin-left: 5px;
       padding-bottom: 1px;
@@ -35,10 +35,14 @@
       cursor: pointer;
       box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-accent;
 
-      svg {
+      @{c}-svg {
         fill: @c-accent;
       }
     }
+  }
+
+  &--grow {
+    width: 100%;
   }
 
   &--success {
@@ -47,7 +51,7 @@
       background: @c-base;
       pointer-events: none;
 
-      svg {
+      @{c}-svg {
         fill: @c-background;
       }
     }
@@ -61,7 +65,7 @@
       box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-error;
       pointer-events: none;
 
-      svg {
+      @{c}-svg {
         fill: @c-error;
       }
     }
@@ -75,7 +79,7 @@
       box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-disabled;
       pointer-events: none;
 
-      svg {
+      @{c}-svg {
         fill: @c-disabled;
       }
     }

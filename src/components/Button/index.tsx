@@ -1,24 +1,29 @@
 import React from 'react';
 import { Span } from '../Span';
+import { Icon, IconsType } from '../Svg';
 import './Button.less';
 
 interface Props {
-  children: string | React.ReactNode | React.ReactNode[];
+  text: string;
   size?: 'small' | 'medium' | 'big';
   variant?: 'alternate';
   success?: boolean;
   error?: boolean;
   disabled?: boolean;
+  icon?: IconsType;
+  grow?: boolean;
   onClick?: (value) => void;
 }
 
 export const Button: React.FC<Props> = ({
-  children,
+  text,
   size = 'medium',
   variant,
   success,
   error,
   disabled,
+  icon,
+  grow,
   onClick,
 }): JSX.Element => {
   return (
@@ -27,6 +32,7 @@ export const Button: React.FC<Props> = ({
         'Button ' +
         (size ? 'Button--' + size : '') +
         (variant ? ' Button--' + variant : '') +
+        (grow ? ' Button--grow' : '') +
         (success ? ' Button--success' : '') +
         (error ? ' Button--error' : '') +
         (disabled ? ' Button--disabled' : '')
@@ -34,7 +40,8 @@ export const Button: React.FC<Props> = ({
       onClick={onClick}
     >
       <Span className="Button-content" bold uppercase>
-        {children}
+        {text}
+        {icon && <Icon name={icon} size="small" className="Button-svg" />}
       </Span>
     </button>
   );

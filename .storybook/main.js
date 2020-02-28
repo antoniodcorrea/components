@@ -40,6 +40,9 @@ module.exports = {
     });
 
     config.resolve.extensions.push('.ts', '.tsx', '.svg');
+    config.resolve.alias = {
+      components: 'src/components',
+    };
 
     return config;
   },
