@@ -41,7 +41,8 @@ module.exports = {
 
     config.resolve.extensions.push('.ts', '.tsx', '.svg');
     config.resolve.alias = {
-      components: 'src/components',
+      components: path.resolve(__dirname, '../src/components/'),
+      svg: path.resolve(__dirname, '../src/assets/svg/'),
     };
 
     return config;

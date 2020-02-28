@@ -1,9 +1,9 @@
 import React from 'react';
-import triangle from '../Svg/Icons/triangle.svg';
-import square from '../Svg/Icons/square.svg';
-import circle from '../Svg/Icons/circle.svg';
-import check from '../Svg/Icons/check.svg';
-import cross from '../Svg/Icons/cross.svg';
+import triangle from 'svg/triangle.svg';
+import square from 'svg/square.svg';
+import circle from 'svg/circle.svg';
+import check from 'svg/check.svg';
+import cross from 'svg/cross.svg';
 import * as Icons from '.';
 import './Svg.less';
 

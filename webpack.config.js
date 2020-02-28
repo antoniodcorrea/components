@@ -19,7 +19,8 @@ module.exports = {
     modules: ['node_modules', './src'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
-      components: 'src/components',
+      components: path.resolve(__dirname, 'src/components/'),
+      svg: path.resolve(__dirname, 'src/assets/svg/'),
     },
   },
   module: {
