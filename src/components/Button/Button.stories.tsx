@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '.';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { Check } from '../Svg';
 
 export default {
   component: Button,
@@ -27,9 +28,7 @@ export const WithIcon = () => {
   return (
     <Button disabled={knobs.disabled()} error={knobs.error()} success={knobs.success()}>
       {knobs.text()}
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.3 28.3">
-        <path d="M5.7 25.5l2.8 2.8 14.2-14.1L8.5 0 5.7 2.8 17 14.2z" />
-      </svg>
+      <Check />
     </Button>
   );
 };
