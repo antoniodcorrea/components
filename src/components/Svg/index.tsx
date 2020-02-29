@@ -4,6 +4,7 @@ import SquareSvg from 'svg/square.svg';
 import CircleSvg from 'svg/circle.svg';
 import CheckSvg from 'svg/check.svg';
 import CrossSvg from 'svg/cross.svg';
+import ArrowRightSvg from 'svg/arrowRight.svg';
 import * as Icons from '.';
 import './Svg.less';
 
@@ -12,7 +13,7 @@ export interface Props {
   className?: string;
 }
 
-export type IconsType = 'Triangle' | 'Square' | 'Circle' | 'Check' | 'Cross';
+export type IconsType = 'Triangle' | 'Square' | 'Circle' | 'Check' | 'Cross' | 'ArrowRight';
 
 export type SvgSpriteType = (
   SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
@@ -27,6 +28,7 @@ export const Square: React.FC<Props> = props => Svg(SquareSvg)(props);
 export const Circle: React.FC<Props> = props => Svg(CircleSvg)(props);
 export const Check: React.FC<Props> = props => Svg(CheckSvg)(props);
 export const Cross: React.FC<Props> = props => Svg(CrossSvg)(props);
+export const ArrowRight: React.FC<Props> = props => Svg(ArrowRightSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;

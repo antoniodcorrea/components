@@ -26,7 +26,7 @@ export const Default = () => {
         disabled={knobs.disabled()}
         error={knobs.error()}
         success={knobs.success()}
-        icon="Triangle"
+        icon="ArrowRight"
       ></Button>
     </>
   );
