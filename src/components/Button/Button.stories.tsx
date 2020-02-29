@@ -11,6 +11,7 @@ export default {
 
 const knobs = {
   text: () => text('Button', 'Click me!'),
+  grow: () => boolean('Grow', false),
   disabled: () => boolean('Disabled', false),
   success: () => boolean('Success', false),
   error: () => boolean('Error', false),
@@ -19,10 +20,17 @@ const knobs = {
 export const Default = () => {
   return (
     <>
-      <Button text={knobs.text()} disabled={knobs.disabled()} error={knobs.error()} success={knobs.success()}></Button>
+      <Button
+        text={knobs.text()}
+        grow={knobs.grow()}
+        disabled={knobs.disabled()}
+        error={knobs.error()}
+        success={knobs.success()}
+      ></Button>
       <Hr type="spacer" />
       <Button
         text={knobs.text()}
+        grow={knobs.grow()}
         disabled={knobs.disabled()}
         error={knobs.error()}
         success={knobs.success()}

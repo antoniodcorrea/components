@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 import './Pagination.less';
 import { A } from '../A';
+import { Border } from '../Border';
 
 interface Props {
   totalItems: number;
@@ -8,6 +9,7 @@ interface Props {
   page: number;
   path: string;
   pageNeighbours: number;
+  grow?: boolean;
 }
 
 export class Pagination extends Component<Props> {
@@ -35,8 +37,8 @@ export class Pagination extends Component<Props> {
 
     return (
       <Fragment key={item}>
-        <span className="Pagination-dots">...</span>
-        <A href={href} styled>
+        <span className="Pagination-dots Pagination-item">...</span>
+        <A className="Pagination-item" href={href} styled>
           {item}
         </A>
       </Fragment>
@@ -47,7 +49,7 @@ export class Pagination extends Component<Props> {
     this.tempPreviousPage += 1;
 
     return (
-      <A href={href} key={item} styled disabled={item === page}>
+      <A className="Pagination-item" href={href} key={item} styled disabled={item === page}>
         {item}
       </A>
     );
@@ -62,7 +64,7 @@ export class Pagination extends Component<Props> {
   };
 
   render = (): JSX.Element => {
-    const { page, totalItems, itemsPerPage, path, pageNeighbours } = this.props;
+    const { page, totalItems, itemsPerPage, path, pageNeighbours, grow } = this.props;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const startPage = Math.max(2, page - pageNeighbours);
     const endPage = Math.min(totalPages - 1, page + pageNeighbours);
@@ -71,9 +73,11 @@ export class Pagination extends Component<Props> {
 
     return (
       <div className="Pagination">
-        {pages.map(item => {
-          return this.renderItems(item, href, page);
-        })}
+        <Border className="Pagination-border" padding="small" grow={grow}>
+          {pages.map(item => {
+            return this.renderItems(item, href, page);
+          })}
+        </Border>
       </div>
     );
   };

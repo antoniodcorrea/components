@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { Radio } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
@@ -7,6 +8,12 @@ import { Border } from '../Border';
 export default {
   component: Radio,
   title: 'Radio',
+  decorators: [withKnobs],
+};
+
+const knobs = {
+  grow: () => boolean('Grow', false),
+  inline: () => boolean('Inline', false),
 };
 
 export const Empty = () => {
@@ -16,7 +23,7 @@ export const Empty = () => {
     <>
       <H1>Radio button</H1>
       <Hr type="spacer" />
-      <Border>
+      <Border grow>
         <Radio
           value={value}
           name="gender"
@@ -38,6 +45,7 @@ export const Empty = () => {
             setValue(e.target.value);
             console.log({ value });
           }}
+          grow={knobs.grow()}
         />
       </Border>
       <Hr type="spacer" />

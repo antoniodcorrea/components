@@ -1,12 +1,13 @@
 import React from 'react';
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { Pagination } from '.';
-import { Border } from '../Border';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
 
 export default {
   component: Pagination,
   title: 'Pagination',
+  decorators: [withKnobs],
 };
 
 const defaultProps = {
@@ -16,16 +17,16 @@ const defaultProps = {
   path: 'http://example.com',
 };
 
+const knobs = {
+  grow: () => boolean('Grow', false),
+};
+
 export const Default = () => {
   return (
     <>
       <H1>Pagination</H1>
       <Hr type="spacer" />
-      <div style={{ width: '300px' }}>
-        <Border padding="small">
-          <Pagination {...defaultProps} />
-        </Border>
-      </div>
+      <Pagination {...defaultProps} grow={knobs.grow()} />
     </>
   );
 };

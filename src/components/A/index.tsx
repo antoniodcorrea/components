@@ -3,16 +3,17 @@ import './A.less';
 
 interface Props {
   children: React.ReactNode;
+  className?: string;
   href: string;
   styled?: boolean;
   targetBlank?: boolean;
   disabled?: boolean;
-
   onClick?: (any) => void;
 }
 
 export const A: React.FC<Props> = ({
   children,
+  className,
   href,
   styled = true,
   targetBlank = false,
@@ -20,7 +21,7 @@ export const A: React.FC<Props> = ({
   disabled = false,
 }) => (
   <a
-    className={(styled ? 'A' : '') + (styled && disabled ? ' A-disabled' : '')}
+    className={(styled ? 'A' : '') + (styled && disabled ? ' A-disabled' : '') + (className ? ' ' + className : '')}
     href={href}
     onClick={onClick}
     target={targetBlank ? '_blank' : '_self'}

@@ -12,6 +12,7 @@ interface Props {
   error?: boolean;
   success?: boolean;
   disabled?: boolean;
+  grow?: boolean;
   onChange: (e) => void;
 }
 
@@ -25,6 +26,7 @@ export const Input: React.FC<Props> = ({
   error,
   success,
   disabled,
+  grow,
   onChange,
 }) => {
   const id = uniqueId();
@@ -35,7 +37,8 @@ export const Input: React.FC<Props> = ({
         'Input' +
         (error ? ' Input--error' : '') +
         (success ? ' Input--success' : '') +
-        (disabled ? ' Input--disabled' : '')
+        (disabled ? ' Input--disabled' : '') +
+        (grow ? ' Input--grow' : '')
       }
     >
       <input

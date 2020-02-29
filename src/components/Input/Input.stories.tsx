@@ -22,6 +22,7 @@ const knobs = {
   error: () => boolean('Error', false),
   success: () => boolean('Success', false),
   disabled: () => boolean('Disabled', false),
+  grow: () => boolean('Grow', false),
 };
 
 export const Empty = () => {
@@ -36,45 +37,46 @@ export const Empty = () => {
   };
 
   return (
-    <div style={{ width: '300px' }} onSubmit={onSubmit}>
+    <div onSubmit={onSubmit}>
       <H1>Input</H1>
       <Hr type="spacer" />
-      <Border>
-        <Input
-          name={knobs.name()}
-          label="Name"
-          value={value1}
-          readOnly={knobs.readOnly()}
-          error={knobs.error()}
-          success={knobs.success()}
-          disabled={knobs.disabled()}
-          onChange={e => setValue1(e.target.value)}
-        />
-        <Input
-          name={knobs.name()}
-          label="Password"
-          value={value2}
-          readOnly={knobs.readOnly()}
-          error={knobs.error()}
-          success={knobs.success()}
-          disabled={knobs.disabled()}
-          onChange={e => setValue2(e.target.value)}
-        />
-        <Input
-          name={knobs.name()}
-          label="Repeat password"
-          value={value3}
-          readOnly={knobs.readOnly()}
-          error={knobs.error()}
-          success={knobs.success()}
-          disabled={knobs.disabled()}
-          onChange={e => setValue3(e.target.value)}
-        />
-      </Border>
+      <Input
+        name={knobs.name()}
+        label="Name"
+        value={value1}
+        readOnly={knobs.readOnly()}
+        error={knobs.error()}
+        success={knobs.success()}
+        disabled={knobs.disabled()}
+        grow={knobs.grow()}
+        onChange={e => setValue1(e.target.value)}
+      />
+      <Hr type="spacer" size="block" />
+      <Input
+        name={knobs.name()}
+        label="Password"
+        value={value2}
+        readOnly={knobs.readOnly()}
+        error={knobs.error()}
+        success={knobs.success()}
+        disabled={knobs.disabled()}
+        grow={knobs.grow()}
+        onChange={e => setValue2(e.target.value)}
+      />
+      <Hr type="spacer" size="block" />
+      <Input
+        name={knobs.name()}
+        label="Repeat password"
+        value={value3}
+        readOnly={knobs.readOnly()}
+        error={knobs.error()}
+        success={knobs.success()}
+        disabled={knobs.disabled()}
+        grow={knobs.grow()}
+        onChange={e => setValue3(e.target.value)}
+      />
       <Hr type="spacer" />
-      <Layout horizontal="center">
-        <Button text="Submit" onClick={onSubmit} success={success} />
-      </Layout>
+      <Button text="Submit" onClick={onSubmit} success={success} grow={knobs.grow()} />
     </div>
   );
 };

@@ -5,12 +5,11 @@
 @{c} {
   .default();
 
-  display: flex;
+  display: inline-flex;
   position: relative;
   flex-direction: column;
   justify-content: flex-end;
-  height: 60px;
-  width: 100%;
+  height: 50px;
   text-align: left;
 
   &-label {
@@ -37,7 +36,6 @@
 
   &-input {
     height: 40px;
-    width: 100%;
     right: 8px;
     padding: 0 10px;
     font-size: @fs-normal;
@@ -47,8 +45,6 @@
     outline: none;
     transition: border-color @td-fast @ease;
     box-shadow: none;
-
-    .insetShadow();
 
     &:hover {
       //
@@ -74,5 +70,9 @@
     &:disabled {
       border: 2px solid @c-disabled;
     }
+  }
+
+  &--grow {
+    width: 100%;
   }
 }

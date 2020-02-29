@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { Border } from '.';
 import { Span } from '../Span';
 
@@ -9,15 +9,16 @@ export default {
   decorators: [withKnobs],
 };
 
+const knobs = {
+  text: () => text('Text', 'Lorem ipsum dolor'),
+  grow: () => boolean('Grow', false),
+};
+
 export const Default = () => {
   return (
     <div style={{ width: '300px' }}>
-      <Border>
-        <Span bold>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente reprehenderit consequuntur aliquid ipsum at
-          quaerat exercitationem incidunt pariatur. Aperiam, fuga? Natus recusandae, eveniet consectetur facilis totam
-          distinctio quo aliquam earum!
-        </Span>
+      <Border grow={knobs.grow()}>
+        <Span bold>{knobs.text()}</Span>
       </Border>
     </div>
   );

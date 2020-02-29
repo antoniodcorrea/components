@@ -1,4 +1,31 @@
-import { addDecorator } from '@storybook/react';
-import centered from '@storybook/addon-centered/react';
+import { addParameters } from '@storybook/react';
 
-addDecorator(centered);
+/* Activate to center view */
+// import { addDecorator } from '@storybook/react';
+// import centered from '@storybook/addon-centered/react';
+// addDecorator(centered);
+/* END */
+
+const customViewports = {
+  kindleFire2: {
+    name: 'Desktop',
+    styles: {
+      width: '1200px',
+      height: '963px',
+    },
+  },
+  kindleFireHD: {
+    name: 'Mobile',
+    styles: {
+      width: '375px',
+      height: '801px',
+    },
+  },
+};
+
+addParameters({
+  viewport: {
+    viewports: customViewports, // newViewports would be an ViewportMap. (see below for examples)
+    defaultViewport: 'Mobile',
+  },
+});

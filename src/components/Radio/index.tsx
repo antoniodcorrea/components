@@ -1,4 +1,5 @@
 import React from 'react';
+import { Hr } from '../Hr';
 import './Radio.less';
 
 interface Props {
@@ -9,26 +10,33 @@ interface Props {
   }[];
   value?: string;
   className?: string;
+  grow?: boolean;
   onChange?: (e) => void;
 }
 
-export const Radio: React.FC<Props> = ({ name, options, value, className, onChange }) => (
-  <div className="Radio" onChange={e => onChange(e)}>
+export const Radio: React.FC<Props> = ({ name, options, value, className, grow, onChange }) => (
+  <div
+    className={'Radio' + (className ? ' Radio--' + className : '') + (grow ? ' Radio--grow' : '')}
+    onChange={e => onChange(e)}
+  >
     {options.map(item => (
-      <div className={'Radio-item' + (className ? ' Radio--' + className : '')} key={item.value}>
-        <input
-          className="Radio-input"
-          id={item.value}
-          type="radio"
-          name={name}
-          value={item.value}
-          defaultChecked={value === item.value}
-        />
-        <span className="Radio-helper" />
-        <label className="Radio-label" htmlFor={item.value}>
-          {item.label}
-        </label>
-      </div>
+      <React.Fragment key={item.value}>
+        <div className="Radio-item">
+          <input
+            className="Radio-input"
+            id={item.value}
+            type="radio"
+            name={name}
+            value={item.value}
+            defaultChecked={value === item.value}
+          />
+          <span className="Radio-helper" />
+          <label className="Radio-label" htmlFor={item.value}>
+            {item.label}
+          </label>
+        </div>
+        {grow && <Hr type="spacer" size="block" />}
+      </React.Fragment>
     ))}
   </div>
 );
