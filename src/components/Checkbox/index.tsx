@@ -24,9 +24,7 @@ export const Checkbox: React.FC<Props> = ({ input, value, className, label, onCh
         onChange={onChange}
         checked={(input && input.value) || value}
       />
-      <span className="Checkbox-helper">
-        <Check />
-      </span>
+      <Check className="Checkbox-helper" />
       <label className="Checkbox-label" htmlFor={'Checkbox-' + id}>
         {label}
       </label>
