@@ -35,3 +35,11 @@
 .insetShadow() {
   box-shadow: inset -2px -2px 5px @c-traslucid;
 }
+
+.hideScrollbar() {
+  scrollbar-width: none; /* Firefox */
+
+  &::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+}

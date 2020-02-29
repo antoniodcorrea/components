@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { Radio } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';

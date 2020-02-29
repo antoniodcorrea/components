@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import { Border } from '../Border';
 import { Input } from '.';
 import { Hr } from '../Hr';
 import { H1 } from '../H1';
 import { Button } from '../Button';
-import { Layout } from '../Layout';
 
 export default {
   component: Input,
