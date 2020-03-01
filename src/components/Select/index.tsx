@@ -6,13 +6,14 @@ import { Cross, ArrowDown } from '../Svg';
 import './Select.less';
 
 interface Props {
-  grow?: boolean;
+  label: string;
   value?: any;
+  grow?: boolean;
   limit?: number;
   onChange?: (e) => void;
 }
 
-export const Select: React.FC<Props> = ({ value, grow, onChange, limit }) => {
+export const Select: React.FC<Props> = ({ value, grow, onChange, limit, label }) => {
   const updateItems = newValues => {
     const updateValues = !newValues || newValues.length <= limit;
     const updatedValues = updateValues ? newValues : value;
@@ -33,7 +34,7 @@ export const Select: React.FC<Props> = ({ value, grow, onChange, limit }) => {
         {showOptions ? (
           props.children
         ) : (
-          <div className="Select__option Select__option--is-disabled">Max limit achieved</div>
+          <div className="Select__option Select__option--is-disabled">Max limit reached</div>
         )}
       </components.Menu>
     );
@@ -51,10 +52,10 @@ export const Select: React.FC<Props> = ({ value, grow, onChange, limit }) => {
     );
   };
 
-  const Input = props => (
+  const Control = props => (
     <>
-      <components.Input {...props} />
-      {!value && <div className="Select__input">{'Select ' + limit + ' items'}</div>}
+      <components.Control {...props} />
+      <label className={'Select__label ' + (value ? 'Select__label--active' : '')}>{label}</label>
     </>
   );
 
@@ -73,13 +74,12 @@ export const Select: React.FC<Props> = ({ value, grow, onChange, limit }) => {
       }, 200);
     });
 
-  // const placeholder = limit ? 'Select ' + limit + ' items' : 'Select';
-
   return (
     <div className={'Select ' + (grow ? 'Select--grow' : '')}>
       <AsyncCreatableSelect
         placeholder=" "
         classNamePrefix={'Select'}
+        className={'Select__container'}
         isMulti
         cacheOptions
         defaultOptions
@@ -93,7 +93,7 @@ export const Select: React.FC<Props> = ({ value, grow, onChange, limit }) => {
           LoadingMessage,
           NoOptionsMessage,
           Menu,
-          Input,
+          Control,
         }}
       />
     </div>
