@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DatePicker_ from 'react-datepicker';
+import DatePickerComponent from 'react-datepicker';
 import uniqueId from 'lodash/uniqueId';
 import { Input } from '../Input';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -59,7 +59,7 @@ export class DatePicker extends Component<Props> {
 
     return (
       <div className="DatePicker">
-        <DatePicker_
+        <DatePickerComponent
           placeholderText=" "
           className="DatePicker-input"
           calendarClassName="DatePicker-calendar"

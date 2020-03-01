@@ -31,6 +31,8 @@ export class Select extends Component<Props> {
         response.data.map(item => {
           item.label = item.name;
           item.value = item.name;
+
+          return null;
         });
 
         return response.data;
@@ -39,7 +41,7 @@ export class Select extends Component<Props> {
         console.log(err);
       });
   };
-
+gi
   onChange = newValues => {
     const { onChange, limit, value } = this.props;
     const updateValues = !newValues || newValues.length <= limit;
