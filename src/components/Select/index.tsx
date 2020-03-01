@@ -33,7 +33,7 @@ const promiseOptions = inputValue =>
   new Promise(resolve => {
     setTimeout(() => {
       resolve(filterColors(inputValue));
-    }, 1000);
+    }, 200);
   });
 
 interface Props {
