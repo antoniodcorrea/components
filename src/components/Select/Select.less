@@ -20,6 +20,10 @@
     }
   }
 
+  &__input:not(.noClass) {
+    color: @c-accent;
+  }
+
   &__indicator-separator:not(.noClass) {
     margin: 0;
     background: @c-transparent;
@@ -52,7 +56,7 @@
 
     &:hover {
       background: @c-base;
-      cursor: pointer;
+      cursor: default;
 
       @{c}__multi-value__remove:not(.noClass) {
         fill: @c-background;
@@ -97,6 +101,7 @@
   }
 
   &__option:not(.noClass) {
+    padding: 8px 12px;
     background: @c-transparent;
     border: 2px solid @c-base;
     border-top: 0 dashed @c-transparent;

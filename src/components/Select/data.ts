@@ -1,6 +1,8 @@
-export const colourOptions = [
-  { label: 'one', value: 'one' },
-  { label: 'two', value: 'two' },
-  { label: 'three', value: 'three' },
-  { label: 'four', value: 'four' },
+export const data = [
+  { value: 'one', label: 'One', isFixed: true },
+  { value: 'two', label: 'Two', isDisabled: true },
+  { value: 'three', label: 'Three' },
+  { value: 'four', label: 'Four', isFixed: true },
+  { value: 'five', label: 'Five' },
+  { value: 'six', label: 'Six' },
 ];

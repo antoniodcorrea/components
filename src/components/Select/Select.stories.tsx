@@ -13,7 +13,7 @@ export default {
 };
 
 const knobs = {
-  grow: () => boolean('Grow', false),
+  grow: () => boolean('Grow', true),
 };
 
 export const Default = () => {
@@ -21,7 +21,6 @@ export const Default = () => {
   const [success, setSuccess] = useState(undefined);
 
   const onSubmit = () => {
-    console.log({ value1 });
     setSuccess(true);
   };
 
@@ -33,10 +32,10 @@ export const Default = () => {
       <Select
         grow={knobs.grow()}
         onChange={nextData => {
-          console.log(JSON.stringify(nextData, null, 4));
           setValue1(nextData);
         }}
         value={value1}
+        limit={2}
       />
       <Hr type="spacer" />
       <Button text="Submit" onClick={onSubmit} success={success} />
