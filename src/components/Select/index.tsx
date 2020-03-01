@@ -1,9 +1,6 @@
-import React from 'react';
-import AsyncCreatableSelect from 'react-select/async-creatable';
-import { components } from 'react-select';
+import React, { Component } from 'react';
 import axios from 'axios';
-import { Cross, ArrowDown } from '../Svg';
-import './Select.less';
+import SelectUi from './SelectUi';
 
 interface Props {
   label: string;
@@ -13,11 +10,10 @@ interface Props {
   apiUrl?: string;
   token?: string;
   optionFilterFieldName?: string;
-
   onChange?: (e) => void;
 }
 
-export class Select extends React.Component<Props> {
+export class Select extends Component<Props> {
   loadOptions = inputValue => {
     const { optionFilterFieldName, apiUrl, token } = this.props;
     return axios({
@@ -44,7 +40,7 @@ export class Select extends React.Component<Props> {
       });
   };
 
-  updateItems = newValues => {
+  onChange = newValues => {
     const { onChange, limit, value } = this.props;
     const updateValues = !newValues || newValues.length <= limit;
     const updatedValues = updateValues ? newValues : value;
@@ -52,76 +48,18 @@ export class Select extends React.Component<Props> {
     onChange(updatedValues);
   };
 
-  Menu = props => {
-    const { limit } = this.props;
-    const optionSelectedLength = props.getValue().length || 0;
-    const showOptions = !limit || optionSelectedLength < limit;
-
-    return (
-      <components.Menu {...props}>
-        {showOptions ? (
-          props.children
-        ) : (
-          <div className="Select__option Select__option--is-disabled">Max limit reached</div>
-        )}
-      </components.Menu>
-    );
-  };
-
-  NoOptionsMessage = () => <></>;
-
-  LoadingMessage = () => <></>;
-
-  DropdownIndicator = props => {
-    return (
-      <components.DropdownIndicator {...props}>
-        <ArrowDown size="small" />
-      </components.DropdownIndicator>
-    );
-  };
-
-  SelectContainer = ({ children, ...props }) => {
-    const { value, label } = this.props;
-
-    return (
-      <components.SelectContainer {...props}>
-        {children}
-        <label className={'Select__label ' + (value ? 'Select__label--active' : '')}>{label}</label>
-      </components.SelectContainer>
-    );
-  };
-
-  MultiValueRemove = props => {
-    return (
-      <components.MultiValueRemove {...props}>
-        <Cross size="micro" />
-      </components.MultiValueRemove>
-    );
-  };
-
   render = () => {
-    const { grow, value } = this.props;
+    const { grow, value, label, limit } = this.props;
+
     return (
       <div className={'Select ' + (grow ? 'Select--grow' : '')}>
-        <AsyncCreatableSelect
-          placeholder=" "
-          classNamePrefix={'Select'}
-          className={'Select__container'}
-          isMulti
-          cacheOptions
-          defaultOptions
+        <SelectUi
+          label={label}
           loadOptions={this.loadOptions}
+          limit={limit}
           value={value}
-          isClearable={false}
-          onChange={this.updateItems}
-          components={{
-            MultiValueRemove: this.MultiValueRemove,
-            DropdownIndicator: this.DropdownIndicator,
-            LoadingMessage: this.LoadingMessage,
-            NoOptionsMessage: this.NoOptionsMessage,
-            Menu: this.Menu,
-            SelectContainer: this.SelectContainer,
-          }}
+          onChange={this.onChange}
+          grow={grow}
         />
       </div>
     );
