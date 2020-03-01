@@ -5,7 +5,6 @@ import { Hr } from '../Hr';
 import { H1 } from '../H1';
 import { Span } from '../Span';
 import { Button } from '../Button';
-import { colourOptions } from './data';
 
 export default {
   component: Select,
@@ -28,7 +27,8 @@ export const Default = () => {
 
   return (
     <div onSubmit={onSubmit}>
-      <H1>Input</H1>
+      <H1>Select</H1>
+      <Span size="small">You can select tags here as example</Span>
       <Hr type="spacer" />
       <Select
         grow={knobs.grow()}
@@ -39,7 +39,7 @@ export const Default = () => {
         value={value1}
       />
       <Hr type="spacer" />
-      <Button text="Submit" onClick={onSubmit} success={success} grow={knobs.grow()} />
+      <Button text="Submit" onClick={onSubmit} success={success} />
     </div>
   );
 };

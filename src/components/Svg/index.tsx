@@ -5,6 +5,9 @@ import CircleSvg from 'svg/circle.svg';
 import CheckSvg from 'svg/check.svg';
 import CrossSvg from 'svg/cross.svg';
 import ArrowRightSvg from 'svg/arrowRight.svg';
+import ArrowDownSvg from 'svg/arrowDown.svg';
+import ArrowUpSvg from 'svg/arrowUp.svg';
+import ArrowLeftSvg from 'svg/arrowLeft.svg';
 import * as Icons from '.';
 import './Svg.less';
 
@@ -13,7 +16,16 @@ export interface Props {
   className?: string;
 }
 
-export type IconsType = 'Triangle' | 'Square' | 'Circle' | 'Check' | 'Cross' | 'ArrowRight';
+export type IconsType =
+  | 'Triangle'
+  | 'Square'
+  | 'Circle'
+  | 'Check'
+  | 'Cross'
+  | 'ArrowRight'
+  | 'ArrowUp'
+  | 'ArrowDown'
+  | 'ArrowLeft';
 
 export type SvgSpriteType = (
   SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
@@ -29,6 +41,9 @@ export const Circle: React.FC<Props> = props => Svg(CircleSvg)(props);
 export const Check: React.FC<Props> = props => Svg(CheckSvg)(props);
 export const Cross: React.FC<Props> = props => Svg(CrossSvg)(props);
 export const ArrowRight: React.FC<Props> = props => Svg(ArrowRightSvg)(props);
+export const ArrowUp: React.FC<Props> = props => Svg(ArrowUpSvg)(props);
+export const ArrowDown: React.FC<Props> = props => Svg(ArrowDownSvg)(props);
+export const ArrowLeft: React.FC<Props> = props => Svg(ArrowLeftSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;

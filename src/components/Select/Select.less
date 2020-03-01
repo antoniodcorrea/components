@@ -5,8 +5,31 @@
 @{c} {
   display: inline-block;
   flex-wrap: nowrap;
-  width: 100%;
   min-width: 150px;
+
+  .default();
+
+  &__control:not(.noClass) {
+    border-radius: 0;
+    border: 2px solid @c-base;
+    box-shadow: none;
+
+    &:hover {
+      border-radius: 0;
+      border: 2px solid @c-base;
+    }
+  }
+
+  &__indicator-separator:not(.noClass) {
+    margin: 0;
+    background: @c-transparent;
+  }
+
+  &__indicator:not(.noClass) {
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   &__value-container:not(.noClass) {
     flex-wrap: nowrap;
@@ -18,11 +41,90 @@
   &__multi-value:not(.noClass) {
     flex-wrap: nowrap;
     min-width: unset;
+    font-weight: @fw-bold;
+    background: transparent;
+    border: 2px solid @c-base;
+    border-radius: 0;
+    transition: background @td-fast @ease;
+
+    .default();
+
+    &:hover {
+      background: @c-base;
+      cursor: pointer;
+
+      @{c}__multi-value__remove:not(.noClass) {
+        fill: @c-background;
+      }
+
+      @{c}__multi-value__label:not(.noClass) {
+        color: @c-background;
+      }
+    }
   }
 
   &__multi-value__label:not(.noClass) {
     text-overflow: unset;
     white-space: unset;
+    transition: color @td-fast @ease;
+  }
+
+  &__multi-value__remove:not(.noClass) {
+    padding-right: 6px;
+    border-radius: 0;
+    transition: fill @td-fast @ease;
+
+    &:hover {
+      background-color: @c-transparent;
+      cursor: pointer;
+    }
+  }
+
+  &__menu:not(.noClass) {
+    margin: 0;
+    padding: 0;
+    font-weight: @fw-bold;
+
+    .default();
+  }
+
+  &__menu-list:not(.noClass) {
+    margin: 0;
+    padding: 0;
+
+    .hideScrollbar();
+  }
+
+  &__option:not(.noClass) {
+    background: @c-transparent;
+    border: 2px solid @c-base;
+    border-top: 0 dashed @c-transparent;
+    border-bottom: 2px dashed @c-base;
+    transition: color @td-fast @ease;
+
+    &:first-child {
+      // border-top: 2px solid @c-base;
+    }
+
+    &:last-child {
+      border-bottom: 2px solid @c-base;
+    }
+
+    &:hover {
+      color: @c-accent;
+      cursor: pointer;
+    }
+
+    &:focus,
+    &:active {
+      background: @c-transparent;
+      outline: 0;
+    }
+  }
+
+  &__option--is-disabled:not(.noClass) {
+    color: @c-disabled;
+    pointer-events: none;
   }
 
   &--grow {

@@ -3,7 +3,7 @@ import './Hr.less';
 
 interface Props {
   type?: 'spacer' | 'shrink';
-  size?: 'block' | 'micro' | 'small' | 'normal' | 'big' | false;
+  size?: 'block' | 'nano' | 'micro' | 'small' | 'normal' | 'big' | false;
 }
 
 export const Hr: React.FC<Props> = ({ type, size = 'normal' }) => (
