@@ -1,7 +1,7 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
-import './Range.less';
 import { Span } from '../Span';
+import './Range.less';
 
 interface Props {
   name: string;

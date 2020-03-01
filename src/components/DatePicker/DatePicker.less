@@ -1,0 +1,37 @@
+@import '../../css/imports.less';
+
+@c: .DatePicker;
+
+@{c} {
+  .default();
+
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 50px;
+  text-align: left;
+
+  &-calendar *,
+  &-calendar {
+    float: unset;
+    background: @c-transparent;
+    border-radius: 0;
+  }
+
+  &-calendar {
+    border: 2px solid @c-base;
+
+    .react-datepicker__header {
+      border-bottom: 2px solid @c-base;
+    }
+
+    .react-datepicker__day {
+      border-radius: 0;
+    }
+
+    .react-datepicker__day--selected {
+      background: @c-base;
+    }
+  }
+}

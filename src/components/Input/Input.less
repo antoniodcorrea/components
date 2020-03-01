@@ -35,6 +35,8 @@
   }
 
   &-input {
+    .default();
+
     height: 40px;
     right: 8px;
     padding: 0 10px;
@@ -45,6 +47,14 @@
     outline: none;
     transition: border-color @td-fast @ease;
     box-shadow: none;
+
+    &[type='date']::-webkit-inner-spin-button,
+    &[type='date']::-webkit-calendar-picker-indicator,
+    &[type='date']::-webkit-input-placeholder {
+      display: none;
+      visibility: hidden !important;
+      -webkit-appearance: none;
+    }
 
     &:hover {
       //
@@ -57,6 +67,10 @@
         background: @c-background;
         transform: translate(5px, -18px) scale(0.8);
       }
+    }
+
+    &:read-only {
+      user-select: none;
     }
 
     @{c}--success & {

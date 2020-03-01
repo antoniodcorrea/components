@@ -13,7 +13,9 @@ interface Props {
   success?: boolean;
   disabled?: boolean;
   grow?: boolean;
-  onChange: (e) => void;
+  type?: string;
+  pattern?: string;
+  onChange?: (e) => void;
 }
 
 export const Input: React.FC<Props> = ({
@@ -28,6 +30,8 @@ export const Input: React.FC<Props> = ({
   disabled,
   grow,
   onChange,
+  pattern,
+  type,
 }) => {
   const id = uniqueId();
 
@@ -53,6 +57,8 @@ export const Input: React.FC<Props> = ({
         disabled={disabled}
         readOnly={readOnly}
         onChange={onChange}
+        type={type}
+        pattern={pattern}
       />
       {label && (
         <label className="Input-label" htmlFor={'Input-' + id}>

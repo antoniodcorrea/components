@@ -20,6 +20,7 @@
   ],
   "dependencies": {
     "axios": "^0.19.2",
+    "react-datepicker": "^2.13.0",
     "react-select": "^3.0.8"
   },
   "devDependencies": {
