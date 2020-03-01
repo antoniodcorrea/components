@@ -18,6 +18,7 @@ interface Props {
 
 export const Range: React.FC<Props> = ({ name, value, label, min, max, error, success, disabled, grow, onChange }) => {
   const id = uniqueId();
+  const initialValue = max / 2;
 
   return (
     <div
@@ -35,7 +36,7 @@ export const Range: React.FC<Props> = ({ name, value, label, min, max, error, su
         </label>
       )}
       <div className="Range-fields">
-        <div className="Range-value">{value || 0}</div>
+        <div className="Range-value">{value || initialValue}</div>
         <input
           name={name}
           className="Range-input"

@@ -25,14 +25,6 @@ const knobs = {
 
 export const Empty = () => {
   const [value1, setValue1] = useState('');
-  const [success, setSuccess] = useState(undefined);
-
-  const onSubmit = () => {
-    console.log('- - - - - - - - - - - - ');
-    console.log({ value1 });
-    console.log('- - - - - - - - - - - - ');
-    setSuccess(true);
-  };
 
   return (
     <div>
@@ -47,11 +39,10 @@ export const Empty = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        min={10}
-        max={40}
+        min={0}
+        max={100}
       />
       <Hr type="spacer" />
-      <Button text="Submit" onClick={onSubmit} success={success} grow={knobs.grow()} />
     </div>
   );
 };
