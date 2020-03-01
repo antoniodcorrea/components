@@ -7,6 +7,10 @@ import { Span } from '../Span';
 import { Button } from '../Button';
 import { Input } from '../Input';
 
+const TOKEN =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU0ZTJiYjQ2LWMyMTAtNGE0Ny05ZTg0LWY0NWM3ODlmY2VjMSIsIm9yZGVyIjoxLCJuYW1lIjoiQW50b25pbyIsImVtYWlsIjoiYW50b25pby5kLmNvcnJlYUBnbWFpbC5jb20iLCJhY3RpdmUiOnRydWUsImxldmVsIjoiYWRtaW4iLCJpYXQiOjE1ODMwMDAzNDl9.snJHyzH8Td0Ot_F49Ve9yrw3nNE6JJAGLDp4vcrQKqA';
+const API_URL = 'http://0.0.0.0:3000/v1/tags';
+
 export default {
   component: Select,
   title: 'Select',
@@ -47,6 +51,9 @@ export const Default = () => {
         }}
         value={value1}
         limit={4}
+        apiUrl={API_URL}
+        optionFilterFieldName="name"
+        token={TOKEN}
       />
 
       <Hr type="spacer" />

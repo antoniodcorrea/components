@@ -1,7 +1,7 @@
 import React from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { components } from 'react-select';
-import { data } from './data';
+import axios from 'axios';
 import { Cross, ArrowDown } from '../Svg';
 import './Select.less';
 
@@ -10,19 +10,28 @@ interface Props {
   value?: any;
   grow?: boolean;
   limit?: number;
+  apiUrl?: string;
+  token?: string;
+  optionFilterFieldName?: string;
+
   onChange?: (e) => void;
 }
 
-export const Select: React.FC<Props> = ({ value, grow, onChange, limit, label }) => {
+export const Select: React.FC<Props> = ({
+  value,
+  grow,
+  onChange,
+  limit,
+  label,
+  apiUrl,
+  token,
+  optionFilterFieldName,
+}) => {
   const updateItems = newValues => {
     const updateValues = !newValues || newValues.length <= limit;
     const updatedValues = updateValues ? newValues : value;
 
     onChange(updatedValues);
-  };
-
-  const filterValues = (inputValue: string) => {
-    return data.filter(i => i.label.toLowerCase().includes(inputValue.toLowerCase()));
   };
 
   const Menu = props => {
@@ -52,12 +61,14 @@ export const Select: React.FC<Props> = ({ value, grow, onChange, limit, label })
     );
   };
 
-  const Control = props => (
-    <>
-      <components.Control {...props} />
+  /* README */
+  const SelectContainer = ({ children, ...props }) => (
+    <components.SelectContainer {...props}>
+      {children}
       <label className={'Select__label ' + (value ? 'Select__label--active' : '')}>{label}</label>
-    </>
+    </components.SelectContainer>
   );
+  /* END */
 
   const MultiValueRemove = props => {
     return (
@@ -67,12 +78,30 @@ export const Select: React.FC<Props> = ({ value, grow, onChange, limit, label })
     );
   };
 
-  const promiseOptions = inputValue =>
-    new Promise(resolve => {
-      setTimeout(() => {
-        resolve(filterValues(inputValue));
-      }, 200);
-    });
+  const loadOptions = inputValue => {
+    return axios({
+      method: 'get',
+      url:
+        apiUrl +
+        (optionFilterFieldName ? '/' + optionFilterFieldName + '/?' + optionFilterFieldName + '=' + inputValue : ''),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token,
+      },
+    })
+      .then(response => {
+        response.data.map(item => {
+          item.label = item.name;
+          item.value = item.name;
+        });
+
+        return response.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className={'Select ' + (grow ? 'Select--grow' : '')}>
@@ -83,7 +112,7 @@ export const Select: React.FC<Props> = ({ value, grow, onChange, limit, label })
         isMulti
         cacheOptions
         defaultOptions
-        loadOptions={promiseOptions}
+        loadOptions={loadOptions}
         value={value}
         isClearable={false}
         onChange={updateItems}
@@ -93,7 +122,7 @@ export const Select: React.FC<Props> = ({ value, grow, onChange, limit, label })
           LoadingMessage,
           NoOptionsMessage,
           Menu,
-          Control,
+          SelectContainer,
         }}
       />
     </div>

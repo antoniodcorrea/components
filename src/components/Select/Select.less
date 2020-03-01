@@ -4,10 +4,10 @@
 
 @{c} {
   display: inline-flex;
+  position: relative;
   flex-wrap: nowrap;
   align-items: flex-end;
   height: 50px;
-
   .default();
 
   &__container:not(.noClass) {
@@ -33,15 +33,15 @@
     position: absolute;
     align-items: center;
     height: @fs-normal;
-    top: 12px;
-    left: 11px;
+    top: 13px;
+    left: 12px;
     color: @c-disabled;
     background: @c-background;
     transition: all @td-fast @ease;
     pointer-events: none;
   }
 
-  &__control--is-focused:not(.noClass) + @{c}__label,
+  &__control--is-focused:not(.noClass) ~ @{c}__label,
   @{c}__label--active {
     padding: 0 7px 0 6px;
     background: @c-background;
@@ -145,12 +145,11 @@
       color: @c-accent;
       cursor: pointer;
     }
+  }
 
-    &:focus,
-    &:active {
-      background: @c-transparent;
-      outline: 0;
-    }
+  &__option--is-focused:not(.noClass) {
+    color: @c-accent;
+    outline: 0;
   }
 
   &__option--is-disabled:not(.noClass) {
