@@ -9,6 +9,8 @@ const filterColors = (inputValue: string) => {
   return colourOptions.filter(i => i.label.toLowerCase().includes(inputValue.toLowerCase()));
 };
 
+const NoOptionsMessage = () => <></>;
+
 const LoadingMessage = () => <></>;
 
 const DropdownIndicator = props => {
@@ -55,6 +57,7 @@ export const Select: React.FC<Props> = ({ value, grow, onChange }) => (
         MultiValueRemove,
         DropdownIndicator,
         LoadingMessage,
+        NoOptionsMessage,
       }}
     />
   </div>
