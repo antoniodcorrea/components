@@ -72,7 +72,7 @@ export class Pagination extends Component<Props> {
     const href = path + '?page=' + page;
 
     return (
-      <div className="Pagination">
+      <div className={'Pagination ' + (grow ? 'Pagination-grow' : '')}>
         <Border className="Pagination-border" padding="small" grow={grow}>
           {pages.map(item => {
             return this.renderItems(item, href, page);
