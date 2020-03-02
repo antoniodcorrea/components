@@ -124,7 +124,6 @@ export class DatePicker extends Component<Props, State> {
           minDate={minDate}
           maxDate={maxDate}
           inline={inline}
-          popperPlacement="bottom-start"
         />
 
         {/* {meta.touched && meta.error && <div className="DatePicker-error">{meta.error}</div>} */}
