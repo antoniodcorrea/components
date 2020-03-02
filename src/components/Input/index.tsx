@@ -6,6 +6,7 @@ interface Props {
   name: string;
   value?: string | number;
   label?: string;
+  className?: string;
   autoComplete?: boolean;
   spellCheck?: boolean;
   readOnly?: boolean;
@@ -15,13 +16,18 @@ interface Props {
   grow?: boolean;
   type?: string;
   pattern?: string;
+  passedRef?: any;
   onChange?: (e) => void;
+  onKeyPress?: (e) => void;
+  onFocus?: (e) => void;
+  onBlur?: (e) => void;
 }
 
 export const Input: React.FC<Props> = ({
   name,
-  value,
+  value = '',
   label,
+  className,
   autoComplete = false,
   spellCheck = false,
   readOnly = false,
@@ -30,15 +36,20 @@ export const Input: React.FC<Props> = ({
   disabled,
   grow,
   onChange,
+  onKeyPress,
+  onFocus,
+  onBlur,
   pattern,
   type,
+  passedRef,
 }) => {
   const id = uniqueId();
 
   return (
     <div
       className={
-        'Input' +
+        'Input ' +
+        (className ? className : '') +
         (error ? ' Input--error' : '') +
         (success ? ' Input--success' : '') +
         (disabled ? ' Input--disabled' : '') +
@@ -59,6 +70,10 @@ export const Input: React.FC<Props> = ({
         onChange={onChange}
         type={type}
         pattern={pattern}
+        onKeyPress={onKeyPress}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        ref={passedRef}
       />
       {label && (
         <label className="Input-label" htmlFor={'Input-' + id}>
