@@ -20,6 +20,7 @@ interface Props {
   onChange?: (e) => void;
   onKeyPress?: (e) => void;
   onFocus?: (e) => void;
+  onClick?: (e) => void;
   onBlur?: (e) => void;
 }
 
@@ -38,6 +39,7 @@ export const Input: React.FC<Props> = ({
   onChange,
   onKeyPress,
   onFocus,
+  onClick,
   onBlur,
   pattern,
   type,
@@ -72,6 +74,7 @@ export const Input: React.FC<Props> = ({
         pattern={pattern}
         onKeyPress={onKeyPress}
         onFocus={onFocus}
+        onClick={onClick}
         onBlur={onBlur}
         ref={passedRef}
       />

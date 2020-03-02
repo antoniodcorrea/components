@@ -27,6 +27,7 @@ const knobs = {
 export const Empty = () => {
   const [value1, setValue1] = useState(undefined);
   const [value2, setValue2] = useState(undefined);
+  const [value3, setValue3] = useState(undefined);
 
   return (
     <>
@@ -42,8 +43,16 @@ export const Empty = () => {
           setValue1(date);
         }}
       />
-      <Hr type="spacer" />
-      <Hr type="spacer" size="block" />
+
+      <DatePicker
+        name="Date"
+        label="Date"
+        inline
+        value={value3}
+        onChange={date => {
+          setValue3(date);
+        }}
+      />
       <Input
         name="Input"
         label="Password"
@@ -55,7 +64,6 @@ export const Empty = () => {
         grow={knobs.grow()}
         onChange={e => setValue2(e.target.value)}
       />
-      <Hr type="spacer" />
     </>
   );
 };

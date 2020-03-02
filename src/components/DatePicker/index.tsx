@@ -74,30 +74,38 @@ export class DatePicker extends Component<Props, State> {
     const isInputActive = formattedDate.isValid() || this.state.focused;
 
     return (
-      <div className={'DatePicker' + (inline ? 'DatePicker--inline' : '')}>
-        <Input
-          className="DatePicker-input"
-          name={name}
-          label={label}
-          type={isInputActive ? 'date' : 'text'}
-          value={this.state.inputValue}
-          onChange={this.handleInputChange}
-          grow
-          onFocus={() => {
-            this.calendarRef.current.setOpen(true);
-            this.setState({
-              focused: true,
-            });
-          }}
-          onBlur={() => {
-            this.setState({
-              focused: false,
-            });
-          }}
-          onKeyPress={() => {
-            this.calendarRef.current.setOpen(false);
-          }}
-        />
+      <div className={'DatePicker ' + (inline ? 'DatePicker--inline' : '')}>
+        {!inline && (
+          <Input
+            className="DatePicker-input"
+            name={name}
+            label={label}
+            type={isInputActive ? 'date' : 'input'}
+            value={this.state.inputValue}
+            onChange={this.handleInputChange}
+            grow
+            onFocus={() => {
+              this.calendarRef.current.setOpen(true);
+              this.setState({
+                focused: true,
+              });
+            }}
+            onClick={() => {
+              this.calendarRef.current.setOpen(true);
+              this.setState({
+                focused: true,
+              });
+            }}
+            onBlur={() => {
+              this.setState({
+                focused: false,
+              });
+            }}
+            onKeyPress={() => {
+              this.calendarRef.current.setOpen(false);
+            }}
+          />
+        )}
         <DatePickerComponent
           ref={this.calendarRef}
           placeholderText=" "
