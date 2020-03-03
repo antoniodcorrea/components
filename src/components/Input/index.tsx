@@ -16,8 +16,8 @@ interface Props {
   grow?: boolean;
   type?: string;
   pattern?: string;
-  passedRef?: any;
   onChange?: (e) => void;
+  onKeyDown?: (e) => void;
   onKeyPress?: (e) => void;
   onFocus?: (e) => void;
   onClick?: (e) => void;
@@ -37,13 +37,13 @@ export const Input: React.FC<Props> = ({
   disabled,
   grow,
   onChange,
+  onKeyDown,
   onKeyPress,
   onFocus,
   onClick,
   onBlur,
   pattern,
   type,
-  passedRef,
 }) => {
   const id = uniqueId();
 
@@ -73,10 +73,10 @@ export const Input: React.FC<Props> = ({
         type={type}
         pattern={pattern}
         onKeyPress={onKeyPress}
+        onKeyDown={onKeyDown}
         onFocus={onFocus}
         onClick={onClick}
         onBlur={onBlur}
-        ref={passedRef}
       />
       {label && (
         <label className="Input-label" htmlFor={'Input-' + id}>

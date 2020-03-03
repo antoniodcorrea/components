@@ -25,15 +25,16 @@ const knobs = {
 };
 
 export const Empty = () => {
-  const [value1, setValue1] = useState(undefined);
-  const [value2, setValue2] = useState(undefined);
-  const [value3, setValue3] = useState(undefined);
+  const [value1, setValue1] = useState(null);
+  const [value2, setValue2] = useState(null);
+  const [value3, setValue3] = useState(null);
 
   return (
     <>
       <H1>DatePicker</H1>
+      <Hr type="spacer" size="big" />
       <Span>Value: {JSON.stringify(value1)}</Span>
-      <Hr type="spacer" />
+      <Hr type="spacer" size="block" />
       <DatePicker
         name="Date"
         label="Date"
@@ -43,16 +44,10 @@ export const Empty = () => {
           setValue1(date);
         }}
       />
-
-      <DatePicker
-        name="Date"
-        label="Date"
-        inline
-        value={value3}
-        onChange={date => {
-          setValue3(date);
-        }}
-      />
+      <Hr type="spacer" />
+      <Hr type="spacer" />
+      <Span>Value: {JSON.stringify(value2)}</Span>
+      <Hr type="spacer" size="block" />
       <Input
         name="Input"
         label="Password"
@@ -63,6 +58,19 @@ export const Empty = () => {
         disabled={knobs.disabled()}
         grow={knobs.grow()}
         onChange={e => setValue2(e.target.value)}
+      />
+      <Hr type="spacer" />
+      <Hr type="spacer" />
+      <Span>Value: {JSON.stringify(value3)}</Span>
+      <Hr type="spacer" size="block" />
+      <DatePicker
+        name="Date"
+        label="Date"
+        inline
+        value={value3}
+        onChange={date => {
+          setValue3(date);
+        }}
       />
     </>
   );
