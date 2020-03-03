@@ -25,31 +25,32 @@ export const Empty = () => {
       <Hr type="spacer" size="micro" />
       <Hr size="micro" />
       <Hr type="spacer" />
-      <Radio
-        value={value}
-        name="gender"
-        options={[
-          {
-            value: '1',
-            label: 'Option 1',
-          },
-          {
-            value: '2',
-            label: 'Option 2',
-          },
-          {
-            value: '3',
-            label: 'Option 3',
-          },
-        ]}
-        onChange={e => {
-          setValue(e.target.value);
-          console.log({ value });
-        }}
-        grow={knobs.grow()}
-        inline={knobs.inline()}
-      />
-      <Hr type="spacer" />
+      <Border>
+        <Radio
+          value={value}
+          name="gender"
+          options={[
+            {
+              value: '1',
+              label: 'Option 1',
+            },
+            {
+              value: '2',
+              label: 'Option 2',
+            },
+            {
+              value: '3',
+              label: 'Option 3',
+            },
+          ]}
+          onChange={e => {
+            setValue(e.target.value);
+            console.log({ value });
+          }}
+          grow={knobs.grow()}
+          inline={knobs.inline()}
+        />
+      </Border>
     </>
   );
 };
