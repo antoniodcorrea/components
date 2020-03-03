@@ -1,9 +1,9 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
 import { Span } from '../Span';
-import './Range.less';
 import { Hr } from '../Hr';
-import { Check } from '../Svg';
+import { Check, Cross } from '../Svg';
+import './Range.less';
 
 interface Props {
   name: string;
@@ -21,11 +21,16 @@ interface Props {
 export const Range: React.FC<Props> = ({ name, value, label, min, max, error, success, disabled, grow, onChange }) => {
   const id = uniqueId();
   const valueInitial: number = max / 2;
+  const reachedMax: boolean = value === max.toString();
+  const reachedMin: boolean = value === min.toString();
   let valueToDisplay: number | React.ReactNode;
+
   if (!value) {
     valueToDisplay = Math.floor(valueInitial);
-  } else if (value == max) {
+  } else if (reachedMax) {
     valueToDisplay = <Check />;
+  } else if (reachedMin) {
+    valueToDisplay = <Cross />;
   } else {
     valueToDisplay = value;
   }
@@ -38,7 +43,7 @@ export const Range: React.FC<Props> = ({ name, value, label, min, max, error, su
         (success ? ' Range--success' : '') +
         (disabled ? ' Range--disabled' : '') +
         (grow ? ' Range--grow' : '') +
-        (value == max ? ' Range--max' : '')
+        (reachedMax ? ' Range--max' : '')
       }
     >
       {label && (
