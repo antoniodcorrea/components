@@ -7,14 +7,14 @@ import { addParameters } from '@storybook/react';
 /* END */
 
 const customViewports = {
-  kindleFire2: {
+  Desktop: {
     name: 'Desktop',
     styles: {
       width: '1200px',
       height: '963px',
     },
   },
-  kindleFireHD: {
+  Mobile: {
     name: 'Mobile',
     styles: {
       width: '375px',

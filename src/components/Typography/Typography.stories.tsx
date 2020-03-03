@@ -60,7 +60,7 @@ export const Default = () => {
       <Hr type="spacer" size="block" />
       <Span size="nano">{knobs.SpanNanoRegular()}</Span>
       <Hr type="spacer" />
-      <Hr />
+      <Hr size="micro" />
     </>
   );
 };

@@ -51,8 +51,7 @@ export const Empty = () => {
         <Hr type="spacer" size="small" />
       </Border>
       <Hr type="spacer" />
-      <Hr />
-      <Hr type="spacer" size="big" />
+      <Hr size="micro" />
     </>
   );
 };

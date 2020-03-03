@@ -20,7 +20,15 @@ export const Icons = () => (
   <>
     <H1>Svg Icons</H1>
     <Hr type="spacer" />
-    <div style={{ display: 'grid', gridTemplateColumns: 'auto auto auto auto', height: '80px', gridGap: '20px' }}>
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'auto auto auto auto',
+        height: '80px',
+        gridGap: '20px',
+        width: '200px',
+      }}
+    >
       <Triangle size={knobs.size()} />
       <Square size={knobs.size()} />
       <Circle size={knobs.size()} />

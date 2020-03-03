@@ -38,8 +38,8 @@ export const Empty = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        min={0}
-        max={100}
+        min={12}
+        max={87}
       />
       <Hr type="spacer" />
     </div>

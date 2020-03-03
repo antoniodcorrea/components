@@ -50,7 +50,7 @@ export const Empty = () => {
       </Border>
       <Hr type="spacer" />
       <Hr />
-      <Hr type="spacer" size="big" />
+      <Hr type="spacer" size="micro" />
     </>
   );
 };

@@ -31,13 +31,15 @@
     }
 
     &:hover {
-      color: @c-accent;
-      border-color: @c-accent;
-      cursor: pointer;
-      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-accent;
+      @{c}:not(@{c}--success)& {
+        color: @c-accent;
+        border-color: @c-accent;
+        cursor: pointer;
+        box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-accent;
 
-      @{c}-svg {
-        fill: @c-accent;
+        @{c}-svg {
+          fill: @c-accent;
+        }
       }
     }
   }
