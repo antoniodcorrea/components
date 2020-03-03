@@ -6,10 +6,13 @@
 @{c} {
   .default();
 
+  display: inline-flex;
+  flex-direction: column;
+
   &-item {
     display: flex;
     position: relative;
-    margin-bottom: 4px;
+    margin-bottom: 10px;
 
     &:hover {
       cursor: pointer;
@@ -87,7 +90,22 @@
     }
   }
 
-  &-grow {
+  &--grow {
+    justify-content: space-between;
     width: 100%;
+  }
+
+  &--inline {
+    flex-direction: unset;
+
+    &:not(@{c}--grow) {
+      @{c}-item {
+        margin-right: 10px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
   }
 }

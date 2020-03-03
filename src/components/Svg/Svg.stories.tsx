@@ -20,6 +20,8 @@ export const Icons = () => (
   <>
     <H1>Svg Icons</H1>
     <Hr type="spacer" />
+    <Hr size="nano" />
+    <Hr type="spacer" />
     <div
       style={{
         display: 'grid',

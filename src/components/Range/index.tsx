@@ -28,9 +28,9 @@ export const Range: React.FC<Props> = ({ name, value, label, min, max, error, su
   if (!value) {
     valueToDisplay = Math.floor(valueInitial);
   } else if (reachedMax) {
-    valueToDisplay = <Check />;
+    valueToDisplay = <Check className="Range-icon" />;
   } else if (reachedMin) {
-    valueToDisplay = <Cross />;
+    valueToDisplay = <Cross className="Range-icon" />;
   } else {
     valueToDisplay = value;
   }

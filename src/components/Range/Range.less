@@ -73,6 +73,7 @@
       cursor: pointer;
       border-radius: 50%;
       box-shadow: 0 0 0 1px @c-background;
+
       &:active {
         cursor: grabbing;
       }
@@ -91,6 +92,10 @@
 
     @{c}-input {
       background: @c-success;
+    }
+
+    @{c}-icon {
+      fill: @c-success;
     }
 
     @{c}-input::-webkit-slider-thumb {
@@ -114,10 +119,13 @@
       background: @c-error;
     }
 
+    @{c}-icon {
+      fill: @c-error;
+    }
+
     @{c}-input::-webkit-slider-thumb {
       -webkit-appearance: none;
       background-color: @c-error;
-      cursor: default;
     }
 
     @{c}-input::-moz-range-thumb {
@@ -128,6 +136,8 @@
   }
 
   &--disabled {
+    pointer-events: none;
+
     @{c}-value {
       color: @c-disabled;
       border: 2px solid @c-disabled;
@@ -135,6 +145,10 @@
 
     @{c}-input {
       background: @c-disabled;
+    }
+
+    @{c}-icon {
+      fill: @c-disabled;
     }
 
     @{c}-input::-webkit-slider-thumb {

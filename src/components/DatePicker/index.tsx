@@ -100,6 +100,7 @@ export class DatePicker extends Component<Props, State> {
               this.setState({
                 focused: false,
               });
+              this.calendarRef.current.setOpen(false);
             }}
             onKeyDown={() => {
               this.calendarRef.current.setOpen(false);

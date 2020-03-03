@@ -11,12 +11,18 @@ interface Props {
   value?: string;
   className?: string;
   grow?: boolean;
+  inline?: boolean;
   onChange?: (e) => void;
 }
 
-export const Radio: React.FC<Props> = ({ name, options, value, className, grow, onChange }) => (
+export const Radio: React.FC<Props> = ({ name, options, value, className, grow, onChange, inline }) => (
   <div
-    className={'Radio' + (className ? ' Radio--' + className : '') + (grow ? ' Radio--grow' : '')}
+    className={
+      'Radio' +
+      (className ? ' Radio--' + className : '') +
+      (grow ? ' Radio--grow' : '') +
+      (inline ? ' Radio--inline' : '')
+    }
     onChange={e => onChange(e)}
   >
     {options.map(item => (
@@ -35,7 +41,7 @@ export const Radio: React.FC<Props> = ({ name, options, value, className, grow, 
             {item.label}
           </label>
         </div>
-        {grow && <Hr type="spacer" size="block" />}
+        {grow && !inline && <Hr type="spacer" size="block" />}
       </React.Fragment>
     ))}
   </div>
