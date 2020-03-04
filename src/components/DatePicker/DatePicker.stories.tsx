@@ -25,9 +25,7 @@ const knobs = {
 };
 
 export const Empty = () => {
-  const [value1, setValue1] = useState(null);
-  const [value2, setValue2] = useState(null);
-  const [value3, setValue3] = useState(null);
+  const [value1, setValue1] = useState(undefined);
 
   return (
     <>
@@ -42,34 +40,6 @@ export const Empty = () => {
         value={value1}
         onChange={date => {
           setValue1(date);
-        }}
-      />
-      <Hr type="spacer" />
-      <Hr type="spacer" />
-      <Span>Value: {JSON.stringify(value2)}</Span>
-      <Hr type="spacer" size="block" />
-      <Input
-        name="Input"
-        label="Password"
-        value={value2}
-        readOnly={knobs.readOnly()}
-        error={knobs.error()}
-        success={knobs.success()}
-        disabled={knobs.disabled()}
-        grow={knobs.grow()}
-        onChange={e => setValue2(e.target.value)}
-      />
-      <Hr type="spacer" />
-      <Hr type="spacer" />
-      <Span>Value: {JSON.stringify(value3)}</Span>
-      <Hr type="spacer" size="block" />
-      <DatePicker
-        name="Date"
-        label="Date"
-        inline
-        value={value3}
-        onChange={date => {
-          setValue3(date);
         }}
       />
     </>

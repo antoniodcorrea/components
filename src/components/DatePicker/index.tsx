@@ -59,6 +59,12 @@ export class DatePicker extends Component<Props, State> {
 
   handleDatePickerChange = date => {
     const { onChange } = this.props;
+    console.log('--  --  --  --  --  --  --  --  --  --  --  ');
+    console.log('--  --  --  --  --  --  --  --  --  --  --  ');
+
+    console.log(date);
+    console.log('--  --  --  --  --  --  --  --  --  --  --  ');
+    console.log('--  --  --  --  --  --  --  --  --  --  --  ');
 
     this.setState({
       datePickerValue: date,
@@ -100,7 +106,6 @@ export class DatePicker extends Component<Props, State> {
               this.setState({
                 focused: false,
               });
-              this.calendarRef.current.setOpen(false);
             }}
             onKeyDown={() => {
               this.calendarRef.current.setOpen(false);

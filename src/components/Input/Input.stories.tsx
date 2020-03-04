@@ -27,6 +27,7 @@ export const Empty = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const [value3, setValue3] = useState('');
+  const [value4, setValue4] = useState('');
   const [success, setSuccess] = useState(undefined);
 
   const onSubmit = () => {
@@ -38,35 +39,24 @@ export const Empty = () => {
     <div onSubmit={onSubmit}>
       <H1>Input</H1>
       <Hr type="spacer" />
-      <Input
-        type="search"
-        name={knobs.name()}
-        label="Name"
-        value={value1}
-        readOnly={knobs.readOnly()}
-        error={knobs.error()}
-        success={knobs.success()}
-        disabled={knobs.disabled()}
-        grow={knobs.grow()}
-        onChange={e => setValue1(e.target.value)}
-      />
+
       <Hr type="spacer" size="block" />
       <Input
         type="date"
         name={knobs.name()}
-        label="Name"
-        value={value1}
+        label="My date"
+        value={value4}
         readOnly={knobs.readOnly()}
         error={knobs.error()}
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        onChange={e => setValue1(e.target.value)}
+        onChange={e => setValue4(e.target.value)}
       />
       <Hr type="spacer" size="block" />
       <Input
         name={knobs.name()}
-        label="Password"
+        label="Insert password"
         value={value2}
         readOnly={knobs.readOnly()}
         error={knobs.error()}
@@ -86,6 +76,19 @@ export const Empty = () => {
         disabled={knobs.disabled()}
         grow={knobs.grow()}
         onChange={e => setValue3(e.target.value)}
+      />
+      <Hr type="spacer" size="block" />
+      <Input
+        type="search"
+        name={knobs.name()}
+        label="Search"
+        value={value1}
+        readOnly={knobs.readOnly()}
+        error={knobs.error()}
+        success={knobs.success()}
+        disabled={knobs.disabled()}
+        grow={knobs.grow()}
+        onChange={e => setValue1(e.target.value)}
       />
       <Hr type="spacer" />
       <Button text="Submit" onClick={onSubmit} success={success} grow={knobs.grow()} />

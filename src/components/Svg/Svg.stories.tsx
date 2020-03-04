@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Triangle, Circle, Square, Check, Cross, ArrowRight, ArrowDown, ArrowLeft, ArrowUp } from '.';
+import { Triangle, Circle, Square, Check, Cross, ArrowRight, ArrowDown, ArrowLeft, ArrowUp, Loupe } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
 
@@ -13,7 +13,7 @@ export default {
 const knobs = {
   name: () => select('Name', ['square', 'triangle', 'circle'], 'circle'),
   size: () =>
-    select('Size', ['nano', 'micro', 'small', 'normal', 'medium', 'big', 'biggest', 'huge', undefined], undefined),
+    select('Size', ['nano', 'micro', 'small', 'normal', 'medium', 'big', 'biggest', 'huge', undefined], 'big'),
 };
 
 export const Icons = () => (
@@ -21,25 +21,27 @@ export const Icons = () => (
     <H1>Svg Icons</H1>
     <Hr type="spacer" />
     <Hr size="nano" />
-    <Hr type="spacer" />
+    <Hr type="spacer" size="big" />
     <div
       style={{
         display: 'grid',
         gridTemplateColumns: 'auto auto auto auto',
-        height: '80px',
+        minHeight: '80px',
         gridGap: '20px',
         width: '200px',
+        margin: '0 auto',
       }}
     >
       <Triangle size={knobs.size()} />
       <Square size={knobs.size()} />
       <Circle size={knobs.size()} />
       <Cross size={knobs.size()} />
-      <ArrowRight />
-      <ArrowDown />
-      <ArrowLeft />
-      <ArrowUp />
+      <ArrowRight size={knobs.size()} />
+      <ArrowDown size={knobs.size()} />
+      <ArrowLeft size={knobs.size()} />
+      <ArrowUp size={knobs.size()} />
       <Check size={knobs.size()} />
+      <Loupe size={knobs.size()} />
     </div>
   </>
 );

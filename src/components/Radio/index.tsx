@@ -41,7 +41,6 @@ export const Radio: React.FC<Props> = ({ name, options, value, className, grow, 
             {item.label}
           </label>
         </div>
-        {grow && !inline && <Hr type="spacer" size="block" />}
       </React.Fragment>
     ))}
   </div>
