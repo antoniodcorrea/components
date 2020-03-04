@@ -45,7 +45,7 @@
     background: @c-background;
     border: 2px solid @c-base;
     outline: none;
-    transition: border-color @td-fast @ease;
+    transition: border-color @td-fast @ease, color @td-fast @ease;
     box-shadow: none;
 
     &[type='date']::-webkit-inner-spin-button,
@@ -87,7 +87,9 @@
       border: 2px solid @c-error;
     }
 
-    &:disabled {
+    @{c}--disabled &,
+    @{c}--readOnly & {
+      color: @c-disabled;
       border: 2px solid @c-disabled;
     }
   }

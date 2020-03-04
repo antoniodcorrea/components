@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { DatePicker } from '.';
-import { Input } from '../Input';
 import { Hr } from '../Hr';
 import { H1 } from '../H1';
 import { Span } from '../Span';

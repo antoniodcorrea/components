@@ -57,6 +57,7 @@ export const Input: React.FC<Props> = ({
         (error ? ' Input--error' : '') +
         (success ? ' Input--success' : '') +
         (disabled ? ' Input--disabled' : '') +
+        (readOnly ? ' Input--readOnly' : '') +
         (grow ? ' Input--grow' : '')
       }
     >
