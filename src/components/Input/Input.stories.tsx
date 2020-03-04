@@ -39,6 +39,19 @@ export const Empty = () => {
       <H1>Input</H1>
       <Hr type="spacer" />
       <Input
+        type="search"
+        name={knobs.name()}
+        label="Name"
+        value={value1}
+        readOnly={knobs.readOnly()}
+        error={knobs.error()}
+        success={knobs.success()}
+        disabled={knobs.disabled()}
+        grow={knobs.grow()}
+        onChange={e => setValue1(e.target.value)}
+      />
+      <Hr type="spacer" size="block" />
+      <Input
         type="date"
         name={knobs.name()}
         label="Name"
@@ -50,7 +63,6 @@ export const Empty = () => {
         grow={knobs.grow()}
         onChange={e => setValue1(e.target.value)}
       />
-
       <Hr type="spacer" size="block" />
       <Input
         name={knobs.name()}

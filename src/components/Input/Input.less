@@ -56,8 +56,14 @@
       -webkit-appearance: none;
     }
 
-    &:hover {
-      //
+    &[type='search']::-webkit-search-cancel-button {
+      display: none;
+    }
+
+    &:focus {
+      & ~ @{c}-svgBackground {
+        // opacity: 0;
+      }
     }
 
     &:focus,
@@ -84,6 +90,32 @@
     &:disabled {
       border: 2px solid @c-disabled;
     }
+  }
+
+  &-svgBackground {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 30px;
+    top: 13px;
+    right: 2px;
+    background: linear-gradient(90deg, @c-transparent 0%, @c-background 30%);
+    transition: background @td-fast @ease;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-svg {
+    top: 0;
+    top: 4px;
+    right: 0;
+    right: 10px;
+    overflow: hidden;
+    fill: @c-base;
   }
 
   &--grow {

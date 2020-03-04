@@ -1,5 +1,6 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
+import { Loupe } from '../Svg';
 import './Input.less';
 
 interface Props {
@@ -14,7 +15,7 @@ interface Props {
   success?: boolean;
   disabled?: boolean;
   grow?: boolean;
-  type?: string;
+  type?: 'date' | 'search' | 'input';
   pattern?: string;
   onChange?: (e) => void;
   onKeyDown?: (e) => void;
@@ -46,6 +47,7 @@ export const Input: React.FC<Props> = ({
   type,
 }) => {
   const id = uniqueId();
+  const isSearch = type === 'search';
 
   return (
     <div
@@ -77,11 +79,17 @@ export const Input: React.FC<Props> = ({
         onFocus={onFocus}
         onClick={onClick}
         onBlur={onBlur}
+        results={2}
       />
       {label && (
         <label className="Input-label" htmlFor={'Input-' + id}>
           {label}
         </label>
+      )}
+      {isSearch && (
+        <div className="Input-svgBackground" onClick={onClick}>
+          <Loupe className="Input-svg" size="normal" />
+        </div>
       )}
     </div>
   );
