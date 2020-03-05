@@ -1,0 +1,30 @@
+import React from 'react';
+import { withKnobs, boolean, number } from '@storybook/addon-knobs';
+import { Loader } from '.';
+import { Hr } from '../Hr';
+import { H1 } from '../H1';
+
+export default {
+  component: Loader,
+  title: 'Loader',
+  decorators: [withKnobs],
+};
+
+const knobs = {
+  loaded: () => number('Loaded', 20, { range: true, min: 0, max: 100, step: 1 }),
+  error: () => boolean('Error', false),
+  grow: () => boolean('Grow', false),
+};
+
+export const Default = () => {
+  return (
+    <div>
+      <H1>Loader</H1>
+      <Hr type="spacer" />
+      <Hr size="micro" />
+      <Hr type="spacer" />
+      <Hr type="spacer" />
+      <Loader loaded={knobs.loaded()} error={knobs.error()} grow={knobs.grow()} />
+    </div>
+  );
+};
