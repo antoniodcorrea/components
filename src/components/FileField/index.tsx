@@ -5,7 +5,6 @@ import { Button } from '../Button';
 import { Cross } from '../Svg';
 import { Loader } from '../Loader';
 import { Span } from '../Span';
-import { Fade } from '../Fade';
 import './FileField.less';
 
 interface Props {
@@ -20,7 +19,7 @@ interface Props {
     originalName?: string;
     tempFile?: any;
   };
-  isInvalid?: boolean;
+  error?: boolean;
   grow?: boolean;
   inline?: boolean;
   removable?: boolean;
@@ -116,7 +115,7 @@ export class FileField extends Component<Props, State> {
   };
 
   handleRemove = () => {
-    const { input, onChange, onDrop, onUpload } = this.props;
+    const { input, onChange /* , onDrop, onUpload */ } = this.props;
     alert(1);
     const res = {
       originalName: null,
@@ -141,8 +140,8 @@ export class FileField extends Component<Props, State> {
       input,
       type,
       reverse,
+      error,
       size,
-      isInvalid,
       grow,
       inline,
       disabled,
@@ -150,7 +149,6 @@ export class FileField extends Component<Props, State> {
       textButton,
       name,
       value,
-      meta,
       accept,
       onClick,
       onChange,
@@ -183,8 +181,11 @@ export class FileField extends Component<Props, State> {
     return (
       <div
         className={
-          'FileField' +
+          'FileField ' +
+          (className ? className : '') +
           (size ? ' FileField--size-' + size : '') +
+          (type ? ' FileField--' + type : '') +
+          (error ? ' FileField--error' : '') +
           (grow ? ' FileField--grow' : '') +
           (readOnly ? ' FileField--readOnly' : '') +
           (inline ? ' FileField--inline' : '') +
@@ -210,9 +211,12 @@ export class FileField extends Component<Props, State> {
               <Dropzone
                 ref={node => (this.dropzoneRef = node)}
                 className="FileField-dropzone"
+                name={name}
                 multiple={false}
                 accept={accept}
                 onDrop={this.onDrop}
+                onClick={onClick}
+                onChange={onChange}
               />
             </div>
           </>

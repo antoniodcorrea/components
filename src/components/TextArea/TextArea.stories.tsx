@@ -38,7 +38,7 @@ export const Empty = () => {
       <Hr type="spacer" />
       <TextArea
         name={knobs.name()}
-        label="Lorem"
+        label="My textarea"
         value={value}
         readOnly={knobs.readOnly()}
         error={knobs.error()}

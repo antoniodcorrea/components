@@ -45,6 +45,7 @@ export const TextArea: React.FC<Props> = ({
       }
     >
       <TextareaAutosize
+        id={'Input-' + id}
         className="TextArea-textArea"
         value={value}
         onChange={onChange}
