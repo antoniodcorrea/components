@@ -15,6 +15,7 @@ import './Svg.less';
 export interface Props {
   size?: 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
   className?: string;
+  onClick?: () => void;
 }
 
 export type IconsType =
@@ -33,8 +34,11 @@ export type SvgSpriteType = (
   SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 ) => (props: Props) => JSX.Element;
 
-const Svg: SvgSpriteType = SvgComponent => ({ className, size = 'normal' }) => (
-  <SvgComponent className={'Svg ' + (className ? className : '') + (size ? ' Svg--' + size : '')} />
+const Svg: SvgSpriteType = SvgComponent => ({ className, size = 'normal', onClick }) => (
+  <SvgComponent
+    className={'Svg ' + (className ? className : '') + (size ? ' Svg--' + size : '') + (onClick ? ' Svg--hover' : '')}
+    onClick={onClick}
+  />
 );
 
 export const Triangle: React.FC<Props> = props => Svg(TriangleSvg)(props);
