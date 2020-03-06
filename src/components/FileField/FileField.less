@@ -1,0 +1,86 @@
+@import '../../css/imports.less';
+
+@c: .FileField;
+
+@{c} {
+  display: inline-flex;
+  flex-direction: column;
+  .default();
+
+  &-label {
+    //
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  &-progress {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    opacity: 0;
+    background: @c-traslucid--hard;
+    transition: opacity @td-fast @ease;
+    pointer-events: none;
+  }
+
+  &-dropzone {
+    position: absolute !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+  }
+
+  &-original {
+    //
+  }
+
+  &-remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &--loading {
+    opacity: 1;
+  }
+
+  &--grow,
+  &--inline {
+    width: 100%;
+  }
+
+  &--inline {
+    //
+  }
+
+  &--reverse {
+    //
+  }
+
+  &--disabled {
+    //
+  }
+
+  &--error {
+    //
+  }
+
+  &--uploaded {
+    @{c}-progress {
+      transition: width @td-normal;
+    }
+  }
+
+  &--type {
+    //
+  }
+}
