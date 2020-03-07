@@ -8,6 +8,7 @@ interface Props {
   uppercase?: boolean;
   disabled?: boolean;
   className?: string;
+  grow?: boolean;
 }
 
 export const Span: React.SFC<Props> = ({
@@ -17,6 +18,7 @@ export const Span: React.SFC<Props> = ({
   disabled = false,
   uppercase = false,
   className,
+  grow,
 }) => (
   <span
     className={
@@ -25,6 +27,7 @@ export const Span: React.SFC<Props> = ({
       (bold ? ' Span--bold' : '') +
       (disabled ? ' Span--disabled' : '') +
       (uppercase ? ' Span--uppercase' : '') +
+      (grow ? ' Span--grow' : '') +
       (className ? ' ' + className : '')
     }
   >

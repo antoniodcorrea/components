@@ -5,6 +5,7 @@
 @{c} {
   display: inline-flex;
   flex-direction: column;
+
   .default();
 
   &-label {
@@ -39,14 +40,20 @@
     cursor: pointer;
   }
 
-  &-original {
-    //
+  &-fileName {
+    display: flex;
+    position: relative;
+    width: 100%;
   }
 
   &-remove {
     position: absolute;
     top: 0;
     right: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &--loading {

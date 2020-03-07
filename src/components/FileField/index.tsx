@@ -5,36 +5,42 @@ import { Button } from '../Button';
 import { Cross } from '../Svg';
 import { Loader } from '../Loader';
 import { Span } from '../Span';
+import { A } from '../A';
 import './FileField.less';
+
+type File = {
+  originalName?: string;
+  tempFile?: any;
+};
 
 interface Props {
   name?: string;
-  type?: string;
-  reverse?: boolean;
   label?: string;
   textButton?: string;
+  className?: any;
   placeholder?: string;
-  size?: string;
-  value?: {
-    originalName?: string;
-    tempFile?: any;
-  };
-  error?: boolean;
+  value?: any[] | File[];
+  urlApi: string;
+  readOnly?: any;
+  onDrop?: (acceptedFiles: File[]) => void;
   grow?: boolean;
+  // -  -  -  -  -  -  -  -  -  -  -  -  -
+  // -  -  -  -  -  -  -  -  -  -  -  -  -
+  type?: string;
+  reverse?: boolean;
+  error?: boolean;
   inline?: boolean;
   removable?: boolean;
   local?: boolean;
   onUpload?: any;
-  onDrop?: any;
   onChange?: any;
   input?: any;
   disabled?: number;
   meta?: any;
   onClick?: any;
-  className?: any;
   accept?: any;
-  readOnly?: any;
   originalName?: any;
+  size?: string;
 }
 
 interface State {
@@ -58,53 +64,61 @@ export class FileField extends Component<Props, State> {
   }
 
   onDrop = acceptedFiles => {
-    const { input, onChange, onDrop, onUpload } = this.props;
+    const { input, onChange, onDrop, onUpload, urlApi } = this.props;
+    console.log('-----------');
+    console.log(acceptedFiles);
+    console.log('-----------');
 
-    if (onDrop) {
-      onDrop(acceptedFiles);
-    }
+    if (!acceptedFiles.length) return;
 
-    this.setState({ isUploading: true, originalName: undefined });
+    if (onDrop) onDrop(acceptedFiles);
+    if (onChange) onChange(acceptedFiles);
+    if (onUpload) onUpload(acceptedFiles);
+
+    this.setState({
+      isUploading: true,
+      originalName: undefined,
+    });
 
     let data = new FormData();
-
-    data.append('file', acceptedFiles[0]);
+    data.append('files', acceptedFiles[0]);
 
     let config = {
-      onUploadProgress: function(progressEvent) {
+      onUploadProgress: progressEvent => {
         let percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-        this.setState({ percentCompleted });
-      }.bind(this),
+
+        this.setState({
+          percentCompleted,
+        });
+      },
     };
 
     axios
-      .post('/control/api/upload_temp_file/', data, config)
-      .then(
-        function(response) {
-          this.setState({
-            originalName: response.data.originalName,
-            percentCompleted: 0,
-            isUploading: false,
-          });
-          const res = {
-            originalName: response.data.originalName,
-            tempFile: response.data.url,
-            tempFileId: response.data.id,
-          };
+      .post(urlApi, data, config)
+      .then(response => {
+        this.setState({
+          originalName: response.data.originalName,
+          percentCompleted: 0,
+          isUploading: false,
+        });
+        const res = {
+          originalName: response.data.originalName,
+          tempFile: response.data.url,
+          tempFileId: response.data.id,
+        };
 
-          if (input) {
-            input.onChange(res);
-          }
+        if (input) {
+          input.onChange(res);
+        }
 
-          if (onChange) {
-            onChange(res);
-          }
+        if (onChange) {
+          onChange(res);
+        }
 
-          if (onUpload) {
-            onUpload(res);
-          }
-        }.bind(this)
-      )
+        if (onUpload) {
+          onUpload(res);
+        }
+      })
       .catch(function(error) {}.bind(this));
   };
 
@@ -159,24 +173,32 @@ export class FileField extends Component<Props, State> {
 
     const { percentCompleted, originalName } = this.state;
 
-    let _originalUrl =
-      (input && input.value && (input.value.originalName || input.value)) ||
-      (!input && value && (value.tempFile || value.originalName || value));
+    // console.log('- - - - - - - - - - - - - - - - - - - - ');
+    // console.log('originalName: ', originalName);
+    // console.log('input: ', input);
+    // console.log('value: ', value);
+    // console.log('input && input.value: ', input && input.value);
+    // console.log('input && input.originalName: ', input && input.originalName);
+    // console.log('- - - - - - - - - - - - - - - - - - - - ');
 
-    if (_originalUrl && local) {
-      _originalUrl = _originalUrl.replace(/^.*\/\/[^\/]+/, '');
-    }
+    // let _originalUrl =
+    //   (input && input.value && (input.value.originalName || input.value)) ||
+    //   (!input && value && (value.tempFile || value.originalName || value));
 
-    const _originalName = (
-      originalName ||
-      (input && input.value && (input.value.originalName || input.value)) ||
-      (!input && value && (value.originalName || value)) ||
-      ''
-    )
-      .split('/')
-      .pop();
+    // if (_originalUrl && local) {
+    //   _originalUrl = _originalUrl.replace(/^.*\/\/[^\/]+/, '');
+    // }
 
-    const _originalExt = (_originalName && _originalName.split('.').pop()) || undefined;
+    // const _originalName = (
+    //   originalName ||
+    //   (input && input.value && (input.value.originalName || input.value)) ||
+    //   (!input && value && (value.originalName || value)) ||
+    //   ''
+    // )
+    //   .split('/')
+    //   .pop();
+
+    // const _originalExt = (_originalName && _originalName.split('.').pop()) || undefined;
 
     return (
       <div
@@ -191,8 +213,8 @@ export class FileField extends Component<Props, State> {
           (inline ? ' FileField--inline' : '') +
           (removable ? ' FileField--removable' : '') +
           (disabled ? ' FileField--disabled' : '') +
-          (reverse ? ' FileField--reverse' : '') +
-          (_originalName ? ' FileField--uploaded' : '')
+          (reverse ? ' FileField--reverse' : '')
+          //+ (_originalName ? ' FileField--uploaded' : '')
         }
       >
         {!readOnly && (
@@ -212,6 +234,7 @@ export class FileField extends Component<Props, State> {
                 ref={node => (this.dropzoneRef = node)}
                 className="FileField-dropzone"
                 name={name}
+                // multiple
                 multiple={false}
                 accept={accept}
                 onDrop={this.onDrop}
@@ -221,27 +244,27 @@ export class FileField extends Component<Props, State> {
             </div>
           </>
         )}
-        <>
+        {/* <>
           {_originalName && (
             <div className="FileField-original">
               <label className="FileField-label" htmlFor="">
                 Uploaded file:
               </label>
               {input && input.value && !originalName && (
-                <a href={_originalUrl} target="_blank" data-extension={_originalExt}>
+                <A href={_originalUrl} targetBlank data-extension={_originalExt}>
                   {_originalName}
-                </a>
+                </A>
               )}
               {!input && value && !originalName && (
-                <a href={_originalUrl} target="_blank" data-extension={_originalExt}>
+                <A href={_originalUrl} targetBlank data-extension={_originalExt}>
                   {_originalName}
-                </a>
+                </A>
               )}
               {originalName && _originalName && <span data-extension={_originalExt}>{_originalName}</span>}
             </div>
           )}
           {removable && _originalName && <Cross className="FileField-remove" onClick={this.handleRemove} />}
-        </>
+        </> */}
       </div>
     );
   }
