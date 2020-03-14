@@ -1,9 +1,9 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import { Button } from '../Button';
-import { Cross } from '../Svg';
+import { Cross, Upload } from '../Svg';
 import { Loader } from '../Loader';
 import { Span } from '../Span';
+import { Hr } from '../Hr';
 import { A } from '../A';
 import './FileField.less';
 
@@ -19,11 +19,12 @@ interface Props {
   removable?: boolean;
   accept?: any;
   size?: string;
+  maxLength?: number;
   onChange?: (acceptedFiles: File[]) => void;
   onRemove?: () => void;
 }
 
-export const FileField2: React.FC<Props> = ({
+export const FileField: React.FC<Props> = ({
   className,
   url,
   grow,
@@ -35,8 +36,13 @@ export const FileField2: React.FC<Props> = ({
   onChange,
   percentCompleted,
   onRemove,
+  maxLength,
 }) => {
+  const textButtonToRender = textButton ? textButton : 'Upload file';
   const fileName = url && url.split('/').pop();
+  const extension = url && url.split('.').pop();
+  const truncatedFilename =
+    !maxLength || fileName.length <= maxLength ? fileName : fileName.substring(0, maxLength) + '[...].' + extension;
 
   return (
     <div
@@ -49,28 +55,30 @@ export const FileField2: React.FC<Props> = ({
       }
     >
       {label && (
-        <label className="FileField-label" htmlFor="">
+        <label className="FileField-label">
           <Span bold>{label}</Span>
         </label>
       )}
-      <div className="FileField-content">
-        <Button text={textButton} />
+      <Hr type="spacer" size="micro" />
+      <Dropzone className="FileField-dropzone" name={name} multiple={false} accept={accept} onDrop={onChange}>
+        <Upload className="FileField-textIcon" size="small" />
+        <Span bold uppercase>
+          {textButtonToRender}
+        </Span>
         <div className={'FileField-progress ' + (percentCompleted > 0 ? 'FileField--loading' : '')}>
           <Loader loaded={percentCompleted} grow />
         </div>
-        <Dropzone className="FileField-dropzone" name={name} multiple={false} accept={accept} onDrop={onChange} />
-      </div>
+      </Dropzone>
       {url && (
-        <div className="FileField-fileName">
-          <Span bold grow>
-            {fileName && url && (
-              <A href={url} targetBlank>
-                {fileName}
+        <div className="FileField-file">
+          <Span bold className="FileField-name">
+            {url && (
+              <A href={url} title={fileName} targetBlank>
+                {truncatedFilename}
               </A>
             )}
-            {fileName && !url && fileName}
-            {removable && url && <Cross className="FileField-remove" onClick={onRemove} />}
           </Span>
+          {removable && url && <Cross className="FileField-remove" size="small" onClick={onRemove} />}
         </div>
       )}
     </div>

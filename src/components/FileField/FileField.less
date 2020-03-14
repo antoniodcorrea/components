@@ -32,24 +32,36 @@
   }
 
   &-dropzone {
-    position: absolute !important;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    cursor: pointer;
-  }
-
-  &-fileName {
     display: flex;
     position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    padding: 0 30px;
+    border: 2px dashed @c-base;
+    cursor: pointer;
+
+    .default();
+  }
+
+  &-textIcon {
+    margin-right: 10px;
+  }
+
+  &-file {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
     width: 100%;
+    padding: 0 45px 0 20px;
+    border-bottom: 2px solid @c-base;
   }
 
   &-remove {
     position: absolute;
-    top: 0;
-    right: 0;
+    right: 20px;
 
     &:hover {
       cursor: pointer;

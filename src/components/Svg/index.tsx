@@ -9,6 +9,7 @@ import ArrowDownSvg from 'svg/arrowDown.svg';
 import ArrowUpSvg from 'svg/arrowUp.svg';
 import ArrowLeftSvg from 'svg/arrowLeft.svg';
 import LoupeSvg from 'svg/loupe.svg';
+import UploadSvg from 'svg/upload.svg';
 import * as Icons from '.';
 import './Svg.less';
 
@@ -28,7 +29,8 @@ export type IconsType =
   | 'ArrowUp'
   | 'ArrowDown'
   | 'ArrowLeft'
-  | 'Loupe';
+  | 'Loupe'
+  | 'upload';
 
 export type SvgSpriteType = (
   SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
@@ -51,6 +53,7 @@ export const ArrowUp: React.FC<Props> = props => Svg(ArrowUpSvg)(props);
 export const ArrowDown: React.FC<Props> = props => Svg(ArrowDownSvg)(props);
 export const ArrowLeft: React.FC<Props> = props => Svg(ArrowLeftSvg)(props);
 export const Loupe: React.FC<Props> = props => Svg(LoupeSvg)(props);
+export const Upload: React.FC<Props> = props => Svg(UploadSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;

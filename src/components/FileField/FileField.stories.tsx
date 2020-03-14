@@ -1,6 +1,6 @@
 import React from 'react';
 import { FileField } from '.';
-import { FileField2 } from './FileField2';
+import { FileField as FileFieldUi } from './FileField';
 import { withKnobs, files } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
@@ -18,24 +18,13 @@ const actions = {
 };
 
 export const Default = () => (
-  <>
-    <FileField
-      value={undefined}
-      label="This is the label"
-      textButton="Upload file"
-      originalName="This is the original name"
-      removable
-      urlApi="http://0.0.0.0:3000/api/v1/upload"
-    />
-    <Hr type="spacer" />
-    <FileField2
-      onChange={actions.onChange}
-      onRemove={actions.onRemove}
-      label="This is the label"
-      textButton="Upload file"
-      name="Some file"
-      removable
-      url="/myUrl/myFile.pdf"
-    />
-  </>
+  <FileFieldUi
+    onChange={actions.onChange}
+    onRemove={actions.onRemove}
+    label="My file"
+    name="Some file"
+    removable
+    maxLength={10}
+    url="/myUrl/este_es_mi_super_file.pdf"
+  />
 );
