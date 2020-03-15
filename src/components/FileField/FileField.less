@@ -59,9 +59,30 @@
     border-bottom: 2px solid @c-base;
   }
 
+  &-name {
+    position: absolute;
+    left: 10px;
+    right: 10px;
+    overflow-x: hidden;
+
+    @{c}--removable & {
+      right: 30px;
+    }
+
+    &:before {
+      content: ' ';
+      position: absolute;
+      width: 10px;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(90deg, @c-transparent 0%, @c-background 90%);
+    }
+  }
+
   &-remove {
     position: absolute;
-    right: 20px;
+    right: 10px;
 
     &:hover {
       cursor: pointer;

@@ -39,10 +39,11 @@ export const FileField: React.FC<Props> = ({
   maxLength,
 }) => {
   const textButtonToRender = textButton ? textButton : 'Upload file';
-  const fileName = url && url.split('/').pop();
+  const file = url && url.split('/').pop();
+  const fileName = file && file.split('.').shift();
   const extension = url && url.split('.').pop();
-  const truncatedFilename =
-    !maxLength || fileName.length <= maxLength ? fileName : fileName.substring(0, maxLength) + '[...].' + extension;
+  const shouldBeShortened = !maxLength || fileName.length <= maxLength;
+  const truncatedFilename = shouldBeShortened ? file : fileName.substring(0, maxLength) + '[...].' + extension;
 
   return (
     <div
@@ -73,7 +74,7 @@ export const FileField: React.FC<Props> = ({
         <div className="FileField-file">
           <Span bold className="FileField-name">
             {url && (
-              <A href={url} title={fileName} targetBlank>
+              <A href={url} title={file} targetBlank>
                 {truncatedFilename}
               </A>
             )}

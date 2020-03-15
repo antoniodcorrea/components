@@ -1,10 +1,8 @@
 import React from 'react';
 import { FileField } from '.';
 import { FileField as FileFieldUi } from './FileField';
-import { withKnobs, files } from '@storybook/addon-knobs';
+import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-
-import { Hr } from '../Hr';
 
 export default {
   component: FileField,
@@ -17,14 +15,22 @@ const actions = {
   onRemove: action('on-remove'),
 };
 
+const knobs = {
+  grow: () => boolean('Grow', false),
+  maxLength: () => number('Max length', undefined),
+  removable: () => boolean('Removable', true),
+  url: () => text('Url', 'https://antoniodiaz.me/cv/antonio_diaz_correa_cv12345678901234567890.pdf'),
+};
+
 export const Default = () => (
   <FileFieldUi
     onChange={actions.onChange}
     onRemove={actions.onRemove}
     label="My file"
     name="Some file"
-    removable
-    maxLength={10}
-    url="/myUrl/este_es_mi_super_file.pdf"
+    removable={knobs.removable()}
+    maxLength={knobs.maxLength()}
+    url={knobs.url()}
+    grow={knobs.grow()}
   />
 );
