@@ -16,10 +16,11 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules', './src'],
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'],
     alias: {
       components: path.resolve(__dirname, 'src/components/'),
       svg: path.resolve(__dirname, 'src/assets/svg/'),
+      types: path.resolve(__dirname, 'src/types/'),
     },
   },
   module: {

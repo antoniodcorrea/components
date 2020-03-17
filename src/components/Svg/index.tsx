@@ -11,12 +11,13 @@ import ArrowLeftSvg from 'svg/arrowLeft.svg';
 import LoupeSvg from 'svg/loupe.svg';
 import UploadSvg from 'svg/upload.svg';
 import * as Icons from '.';
+import { SvgClickEvent } from './types';
 import './Svg.less';
 
 export interface Props {
   size?: 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
   className?: string;
-  onClick?: () => void;
+  onClick?: (event: SvgClickEvent) => void;
 }
 
 export type IconsType =

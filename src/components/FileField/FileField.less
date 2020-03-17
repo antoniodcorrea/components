@@ -5,6 +5,7 @@
 @{c} {
   display: inline-flex;
   flex-direction: column;
+  user-select: none;
 
   .default();
 
@@ -63,6 +64,7 @@
     position: absolute;
     left: 10px;
     right: 10px;
+    white-space: nowrap;
     overflow-x: hidden;
 
     @{c}--removable & {
