@@ -20,6 +20,9 @@ interface Props {
   accept?: any;
   size?: string;
   maxLength?: number;
+  error?: boolean;
+  success?: boolean;
+  disabled?: boolean;
   onDrop?: (acceptedFiles: File[]) => void;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onRemove?: () => void;
@@ -36,6 +39,9 @@ export const FileField: React.FC<Props> = ({
   removable = true,
   percentCompleted,
   maxLength,
+  error,
+  success,
+  disabled,
   onDrop,
   onChange,
   onRemove,
@@ -54,7 +60,10 @@ export const FileField: React.FC<Props> = ({
         (className ? className : '') +
         (grow ? ' FileField--grow' : '') +
         (removable ? ' FileField--removable' : '') +
-        (url ? ' FileField--uploaded' : '')
+        (url ? ' FileField--uploaded' : '') +
+        (error ? ' FileField--error' : '') +
+        (success ? ' FileField--success' : '') +
+        (disabled ? ' FileField--disabled' : '')
       }
     >
       {label && (

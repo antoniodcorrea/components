@@ -39,7 +39,9 @@
     align-items: center;
     height: 50px;
     padding: 0 30px;
-    border: 2px dashed @c-base;
+    border: 2px dashed;
+    border-color: @c-base;
+    transition: border-color @td-fast @ease, color @td-fast @ease;
     cursor: pointer;
 
     .default();
@@ -58,6 +60,7 @@
     width: 100%;
     padding: 0 45px 0 20px;
     border-bottom: 2px solid @c-base;
+    transition: border-bottom @td-fast @ease;
   }
 
   &-name {
@@ -66,6 +69,7 @@
     right: 10px;
     white-space: nowrap;
     overflow-x: hidden;
+    transition: color @td-fast @ease;
 
     @{c}--removable & {
       right: 30px;
@@ -108,12 +112,73 @@
     //
   }
 
-  &--disabled {
-    //
+  &--success {
+    @{c}-dropzone {
+      color: @c-success;
+      border-color: @c-success;
+    }
+
+    @{c}-textIcon {
+      fill: @c-success;
+    }
+
+    @{c}-file {
+      border-bottom: 2px solid @c-success;
+    }
+
+    @{c}-name {
+      color: @c-success;
+    }
+
+    @{c}-remove {
+      fill: @c-success;
+    }
   }
 
   &--error {
-    //
+    @{c}-dropzone {
+      color: @c-error;
+      border-color: @c-error;
+    }
+
+    @{c}-textIcon {
+      fill: @c-error;
+    }
+
+    @{c}-file {
+      border-bottom: 2px solid @c-error;
+    }
+
+    @{c}-name {
+      color: @c-error;
+    }
+
+    @{c}-remove {
+      fill: @c-error;
+    }
+  }
+
+  &--disabled {
+    @{c}-dropzone {
+      color: @c-disabled;
+      border-color: @c-disabled;
+    }
+
+    @{c}-textIcon {
+      fill: @c-disabled;
+    }
+
+    @{c}-file {
+      border-bottom: 2px solid @c-disabled;
+    }
+
+    @{c}-name {
+      color: @c-disabled;
+    }
+
+    @{c}-remove {
+      fill: @c-disabled;
+    }
   }
 
   &--uploaded {

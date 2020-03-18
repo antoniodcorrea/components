@@ -1,21 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { FileField } from '.';
-
-interface UploadFileToServerResponse {
-  aspect: number;
-  height: number;
-  width: number;
-  id: number;
-  temp: boolean;
-  img: {
-    original: string;
-  };
-}
-
-interface RemoveFilefromServerResponse {
-  success: boolean;
-}
+import { UploadFileToServer, RemoveFilefromServer } from './types';
 
 interface Props {
   className?: any;
@@ -29,8 +15,9 @@ interface Props {
   percentCompleted?: number;
   maxLength?: number;
   urlApiUpload?: string;
+  disabled?: boolean;
   onDrop?: (acceptedFiles: File[]) => void;
-  onChange?: (url: string) => void;
+  onUploaded?: (url: string) => void;
   onRemove?: (url: string) => void;
 }
 
@@ -39,6 +26,8 @@ interface State {
   percentCompleted?: number;
   isUploading: boolean;
   filesToRemove: string[];
+  error: boolean;
+  success: boolean;
 }
 
 export class FileFieldWithMulter extends React.Component<Props, State> {
@@ -50,10 +39,14 @@ export class FileFieldWithMulter extends React.Component<Props, State> {
       percentCompleted: 0,
       isUploading: false,
       filesToRemove: [],
+      error: false,
+      success: false,
     };
   }
 
-  uploadFileToServer = async (urlApiUpload, data): Promise<UploadFileToServerResponse> => {
+  uploadFileToServer: UploadFileToServer = async (urlApiUpload, data) => {
+    console.log(data);
+
     let config = {
       onUploadProgress: progressEvent => {
         const { loaded, total } = progressEvent;
@@ -66,8 +59,8 @@ export class FileFieldWithMulter extends React.Component<Props, State> {
     return axios.post(urlApiUpload, data, config);
   };
 
-  removeFilefromServer = async (urlApiUpload, data): Promise<RemoveFilefromServerResponse> =>
-    axios.delete(urlApiUpload, data);
+  removeFilefromServer: RemoveFilefromServer = async (urlApiUpload, data) =>
+    axios.delete(urlApiUpload, { params: data });
 
   onRemove = () => {
     const { onRemove, url, urlApiUpload } = this.props;
@@ -98,25 +91,35 @@ export class FileFieldWithMulter extends React.Component<Props, State> {
     data.append('files', acceptedFiles[0]);
 
     this.uploadFileToServer(urlApiUpload, data)
-      .then(res => {
-        this.onChange(res);
-      })
-      .catch(err => err);
+      .then(res => this.onUploadedSuccess(res))
+      .catch(err => this.onUploadedError(err));
   };
 
-  onChange = res => {
-    const { onChange } = this.props;
+  onUploadedSuccess = res => {
+    const { onUploaded } = this.props;
     this.setState({
       url: res.data.img.original,
       percentCompleted: 0,
       isUploading: false,
+      error: false,
     });
 
-    if (onChange) onChange(res.data.img.original);
+    if (onUploaded) onUploaded(res.data.img.original);
+  };
+
+  onUploadedError = err => {
+    console.log(err);
+    this.setState({
+      url: '',
+      percentCompleted: 0,
+      isUploading: false,
+      error: true,
+    });
   };
 
   render = () => {
-    const { className, grow, label, textButton, name, accept, removable, maxLength } = this.props;
+    const { className, grow, label, textButton, name, accept, removable, maxLength, disabled } = this.props;
+    const { error, success } = this.state;
 
     return (
       <FileField
@@ -132,6 +135,9 @@ export class FileFieldWithMulter extends React.Component<Props, State> {
         percentCompleted={this.state.percentCompleted}
         onRemove={this.onRemove}
         maxLength={maxLength}
+        error={error}
+        success={success}
+        disabled={disabled}
       />
     );
   };
