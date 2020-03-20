@@ -6,13 +6,6 @@ import { Span } from '../Span';
 import { Hr } from '../Hr';
 import { A } from '../A';
 import './FileField.less';
-import { WithFileUploadApi } from './WithFileUploadApi';
-
-/*
-This is the abstraction
-------------------------------------------
-Has to be the same across all consumed components
-*/
 
 export interface Props {
   name?: string;
@@ -110,5 +103,3 @@ export const FileField: React.FC<Props> = ({
     </div>
   );
 };
-
-export const FileFieldWithUploadApi = WithFileUploadApi(FileField);
