@@ -5,6 +5,7 @@ interface Props {
   children: React.ReactNode;
   size?: 'normal' | 'small' | 'micro' | 'nano';
   bold?: boolean;
+  italics?: boolean;
   uppercase?: boolean;
   disabled?: boolean;
   className?: string;
@@ -15,6 +16,7 @@ export const Span: React.SFC<Props> = ({
   children,
   size = 'normal',
   bold = false,
+  italics = false,
   disabled = false,
   uppercase = false,
   className,
@@ -25,6 +27,7 @@ export const Span: React.SFC<Props> = ({
       'Span' +
       (' Span-' + size) +
       (bold ? ' Span--bold' : '') +
+      (italics ? ' Span--italics' : '') +
       (disabled ? ' Span--disabled' : '') +
       (uppercase ? ' Span--uppercase' : '') +
       (grow ? ' Span--grow' : '') +
