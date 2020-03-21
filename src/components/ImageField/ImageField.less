@@ -105,6 +105,10 @@
     border: none;
   }
 
+  &--grow {
+    width: 100%;
+  }
+
   &--error {
     border: 2px dashed @c-error;
 
@@ -114,10 +118,15 @@
   }
 
   &--disabled {
-    border: 2px dashed @c-disabled;
+    border-color: @c-disabled;
+    pointer-events: none;
 
     @{c}-iconEmpty {
       fill: @c-disabled;
+    }
+
+    @{c}-background {
+      opacity: 1;
     }
   }
 
