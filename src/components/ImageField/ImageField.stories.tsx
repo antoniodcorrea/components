@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
-import { FileField } from '.';
+import { ImageField } from '.';
 import { WithUploadLogic } from '../WithUploadLogic/WithUploadLogic';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
 
 export default {
-  component: FileField,
-  title: 'FileField',
+  component: ImageField,
+  title: 'ImageField',
   decorators: [withKnobs],
 };
 
@@ -18,50 +18,26 @@ const knobs = {
   disabled: () => boolean('Disabled', false),
   maxLength: () => number('Max length', undefined),
   removable: () => boolean('Removable', true),
-  url: () => text('Url', 'https://antoniodiaz.me/cv/antonio_diaz_correa_cv.pdf'),
+  url: () => text('Url', 'https://i.picsum.photos/id/1067/1500/1000.jpg'),
 };
 
 export const Default = () => {
   const [value, setValue] = useState(undefined);
+  const ImageFieldWithUploadApi = WithUploadLogic(ImageField);
 
   return (
     <>
-      <H1>File field</H1>
+      <H1>Image field</H1>
       <Hr type="spacer" size="big" />
-      <FileField
-        label="My file"
-        name="Some file"
-        removable={knobs.removable()}
-        maxLength={knobs.maxLength()}
-        url={value}
-        grow={knobs.grow()}
-        error={knobs.error()}
-        success={knobs.success()}
-        disabled={knobs.disabled()}
-        onChange={event => setValue(event.target.value)}
-        onRemove={() => setValue(undefined)}
-      />
-    </>
-  );
-};
-
-export const ExampleFileFieldWithUploadApi = () => {
-  const [value, setValue] = useState('Some value');
-  const FileFieldWithUploadApi = WithUploadLogic(FileField);
-
-  return (
-    <>
-      <H1>File field</H1>
-      <Hr type="spacer" size="big" />
-      <FileFieldWithUploadApi
+      <ImageFieldWithUploadApi
         label="My file"
         name="Some file"
         removable={knobs.removable()}
         maxLength={knobs.maxLength()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        url={value}
         urlApiUpload="http://0.0.0.0:3000/api/v1/upload"
+        url={value}
         onUploaded={url => setValue(url)}
         onRemove={() => setValue(undefined)}
       />

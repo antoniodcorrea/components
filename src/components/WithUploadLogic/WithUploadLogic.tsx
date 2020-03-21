@@ -4,7 +4,7 @@ import { UploadFileToServer, RemoveFilefromServer, PropsBaseComponent } from './
 
 interface Props {
   className?: any;
-  url?: string;
+  url: string;
   grow?: boolean;
   label?: string;
   textButton?: string;

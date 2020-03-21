@@ -1,0 +1,131 @@
+@import '../../css/imports.less';
+
+@c: .ImageField;
+
+@{c} {
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+  height: 300px;
+  width: 300px;
+  border: 2px dashed @c-base;
+  user-select: none;
+
+  &:hover {
+    @{c}-background {
+      opacity: 1;
+    }
+
+    @{c}-icons {
+      opacity: 1;
+    }
+  }
+
+  &-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-icons {
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity @td-fast @ease;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 25px;
+    margin-left: 5px;
+    padding: 7px;
+    background: @c-background;
+    border-radius: 50%;
+  }
+
+  &-background {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    background: @c-traslucid--hard;
+    transition: opacity @td-fast @ease;
+  }
+
+  &-progress {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    opacity: 0;
+    background: @c-traslucid--hard;
+    transition: opacity @td-fast @ease;
+    pointer-events: none;
+  }
+
+  &--loading {
+    opacity: 1;
+  }
+
+  &-dropzoneEmpty {
+    content: '';
+    display: flex;
+    position: absolute !important;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &--hasImage {
+    border: none;
+  }
+
+  &--error {
+    border: 2px dashed @c-error;
+
+    @{c}-iconEmpty {
+      fill: @c-error;
+    }
+  }
+
+  &--disabled {
+    border: 2px dashed @c-disabled;
+
+    @{c}-iconEmpty {
+      fill: @c-disabled;
+    }
+  }
+
+  &--success {
+    border: 2px dashed @c-success;
+
+    @{c}-iconEmpty {
+      fill: @c-success;
+    }
+  }
+}
