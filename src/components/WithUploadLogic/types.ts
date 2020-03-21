@@ -25,6 +25,7 @@ export interface PropsBaseComponent {
   className?: string;
   file?: string;
   grow?: boolean;
+  rounded?: boolean;
   percentCompleted?: number;
   removable?: boolean;
   accept?: any;

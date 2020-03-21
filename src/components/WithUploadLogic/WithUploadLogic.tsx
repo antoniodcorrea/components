@@ -6,6 +6,7 @@ interface Props {
   className?: any;
   url: string;
   grow?: boolean;
+  rounded?: boolean;
   label?: string;
   textButton?: string;
   name?: string;
@@ -122,7 +123,7 @@ export const WithUploadLogic = (BaseComponent: React.ComponentType<PropsBaseComp
     };
 
     render() {
-      const { className, grow, label, textButton, name, accept, removable, maxLength, disabled } = this.props;
+      const { className, grow, label, textButton, name, accept, removable, maxLength, disabled, rounded } = this.props;
       const { error, success, url } = this.state;
 
       return (
@@ -130,6 +131,7 @@ export const WithUploadLogic = (BaseComponent: React.ComponentType<PropsBaseComp
           className={className}
           url={url}
           grow={grow}
+          rounded={rounded}
           label={label}
           textButton={textButton}
           name={name}

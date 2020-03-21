@@ -19,6 +19,10 @@
     @{c}-icons {
       opacity: 1;
     }
+
+    @{c}-upload {
+      opacity: 1;
+    }
   }
 
   &-image {
@@ -26,31 +30,6 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
-  }
-
-  &-icons {
-    display: flex;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    opacity: 0;
-    transition: opacity @td-fast @ease;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  &-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 25px;
-    width: 25px;
-    margin-left: 5px;
-    padding: 7px;
-    background: @c-background;
-    border-radius: 50%;
   }
 
   &-background {
@@ -84,7 +63,7 @@
     opacity: 1;
   }
 
-  &-dropzoneEmpty {
+  &-upload {
     content: '';
     display: flex;
     position: absolute !important;
@@ -103,6 +82,14 @@
 
   &--hasImage {
     border: none;
+
+    @{c}-upload {
+      opacity: 0;
+    }
+
+    @{c}-icon {
+      fill: @c-background;
+    }
   }
 
   &--grow {
@@ -135,6 +122,18 @@
 
     @{c}-iconEmpty {
       fill: @c-success;
+    }
+  }
+
+  &--rounded {
+    border-radius: 50%;
+
+    @{c}-image {
+      border-radius: 50%;
+    }
+
+    @{c}-background {
+      border-radius: 50%;
     }
   }
 }

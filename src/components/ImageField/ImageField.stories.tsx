@@ -15,9 +15,9 @@ const knobs = {
   grow: () => boolean('Grow', false),
   error: () => boolean('Error', false),
   success: () => boolean('Success', false),
+  rounded: () => boolean('Rounded', false),
   disabled: () => boolean('Disabled', false),
   maxLength: () => number('Max length', undefined),
-  removable: () => boolean('Removable', true),
   url: () => text('Url', 'https://i.picsum.photos/id/1067/1500/1000.jpg'),
 };
 
@@ -32,10 +32,10 @@ export const Default = () => {
       <ImageFieldWithUploadApi
         label="My file"
         name="Some file"
-        removable={knobs.removable()}
         maxLength={knobs.maxLength()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
+        rounded={knobs.rounded()}
         urlApiUpload="http://0.0.0.0:3000/api/v1/upload"
         url={value}
         onUploaded={url => setValue(url)}
