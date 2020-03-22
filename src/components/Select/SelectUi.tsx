@@ -2,11 +2,13 @@ import React from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { components } from 'react-select';
 import { Cross, ArrowDown } from '../Svg';
+import { Value } from './types';
+
 import './Select.less';
 
 interface Props {
   label: string;
-  value?: any;
+  value?: Value;
   grow?: boolean;
   limit?: number;
   onChange: any;
@@ -63,6 +65,7 @@ class SelectUi extends React.Component<Props> {
 
   render = () => {
     const { grow, value, loadOptions, onChange } = this.props;
+
     return (
       <div className={'Select ' + (grow ? 'Select--grow' : '')}>
         <AsyncCreatableSelect

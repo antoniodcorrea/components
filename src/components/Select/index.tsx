@@ -1,32 +1,28 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SelectUi from './SelectUi';
-
-interface Props {
-  label: string;
-  value?: any;
-  grow?: boolean;
-  limit?: number;
-  apiUrl?: string;
-  token?: string;
-  optionFilterFieldName?: string;
-  onChange?: (e) => void;
-}
+import { LoadOptionsFromServer, Props, Value } from './types';
 
 export class Select extends Component<Props> {
-  loadOptions = inputValue => {
+  loadOptionsFromServer: LoadOptionsFromServer = async inputValue => {
     const { optionFilterFieldName, apiUrl, token } = this.props;
-    return axios({
-      method: 'get',
-      url:
-        apiUrl +
-        (optionFilterFieldName ? '/' + optionFilterFieldName + '/?' + optionFilterFieldName + '=' + inputValue : ''),
+    const url =
+      apiUrl +
+      (optionFilterFieldName ? '/' + optionFilterFieldName + '/?' + optionFilterFieldName + '=' + inputValue : '');
+
+    const config = {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
         Authorization: 'Bearer ' + token,
       },
-    })
+    };
+
+    return axios.get(url, config);
+  };
+
+  loadOptions = (inputValue: string): Promise<Value[]> => {
+    return this.loadOptionsFromServer(inputValue)
       .then(response => {
         response.data.map(item => {
           item.label = item.name;
@@ -38,11 +34,11 @@ export class Select extends Component<Props> {
         return response.data;
       })
       .catch(err => {
-        console.log(err);
+        return err;
       });
   };
 
-  onChange = newValues => {
+  onChange = (newValues: Value[]): void => {
     const { onChange, limit, value } = this.props;
     const updateValues = !newValues || newValues.length <= limit;
     const updatedValues = updateValues ? newValues : value;
