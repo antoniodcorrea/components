@@ -41,7 +41,7 @@ export class Select extends Component<Props> {
         console.log(err);
       });
   };
-gi
+
   onChange = newValues => {
     const { onChange, limit, value } = this.props;
     const updateValues = !newValues || newValues.length <= limit;

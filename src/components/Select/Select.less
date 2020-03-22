@@ -18,10 +18,10 @@
 
   &__control:not(.noClass) {
     min-height: 40px;
+    background: @c-background;
     border: 2px solid @c-base;
     border-radius: 0;
     box-shadow: none;
-    background: @c-background;
 
     &:hover {
       border: 2px solid @c-base;
@@ -46,7 +46,7 @@
   @{c}__label--active {
     padding: 0 7px 0 6px;
     background: @c-background;
-    transform: translate(-18px, -21px) scale(0.8);
+    transform: translate(-18px, -22px) scale(0.8);
   }
 
   &__indicator-separator:not(.noClass) {
@@ -65,7 +65,7 @@
     height: 36px;
     margin: 0;
     padding: 2px 5px;
-    padding: 1px 0 0 7px;
+    padding: 1px 0 0 4px;
     overflow-x: scroll;
     cursor: text;
 
@@ -99,6 +99,7 @@
   }
 
   &__multi-value__label:not(.noClass) {
+    padding: 2px 3px 2px 6px;
     white-space: unset;
     transition: color @td-fast @ease;
     text-overflow: unset;
