@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Hr } from '.';
+import { Hr, HrType, HrSize } from '.';
 
 export default {
   component: Hr,
@@ -11,11 +11,11 @@ export default {
 const defaultProps = {};
 
 const knobs = {
-  type: () => select('Type', [undefined, 'spacer', 'shrink'], undefined),
-  size: () => select('Size', [undefined, 'small', 'normal', 'big'], undefined),
+  type: (): HrType => select('Type', [undefined, 'spacer', 'shrink'], undefined),
+  size: (): HrSize => select('Size', [undefined, 'small', 'normal', 'big'], undefined),
 };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <div style={{ width: '200px' }}>
     <Hr {...defaultProps} type={knobs.type()} size={knobs.size()} />
   </div>

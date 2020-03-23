@@ -1,10 +1,13 @@
 import React from 'react';
 import './Layout.less';
 
+export type LayoutHorizontal = 'center' | 'right' | 'left' | 'even' | 'around' | 'between';
+export type LayoutVertical = 'center' | 'top' | 'bottom';
+
 interface Props {
   children: React.ReactNode;
-  horizontal?: 'center' | 'right' | 'left' | 'even' | 'around' | 'between';
-  vertical?: 'center' | 'top' | 'bottom';
+  horizontal?: LayoutHorizontal;
+  vertical?: LayoutVertical;
 }
 
 export const Layout: React.FC<Props> = ({ children, horizontal, vertical }) => (

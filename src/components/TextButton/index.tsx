@@ -3,9 +3,11 @@ import { Span } from '../Span';
 import { SvgIcon } from '../Svg';
 import './TextButton.less';
 
+export type TextButtonIcon = 'ArrowRight';
+
 interface Props {
   text: string;
-  icon: 'ArrowRight';
+  icon: TextButtonIcon;
   variant?: boolean;
   disabled?: boolean;
   onClick?: () => void;

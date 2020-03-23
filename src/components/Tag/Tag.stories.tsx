@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Tag } from '.';
+import { Tag, Notification } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
 
@@ -11,10 +11,10 @@ export default {
 };
 
 const knobs = {
-  notification: () => select('Notification', ['success', 'alert', 'error', undefined], undefined),
+  notification: (): Notification => select('Notification', ['success', 'error', 'alert', undefined], undefined),
 };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <>
     <H1>Tag</H1>
     <Hr type="spacer" />
@@ -22,7 +22,7 @@ export const Default = () => (
   </>
 );
 
-export const Alternate = () => {
+export const Alternate: React.FC = () => {
   return (
     <>
       <H1>Tag</H1>

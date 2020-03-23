@@ -18,7 +18,7 @@ module.exports = {
     'no-unused-vars': 0,
     'no-undef': 0,
     'arrow-parens': ['error', 'always'],
-    'quote-props': ['warn', 'consistent'],
+    'quote-props': ['error', 'as-needed'],
     'no-duplicate-imports': ['warn', { includeExports: false }],
     'no-redeclare': 0,
     'no-dupe-keys': 0,

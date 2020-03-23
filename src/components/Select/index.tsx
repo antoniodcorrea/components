@@ -4,7 +4,7 @@ import SelectUi from './SelectUi';
 import { LoadOptionsFromServer, Props, Value } from './types';
 
 export class Select extends Component<Props> {
-  loadOptionsFromServer: LoadOptionsFromServer = async inputValue => {
+  loadOptionsFromServer: LoadOptionsFromServer = async (inputValue) => {
     const { optionFilterFieldName, apiUrl, token } = this.props;
     const url =
       apiUrl +
@@ -23,8 +23,8 @@ export class Select extends Component<Props> {
 
   loadOptions = (inputValue: string): Promise<Value[]> => {
     return this.loadOptionsFromServer(inputValue)
-      .then(response => {
-        response.data.map(item => {
+      .then((response) => {
+        response.data.map((item) => {
           item.label = item.name;
           item.value = item.name;
 
@@ -33,7 +33,7 @@ export class Select extends Component<Props> {
 
         return response.data;
       })
-      .catch(err => {
+      .catch((err) => {
         return err;
       });
   };
@@ -46,7 +46,7 @@ export class Select extends Component<Props> {
     onChange(updatedValues);
   };
 
-  render = () => {
+  render = (): React.ReactNode => {
     const { grow, value, label, limit } = this.props;
 
     return (

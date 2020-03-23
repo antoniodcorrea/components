@@ -10,7 +10,7 @@ export default {
   title: 'Ul',
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   return (
     <>
       <H1>Input</H1>

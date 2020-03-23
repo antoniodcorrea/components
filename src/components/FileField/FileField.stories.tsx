@@ -12,16 +12,16 @@ export default {
 };
 
 const knobs = {
-  grow: () => boolean('Grow', false),
-  error: () => boolean('Error', false),
-  success: () => boolean('Success', false),
-  disabled: () => boolean('Disabled', false),
-  maxLength: () => number('Max length', undefined),
-  removable: () => boolean('Removable', true),
-  url: () => text('Url', 'https://antoniodiaz.me/cv/antonio_diaz_correa_cv.pdf'),
+  grow: (): boolean => boolean('Grow', false),
+  error: (): boolean => boolean('Error', false),
+  success: (): boolean => boolean('Success', false),
+  disabled: (): boolean => boolean('Disabled', false),
+  maxLength: (): number => number('Max length', undefined),
+  removable: (): boolean => boolean('Removable', true),
+  url: (): string => text('Url', 'https://antoniodiaz.me/cv/antonio_diaz_correa_cv.pdf'),
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   const [value, setValue] = useState(undefined);
 
   return (
@@ -38,14 +38,14 @@ export const Default = () => {
         error={knobs.error()}
         success={knobs.success()}
         disabled={knobs.disabled()}
-        onChange={event => setValue(event.target.value)}
-        onRemove={() => setValue(undefined)}
+        onChange={(event): void => setValue(event.target.value)}
+        onRemove={(): void => setValue(undefined)}
       />
     </>
   );
 };
 
-export const ExampleFileFieldWithUploadApi = () => {
+export const ExampleFileFieldWithUploadApi: React.FC = () => {
   const [value, setValue] = useState('Some value');
   const FileFieldWithUploadApi = WithUploadLogic(FileField);
 
@@ -62,8 +62,8 @@ export const ExampleFileFieldWithUploadApi = () => {
         grow={knobs.grow()}
         url={value}
         urlApiUpload="http://0.0.0.0:3000/api/v1/upload"
-        onUploaded={url => setValue(url)}
-        onRemove={() => setValue(undefined)}
+        onUploaded={(url): void => setValue(url)}
+        onRemove={(): void => setValue(undefined)}
       />
     </>
   );

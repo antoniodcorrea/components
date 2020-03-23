@@ -13,7 +13,7 @@ export interface Props {
   file?: string;
   grow?: boolean;
   percentCompleted?: number;
-  accept?: any;
+  accept?: string;
   size?: string;
   maxLength?: number;
   error?: boolean;

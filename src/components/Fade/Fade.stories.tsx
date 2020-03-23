@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, boolean, select } from '@storybook/addon-knobs';
-import { Fade } from '.';
+import { Fade, FadeSpeed } from '.';
 import { P } from '../P';
 
 export default {
@@ -10,11 +10,11 @@ export default {
 };
 
 const knobs = {
-  mounted: () => boolean('Mounted', false),
-  speed: () => select('Speed', [undefined, 'fastest', 'fast', 'normal', 'slow'], 'fast'),
+  mounted: (): boolean => boolean('Mounted', false),
+  speed: (): FadeSpeed => select('Speed', [undefined, 'fastest', 'fast', 'normal', 'slow'], 'fast'),
 };
 
-export const Empty = () => (
+export const Empty: React.FC = () => (
   <Fade mounted={knobs.mounted()} speed={knobs.speed()}>
     <P>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto itaque saepe dolores. Voluptatibus sint placeat

@@ -1,10 +1,13 @@
 import React from 'react';
 import './Notification.less';
 
+export type NotificationType = 'success' | 'error' | 'alert';
+export type NotificationSize = 'small' | 'normal' | 'big';
+
 interface Props {
   className?: string;
-  type?: 'success' | 'error' | 'alert';
-  size?: 'small' | 'normal' | 'big';
+  type?: NotificationType;
+  size?: NotificationSize;
 }
 
 export const Notification: React.FC<Props> = ({ className, type, size = 'normal' }) => (

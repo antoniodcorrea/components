@@ -10,21 +10,20 @@ const MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
 interface Props {
   name: string;
   label: string;
-  value: any;
-  input?: any;
+  value: Date;
   locale?: string;
   disabled?: boolean;
   inline?: boolean;
   showTimeSelect?: boolean;
   minDate?: Date;
   maxDate?: Date;
-  onChange: (date) => any;
+  onChange: (date) => void;
 }
 
 interface State {
-  inputValue: any;
-  datePickerValue: any;
-  focused: boolean;
+  inputValue?: string;
+  datePickerValue?: Date;
+  focused?: boolean;
 }
 
 export class DatePicker extends Component<Props, State> {
@@ -34,16 +33,19 @@ export class DatePicker extends Component<Props, State> {
     super(props);
     this.calendarRef = React.createRef();
 
+    const inputValue = this.props.value && moment(this.props.value).format(MOMENT_DATE_FORMAT);
+
     this.state = {
-      inputValue: this.props.value,
+      inputValue,
       datePickerValue: this.props.value,
       focused: false,
     };
   }
 
-  handleInputChange = event => {
+  handleInputChange = (event): void => {
     const { onChange } = this.props;
-    let date = moment(event.target.value, MOMENT_DATE_FORMAT);
+    const date = moment(event.target.value, MOMENT_DATE_FORMAT);
+
     this.setState({
       inputValue: event.target.value,
     });
@@ -57,26 +59,21 @@ export class DatePicker extends Component<Props, State> {
     }
   };
 
-  handleDatePickerChange = date => {
+  handleDatePickerChange = (date): void => {
     const { onChange } = this.props;
-    console.log('--  --  --  --  --  --  --  --  --  --  --  ');
-    console.log('--  --  --  --  --  --  --  --  --  --  --  ');
-
-    console.log(date);
-    console.log('--  --  --  --  --  --  --  --  --  --  --  ');
-    console.log('--  --  --  --  --  --  --  --  --  --  --  ');
 
     this.setState({
       datePickerValue: date,
       inputValue: moment(date).format(MOMENT_DATE_FORMAT),
     });
+
     onChange(date);
   };
 
-  render() {
+  render = (): React.ReactNode => {
     const { value, label, locale = 'en', showTimeSelect, minDate, maxDate, disabled, inline, name } = this.props;
 
-    let formattedDate = moment(this.state.inputValue, MOMENT_DATE_FORMAT);
+    const formattedDate = moment(this.state.inputValue, MOMENT_DATE_FORMAT);
     const isInputActive = formattedDate.isValid() || this.state.focused;
 
     return (
@@ -90,24 +87,24 @@ export class DatePicker extends Component<Props, State> {
             value={this.state.inputValue}
             onChange={this.handleInputChange}
             grow
-            onFocus={() => {
+            onFocus={(): void => {
               this.calendarRef.current.setOpen(true);
               this.setState({
                 focused: true,
               });
             }}
-            onClick={() => {
+            onClick={(): void => {
               this.calendarRef.current.setOpen(true);
               this.setState({
                 focused: true,
               });
             }}
-            onBlur={() => {
+            onBlur={(): void => {
               this.setState({
                 focused: false,
               });
             }}
-            onKeyDown={() => {
+            onKeyDown={(): void => {
               this.calendarRef.current.setOpen(false);
             }}
           />
@@ -135,5 +132,5 @@ export class DatePicker extends Component<Props, State> {
         {/* {meta.touched && meta.error && <div className="DatePicker-error">{meta.error}</div>} */}
       </div>
     );
-  }
+  };
 }

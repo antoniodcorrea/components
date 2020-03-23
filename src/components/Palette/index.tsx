@@ -3,7 +3,7 @@ import './Palette.less';
 import { Span } from '../Span';
 import { Hr } from '../Hr';
 
-export const Palette = () => (
+export const Palette: React.FC = () => (
   <div className="Palette">
     <div className="Palette-colors">
       <div className="Palette-color Palette-color--base">

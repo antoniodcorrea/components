@@ -1,7 +1,7 @@
 import React from 'react';
 import { withKnobs, boolean, select } from '@storybook/addon-knobs';
 import { SpinnerCircle } from '.';
-import { Fade } from '../Fade';
+import { Fade, FadeSpeed } from '../Fade';
 import { Span } from '../Span';
 import { Border } from '../Border';
 import { Hr } from '../Hr';
@@ -13,11 +13,11 @@ export default {
 };
 
 const knobs = {
-  mounted: () => boolean('Mounted', false),
-  speed: () => select('Speed', [undefined, 'fastest', 'fast', 'normal', 'slow'], 'fast'),
+  mounted: (): boolean => boolean('Mounted', false),
+  speed: (): FadeSpeed => select('Speed', [undefined, 'fastest', 'fast', 'normal', 'slow'], 'fast'),
 };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <>
     <Fade mounted={knobs.mounted()} speed={knobs.speed()}>
       <SpinnerCircle />

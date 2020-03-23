@@ -1,9 +1,12 @@
 import React from 'react';
 import './Hr.less';
 
+export type HrType = 'spacer' | 'shrink';
+export type HrSize = 'block' | 'nano' | 'micro' | 'small' | 'normal' | 'big';
+
 interface Props {
-  type?: 'spacer' | 'shrink';
-  size?: 'block' | 'nano' | 'micro' | 'small' | 'normal' | 'big' | false;
+  type?: HrType;
+  size?: HrSize;
 }
 
 export const Hr: React.FC<Props> = ({ type, size = 'normal' }) => (

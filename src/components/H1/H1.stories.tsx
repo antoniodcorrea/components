@@ -9,9 +9,9 @@ export default {
 };
 
 const knobs = {
-  text: () => text('Text', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'),
+  text: (): string => text('Text', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'),
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   return <H1>{knobs.text()}</H1>;
 };

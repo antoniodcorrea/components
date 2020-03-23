@@ -10,14 +10,14 @@ export default {
 };
 
 const knobs = {
-  text: () => text('Button', 'Click me!'),
-  grow: () => boolean('Grow', false),
-  disabled: () => boolean('Disabled', false),
-  success: () => boolean('Success', false),
-  error: () => boolean('Error', false),
+  text: (): string => text('Button', 'Click me!'),
+  grow: (): boolean => boolean('Grow', false),
+  disabled: (): boolean => boolean('Disabled', false),
+  success: (): boolean => boolean('Success', false),
+  error: (): boolean => boolean('Error', false),
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   return (
     <>
       <Button

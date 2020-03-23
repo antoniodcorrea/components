@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Triangle, Circle, Square, Check, Cross, ArrowRight, ArrowDown, ArrowLeft, ArrowUp, Loupe } from '.';
+import { IconSize, Triangle, Circle, Square, Check, Cross, ArrowRight, ArrowDown, ArrowLeft, ArrowUp, Loupe } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
 
@@ -11,12 +11,12 @@ export default {
 };
 
 const knobs = {
-  name: () => select('Name', ['square', 'triangle', 'circle'], 'circle'),
-  size: () =>
+  name: (): string => select('Name', ['square', 'triangle', 'circle'], 'circle'),
+  size: (): IconSize =>
     select('Size', ['nano', 'micro', 'small', 'normal', 'medium', 'big', 'biggest', 'huge', undefined], 'big'),
 };
 
-export const Icons = () => (
+export const Icons: React.FC = () => (
   <>
     <H1>Svg Icons</H1>
     <Hr type="spacer" />

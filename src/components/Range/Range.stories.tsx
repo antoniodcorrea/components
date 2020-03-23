@@ -11,18 +11,18 @@ export default {
 };
 
 const knobs = {
-  name: () => text('Name', 'name'),
-  value: () => text('Value', 'Some value'),
-  placeholder: () => text('Placeholder', 'placeholder'),
-  label: () => text('Label', 'label'),
-  readOnly: () => boolean('Read only', false),
-  error: () => boolean('Error', false),
-  success: () => boolean('Success', false),
-  disabled: () => boolean('Disabled', false),
-  grow: () => boolean('Grow', false),
+  name: (): string => text('Name', 'name'),
+  value: (): string => text('Value', 'Some value'),
+  placeholder: (): string => text('Placeholder', 'placeholder'),
+  label: (): string => text('Label', 'label'),
+  readOnly: (): boolean => boolean('Read only', false),
+  error: (): boolean => boolean('Error', false),
+  success: (): boolean => boolean('Success', false),
+  disabled: (): boolean => boolean('Disabled', false),
+  grow: (): boolean => boolean('Grow', false),
 };
 
-export const Empty = () => {
+export const Empty: React.FC = () => {
   const [value1, setValue1] = useState('');
 
   return (
@@ -33,7 +33,7 @@ export const Empty = () => {
         name="My Range"
         label="This is my range"
         value={value1}
-        onChange={e => setValue1(e.target.value)}
+        onChange={(e): void => setValue1(e.target.value)}
         error={knobs.error()}
         success={knobs.success()}
         disabled={knobs.disabled()}

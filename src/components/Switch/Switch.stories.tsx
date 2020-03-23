@@ -9,7 +9,7 @@ export default {
   title: 'Switch',
 };
 
-export const Empty = () => {
+export const Empty: React.FC = () => {
   const [value1, setValue1] = useState(false);
   const [value2, setValue2] = useState(true);
   const [value3, setValue3] = useState(false);
@@ -19,35 +19,11 @@ export const Empty = () => {
       <H1>Switches</H1>
       <Hr type="spacer" />
       <Border>
-        <Switch
-          name="Test"
-          label="Test"
-          checked={value1}
-          onChange={e => {
-            console.log(e.target.checked);
-            setValue1(e.target.checked);
-          }}
-        />
+        <Switch name="Test" label="Test" checked={value1} onChange={(e): void => setValue1(e.target.checked)} />
         <Hr type="spacer" size="small" />
-        <Switch
-          name="Test2"
-          label="Test2"
-          checked={value2}
-          onChange={e => {
-            console.log(e.target.checked);
-            setValue2(e.target.checked);
-          }}
-        />
+        <Switch name="Test2" label="Test2" checked={value2} onChange={(e): void => setValue2(e.target.checked)} />
         <Hr type="spacer" size="small" />
-        <Switch
-          name="Test3"
-          label="Test3"
-          checked={value3}
-          onChange={e => {
-            console.log(e.target.checked);
-            setValue3(e.target.checked);
-          }}
-        />
+        <Switch name="Test3" label="Test3" checked={value3} onChange={(e): void => setValue3(e.target.checked)} />
         <Hr type="spacer" size="small" />
       </Border>
       <Hr type="spacer" />

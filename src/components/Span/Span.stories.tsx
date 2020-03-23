@@ -9,16 +9,16 @@ export default {
 };
 
 const knobs = {
-  text: () =>
+  text: (): string =>
     text(
       'Span',
       'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nostrum aut tempore enim cum cupiditate nihil dolores quo aperiam sit id atque, vel eius? Ab doloribus dolore earum laboriosam incidunt eveniet'
     ),
-  bold: () => boolean('Bold', false),
-  disabled: () => boolean('Disabled', false),
+  bold: (): boolean => boolean('Bold', false),
+  disabled: (): boolean => boolean('Disabled', false),
 };
 
-export const Normal = () => {
+export const Normal: React.FC = () => {
   return (
     <Span bold={knobs.bold()} disabled={knobs.disabled()}>
       {knobs.text()}
@@ -26,7 +26,7 @@ export const Normal = () => {
   );
 };
 
-export const Small = () => {
+export const Small: React.FC = () => {
   return (
     <Span size="small" bold={knobs.bold()} disabled={knobs.disabled()}>
       {knobs.text()}
@@ -34,7 +34,7 @@ export const Small = () => {
   );
 };
 
-export const Micro = () => {
+export const Micro: React.FC = () => {
   return (
     <Span size="micro" bold={knobs.bold()} disabled={knobs.disabled()}>
       {knobs.text()}
@@ -42,7 +42,7 @@ export const Micro = () => {
   );
 };
 
-export const Nano = () => {
+export const Nano: React.FC = () => {
   return (
     <Span size="nano" bold={knobs.bold()} disabled={knobs.disabled()}>
       {knobs.text()}

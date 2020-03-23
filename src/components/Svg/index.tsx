@@ -14,11 +14,7 @@ import * as Icons from '.';
 import { SvgClickEvent } from './types';
 import './Svg.less';
 
-export interface Props {
-  size?: 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
-  className?: string;
-  onClick?: (event: SvgClickEvent) => void;
-}
+export type IconSize = 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
 
 export type IconsType =
   | 'Triangle'
@@ -33,28 +29,34 @@ export type IconsType =
   | 'Loupe'
   | 'upload';
 
+export interface Props {
+  size?: IconSize;
+  className?: string;
+  onClick?: (event: SvgClickEvent) => void;
+}
+
 export type SvgSpriteType = (
   SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 ) => (props: Props) => JSX.Element;
 
-const Svg: SvgSpriteType = SvgComponent => ({ className, size = 'normal', onClick }) => (
+const Svg: SvgSpriteType = (SvgComponent) => ({ className, size = 'normal', onClick }): React.ReactElement => (
   <SvgComponent
     className={'Svg ' + (className ? className : '') + (size ? ' Svg--' + size : '') + (onClick ? ' Svg--hover' : '')}
     onClick={onClick}
   />
 );
 
-export const Triangle: React.FC<Props> = props => Svg(TriangleSvg)(props);
-export const Square: React.FC<Props> = props => Svg(SquareSvg)(props);
-export const Circle: React.FC<Props> = props => Svg(CircleSvg)(props);
-export const Check: React.FC<Props> = props => Svg(CheckSvg)(props);
-export const Cross: React.FC<Props> = props => Svg(CrossSvg)(props);
-export const ArrowRight: React.FC<Props> = props => Svg(ArrowRightSvg)(props);
-export const ArrowUp: React.FC<Props> = props => Svg(ArrowUpSvg)(props);
-export const ArrowDown: React.FC<Props> = props => Svg(ArrowDownSvg)(props);
-export const ArrowLeft: React.FC<Props> = props => Svg(ArrowLeftSvg)(props);
-export const Loupe: React.FC<Props> = props => Svg(LoupeSvg)(props);
-export const Upload: React.FC<Props> = props => Svg(UploadSvg)(props);
+export const Triangle: React.FC<Props> = (props) => Svg(TriangleSvg)(props);
+export const Square: React.FC<Props> = (props) => Svg(SquareSvg)(props);
+export const Circle: React.FC<Props> = (props) => Svg(CircleSvg)(props);
+export const Check: React.FC<Props> = (props) => Svg(CheckSvg)(props);
+export const Cross: React.FC<Props> = (props) => Svg(CrossSvg)(props);
+export const ArrowRight: React.FC<Props> = (props) => Svg(ArrowRightSvg)(props);
+export const ArrowUp: React.FC<Props> = (props) => Svg(ArrowUpSvg)(props);
+export const ArrowDown: React.FC<Props> = (props) => Svg(ArrowDownSvg)(props);
+export const ArrowLeft: React.FC<Props> = (props) => Svg(ArrowLeftSvg)(props);
+export const Loupe: React.FC<Props> = (props) => Svg(LoupeSvg)(props);
+export const Upload: React.FC<Props> = (props) => Svg(UploadSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;
@@ -62,5 +64,6 @@ interface IconProps extends Props {
 
 export const SvgIcon: React.FC<IconProps> = ({ name, size, className }) => {
   const Component = Icons[name];
+
   return <Component size={size} className={className} />;
 };

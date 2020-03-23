@@ -10,11 +10,11 @@ export default {
 };
 
 const knobs = {
-  text: () => text('Text', 'Lorem ipsum dolor'),
-  grow: () => boolean('Grow', false),
+  text: (): string => text('Text', 'Lorem ipsum dolor'),
+  grow: (): boolean => boolean('Grow', false),
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   return (
     <div style={{ width: '300px' }}>
       <Border grow={knobs.grow()}>

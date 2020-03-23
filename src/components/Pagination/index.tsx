@@ -13,7 +13,7 @@ interface Props {
 }
 
 export class Pagination extends Component<Props> {
-  tempPreviousPage: number = 0;
+  tempPreviousPage = 0;
 
   static defaultProps = {
     pageNeighbours: 1,
@@ -29,6 +29,7 @@ export class Pagination extends Component<Props> {
     }
     if (range[0] !== 1) range.unshift(1);
     if (range[-1] !== totalPages) range.push(totalPages);
+
     return range;
   };
 
@@ -74,7 +75,7 @@ export class Pagination extends Component<Props> {
     return (
       <div className={'Pagination ' + (grow ? 'Pagination-grow' : '')}>
         <Border className="Pagination-border" padding="small" grow={grow}>
-          {pages.map(item => {
+          {pages.map((item) => {
             return this.renderItems(item, href, page);
           })}
         </Border>

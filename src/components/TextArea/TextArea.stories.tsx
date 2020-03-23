@@ -12,18 +12,18 @@ export default {
 };
 
 const knobs = {
-  name: () => text('Name', 'name'),
-  value: () => text('Value', 'Some value'),
-  placeholder: () => text('Placeholder', 'placeholder'),
-  label: () => text('Label', 'label'),
-  readOnly: () => boolean('Read only', false),
-  error: () => boolean('Error', false),
-  success: () => boolean('Success', false),
-  disabled: () => boolean('Disabled', false),
-  grow: () => boolean('Grow', false),
+  name: (): string => text('Name', 'name'),
+  value: (): string => text('Value', 'Some value'),
+  placeholder: (): string => text('Placeholder', 'placeholder'),
+  label: (): string => text('Label', 'label'),
+  readOnly: (): boolean => boolean('Read only', false),
+  error: (): boolean => boolean('Error', false),
+  success: (): boolean => boolean('Success', false),
+  disabled: (): boolean => boolean('Disabled', false),
+  grow: (): boolean => boolean('Grow', false),
 };
 
-export const Empty = () => {
+export const Empty: React.ReactNode = () => {
   const [value, setValue] = useState(
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, ab est qui reiciendis, sint vero aperiam vel soluta, mollitia laboriosam voluptate rem sed odit architecto labore ut harum libero perferendis!'
   );
@@ -45,7 +45,7 @@ export const Empty = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e): void => setValue(e.target.value)}
       />
       <Hr type="spacer" size="normal" />
       <Hr type="shrink" size="block" />
@@ -58,7 +58,7 @@ export const Empty = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        onChange={e => setValue2(e.target.value)}
+        onChange={(e): void => setValue2(e.target.value)}
       />
     </div>
   );

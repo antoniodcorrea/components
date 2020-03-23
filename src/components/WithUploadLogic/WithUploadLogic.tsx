@@ -3,14 +3,14 @@ import axios from 'axios';
 import { UploadFileToServer, RemoveFilefromServer, PropsBaseComponent } from './types';
 
 interface Props {
-  className?: any;
+  className?: string;
   url: string;
   grow?: boolean;
   rounded?: boolean;
   label?: string;
   textButton?: string;
   name?: string;
-  accept?: any;
+  accept?: string;
   removable?: boolean;
   percentCompleted?: number;
   maxLength?: number;
@@ -45,16 +45,16 @@ export const WithUploadLogic = (BaseComponent: React.ComponentType<PropsBaseComp
       };
     }
 
-    componentDidMount = () => {
+    componentDidMount = (): void => {
       const { url } = this.props;
       this.setState({ url });
     };
 
     uploadFileToServer: UploadFileToServer = async (urlApiUpload, data) => {
-      let config = {
-        onUploadProgress: progressEvent => {
+      const config = {
+        onUploadProgress: (progressEvent): void => {
           const { loaded, total } = progressEvent;
-          let percentCompleted = Math.round((loaded * 100) / total);
+          const percentCompleted = Math.round((loaded * 100) / total);
 
           this.setState({ percentCompleted });
         },
@@ -66,13 +66,13 @@ export const WithUploadLogic = (BaseComponent: React.ComponentType<PropsBaseComp
     removeFilefromServer: RemoveFilefromServer = async (urlApiUpload, data) =>
       axios.delete(urlApiUpload, { params: data });
 
-    onRemove = () => {
+    onRemove = (): void => {
       const { onRemove, url, urlApiUpload } = this.props;
       // eslint-disable-next-line no-restricted-globals
       if (!confirm('Are you sure?')) return;
       if (onRemove) onRemove(url);
 
-      this.removeFilefromServer(urlApiUpload, this.state.filesToRemove).then(response =>
+      this.removeFilefromServer(urlApiUpload, this.state.filesToRemove).then(() =>
         this.setState({
           url: undefined,
           filesToRemove: [],
@@ -80,7 +80,7 @@ export const WithUploadLogic = (BaseComponent: React.ComponentType<PropsBaseComp
       );
     };
 
-    onDrop = acceptedFiles => {
+    onDrop = (acceptedFiles): void => {
       const { onDrop, urlApiUpload } = this.props;
 
       if (!acceptedFiles.length) return;
@@ -91,15 +91,15 @@ export const WithUploadLogic = (BaseComponent: React.ComponentType<PropsBaseComp
         url: undefined,
       });
 
-      let data = new FormData();
+      const data = new FormData();
       data.append('files', acceptedFiles[0]);
 
       this.uploadFileToServer(urlApiUpload, data)
-        .then(res => this.onUploadedSuccess(res))
-        .catch(err => this.onUploadedError(err));
+        .then((res) => this.onUploadedSuccess(res))
+        .catch((err) => this.onUploadedError(err));
     };
 
-    onUploadedSuccess = res => {
+    onUploadedSuccess = (res): void => {
       const { onUploaded } = this.props;
 
       this.setState({
@@ -112,17 +112,16 @@ export const WithUploadLogic = (BaseComponent: React.ComponentType<PropsBaseComp
       if (onUploaded) onUploaded(res.data.img.original);
     };
 
-    onUploadedError = err => {
-      console.log(err);
+    onUploadedError = (err): void => {
       this.setState({
         url: '',
         percentCompleted: 0,
         isUploading: false,
-        error: true,
+        error: !!err,
       });
     };
 
-    render() {
+    render = (): React.ReactNode => {
       const { className, grow, label, textButton, name, accept, removable, maxLength, disabled, rounded } = this.props;
       const { error, success, url } = this.state;
 
@@ -146,6 +145,6 @@ export const WithUploadLogic = (BaseComponent: React.ComponentType<PropsBaseComp
           disabled={disabled}
         />
       );
-    }
+    };
   };
 };

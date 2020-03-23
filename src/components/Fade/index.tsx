@@ -3,6 +3,8 @@ import { CSSTransition } from 'react-transition-group';
 import { speedMap } from './speedMap';
 import './Fade.less';
 
+export type FadeSpeed = 'slow' | 'normal' | 'fast' | 'fastest';
+
 interface Props {
   classname?: string;
   mounted?: boolean;
@@ -11,7 +13,7 @@ interface Props {
   onEntered?: () => void;
   onExit?: () => void;
   onExited?: () => void;
-  speed?: 'slow' | 'normal' | 'fast' | 'fastest';
+  speed?: FadeSpeed;
 }
 
 export const Fade: React.FC<Props> = ({

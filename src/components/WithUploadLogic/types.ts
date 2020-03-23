@@ -28,7 +28,7 @@ export interface PropsBaseComponent {
   rounded?: boolean;
   percentCompleted?: number;
   removable?: boolean;
-  accept?: any;
+  accept?: string;
   size?: string;
   maxLength?: number;
   error?: boolean;

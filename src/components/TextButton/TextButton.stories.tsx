@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextButton } from '.';
+import { TextButton, TextButtonIcon } from '.';
 import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 
 export default {
@@ -9,9 +9,11 @@ export default {
 };
 
 const knobs = {
-  text: () => text('TextButton', 'Click me!'),
-  icon: () => select('Icon', ['ArrowRight'], 'ArrowRight'),
-  disabled: () => boolean('Disabled', false),
+  text: (): string => text('TextButton', 'Click me!'),
+  icon: (): TextButtonIcon => select('Icon', ['ArrowRight'], 'ArrowRight'),
+  disabled: (): boolean => boolean('Disabled', false),
 };
 
-export const Default = () => <TextButton text={knobs.text()} icon={knobs.icon()} disabled={knobs.disabled()} />;
+export const Default: React.FC = () => (
+  <TextButton text={knobs.text()} icon={knobs.icon()} disabled={knobs.disabled()} />
+);

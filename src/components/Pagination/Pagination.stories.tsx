@@ -18,10 +18,10 @@ const defaultProps = {
 };
 
 const knobs = {
-  grow: () => boolean('Grow', false),
+  grow: (): boolean => boolean('Grow', false),
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   return (
     <>
       <H1>Pagination</H1>

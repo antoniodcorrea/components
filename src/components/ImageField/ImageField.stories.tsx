@@ -12,16 +12,16 @@ export default {
 };
 
 const knobs = {
-  grow: () => boolean('Grow', false),
-  error: () => boolean('Error', false),
-  success: () => boolean('Success', false),
-  rounded: () => boolean('Rounded', false),
-  disabled: () => boolean('Disabled', false),
-  maxLength: () => number('Max length', undefined),
-  url: () => text('Url', 'https://i.picsum.photos/id/1067/1500/1000.jpg'),
+  grow: (): boolean => boolean('Grow', false),
+  error: (): boolean => boolean('Error', false),
+  success: (): boolean => boolean('Success', false),
+  rounded: (): boolean => boolean('Rounded', false),
+  disabled: (): boolean => boolean('Disabled', false),
+  maxLength: (): number => number('Max length', undefined),
+  url: (): string => text('Url', 'https://i.picsum.photos/id/1067/1500/1000.jpg'),
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   const [value, setValue] = useState(undefined);
   const ImageFieldWithUploadApi = WithUploadLogic(ImageField);
 
@@ -38,8 +38,8 @@ export const Default = () => {
         rounded={knobs.rounded()}
         urlApiUpload="http://0.0.0.0:3000/api/v1/upload"
         url={value}
-        onUploaded={url => setValue(url)}
-        onRemove={() => setValue(undefined)}
+        onUploaded={(url): void => setValue(url)}
+        onRemove={(): void => setValue(undefined)}
       />
     </>
   );

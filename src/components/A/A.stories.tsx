@@ -14,13 +14,13 @@ const defaultProps = {
 };
 
 const knobs = {
-  href: () => text('Href', 'http://example.com'),
-  text: () => text('Text', 'Click me!'),
-  styled: () => boolean('Styled', true),
-  targetBlank: () => boolean('Target', false),
+  href: (): string => text('Href', 'http://example.com'),
+  text: (): string => text('Text', 'Click me!'),
+  styled: (): boolean => boolean('Styled', true),
+  targetBlank: (): boolean => boolean('Target', false),
 };
 
-export const Default = () => (
+export const Default: React.FC = () => (
   <A {...defaultProps} targetBlank={knobs.targetBlank()} href={knobs.href()} styled={knobs.styled()}>
     {knobs.text()}
   </A>

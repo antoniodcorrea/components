@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Notification } from '.';
+import { Notification, NotificationType, NotificationSize } from '.';
 
 export default {
   component: Notification,
@@ -9,8 +9,8 @@ export default {
 };
 
 const knobs = {
-  size: () => select('Size', ['small', 'normal', 'big', undefined], 'small'),
-  type: () => select('Notification', ['success', 'alert', 'error', undefined], 'error'),
+  size: (): NotificationSize => select('Size', ['small', 'normal', 'big', undefined], 'small'),
+  type: (): NotificationType => select('Notification', ['success', 'alert', 'error', undefined], 'error'),
 };
 
-export const Default = () => <Notification type={knobs.type()} size={knobs.size()} />;
+export const Default: React.FC = () => <Notification type={knobs.type()} size={knobs.size()} />;

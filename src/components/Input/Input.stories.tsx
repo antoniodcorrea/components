@@ -12,26 +12,25 @@ export default {
 };
 
 const knobs = {
-  name: () => text('Name', 'name'),
-  value: () => text('Value', 'Some value'),
-  placeholder: () => text('Placeholder', 'placeholder'),
-  label: () => text('Label', 'label'),
-  readOnly: () => boolean('Read only', false),
-  error: () => boolean('Error', false),
-  success: () => boolean('Success', false),
-  disabled: () => boolean('Disabled', false),
-  grow: () => boolean('Grow', false),
+  name: (): string => text('Name', 'name'),
+  value: (): string => text('Value', 'Some value'),
+  placeholder: (): string => text('Placeholder', 'placeholder'),
+  label: (): string => text('Label', 'label'),
+  readOnly: (): boolean => boolean('Read only', false),
+  error: (): boolean => boolean('Error', false),
+  success: (): boolean => boolean('Success', false),
+  disabled: (): boolean => boolean('Disabled', false),
+  grow: (): boolean => boolean('Grow', false),
 };
 
-export const Empty = () => {
+export const Empty: React.FC = () => {
   const [value1, setValue1] = useState('');
   const [value2, setValue2] = useState('');
   const [value3, setValue3] = useState('');
   const [value4, setValue4] = useState('');
   const [success, setSuccess] = useState(undefined);
 
-  const onSubmit = () => {
-    console.log({ value1, value2, value3 });
+  const onSubmit = (): void => {
     setSuccess(true);
   };
 
@@ -51,7 +50,7 @@ export const Empty = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        onChange={e => setValue4(e.target.value)}
+        onChange={(e): void => setValue4(e.target.value)}
       />
       <Hr type="spacer" size="block" />
       <Input
@@ -63,7 +62,7 @@ export const Empty = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        onChange={e => setValue2(e.target.value)}
+        onChange={(e): void => setValue2(e.target.value)}
       />
       <Hr type="spacer" size="block" />
       <Input
@@ -75,7 +74,7 @@ export const Empty = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        onChange={e => setValue3(e.target.value)}
+        onChange={(e): void => setValue3(e.target.value)}
       />
       <Hr type="spacer" size="block" />
       <Input
@@ -88,7 +87,7 @@ export const Empty = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        onChange={e => setValue1(e.target.value)}
+        onChange={(e): void => setValue1(e.target.value)}
       />
       <Hr type="spacer" />
       <Button text="Submit" onClick={onSubmit} success={success} grow={knobs.grow()} />

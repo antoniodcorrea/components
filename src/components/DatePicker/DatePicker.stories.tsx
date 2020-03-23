@@ -12,19 +12,19 @@ export default {
 };
 
 const knobs = {
-  value: () => text('Value', 'Some value'),
-  placeholder: () => text('Placeholder', 'placeholder'),
-  label: () => text('Label', 'label'),
-  readOnly: () => boolean('Read only', false),
-  inline: () => boolean('Inline', false),
-  error: () => boolean('Error', false),
-  success: () => boolean('Success', false),
-  disabled: () => boolean('Disabled', false),
-  grow: () => boolean('Grow', false),
+  value: (): string => text('Value', 'Some value'),
+  placeholder: (): string => text('Placeholder', 'placeholder'),
+  label: (): string => text('Label', 'label'),
+  readOnly: (): boolean => boolean('Read only', false),
+  inline: (): boolean => boolean('Inline', false),
+  error: (): boolean => boolean('Error', false),
+  success: (): boolean => boolean('Success', false),
+  disabled: (): boolean => boolean('Disabled', false),
+  grow: (): boolean => boolean('Grow', false),
 };
 
-export const Empty = () => {
-  const [value1, setValue1] = useState(undefined);
+export const Empty: React.FC = () => {
+  const [value1, setValue1] = useState(new Date());
 
   return (
     <>
@@ -37,9 +37,7 @@ export const Empty = () => {
         label="Date"
         inline={knobs.inline()}
         value={value1}
-        onChange={date => {
-          setValue1(date);
-        }}
+        onChange={(date): void => setValue1(date)}
       />
     </>
   );

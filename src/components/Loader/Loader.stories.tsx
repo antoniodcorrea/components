@@ -11,12 +11,12 @@ export default {
 };
 
 const knobs = {
-  loaded: () => number('Loaded', 20, { range: true, min: 0, max: 100, step: 1 }),
-  error: () => boolean('Error', false),
-  grow: () => boolean('Grow', false),
+  loaded: (): number => number('Loaded', 20, { range: true, min: 0, max: 100, step: 1 }),
+  error: (): boolean => boolean('Error', false),
+  grow: (): boolean => boolean('Grow', false),
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   return (
     <div>
       <H1>Loader</H1>

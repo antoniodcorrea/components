@@ -8,6 +8,6 @@ export default {
 
 const defaultProps = {};
 
-export const Default = () => {
+export const Default: React.FC = () => {
   return <Palette {...defaultProps} />;
 };

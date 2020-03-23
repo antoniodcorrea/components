@@ -22,9 +22,9 @@ export const Radio: React.FC<Props> = ({ name, options, value, className, grow, 
       (grow ? ' Radio--grow' : '') +
       (inline ? ' Radio--inline' : '')
     }
-    onChange={e => onChange(e)}
+    onChange={(e): void => onChange(e)}
   >
-    {options.map(item => (
+    {options.map((item) => (
       <React.Fragment key={item.value}>
         <div className="Radio-item">
           <input

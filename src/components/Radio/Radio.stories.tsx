@@ -12,11 +12,11 @@ export default {
 };
 
 const knobs = {
-  grow: () => boolean('Grow', false),
-  inline: () => boolean('Inline', false),
+  grow: (): boolean => boolean('Grow', false),
+  inline: (): boolean => boolean('Inline', false),
 };
 
-export const Empty = () => {
+export const Empty: React.FC = () => {
   const [value, setValue] = useState('2');
 
   return (
@@ -43,9 +43,8 @@ export const Empty = () => {
               label: 'Option 3',
             },
           ]}
-          onChange={e => {
+          onChange={(e): void => {
             setValue(e.target.value);
-            console.log({ value });
           }}
           grow={knobs.grow()}
           inline={knobs.inline()}
