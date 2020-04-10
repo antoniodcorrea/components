@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { UploadFileToServer, RemoveFilefromServer, PropsBaseComponent } from './types';
+import { UploadFileToServer, RemoveFilefromServer, PropsBaseComponent } from './WithUploadLogic.types';
 
 interface Props {
   className?: string;

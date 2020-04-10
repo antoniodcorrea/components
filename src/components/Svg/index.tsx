@@ -11,7 +11,7 @@ import ArrowLeftSvg from 'svg/arrowLeft.svg';
 import LoupeSvg from 'svg/loupe.svg';
 import UploadSvg from 'svg/upload.svg';
 import * as Icons from '.';
-import { SvgClickEvent } from './types';
+import { SvgClickEvent } from './Svg.types';
 import './Svg.less';
 
 export type IconSize = 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';

@@ -2,7 +2,7 @@ import React from 'react';
 import AsyncCreatableSelect from 'react-select/async-creatable';
 import { components } from 'react-select';
 import { Cross, ArrowDown } from '../Svg';
-import { Value } from './types';
+import { Value } from './Select.types';
 
 import './Select.less';
 

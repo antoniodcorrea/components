@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import SelectUi from './SelectUi';
-import { LoadOptionsFromServer, Props, Value } from './types';
+import { LoadOptionsFromServer, Props, Value } from './Select.types';
 
 export class Select extends Component<Props> {
   loadOptionsFromServer: LoadOptionsFromServer = async (inputValue) => {
