@@ -8,7 +8,7 @@
     "url": "https://antoniodiaz.me"
   },
   "scripts": {
-    "build": "webpack -p --config webpack.config.js",
+    "build": "webpack --config webpack.config.ts",
     "build-storybook": "build-storybook",
     "clearComponents": "find components -name '*' -delete",
     "storybook": "start-storybook -s ./src/assets/Svg/Icons -p 6006 watch-css",
@@ -16,7 +16,8 @@
   },
   "files": [
     "/dist",
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "dependencies": {
     "axios": "^0.19.2",
@@ -37,13 +38,18 @@
     "@storybook/react": "^6.0.0-alpha.19",
     "@storybook/theming": "^5.3.13",
     "@svgr/webpack": "^5.2.0",
+    "@types/copy-webpack-plugin": "^5.0.0",
     "@types/jest": "^25.1.0",
+    "@types/mini-css-extract-plugin": "^0.9.1",
     "@types/react": "^16.9.20",
-    "@typescript-eslint/eslint-plugin": "^2.24.0",
-    "@typescript-eslint/parser": "^2.24.0",
+    "@types/webpack": "^4.41.10",
+    "@types/webpack-node-externals": "^1.7.1",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
@@ -52,10 +58,13 @@
     "expect": "^24.9.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^5.1.0",
+    "isomorphic-style-loader": "^5.1.0",
     "jest": "^24.9.0",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
     "prettier": "^2.0.1",
+    "prettier-eslint": "^9.0.1",
     "raw-loader": "^4.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -71,7 +80,10 @@
     "svg-react-loader": "^0.4.6",
     "svg-url-loader": "^4.0.0",
     "ts-jest": "^24.3.0",
-    "typescript": "^3.6.2",
-    "webpack-cli": "^3.3.11"
+    "ts-loader": "^6.2.2",
+    "ts-node": "^8.8.2",
+    "typescript": "^3.8.3",
+    "webpack-cli": "^3.3.11",
+    "webpack-node-externals": "^1.7.2"
   }
 }

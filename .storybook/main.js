@@ -33,9 +33,10 @@ module.exports = {
 
     config.resolve.extensions.push('.svg');
 
-    config.module.rules.forEach(function(data, key) {
+    config.module.rules.forEach(function (data, key) {
       if (data.test.toString().indexOf('svg|') >= 0) {
         config.module.rules[key].test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
+        
         return false;
       }
     });
@@ -44,8 +45,8 @@ module.exports = {
     config.resolve.extensions.push('.ts', '.tsx', '.svg');
 
     config.resolve.alias = {
-      components: path.resolve(__dirname, '../src/components/'),
-      svg: path.resolve(__dirname, '../src/assets/svg/'),
+      Components: path.resolve(__dirname, '../src/components/'),
+      Svg: path.resolve(__dirname, '../src/assets/svg/'),
     };
 
     return config;

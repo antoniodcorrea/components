@@ -1,12 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "esnext",
+    "baseUrl": "./src",
+    "outDir": "./dist/",
     "jsx": "react",
-    "esModuleInterop": true,
+    "allowJs": true,
+    "sourceMap": true,
     "moduleResolution": "node",
-    "outDir": "components",
-    "rootDir": "src/components"
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es5",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    "paths": {
+      "Svg/*": ["./src/assets/svg/*"],
+      "Components/*": ["./src/components/*"]
+    }
   },
-  "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.config.*"]
+  "exclude": ["**/*.stories.*", "**/*.test.*"],
+  "include": ["./tools/**/*", "./src/**/*", "./webpack.config.ts"]
 }
