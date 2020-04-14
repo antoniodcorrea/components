@@ -12,11 +12,7 @@
     "target": "es5",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "declaration": true,
-    "paths": {
-      "Svg/*": ["./src/assets/svg/*"],
-      "Components/*": ["./src/components/*"]
-    }
+    "declaration": true
   },
   "include": ["./tools/**/*", "./src/**/*", "src/index.ts", "./build/webpack.config.ts"],
   "exclude": ["node_modules", "**/*.stories.*", "**/*.test.*", "./dist"]

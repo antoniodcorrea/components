@@ -2,26 +2,30 @@
 
 Components library by antoniodcorrea
 
-## Run app
-
-#### Build
+## Build and publish
 
 To build, run:
 
     npm run storybook
 
-The build is done via set of scripts to copy run TypeScript, lessc, and bash find to properly locate the css files.
+The build is done via script that flat the structure inside `./dist`
 
-Once the build has finished, all occurrences of `.less` in `.js` files within `./components` is changed to `.less`.
+To publish do:
 
-#### Test
+    npm run publish:custom
+
+The publish is done via sh script that place `package.json` inside `./dist` and publishing from it, making this the root folder.
+
+## Test
 
     npm run test
 
-#### Bugs
+## Notes
 
-- Fix Select
+- Use of aliased urls is forbidden, as the client code can't interpret aliased routes
 
-##### DatePicker
+## Bugs
+
+### DatePicker
 
 - Probably will need validation for custom input: https://stackoverflow.com/questions/56608135/react-datepicker-with-custom-input-for-user-input-not-working

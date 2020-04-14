@@ -21,21 +21,16 @@ export class Select extends Component<Props> {
     return axios.get(url, config);
   };
 
-  loadOptions = (inputValue: string): Promise<Value[]> => {
-    return this.loadOptionsFromServer(inputValue)
-      .then((response) => {
-        response.data.map((item) => {
-          item.label = item.name;
-          item.value = item.name;
-
-          return null;
-        });
-
-        return response.data;
+  loadOptions = async (inputValue: string): Promise<Value[]> => {
+    const options = await this.loadOptionsFromServer(inputValue);
+    const optionsFormatted = options.data.map((item) =>
+      Object.assign(item, {
+        label: item.name,
+        value: item.name,
       })
-      .catch((err) => {
-        return err;
-      });
+    );
+
+    return optionsFormatted;
   };
 
   onChange = (newValues: Value[]): void => {

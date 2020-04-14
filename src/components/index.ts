@@ -25,7 +25,20 @@ export { Span } from './Span';
 export { SpinnerCircle } from './SpinnerCircle';
 export { SpinnerSquaredBrute } from './SpinnerSquaredBrute';
 export { SpinnerSquaredSmooth } from './SpinnerSquaredSmooth';
-// export { SvgIcon } from './Svg';
+export {
+  SvgIcon,
+  Triangle,
+  Square,
+  Circle,
+  Check,
+  Cross,
+  ArrowRight,
+  ArrowUp,
+  ArrowDown,
+  ArrowLeft,
+  Loupe,
+  Upload,
+} from './Svg';
 export { Switch } from './Switch';
 export { Tag } from './Tag';
 export { TextArea } from './TextArea';

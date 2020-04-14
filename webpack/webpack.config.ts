@@ -22,10 +22,6 @@ module.exports = {
   externals: [nodeExternals(), 'react', 'react-datepicker'],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
-    alias: {
-      Svg: path.join(ROUTE_SRC, 'assets/svg/'),
-      Components: path.resolve(ROUTE_SRC, 'components/'),
-    },
   },
   module: {
     rules: [
