@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "./src",
-    "outDir": "./dist/",
+    "outDir": "./dist",
     "jsx": "react",
     "allowJs": true,
     "sourceMap": true,
@@ -18,6 +18,6 @@
       "Components/*": ["./src/components/*"]
     }
   },
-  "exclude": ["**/*.stories.*", "**/*.test.*"],
-  "include": ["./tools/**/*", "./src/**/*", "./webpack.config.ts"]
+  "include": ["./tools/**/*", "./src/**/*", "src/index.ts", "./build/webpack.config.ts"],
+  "exclude": ["node_modules", "**/*.stories.*", "**/*.test.*", "./dist"]
 }

@@ -20,6 +20,8 @@ Once the build has finished, all occurrences of `.less` in `.js` files within `.
 
 #### Bugs
 
+- Fix Select
+
 ##### DatePicker
 
 - Probably will need validation for custom input: https://stackoverflow.com/questions/56608135/react-datepicker-with-custom-input-for-user-input-not-working

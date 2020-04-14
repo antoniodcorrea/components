@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import DatePickerComponent from 'react-datepicker';
 import { Input } from '../Input';
 import moment from 'moment';
-import 'react-datepicker/dist/react-datepicker.css';
 import './DatePicker.less';
 
 const MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
