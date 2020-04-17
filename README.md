@@ -14,7 +14,12 @@ To publish do:
 
     npm run publish:custom
 
-The publish is done via sh script that place `package.json` inside `./dist` and publishing from it, making this the root folder.
+Whole process
+
+    npm run build
+    git commit
+    npm version minor
+    npm run publish:custom
 
 ## Test
 

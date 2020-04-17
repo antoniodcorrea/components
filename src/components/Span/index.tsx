@@ -10,6 +10,7 @@ interface Props {
   disabled?: boolean;
   className?: string;
   grow?: boolean;
+  center?: boolean;
 }
 
 export const Span: React.SFC<Props> = ({
@@ -21,6 +22,7 @@ export const Span: React.SFC<Props> = ({
   uppercase = false,
   className,
   grow,
+  center,
 }) => (
   <span
     className={
@@ -31,6 +33,7 @@ export const Span: React.SFC<Props> = ({
       (disabled ? ' Span--disabled' : '') +
       (uppercase ? ' Span--uppercase' : '') +
       (grow ? ' Span--grow' : '') +
+      (center ? ' Span--center' : '') +
       (className ? ' ' + className : '')
     }
   >
