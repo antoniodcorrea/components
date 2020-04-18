@@ -12,6 +12,7 @@ interface Props {
   disabled?: boolean;
   icon?: IconsType;
   grow?: boolean;
+  type?: 'button' | 'submit' | 'reset';
   onClick?: (value) => void;
 }
 
@@ -25,6 +26,7 @@ export const Button: React.FC<Props> = ({
   icon,
   grow,
   onClick,
+  type = 'button',
 }): JSX.Element => {
   return (
     <button
@@ -38,6 +40,7 @@ export const Button: React.FC<Props> = ({
         (disabled ? ' Button--disabled' : '')
       }
       onClick={onClick}
+      type={type}
     >
       <Span className="Button-content" bold uppercase>
         {text}
