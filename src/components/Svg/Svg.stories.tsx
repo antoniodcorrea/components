@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 import { IconSize, Triangle, Circle, Square, Check, Cross, ArrowRight, ArrowDown, ArrowLeft, ArrowUp, Loupe } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
@@ -14,6 +14,7 @@ const knobs = {
   name: (): string => select('Name', ['square', 'triangle', 'circle'], 'circle'),
   size: (): IconSize =>
     select('Size', ['nano', 'micro', 'small', 'normal', 'medium', 'big', 'biggest', 'huge', undefined], 'big'),
+  filled: (): boolean => boolean('filled', false),
 };
 
 export const Icons: React.FC = () => (
@@ -32,16 +33,16 @@ export const Icons: React.FC = () => (
         margin: '0 auto',
       }}
     >
-      <Triangle size={knobs.size()} />
-      <Square size={knobs.size()} />
-      <Circle size={knobs.size()} />
-      <Cross size={knobs.size()} />
-      <ArrowRight size={knobs.size()} />
-      <ArrowDown size={knobs.size()} />
-      <ArrowLeft size={knobs.size()} />
-      <ArrowUp size={knobs.size()} />
-      <Check size={knobs.size()} />
-      <Loupe size={knobs.size()} />
+      <Triangle size={knobs.size()} filled={knobs.filled()} />
+      <Square size={knobs.size()} filled={knobs.filled()} />
+      <Circle size={knobs.size()} filled={knobs.filled()} />
+      <Cross size={knobs.size()} filled={knobs.filled()} />
+      <ArrowRight size={knobs.size()} filled={knobs.filled()} />
+      <ArrowDown size={knobs.size()} filled={knobs.filled()} />
+      <ArrowLeft size={knobs.size()} filled={knobs.filled()} />
+      <ArrowUp size={knobs.size()} filled={knobs.filled()} />
+      <Check size={knobs.size()} filled={knobs.filled()} />
+      <Loupe size={knobs.size()} filled={knobs.filled()} />
     </div>
   </>
 );

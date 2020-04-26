@@ -32,6 +32,7 @@ export type IconsType =
 export interface Props {
   size?: IconSize;
   className?: string;
+  filled?: boolean;
   onClick?: (event: SvgClickEvent) => void;
 }
 
@@ -39,9 +40,15 @@ export type SvgSpriteType = (
   SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 ) => (props: Props) => JSX.Element;
 
-const Svg: SvgSpriteType = (SvgComponent) => ({ className, size = 'normal', onClick }): React.ReactElement => (
+const Svg: SvgSpriteType = (SvgComponent) => ({ className, size = 'normal', onClick, filled }): React.ReactElement => (
   <SvgComponent
-    className={'Svg ' + (className ? className : '') + (size ? ' Svg--' + size : '') + (onClick ? ' Svg--hover' : '')}
+    className={
+      'Svg ' +
+      (className ? className : '') +
+      (size ? ' Svg-' + size : '') +
+      (onClick ? ' Svg--hover' : '') +
+      (filled ? ' Svg--filled' : '')
+    }
     onClick={onClick}
   />
 );
