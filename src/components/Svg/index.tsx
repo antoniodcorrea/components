@@ -13,6 +13,7 @@ import UploadSvg from '../../assets/svg/upload.svg';
 import UserSvg from '../../assets/svg/user.svg';
 import * as Icons from '.';
 import { SvgClickEvent } from './Svg.types';
+
 import './Svg.less';
 
 export type IconSize = 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
@@ -28,8 +29,8 @@ export type IconsType =
   | 'ArrowDown'
   | 'ArrowLeft'
   | 'Loupe'
-  | 'upload'
-  | 'user';
+  | 'Upload'
+  | 'User';
 
 export interface Props {
   size?: IconSize;
