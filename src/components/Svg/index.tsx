@@ -10,6 +10,7 @@ import ArrowUpSvg from '../../assets/svg/arrowUp.svg';
 import ArrowLeftSvg from '../../assets/svg/arrowLeft.svg';
 import LoupeSvg from '../../assets/svg/loupe.svg';
 import UploadSvg from '../../assets/svg/upload.svg';
+import UserSvg from '../../assets/svg/user.svg';
 import * as Icons from '.';
 import { SvgClickEvent } from './Svg.types';
 import './Svg.less';
@@ -27,7 +28,8 @@ export type IconsType =
   | 'ArrowDown'
   | 'ArrowLeft'
   | 'Loupe'
-  | 'upload';
+  | 'upload'
+  | 'user';
 
 export interface Props {
   size?: IconSize;
@@ -64,6 +66,7 @@ export const ArrowDown: React.FC<Props> = (props) => Svg(ArrowDownSvg)(props);
 export const ArrowLeft: React.FC<Props> = (props) => Svg(ArrowLeftSvg)(props);
 export const Loupe: React.FC<Props> = (props) => Svg(LoupeSvg)(props);
 export const Upload: React.FC<Props> = (props) => Svg(UploadSvg)(props);
+export const User: React.FC<Props> = (props) => Svg(UserSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;

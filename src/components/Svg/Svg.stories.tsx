@@ -1,6 +1,19 @@
 import React from 'react';
 import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { IconSize, Triangle, Circle, Square, Check, Cross, ArrowRight, ArrowDown, ArrowLeft, ArrowUp, Loupe } from '.';
+import {
+  IconSize,
+  Triangle,
+  Circle,
+  Square,
+  Check,
+  Cross,
+  ArrowRight,
+  ArrowDown,
+  ArrowLeft,
+  ArrowUp,
+  Loupe,
+  User,
+} from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
 
@@ -43,6 +56,7 @@ export const Icons: React.FC = () => (
       <ArrowUp size={knobs.size()} filled={knobs.filled()} />
       <Check size={knobs.size()} filled={knobs.filled()} />
       <Loupe size={knobs.size()} filled={knobs.filled()} />
+      <User size={knobs.size()} filled={knobs.filled()} />
     </div>
   </>
 );

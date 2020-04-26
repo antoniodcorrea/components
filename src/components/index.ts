@@ -38,6 +38,7 @@ export {
   ArrowLeft,
   Loupe,
   Upload,
+  User,
 } from './Svg';
 export { Switch } from './Switch';
 export { Tag } from './Tag';
