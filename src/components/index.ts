@@ -12,7 +12,7 @@ export { H4 } from './H4';
 export { Hr } from './Hr';
 export { ImageField } from './ImageField';
 export { Input } from './Input';
-export { Layout } from './Layout';
+export { Flex } from './Flex';
 export { Loader } from './Loader';
 export { Notification } from './Notification';
 export { P } from './P';
