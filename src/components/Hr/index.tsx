@@ -1,14 +1,15 @@
 import React from 'react';
+
 import './Hr.less';
 
 export type HrType = 'spacer' | 'shrink';
-export type HrSize = 'block' | 'nano' | 'micro' | 'small' | 'normal' | 'big';
+export type HrSize = 'block' | 'nano' | 'micro' | 'small' | 'big';
 
 interface Props {
   type?: HrType;
   size?: HrSize;
 }
 
-export const Hr: React.FC<Props> = ({ type, size = 'normal' }) => (
-  <hr className={'Hr' + (type ? ' Hr-' + type : '') + (size ? ' Hr-' + size : '')} />
+export const Hr: React.FC<Props> = ({ type, size }) => (
+  <hr className={'Hr ' + (type ? ' Hr-' + type : ' ') + (size ? ' Hr-' + size : ' ')} />
 );
