@@ -12,7 +12,7 @@ const defaultProps = {};
 
 const knobs = {
   type: (): HrType => select('Type', [undefined, 'spacer', 'shrink'], undefined),
-  size: (): HrSize => select('Size', [undefined, 'small', 'normal', 'big'], undefined),
+  size: (): HrSize => select('Size', [undefined, 'small', 'big'], undefined),
 };
 
 export const Default: React.FC = () => (

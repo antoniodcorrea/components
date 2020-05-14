@@ -47,7 +47,8 @@ export const Empty: React.ReactNode = () => {
         grow={knobs.grow()}
         onChange={(e): void => setValue(e.target.value)}
       />
-      <Hr type="spacer" size="normal" />
+
+      <Hr type="spacer" />
       <Hr type="shrink" size="block" />
       <Input
         name={knobs.name()}

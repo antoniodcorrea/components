@@ -1,24 +1,58 @@
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
-import { withKnobs, boolean, select } from '@storybook/addon-knobs';
-import { Fade, FadeSpeed } from '.';
-import { P } from '../P';
+import { Fade } from '.';
 
 export default {
-  component: Fade,
   title: 'Fade',
+  component: Fade,
   decorators: [withKnobs],
+  parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 
-const knobs = {
-  mounted: (): boolean => boolean('Mounted', false),
-  speed: (): FadeSpeed => select('Speed', [undefined, 'fastest', 'fast', 'normal', 'slow'], 'fast'),
+export const OneElement = () => {
+  const mounted = boolean('Mounted', true);
+  const speed = select('Speed', ['slow', 'normal', 'fast', 'fastest'], 'fast');
+  const direction = select('Direction', [undefined, 'up', 'down', 'left', 'right'], 'up');
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        height: '100vh',
+      }}
+    >
+      <Fade speed={speed} mounted={mounted} direction={direction}>
+        <div style={{ width: '50px', height: '50px', background: 'black' }} />
+      </Fade>
+    </div>
+  );
 };
 
-export const Empty: React.FC = () => (
-  <Fade mounted={knobs.mounted()} speed={knobs.speed()}>
-    <P>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto itaque saepe dolores. Voluptatibus sint placeat
-      deleniti iusto laborum quam cupiditate, nesciunt eaque. Eaque illum error quo architecto fuga iure itaque.
-    </P>
-  </Fade>
-);
+export const ManyElements = () => {
+  const mounted = boolean('Mounted', true);
+  const speed = select('Speed', ['slow', 'normal', 'fast', 'fastest'], 'fast');
+  const direction = select('Direction', [undefined, 'up', 'down', 'left', 'right'], 'up');
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', padding: '50px' }}>
+      <Fade speed={speed} mounted={mounted} direction={direction} delayOut={300}>
+        <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
+      </Fade>
+      <Fade speed={speed} mounted={mounted} direction={direction} delayIn={75} delayOut={225}>
+        <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
+      </Fade>
+      <Fade speed={speed} mounted={mounted} direction={direction} delayIn={150} delayOut={150}>
+        <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
+      </Fade>
+      <Fade speed={speed} mounted={mounted} direction={direction} delayIn={225} delayOut={75}>
+        <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
+      </Fade>
+      <Fade speed={speed} mounted={mounted} direction={direction} delayIn={300}>
+        <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
+      </Fade>
+    </div>
+  );
+};
