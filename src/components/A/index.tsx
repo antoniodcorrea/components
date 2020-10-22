@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './A.less';
 
 interface Props {
   children: React.ReactNode;
   className?: string;
   href: string;
+  frontend?: boolean;
   styled?: boolean;
   targetBlank?: boolean;
   disabled?: boolean;
@@ -16,19 +19,30 @@ export const A: React.FC<Props> = ({
   children,
   className,
   href,
+  frontend = false,
   styled = true,
   targetBlank = false,
   onClick,
   disabled = false,
   title,
-}) => (
-  <a
-    className={(styled ? 'A' : '') + (styled && disabled ? ' A-disabled' : '') + (className ? ' ' + className : '')}
-    href={href}
-    onClick={onClick}
-    target={targetBlank ? '_blank' : '_self'}
-    title={title}
-  >
-    {children}
-  </a>
-);
+}) => {
+  const _className =
+    (styled ? 'A' : '') + (styled && disabled ? ' A-disabled' : '') + (className ? ' ' + className : '');
+
+  const target = targetBlank ? '_blank' : '_self';
+
+  return (
+    <>
+      {!frontend && (
+        <a className={_className} onClick={onClick} title={title} href={href} target={target}>
+          {children}
+        </a>
+      )}
+      {frontend && (
+        <Link className={_className} onClick={onClick} title={title} to={href} target={target}>
+          {children}
+        </Link>
+      )}
+    </>
+  );
+};

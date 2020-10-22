@@ -9,10 +9,6 @@ export default {
   decorators: [withKnobs],
 };
 
-const defaultProps = {
-  onClick: action('button-click'),
-};
-
 const knobs = {
   href: (): string => text('Href', 'http://example.com'),
   text: (): string => text('Text', 'Click me!'),
@@ -21,7 +17,7 @@ const knobs = {
 };
 
 export const Default: React.FC = () => (
-  <A {...defaultProps} targetBlank={knobs.targetBlank()} href={knobs.href()} styled={knobs.styled()}>
+  <A onClick={action('button-click')} targetBlank={knobs.targetBlank()} href={knobs.href()} styled={knobs.styled()}>
     {knobs.text()}
   </A>
 );
