@@ -20,7 +20,7 @@ interface Props {
   delayIn?: number;
   delayOut?: number;
   easing?: string;
-  fullScreen?: boolean;
+  position?: 'fixed' | 'absolute';
 }
 
 export const Fade: React.FC<Props> = ({
@@ -37,7 +37,7 @@ export const Fade: React.FC<Props> = ({
   delayOut = 0,
   direction,
   easing = 'cubic-bezier(0.5, 1, 0.89, 1)',
-  fullScreen,
+  position,
 }) => {
   const cssDelay = mounted === true ? delayIn : delayOut;
   const delayRule = cssDelay.toString() + 'ms';
@@ -51,7 +51,7 @@ export const Fade: React.FC<Props> = ({
         (classname ? classname : ' ') +
         ' Fade ' +
         (' Fade--' + speed) +
-        (fullScreen ? ' Fade--fullScreen' : ' ') +
+        (position ? ' Fade--' + position : ' ') +
         (direction ? ' Fade--' + direction : ' ')
       }
       classNames={'Fade'}
@@ -68,5 +68,3 @@ export const Fade: React.FC<Props> = ({
     </CSSTransition>
   );
 };
-
-export default Fade;
