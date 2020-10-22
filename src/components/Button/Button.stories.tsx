@@ -27,7 +27,7 @@ export const Default: React.FC = () => {
         error={knobs.error()}
         success={knobs.success()}
       ></Button>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Button
         text={knobs.text()}
         grow={knobs.grow()}

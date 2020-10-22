@@ -72,7 +72,7 @@ export const FileField: React.FC<Props> = ({
           <Span bold>{label}</Span>
         </label>
       )}
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <Dropzone
         className="FileField-dropzone"
         name={name}

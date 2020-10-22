@@ -28,7 +28,7 @@ export const Default: React.FC = () => {
   return (
     <>
       <H1>Image field</H1>
-      <Hr type="spacer" size="big" />
+      <Hr spacer size="big" />
       <ImageFieldWithUploadApi
         label="My file"
         name="Some file"

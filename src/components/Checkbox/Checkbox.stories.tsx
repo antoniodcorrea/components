@@ -17,12 +17,12 @@ export const Empty: React.FC = () => {
   return (
     <>
       <H1>Checkbox</H1>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Border>
         <Checkbox value={value1} onChange={(e): void => setValue1(e.target.checked)} label="Checkbox 1" />
-        <Hr type="spacer" size="micro" />
+        <Hr spacer size="micro" />
         <Checkbox value={value2} onChange={(e): void => setValue2(e.target.checked)} label="Checkbox 2" />
-        <Hr type="spacer" size="micro" />
+        <Hr spacer size="micro" />
         <Checkbox value={value3} onChange={(e): void => setValue3(e.target.checked)} label="Checkbox 3" />
       </Border>
     </>

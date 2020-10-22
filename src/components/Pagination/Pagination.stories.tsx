@@ -25,7 +25,7 @@ export const Default: React.FC = () => {
   return (
     <>
       <H1>Pagination</H1>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Pagination {...defaultProps} grow={knobs.grow()} />
     </>
   );

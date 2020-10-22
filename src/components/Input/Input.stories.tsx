@@ -37,9 +37,9 @@ export const Empty: React.FC = () => {
   return (
     <div onSubmit={onSubmit}>
       <H1>Input</H1>
-      <Hr type="spacer" />
+      <Hr spacer />
 
-      <Hr type="spacer" size="block" />
+      <Hr spacer size="zero" />
       <Input
         type="date"
         name={knobs.name()}
@@ -52,7 +52,7 @@ export const Empty: React.FC = () => {
         grow={knobs.grow()}
         onChange={(e): void => setValue4(e.target.value)}
       />
-      <Hr type="spacer" size="block" />
+      <Hr spacer size="zero" />
       <Input
         name={knobs.name()}
         label="Insert password"
@@ -64,7 +64,7 @@ export const Empty: React.FC = () => {
         grow={knobs.grow()}
         onChange={(e): void => setValue2(e.target.value)}
       />
-      <Hr type="spacer" size="block" />
+      <Hr spacer size="zero" />
       <Input
         name={knobs.name()}
         label="Repeat password"
@@ -76,7 +76,7 @@ export const Empty: React.FC = () => {
         grow={knobs.grow()}
         onChange={(e): void => setValue3(e.target.value)}
       />
-      <Hr type="spacer" size="block" />
+      <Hr spacer size="zero" />
       <Input
         type="search"
         name={knobs.name()}
@@ -89,7 +89,7 @@ export const Empty: React.FC = () => {
         grow={knobs.grow()}
         onChange={(e): void => setValue1(e.target.value)}
       />
-      <Hr type="spacer" />
+      <Hr spacer />
       <Button text="Submit" onClick={onSubmit} success={success} grow={knobs.grow()} />
     </div>
   );

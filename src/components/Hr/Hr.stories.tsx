@@ -1,6 +1,7 @@
 import React from 'react';
-import { withKnobs, select } from '@storybook/addon-knobs';
-import { Hr, HrType, HrSize } from '.';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+import { Hr, HrSize } from '.';
+import { Flex } from '../Flex';
 
 export default {
   component: Hr,
@@ -11,12 +12,14 @@ export default {
 const defaultProps = {};
 
 const knobs = {
-  type: (): HrType => select('Type', [undefined, 'spacer', 'shrink'], undefined),
-  size: (): HrSize => select('Size', [undefined, 'small', 'big'], undefined),
+  spacer: (): boolean => boolean('Spacer', false),
+  size: (): HrSize => select('Size', [undefined, 'zero', 'nano', 'micro', 'small', 'normal', 'big'], undefined),
 };
 
 export const Default: React.FC = () => (
-  <div style={{ width: '200px' }}>
-    <Hr {...defaultProps} type={knobs.type()} size={knobs.size()} />
-  </div>
+  <Flex>
+    <span>lajsdljalksdj</span>
+    <Hr {...defaultProps} spacer={knobs.spacer()} size={knobs.size()} />
+    <span>lajsdljalksdj</span>
+  </Flex>
 );

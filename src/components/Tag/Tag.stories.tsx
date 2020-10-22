@@ -17,9 +17,9 @@ const knobs = {
 export const Default: React.FC = () => (
   <div style={{ padding: '10px' }}>
     <H1>Tag</H1>
-    <Hr type="spacer" />
+    <Hr spacer />
     <Tag notification={knobs.notification()}>Tag</Tag>
-    <Hr type="spacer" />
+    <Hr spacer />
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       <div style={{ margin: '0 4px 4px 0' }}>
         <Tag notification={knobs.notification()}>Cool</Tag>
@@ -65,7 +65,7 @@ export const Alternate: React.FC = () => {
   return (
     <>
       <H1>Tag</H1>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Tag variant="alternate" notification={knobs.notification()}>
         Tag
       </Tag>

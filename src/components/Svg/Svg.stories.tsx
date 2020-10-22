@@ -33,9 +33,9 @@ const knobs = {
 export const Icons: React.FC = () => (
   <>
     <H1>Svg Icons</H1>
-    <Hr type="spacer" />
+    <Hr spacer />
     <Hr size="nano" />
-    <Hr type="spacer" size="big" />
+    <Hr spacer size="big" />
     <div
       style={{
         display: 'grid',

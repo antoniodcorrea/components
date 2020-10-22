@@ -42,11 +42,11 @@ export const Default = () => {
     <div onSubmit={onSubmit}>
       <H1>Select</H1>
       <Span size="small">You can select tags here as example</Span>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Select
         label="Some options"
         grow={knobs.grow()}
-        onChange={nextData => {
+        onChange={(nextData) => {
           setValue1(nextData);
         }}
         value={value1}
@@ -56,7 +56,7 @@ export const Default = () => {
         token={TOKEN}
       />
 
-      <Hr type="spacer" />
+      <Hr spacer />
       <Input
         name={knobs.name()}
         label="Password"
@@ -66,9 +66,9 @@ export const Default = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow={knobs.grow()}
-        onChange={e => setValue2(e.target.value)}
+        onChange={(e) => setValue2(e.target.value)}
       />
-      <Hr type="spacer" />
+      <Hr spacer />
       <Button text="Submit" onClick={onSubmit} success={success} />
     </div>
   );

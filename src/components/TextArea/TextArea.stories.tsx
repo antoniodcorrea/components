@@ -35,7 +35,7 @@ export const Empty: React.ReactNode = () => {
     <div>
       <H1>TextArea</H1>
       <Hr size="nano" />
-      <Hr type="spacer" />
+      <Hr spacer />
       <TextArea
         name={knobs.name()}
         label="My textarea"
@@ -47,9 +47,8 @@ export const Empty: React.ReactNode = () => {
         grow={knobs.grow()}
         onChange={(e): void => setValue(e.target.value)}
       />
-
-      <Hr type="spacer" />
-      <Hr type="shrink" size="block" />
+      <Hr spacer />
+      <Hr size="zero" />
       <Input
         name={knobs.name()}
         label="My date"

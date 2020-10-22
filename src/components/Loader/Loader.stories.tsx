@@ -20,10 +20,10 @@ export const Default: React.FC = () => {
   return (
     <div>
       <H1>Loader</H1>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Hr size="micro" />
-      <Hr type="spacer" />
-      <Hr type="spacer" />
+      <Hr spacer />
+      <Hr spacer />
       <Loader loaded={knobs.loaded()} error={knobs.error()} grow={knobs.grow()} />
     </div>
   );

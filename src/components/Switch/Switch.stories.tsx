@@ -17,16 +17,16 @@ export const Empty: React.FC = () => {
   return (
     <>
       <H1>Switches</H1>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Border>
         <Switch name="Test" label="Test" checked={value1} onChange={(e): void => setValue1(e.target.checked)} />
-        <Hr type="spacer" size="small" />
+        <Hr spacer size="small" />
         <Switch name="Test2" label="Test2" checked={value2} onChange={(e): void => setValue2(e.target.checked)} />
-        <Hr type="spacer" size="small" />
+        <Hr spacer size="small" />
         <Switch name="Test3" label="Test3" checked={value3} onChange={(e): void => setValue3(e.target.checked)} />
-        <Hr type="spacer" size="small" />
+        <Hr spacer size="small" />
       </Border>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Hr size="micro" />
     </>
   );

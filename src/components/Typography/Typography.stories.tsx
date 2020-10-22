@@ -31,35 +31,35 @@ export const Default: React.FC = () => {
   return (
     <>
       <H1>{knobs.H1()}</H1>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <H2>{knobs.H2()}</H2>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <H3>{knobs.H3()}</H3>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <H4>{knobs.H4()}</H4>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <Span bold>{knobs.SpanNormalBold()}</Span>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <Span>{knobs.SpanNormalRegular()}</Span>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <Span bold size="small">
         {knobs.SpanSmallBold()}
       </Span>
-      <Hr type="spacer" size="block" />
+      <Hr spacer size="zero" />
       <Span size="small">{knobs.SpanSmallRegular()}</Span>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <Span bold size="micro">
         {knobs.SpanMicroBold()}
       </Span>
-      <Hr type="spacer" size="block" />
+      <Hr spacer size="zero" />
       <Span size="micro">{knobs.SpanMicroRegular()}</Span>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <Span bold size="nano">
         {knobs.SpanNanoBold()}
       </Span>
-      <Hr type="spacer" size="block" />
+      <Hr spacer size="zero" />
       <Span size="nano">{knobs.SpanNanoRegular()}</Span>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Hr size="micro" />
     </>
   );

@@ -22,9 +22,9 @@ export const Empty: React.FC = () => {
   return (
     <>
       <H1>Radio button</H1>
-      <Hr type="spacer" size="micro" />
+      <Hr spacer size="micro" />
       <Hr size="micro" />
-      <Hr type="spacer" />
+      <Hr spacer />
       <Border>
         <Radio
           value={value}

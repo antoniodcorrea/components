@@ -27,7 +27,7 @@ export const Default: React.FC = () => {
   return (
     <>
       <H1>File field</H1>
-      <Hr type="spacer" size="big" />
+      <Hr spacer size="big" />
       <FileField
         label="My file"
         name="Some file"
@@ -52,7 +52,7 @@ export const ExampleFileFieldWithUploadApi: React.FC = () => {
   return (
     <>
       <H1>File field</H1>
-      <Hr type="spacer" size="big" />
+      <Hr spacer size="big" />
       <FileFieldWithUploadApi
         label="My file"
         name="Some file"

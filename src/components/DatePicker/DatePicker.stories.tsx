@@ -29,9 +29,9 @@ export const Empty: React.FC = () => {
   return (
     <>
       <H1>DatePicker</H1>
-      <Hr type="spacer" size="big" />
+      <Hr spacer size="big" />
       <Span>Value: {JSON.stringify(value1)}</Span>
-      <Hr type="spacer" size="block" />
+      <Hr spacer size="zero" />
       <DatePicker
         name="Date"
         label="Date"

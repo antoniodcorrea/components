@@ -28,7 +28,7 @@ export const Empty: React.FC = () => {
   return (
     <div>
       <H1>Range</H1>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Range
         name="My Range"
         label="This is my range"
@@ -41,7 +41,7 @@ export const Empty: React.FC = () => {
         min={0}
         max={100}
       />
-      <Hr type="spacer" />
+      <Hr spacer />
     </div>
   );
 };

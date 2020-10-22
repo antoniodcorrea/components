@@ -51,7 +51,7 @@ export const Range: React.FC<Props> = ({ name, value, label, min, max, error, su
           <label className="Range-label" htmlFor={'Range-' + id}>
             <Span bold> {label}</Span>
           </label>
-          <Hr type="spacer" size="micro" />
+          <Hr spacer size="micro" />
         </>
       )}
       <div className="Range-fields">

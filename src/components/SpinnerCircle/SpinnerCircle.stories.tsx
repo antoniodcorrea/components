@@ -23,7 +23,7 @@ export const Default: React.FC = () => (
       <SpinnerCircle />
     </Fade>
     <div style={{ width: '300px' }}>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Border>
         <Span bold>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime eos necessitatibus fuga inventore eaque

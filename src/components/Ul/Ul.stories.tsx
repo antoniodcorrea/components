@@ -14,7 +14,7 @@ export const Default: React.FC = () => {
   return (
     <>
       <H1>Input</H1>
-      <Hr type="spacer" />
+      <Hr spacer />
       <Hr size="micro" />
       <Ul>
         <li>
