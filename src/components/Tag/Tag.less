@@ -5,6 +5,7 @@
 @{c} {
   .default();
 
+  position: relative;
   font-family: @ff-sans;
 
   &-content {
@@ -13,13 +14,16 @@
     height: calc(100% - 4px);
     margin: 0 4px 4px 0;
     padding: 1px 10px;
+    white-space: nowrap;
     background: @c-background;
     border: 2px solid;
     border-color: @c-base;
     transition: box-shadow @td-fast @ease-custom, border @td-fast @ease-custom, color @td-fast @ease-custom;
     box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
+  }
 
-    &:hover {
+  &:hover {
+    @{c}-content {
       color: @c-accent;
       border-color: @c-accent;
       cursor: pointer;
