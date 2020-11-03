@@ -20,7 +20,7 @@
     height: 20px;
     bottom: 10px;
     left: 0;
-    padding: 0 10px;
+    padding: 0 10px 0 2px;
     white-space: nowrap;
     color: @c-disabled;
     overflow: hidden;
@@ -37,13 +37,14 @@
   &-input {
     .default();
 
-    height: 40px;
+    height: 30px;
     right: 8px;
-    padding: 0 10px;
+    padding: 0 10px 0 2px;
     font-size: @fs-normal;
     font-weight: @fw-bold;
     background: @c-background;
-    border: 2px solid @c-base;
+    border: 0;
+    border-bottom: 2px solid @c-base;
     outline: none;
     transition: border-color @td-fast @ease, color @td-fast @ease;
     box-shadow: none;
@@ -69,9 +70,8 @@
     &:focus,
     &:not(:placeholder-shown) {
       & + label {
-        padding: 0 7px 0 6px;
         background: @c-background;
-        transform: translate(5px, -18px) scale(0.8);
+        transform: translateY(-18px) scale(0.8);
       }
     }
 

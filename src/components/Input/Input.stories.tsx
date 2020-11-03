@@ -35,14 +35,14 @@ export const Empty: React.FC = () => {
   };
 
   return (
-    <div onSubmit={onSubmit}>
+    <div onSubmit={onSubmit} style={{ padding: '10px' }}>
       <H1>Input</H1>
       <Hr spacer />
 
       <Hr spacer size="zero" />
       <Input
         type="date"
-        name={knobs.name()}
+        name="date_example"
         label="My date"
         value={value4}
         readOnly={knobs.readOnly()}
@@ -54,7 +54,7 @@ export const Empty: React.FC = () => {
       />
       <Hr spacer size="zero" />
       <Input
-        name={knobs.name()}
+        name="password_example"
         label="Insert password"
         value={value2}
         readOnly={knobs.readOnly()}
@@ -66,7 +66,7 @@ export const Empty: React.FC = () => {
       />
       <Hr spacer size="zero" />
       <Input
-        name={knobs.name()}
+        name="repeat_password_example"
         label="Repeat password"
         value={value3}
         readOnly={knobs.readOnly()}
@@ -79,7 +79,7 @@ export const Empty: React.FC = () => {
       <Hr spacer size="zero" />
       <Input
         type="search"
-        name={knobs.name()}
+        name="search_example"
         label="Search"
         value={value1}
         readOnly={knobs.readOnly()}

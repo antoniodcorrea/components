@@ -1,6 +1,6 @@
 import React from 'react';
-import uniqueId from 'lodash/uniqueId';
 import { Loupe } from '../Svg';
+
 import './Input.less';
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
   success?: boolean;
   disabled?: boolean;
   grow?: boolean;
-  type?: 'date' | 'search' | 'input';
+  type?: 'date' | 'search' | 'input' | 'password';
   pattern?: string;
   onChange?: (e) => void;
   onKeyDown?: (e) => void;
@@ -46,7 +46,6 @@ export const Input: React.FC<Props> = ({
   pattern,
   type,
 }) => {
-  const id = uniqueId();
   const isSearch = type === 'search';
 
   return (
@@ -64,7 +63,7 @@ export const Input: React.FC<Props> = ({
       <input
         name={name}
         className="Input-input"
-        id={'Input-' + id}
+        id={'Input-' + name}
         value={value}
         placeholder=" "
         autoComplete={autoComplete ? 'on' : 'off'}
@@ -83,7 +82,7 @@ export const Input: React.FC<Props> = ({
         results={2}
       />
       {label && (
-        <label className="Input-label" htmlFor={'Input-' + id}>
+        <label className="Input-label" htmlFor={'Input-' + name}>
           {label}
         </label>
       )}
