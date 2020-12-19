@@ -15,7 +15,7 @@ interface Props {
   scrollToTop?: boolean;
 }
 
-const FadeInOut: React.FC<Props> = ({ children, classname, valueToUpdate, speed = 'fast', scrollToTop }) => (
+export const FadeInOut: React.FC<Props> = ({ children, classname, valueToUpdate, speed = 'fast', scrollToTop }) => (
   <SwitchTransition>
     <CSSTransition
       key={valueToUpdate}
@@ -37,5 +37,3 @@ const FadeInOut: React.FC<Props> = ({ children, classname, valueToUpdate, speed 
     </CSSTransition>
   </SwitchTransition>
 );
-
-export default FadeInOut;
