@@ -13,6 +13,7 @@ import {
   ArrowUp,
   Loupe,
   User,
+  Private,
 } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
@@ -57,6 +58,7 @@ export const Icons: React.FC = () => (
       <Check size={knobs.size()} filled={knobs.filled()} />
       <Loupe size={knobs.size()} filled={knobs.filled()} />
       <User size={knobs.size()} filled={knobs.filled()} />
+      <Private size={knobs.size()} filled={knobs.filled()} />
     </div>
   </>
 );

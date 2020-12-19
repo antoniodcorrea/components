@@ -17,6 +17,7 @@ To publish do:
 Whole process
 
     npm run build
+    git add .
     git commit
     npm version patch | minor | major
     npm run publish:custom
