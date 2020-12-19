@@ -3,6 +3,7 @@ import './Border.less';
 
 interface Props {
   children: React.ReactNode | React.ReactNode[];
+  weight?: 'thick' | 'thin';
   padding?: 'small' | 'normal' | 'big';
   className?: string;
   grow?: boolean;
@@ -10,12 +11,21 @@ interface Props {
   onMouseLeave?: (any) => void;
 }
 
-export const Border: React.FC<Props> = ({ children, padding = 'normal', grow, className, onClick, onMouseLeave }) => (
+export const Border: React.FC<Props> = ({
+  children,
+  weight = 'thin',
+  padding = 'normal',
+  grow,
+  className,
+  onClick,
+  onMouseLeave,
+}) => (
   <div
     className={
       (className ? className + ' ' : '') +
       'Border' +
       (padding ? ' Border-' + padding : '') +
+      (' Border--' + weight) +
       (grow ? ' Border--grow' : '')
     }
     onClick={onClick}

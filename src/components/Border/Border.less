@@ -7,10 +7,8 @@
 
   display: inline-block;
   background: @c-background;
-  border: 2px solid;
   border-color: @c-base;
   transition: box-shadow @td-fast @ease-custom, border @td-fast @ease-custom, color @td-fast @ease-custom;
-  box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
 
   &-small {
     padding: 10px;
@@ -26,5 +24,15 @@
 
   &--grow {
     width: 100%;
+  }
+
+  &--thin {
+    border: 2px solid;
+    box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
+  }
+
+  &--thick {
+    border: 4px solid;
+    box-shadow: 8px 8px 0 -4px @c-background, 8px 8px 0 0 @c-base;
   }
 }
