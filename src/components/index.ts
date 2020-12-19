@@ -25,6 +25,7 @@ export { Span } from './Span';
 export { SpinnerCircle } from './SpinnerCircle';
 export { SpinnerSquaredBrute } from './SpinnerSquaredBrute';
 export { SpinnerSquaredSmooth } from './SpinnerSquaredSmooth';
+export { Vote } from './Vote';
 export {
   SvgIcon,
   Triangle,
