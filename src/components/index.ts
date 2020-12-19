@@ -41,6 +41,7 @@ export {
   Loupe,
   Upload,
   User,
+  Private,
 } from './Svg';
 export { Switch } from './Switch';
 export { Tag } from './Tag';
