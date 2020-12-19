@@ -11,6 +11,7 @@ export default {
 
 const knobs = {
   weight: (): 'thin' | 'thick' => select('Border', ['thin', 'thick'], 'thin'),
+  padding: (): 'small' | 'normal' | 'big' => select('Padding', ['small', 'normal', 'big'], 'normal'),
   text: (): string => text('Text', 'Lorem ipsum dolor'),
   grow: (): boolean => boolean('Grow', false),
 };
@@ -18,7 +19,7 @@ const knobs = {
 export const Default: React.FC = () => {
   return (
     <div style={{ width: '300px' }}>
-      <Border grow={knobs.grow()} weight={knobs.weight()}>
+      <Border grow={knobs.grow()} weight={knobs.weight()} padding={knobs.padding()}>
         <Span bold>{knobs.text()}</Span>
       </Border>
     </div>

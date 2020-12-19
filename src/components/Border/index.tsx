@@ -24,7 +24,7 @@ export const Border: React.FC<Props> = ({
     className={
       (className ? className + ' ' : '') +
       'Border' +
-      (padding ? ' Border-' + padding : '') +
+      (padding ? ' Border-padding--' + padding : '') +
       (' Border--' + weight) +
       (grow ? ' Border--grow' : '')
     }
