@@ -18,7 +18,7 @@ Whole process
 
     npm run build
     git commit
-    npm version minor
+    npm version patch | minor | major
     npm run publish:custom
 
 ## Test
