@@ -13,6 +13,7 @@ import UploadSvg from '../../assets/svg/upload.svg';
 import UserSvg from '../../assets/svg/user.svg';
 import PrivateSvg from '../../assets/svg/private.svg';
 import LinkSvg from '../../assets/svg/link.svg';
+import EditSvg from '../../assets/svg/edit.svg';
 import * as Icons from '.';
 import { SvgClickEvent } from './Svg.types';
 
@@ -34,7 +35,8 @@ export type IconsType =
   | 'Upload'
   | 'User'
   | 'Link'
-  | 'Private';
+  | 'Private'
+  | 'Edit';
 
 export interface Props {
   size?: IconSize;
@@ -74,6 +76,7 @@ export const Upload: React.FC<Props> = (props) => Svg(UploadSvg)(props);
 export const User: React.FC<Props> = (props) => Svg(UserSvg)(props);
 export const Private: React.FC<Props> = (props) => Svg(PrivateSvg)(props);
 export const Link: React.FC<Props> = (props) => Svg(LinkSvg)(props);
+export const Edit: React.FC<Props> = (props) => Svg(EditSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;
