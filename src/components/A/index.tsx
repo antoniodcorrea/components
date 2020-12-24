@@ -27,7 +27,7 @@ export const A: React.FC<Props> = ({
   title,
 }) => {
   const _className =
-    (styled ? 'A' : '') + (styled && disabled ? ' A-disabled' : '') + (className ? ' ' + className : '');
+    (styled ? 'A' : 'A--default') + (styled && disabled ? ' A--disabled' : '') + (className ? ' ' + className : '');
 
   const target = targetBlank ? '_blank' : '_self';
 

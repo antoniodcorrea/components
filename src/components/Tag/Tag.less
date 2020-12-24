@@ -13,8 +13,8 @@
     align-items: center;
     height: calc(100% - 4px);
     white-space: nowrap;
+    color: @c-base;
     background: @c-background;
-    border-color: @c-base;
     transition: box-shadow @td-fast @ease-custom, border @td-fast @ease-custom, color @td-fast @ease-custom;
   }
 
@@ -52,8 +52,7 @@
     @{c}-content {
       margin: 0 4px 4px 0;
       padding: 3px 10px 2px 10px;
-      border: 2px solid;
-      border-color: @c-base;
+      border: 2px solid @c-base;
       box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
     }
 

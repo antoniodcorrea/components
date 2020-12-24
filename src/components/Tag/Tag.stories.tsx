@@ -3,6 +3,7 @@ import { withKnobs, select } from '@storybook/addon-knobs';
 import { Tag, Notification, Size } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
+import { A } from '../A';
 
 export default {
   component: Tag,
@@ -21,9 +22,11 @@ export const Default: React.FC = () => (
     <Hr spacer />
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       <div style={{ margin: '0 4px 4px 0' }}>
-        <Tag notification={knobs.notification()} size={knobs.size()}>
-          Cool
-        </Tag>
+        <A href="/" styled={false}>
+          <Tag notification={knobs.notification()} size={knobs.size()}>
+            Legrand
+          </Tag>
+        </A>
       </div>
       <div style={{ margin: '0 4px 4px 0' }}>
         <Tag notification={knobs.notification()} size={knobs.size()}>

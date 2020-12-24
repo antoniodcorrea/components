@@ -14,10 +14,17 @@ const knobs = {
   text: (): string => text('Text', 'Click me!'),
   styled: (): boolean => boolean('Styled', true),
   targetBlank: (): boolean => boolean('Target', false),
+  disabled: (): boolean => boolean('Disabled', false),
 };
 
 export const Default: React.FC = () => (
-  <A onClick={action('button-click')} targetBlank={knobs.targetBlank()} href={knobs.href()} styled={knobs.styled()}>
+  <A
+    onClick={action('button-click')}
+    targetBlank={knobs.targetBlank()}
+    href={knobs.href()}
+    styled={knobs.styled()}
+    disabled={knobs.disabled()}
+  >
     {knobs.text()}
   </A>
 );
