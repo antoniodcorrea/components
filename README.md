@@ -17,7 +17,7 @@ To publish do:
 Whole process
 
     npm run build
-    git add . && git commit -m "Modify edit icon"
+    git add . && git commit -m "Commit message"
     npm version patch | minor | major
     npm run publish:custom
 
