@@ -12,10 +12,14 @@
     display: flex;
     align-items: center;
     height: calc(100% - 4px);
+    margin: 0 4px 4px 0;
+    padding: 3px 10px 2px 10px;
     white-space: nowrap;
     color: @c-base;
     background: @c-background;
+    border: 2px solid @c-base;
     transition: box-shadow @td-fast @ease-custom, border @td-fast @ease-custom, color @td-fast @ease-custom;
+    box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
   }
 
   &:hover {
@@ -23,6 +27,7 @@
       color: @c-accent;
       border-color: @c-accent;
       cursor: pointer;
+      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-accent;
     }
   }
 
@@ -40,25 +45,6 @@
 
       &:hover {
         border-color: @c-base;
-      }
-    }
-  }
-
-  &--big {
-    //
-  }
-
-  &--small {
-    @{c}-content {
-      margin: 0 4px 4px 0;
-      padding: 3px 10px 2px 10px;
-      border: 2px solid @c-base;
-      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
-    }
-
-    &:hover {
-      @{c}-content {
-        box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-accent;
       }
     }
   }
