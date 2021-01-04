@@ -43,6 +43,7 @@ export {
   User,
   Private,
   Link,
+  Bookmark,
   Edit,
 } from './Svg';
 export { Switch } from './Switch';
