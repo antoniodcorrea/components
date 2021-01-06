@@ -16,6 +16,7 @@ To publish do:
 
 Whole process
 
+    git checkout master && git merge dev
     npm run build
     git add . && git commit -m "Commit message"
     npm version patch | minor | major
@@ -34,3 +35,7 @@ Whole process
 ### DatePicker
 
 - Probably will need validation for custom input: https://stackoverflow.com/questions/56608135/react-datepicker-with-custom-input-for-user-input-not-working
+
+### Update for test
+
+...
