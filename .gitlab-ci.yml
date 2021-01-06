@@ -4,7 +4,6 @@ stages:
   - install
   - test
   - build
-  - publish
 
 install:
   stage: install
@@ -31,15 +30,3 @@ build:
   artifacts:
     paths:
       - dist
-
-publish:
-  stage: publish
-  only:
-    - master
-  artifacts:
-    paths:
-      - dist
-  script:
-    - npm config set registry http://lab.antoniodiaz.me:4873
-    - echo "//lab.antoniodiaz.me:4873/:_authToken=\"$K8S_SECRET_NPM\"" > .npmrc
-    - npm publish
