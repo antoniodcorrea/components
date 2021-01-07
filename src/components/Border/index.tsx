@@ -11,26 +11,23 @@ interface Props {
   onMouseLeave?: (any) => void;
 }
 
-export const Border: React.FC<Props> = ({
-  children,
-  weight = 'thin',
-  padding = 'normal',
-  grow,
-  className,
-  onClick,
-  onMouseLeave,
-}) => (
-  <div
-    className={
-      (className ? className + ' ' : '') +
-      'Border' +
-      (padding ? ' Border-padding--' + padding : '') +
-      (' Border--' + weight) +
-      (grow ? ' Border--grow' : '')
-    }
-    onClick={onClick}
-    onMouseLeave={onMouseLeave}
-  >
-    {children}
-  </div>
+export const Border = React.forwardRef<HTMLDivElement, Props>(
+  ({ children, weight = 'thin', padding = 'normal', grow, className, onClick, onMouseLeave }, ref) => (
+    <div
+      ref={ref}
+      className={
+        (className ? className + ' ' : '') +
+        'Border' +
+        (padding ? ' Border-padding--' + padding : '') +
+        (' Border--' + weight) +
+        (grow ? ' Border--grow' : '')
+      }
+      onClick={onClick}
+      onMouseLeave={onMouseLeave}
+    >
+      {children}
+    </div>
+  )
 );
+
+Border.displayName = 'Border';

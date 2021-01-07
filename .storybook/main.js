@@ -21,6 +21,9 @@ module.exports = {
       use: [
         {
           loader: require.resolve('awesome-typescript-loader'),
+          options: {
+            configFileName: path.resolve(process.cwd(), '.storybook/tsconfig.json'),
+          },
         },
       ],
     });
@@ -36,7 +39,7 @@ module.exports = {
     config.module.rules.forEach(function (data, key) {
       if (data.test.toString().indexOf('svg|') >= 0) {
         config.module.rules[key].test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
-        
+
         return false;
       }
     });
