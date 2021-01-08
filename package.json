@@ -16,6 +16,7 @@
     "test": "jest -u"
   },
   "dependencies": {
+    "@popperjs/core": "^2.6.0",
     "@types/react-router-dom": "^5.1.6",
     "axios": "^0.19.2",
     "moment": "^2.24.0",

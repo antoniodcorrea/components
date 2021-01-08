@@ -50,4 +50,5 @@ export { Switch } from './Switch';
 export { Tag } from './Tag';
 export { TextArea } from './TextArea';
 export { TextButton } from './TextButton';
+export { Tooltip } from './Tooltip';
 export { Ul } from './Ul';
