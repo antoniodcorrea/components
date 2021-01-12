@@ -6,7 +6,7 @@ import './Vote.less';
 interface Props {
   vote?: boolean;
   className?: string;
-  changeVote: (vote: boolean | undefined) => void;
+  changeVote: (vote: boolean | null) => void;
 }
 
 export const Vote: React.FC<Props> = ({ vote, changeVote, className }) => (
