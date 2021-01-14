@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs, select } from '@storybook/addon-knobs';
+import { withKnobs, select, boolean } from '@storybook/addon-knobs';
 
 import { Vote } from '.';
 import { Hr } from '../Hr';
@@ -13,6 +13,7 @@ export default {
 
 const knobs = {
   vote: (): undefined | string => select('Vote', [undefined, 'true', 'false'], 'true'),
+  loading: (): boolean => boolean('Loading', false),
 };
 
 export const Empty: React.ReactNode = () => {
@@ -31,7 +32,7 @@ export const Empty: React.ReactNode = () => {
       <H1>Vote</H1>
       <Hr size="nano" />
       <Hr spacer />
-      <Vote vote={finalVote} changeVote={onVoteChange} />
+      <Vote vote={finalVote} changeVote={onVoteChange} loading={knobs.loading()} />
     </div>
   );
 };

@@ -4,6 +4,8 @@
 
 @{c} {
   display: flex;
+  position: relative;
+  opacity: 1;
 
   &-icon {
     height: 16px;
@@ -35,6 +37,14 @@
   @{c}-icon:not(@{c}--active):hover {
     path[data-id='background'] {
       opacity: 1;
+    }
+  }
+
+  &--loading {
+    @{c}-icon {
+      opacity: 0.4;
+      transition: opacity @td-fast @ease;
+      pointer-events: none;
     }
   }
 }

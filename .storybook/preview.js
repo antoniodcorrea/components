@@ -23,11 +23,19 @@ const customViewports = {
       padding: '10px',
     },
   },
+  Tablet: {
+    name: 'Tablet',
+    styles: {
+      width: '800px',
+      height: '801px',
+      padding: '0px',
+    },
+  },
 };
 
 addParameters({
   viewport: {
     viewports: customViewports, // newViewports would be an ViewportMap. (see below for examples)
-    defaultViewport: 'Mobile',
+    defaultViewport: 'Tablet',
   },
 });
