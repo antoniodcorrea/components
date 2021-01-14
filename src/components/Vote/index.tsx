@@ -1,7 +1,5 @@
 import React from 'react';
 import { Triangle } from '../Svg';
-import { SpinnerCircle } from '../SpinnerCircle';
-import { Fade } from '../Fade';
 
 import './Vote.less';
 
@@ -22,8 +20,5 @@ export const Vote: React.FC<Props> = ({ vote, changeVote, className, loading = f
       className={'Vote-icon Vote-plus' + (vote === true ? ' Vote--active' : '')}
       onClick={() => changeVote(vote === true ? null : true)}
     />
-    <Fade mounted={loading} position="absolute">
-      <SpinnerCircle size="nano" background={false} speed="fast" />
-    </Fade>
   </button>
 );

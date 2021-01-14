@@ -20,31 +20,24 @@
     transform: rotate(180deg) translateX(-4px);
   }
 
-  &:hover {
-    cursor: pointer;
-
-    path[data-id='background'] {
-      opacity: 0;
-    }
-  }
-
   &--active {
     path[data-id='background'] {
       opacity: 2;
     }
   }
 
-  @{c}-icon:not(@{c}--active):hover {
-    path[data-id='background'] {
-      opacity: 1;
-    }
+  &--loading {
+    animation: fadein @td-normal ease-in alternate infinite;
+    pointer-events: none;
   }
 
-  &--loading {
-    @{c}-icon {
-      opacity: 0.4;
-      transition: opacity @td-fast @ease;
-      pointer-events: none;
+  @keyframes fadein {
+    from {
+      opacity: 0.5;
+    }
+
+    to {
+      opacity: 1;
     }
   }
 }
