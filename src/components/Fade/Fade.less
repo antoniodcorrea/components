@@ -75,6 +75,12 @@
   &-enter-active,
   &-enter-done {
     opacity: 1;
-    transform: translate(0);
+
+    &@{c}--up,
+    &@{c}--right,
+    &@{c}--bottom,
+    &@{c}--left {
+      transform: translate(0);
+    }
   }
 }
