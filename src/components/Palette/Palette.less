@@ -10,7 +10,7 @@
     flex-wrap: wrap;
     width: 930px;
     padding: 50px;
-    background: #f3f3f3;
+    background: white;
   }
 
   &-colors {
@@ -83,17 +83,21 @@
   }
 
   &-item {
+    display: flex;
     position: relative;
+    justify-content: center;
+    align-items: center;
     height: 100px;
     width: 100px;
     margin: 0 18px 18px 0;
-    text-transform: uppercase;
+    font-size: 10px;
     color: white;
     transition: box-shadow @td-slow @ease;
     box-shadow: 2px 2px 20px @c-transparent;
     border-radius: 4px;
 
-    &:hover {
+    &:hover:not(.Palette--noHover) {
+      cursor: default;
       box-shadow: 2px 2px 20px lightgray;
     }
 
@@ -112,67 +116,35 @@
   }
 
   &-item--base {
-    &:before {
-      content: 'base';
-    }
-
     background: @c-base;
   }
 
   &-item--background {
-    &:before {
-      content: 'Background';
-    }
-
     color: @c-base;
     background: @c-background;
   }
 
   &-item--accent {
-    &:before {
-      content: 'accent';
-    }
-
     background: @c-accent;
   }
 
   &-item--success {
-    &:before {
-      content: 'success';
-    }
-
     color: @c-base;
     background: @c-success;
   }
 
   &-item--alert {
-    &:before {
-      content: 'alert';
-    }
-
     color: @c-base;
     background: @c-alert;
   }
 
   &-item--error {
-    &:before {
-      content: 'error';
-    }
-
     background: @c-error;
   }
 
   &-item--disabled {
-    &:before {
-      content: 'disabled';
-    }
-
     color: @c-base;
     background: @c-disabled;
-  }
-
-  &-item--blue-0 {
-    background: @baseColors[blue];
   }
 
   &-item--blue-1 {
@@ -184,7 +156,6 @@
   }
 
   &-item--blue-3 {
-    color: @c-base;
     background: @gradientColors[blue-3];
   }
 
@@ -198,8 +169,26 @@
     background: @gradientColors[blue-5];
   }
 
-  &-item--red-0 {
-    background: @baseColors[red];
+  &-item--green-1 {
+    background: @gradientColors[green-1];
+  }
+
+  &-item--green-2 {
+    background: @gradientColors[green-2];
+  }
+
+  &-item--green-3 {
+    background: @gradientColors[green-3];
+  }
+
+  &-item--green-4 {
+    color: @c-base;
+    background: @gradientColors[green-4];
+  }
+
+  &-item--green-5 {
+    color: @c-base;
+    background: @gradientColors[green-5];
   }
 
   &-item--red-1 {
@@ -215,18 +204,12 @@
   }
 
   &-item--red-4 {
-    color: @c-base;
     background: @gradientColors[red-4];
   }
 
   &-item--red-5 {
     color: @c-base;
     background: @gradientColors[red-5];
-  }
-
-  &-item--yellow-0 {
-    color: @c-base;
-    background: @baseColors[yellow];
   }
 
   &-item--yellow-1 {
@@ -254,8 +237,13 @@
     background: @gradientColors[yellow-5];
   }
 
+  &-item--yellow-6 {
+    color: @c-base;
+    background: @gradientColors[yellow-6];
+  }
+
   &-item--black-0 {
-    background: @baseColors[black];
+    background: @gradientColors[black-1];
   }
 
   &-item--black-1 {
@@ -280,7 +268,33 @@
     background: @gradientColors[black-5];
   }
 
-  &-item--black-transparent-2 {
-    background: @c-traslucid;
+  &-item--black-6 {
+    color: @c-base;
+    background: @gradientColors[black-6];
+  }
+
+  &-item--black-traslucid-1 {
+    color: @c-base;
+    background: @c-traslucid--hardest;
+  }
+
+  &-item--black-traslucid-2 {
+    color: @c-base;
+    background: @c-traslucid--hard;
+  }
+
+  &-item--black-traslucid-3 {
+    color: @c-base;
+    background: @c-traslucid--light;
+  }
+
+  &-item--black-traslucid-4 {
+    color: @c-base;
+    background: @c-traslucid--lightest;
+  }
+
+  &-item--black-traslucid-5 {
+    color: @c-base;
+    background: @c-traslucid--ultralight;
   }
 }
