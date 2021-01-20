@@ -11,10 +11,11 @@ export default {
 
 const knobs = {
   href: (): string => text('Href', 'http://example.com'),
-  text: (): string => text('Text', 'Click me!'),
+  text: (): string => text('Text', 'The quick brown fox jumps over the lazy dog'),
   styled: (): boolean => boolean('Styled', true),
   targetBlank: (): boolean => boolean('Target', false),
   disabled: (): boolean => boolean('Disabled', false),
+  underlined: (): boolean => boolean('Underlined', false),
 };
 
 export const Default: React.FC = () => (
@@ -24,6 +25,7 @@ export const Default: React.FC = () => (
     href={knobs.href()}
     styled={knobs.styled()}
     disabled={knobs.disabled()}
+    underlined={knobs.underlined()}
   >
     {knobs.text()}
   </A>

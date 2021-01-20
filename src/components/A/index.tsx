@@ -12,6 +12,7 @@ interface Props {
   targetBlank?: boolean;
   disabled?: boolean;
   title?: string;
+  underlined?: boolean;
   onClick?: (any) => void;
 }
 
@@ -25,9 +26,13 @@ export const A: React.FC<Props> = ({
   onClick,
   disabled = false,
   title,
+  underlined = false,
 }) => {
   const _className =
-    (styled ? 'A' : 'A--default') + (styled && disabled ? ' A--disabled' : '') + (className ? ' ' + className : '');
+    (styled ? 'A' : 'A--default') +
+    (className ? ' ' + className : '') +
+    (styled && disabled ? ' A--disabled' : '') +
+    (styled && underlined ? ' ' + 'A--underlined' : '');
 
   const target = targetBlank ? '_blank' : '_self';
 
