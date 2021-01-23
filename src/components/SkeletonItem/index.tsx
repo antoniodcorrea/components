@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const SkeletonItem: React.FC<Props> = ({ className, hollow = false }) => (
-  <span className={' SkeletonItem ' + (className ? className : ' ') + (hollow ? 'SkeletonItem' + '-hollow' : ' ')}>
+  <span className={' SkeletonItem ' + (className ? className : ' ') + (hollow ? ' SkeletonItem' + '-hollow ' : ' ')}>
     {' '}
   </span>
 );

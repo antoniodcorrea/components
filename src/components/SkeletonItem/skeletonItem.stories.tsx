@@ -10,11 +10,13 @@ export default {
 export const Default = () => {
   return (
     <div style={{ width: '100px', border: '1px solid', padding: '10px', borderRadius: '2px' }}>
-      <SkeletonItem /> <SkeletonItem /> <SkeletonItem />
+      <SkeletonItem className="Classname" /> <SkeletonItem className="Classname" />{' '}
+      <SkeletonItem className="Classname" />
       <Hr spacer size="small" />
-      <SkeletonItem hollow /> <SkeletonItem hollow /> <SkeletonItem hollow />
+      <SkeletonItem className="Classname" hollow /> <SkeletonItem className="Classname" hollow />{' '}
+      <SkeletonItem className="Classname" hollow />
       <Hr spacer size="small" />
-      <SkeletonItem />
+      <SkeletonItem className="Classname" />
     </div>
   );
 };
