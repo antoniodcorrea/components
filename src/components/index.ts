@@ -52,3 +52,4 @@ export { TextArea } from './TextArea';
 export { TextButton } from './TextButton';
 export { Tooltip } from './Tooltip';
 export { Ul } from './Ul';
+export { SkeletonItem } from './SkeletonItem';

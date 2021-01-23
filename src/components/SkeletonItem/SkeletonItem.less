@@ -1,0 +1,26 @@
+@import '../../css/imports.less';
+
+@c: .SkeletonItem;
+
+@{c} {
+  height: @fs-normal;
+  width: 100%;
+  min-width: @fs-normal;
+  background: @c-base;
+  animation: skeletonItemAnimation 1s ease infinite;
+  border-radius: 2px;
+
+  @keyframes skeletonItemAnimation {
+    0% {
+      background-color: @c-base;
+    }
+
+    15% {
+      background-color: @c-accent;
+    }
+
+    100% {
+      background-color: @c-base;
+    }
+  }
+}
