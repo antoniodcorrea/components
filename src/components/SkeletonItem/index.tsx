@@ -7,5 +7,5 @@ interface Props {
 }
 
 export const SkeletonItem: React.FC<Props> = ({ className }) => (
-  <div className={' SkeletonItem ' + (className && className)} />
+  <span className={' SkeletonItem ' + (className ? className : ' ')}> </span>
 );
