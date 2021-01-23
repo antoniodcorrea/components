@@ -11,6 +11,12 @@
   animation: skeletonItemAnimation 1s ease infinite;
   border-radius: 2px;
 
+  &-hollow {
+    background-color: @c-background;
+    border: 1px solid;
+    animation: skeletonItemAnimationHollow 1s ease infinite;
+  }
+
   @keyframes skeletonItemAnimation {
     0% {
       background-color: @c-base;
@@ -22,6 +28,20 @@
 
     100% {
       background-color: @c-base;
+    }
+  }
+
+  @keyframes skeletonItemAnimationHollow {
+    0% {
+      border-color: @c-base;
+    }
+
+    15% {
+      border-color: @c-accent;
+    }
+
+    100% {
+      border-color: @c-base;
     }
   }
 }

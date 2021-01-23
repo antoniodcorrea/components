@@ -12,6 +12,8 @@ export const Default = () => {
     <div style={{ width: '100px', border: '1px solid', padding: '10px', borderRadius: '2px' }}>
       <SkeletonItem /> <SkeletonItem /> <SkeletonItem />
       <Hr spacer size="small" />
+      <SkeletonItem hollow /> <SkeletonItem hollow /> <SkeletonItem hollow />
+      <Hr spacer size="small" />
       <SkeletonItem />
     </div>
   );
