@@ -1,7 +1,6 @@
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 import React from 'react';
 import { FadeInOut } from '.';
-
 export default {
   title: 'FadeInOut',
   component: FadeInOut,
@@ -14,9 +13,9 @@ const knobs = {
 
 export const Default = () => (
   <div>
-    <FadeInOut valueToUpdate={knobs.key()}>
-      {knobs.key() && <div>A</div>}
-      {!knobs.key() && <div>B</div>}
+    <FadeInOut valueToUpdate={knobs.key()} speed="fastest">
+      {knobs.key() && <div style={{ width: '300px', height: '300px', background: 'black' }} />}
+      {!knobs.key() && <div style={{ width: '300px', height: '300px', background: 'tomato' }} />}
     </FadeInOut>
   </div>
 );
