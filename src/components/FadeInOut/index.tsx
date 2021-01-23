@@ -10,7 +10,7 @@ export type FadeSpeed = 'slow' | 'normal' | 'fast' | 'fastest';
 interface Props {
   classname?: string;
   children: React.ReactNode | React.ReactNode[];
-  valueToUpdate: string;
+  valueToUpdate: string | boolean | number;
   speed?: FadeSpeed;
   scrollToTop?: boolean;
 }
@@ -18,7 +18,7 @@ interface Props {
 export const FadeInOut: React.FC<Props> = ({ children, classname, valueToUpdate, speed = 'fast', scrollToTop }) => (
   <SwitchTransition>
     <CSSTransition
-      key={valueToUpdate}
+      key={valueToUpdate.toString()}
       appear
       classNames="FadeInOut"
       className={'FadeInOut FadeInOut--' + speed + (classname ? classname : '')}
