@@ -27,25 +27,17 @@
   }
 
   &--loading {
-    fill: @c-background;
-    stroke: @c-base;
-    transition: fill @td-fast ease;
-    animation: dash @td-sluggish @ease-out infinite;
-    stroke-width: 5px;
-    stroke-dasharray: 1;
+    animation: fadein @td-normal ease-in alternate infinite;
+    pointer-events: none;
   }
 
-  @keyframes dash {
-    0% {
-      stroke-dashoffset: 1;
+  @keyframes fadein {
+    from {
+      opacity: 0.5;
     }
 
-    50% {
-      stroke-dashoffset: 0;
-    }
-
-    100% {
-      stroke-dashoffset: -1;
+    to {
+      opacity: 1;
     }
   }
 }
