@@ -10,10 +10,11 @@
   &-icon {
     height: 16px;
     width: 16px;
-
-    path[data-id='background'] {
-      transition: fill @td-fastest @ease, opacity @td-fastest @ease;
-    }
+    fill: @c-background;
+    stroke: @c-base;
+    stroke-width: 8px;
+    transition: fill @td-fast @ease, opacity @td-fastest @ease;
+    stroke-dasharray: 1;
   }
 
   &-minus {
@@ -21,23 +22,29 @@
   }
 
   &--active {
-    path[data-id='background'] {
-      opacity: 2;
+    path {
+      fill: @c-base;
     }
   }
 
   &--loading {
-    animation: fadein @td-normal ease-in alternate infinite;
-    pointer-events: none;
+    path {
+      fill: @c-background;
+      animation: dash @td-sluggish @ease-out infinite;
+    }
   }
 
-  @keyframes fadein {
-    from {
-      opacity: 0.5;
+  @keyframes dash {
+    0% {
+      stroke-dashoffset: 1;
     }
 
-    to {
-      opacity: 1;
+    50% {
+      stroke-dashoffset: 0;
+    }
+
+    100% {
+      stroke-dashoffset: -1;
     }
   }
 }
