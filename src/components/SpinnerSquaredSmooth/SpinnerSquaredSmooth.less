@@ -1,71 +1,24 @@
 @import '../../css/imports.less';
 
-@totalAnim: 3s;
-@squareLen: 100;
-@calculatedSquareLen: (@squareLen * 113) / 100;
-@stroke-width: 2px;
-@strokes: 1;
-
 @c: .SpinnerSquaredSmooth;
 
 @{c} {
-  .default();
+  height: 100%;
+  width: 100%;
 
-  display: flex;
-  position: absolute;
-  justify-content: space-around;
-  align-items: center;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  &:before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: @c-traslucid;
-  }
-
-  &-square {
-    position: relative;
-    height: unit(@calculatedSquareLen, px);
-    width: unit(@calculatedSquareLen, px);
-  }
-
-  &-svg {
+  &-line {
     height: 100%;
     width: 100%;
-  }
-
-  &-pathStatic {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    stroke-width: @stroke-width;
+    fill: none;
     stroke: @c-base;
+    animation: dash 2s ease-in-out infinite;
+    stroke-width: 6px;
+    stroke-dasharray: 1;
   }
 
-  &-pathAnimated {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    stroke-width: @stroke-width;
-    stroke: @c-background;
-    stroke-dasharray: @calculatedSquareLen / @strokes;
-    animation: square-anim @totalAnim ease infinite;
-  }
-
-  @keyframes square-anim {
+  @keyframes dash {
     0% {
-      stroke-dashoffset: -@calculatedSquareLen;
+      stroke-dashoffset: 1;
     }
 
     50% {
@@ -73,7 +26,43 @@
     }
 
     100% {
-      stroke-dashoffset: @calculatedSquareLen;
+      stroke-dashoffset: -1;
+    }
+  }
+
+  &-medium {
+    position: relative;
+    height: 200px;
+    width: 200px;
+  }
+
+  &-small {
+    position: relative;
+    height: 100px;
+    width: 100px;
+  }
+
+  &-nano {
+    position: relative;
+    height: 50px;
+    width: 50px;
+  }
+
+  &-fast {
+    @{c}-line {
+      animation-duration: 1s;
+    }
+  }
+
+  &-normal {
+    @{c}-line {
+      animation-duration: 3s;
+    }
+  }
+
+  &-slow {
+    @{c}-line {
+      animation-duration: 10s;
     }
   }
 }
