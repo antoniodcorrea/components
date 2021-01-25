@@ -13,6 +13,7 @@ interface Props {
   valueToUpdate: string | boolean | number;
   speed?: FadeSpeed;
   scrollToTop?: boolean;
+  appear?: boolean;
 }
 
 export const FadeInOut: React.FC<Props> = ({
@@ -21,11 +22,12 @@ export const FadeInOut: React.FC<Props> = ({
   valueToUpdate = '',
   speed = 'fast',
   scrollToTop,
+  appear = false,
 }) => (
   <SwitchTransition>
     <CSSTransition
       key={valueToUpdate.toString()}
-      appear
+      appear={appear}
       classNames="FadeInOut"
       className={'FadeInOut FadeInOut--' + speed + (classname ? classname : '')}
       timeout={{

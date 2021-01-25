@@ -21,6 +21,7 @@ interface Props {
   delayOut?: number;
   easing?: string;
   position?: 'fixed' | 'absolute';
+  appear?: boolean;
 }
 
 export const Fade: React.FC<Props> = ({
@@ -38,6 +39,7 @@ export const Fade: React.FC<Props> = ({
   direction,
   easing = 'cubic-bezier(0.5, 1, 0.89, 1)',
   position,
+  appear = false,
 }) => {
   const cssDelay = mounted === true ? delayIn : delayOut;
   const delayRule = cssDelay.toString() + 'ms';
@@ -45,7 +47,7 @@ export const Fade: React.FC<Props> = ({
   return (
     <CSSTransition
       in={mounted}
-      appear
+      appear={appear}
       unmountOnExit={unmountOnExit}
       className={
         (classname ? classname : ' ') +
