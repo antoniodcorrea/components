@@ -12,6 +12,6 @@ describe('SpinnerSquaredSmooth (Snapshot)', () => {
 describe('SpinnerSquaredSmooth', () => {
   it('SpinnerSquaredSmooth is a myComponent type <div>', () => {
     const component = shallow(<SpinnerSquaredSmooth />);
-    expect(component.type()).toEqual('div');
+    expect(component.type()).toEqual('svg');
   });
 });
