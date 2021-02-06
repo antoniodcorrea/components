@@ -39,6 +39,8 @@
     "@typescript-eslint/no-explicit-any": 0,
     "arrow-body-style": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
-    "prefer-spread": 0
+    "prefer-spread": 0,
+    "react/display-name": 0
+
   }
 }

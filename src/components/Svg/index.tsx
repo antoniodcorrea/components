@@ -15,6 +15,7 @@ import PrivateSvg from '../../assets/svg/private.svg';
 import LinkSvg from '../../assets/svg/link.svg';
 import BookmarkSvg from '../../assets/svg/bookmark.svg';
 import EditSvg from '../../assets/svg/edit.svg';
+import PlusCircleSvg from '../../assets/svg/plusCircle.svg';
 import * as Icons from '.';
 import { SvgClickEvent } from './Svg.types';
 
@@ -38,7 +39,8 @@ export type IconsType =
   | 'Link'
   | 'Bookmark'
   | 'Private'
-  | 'Edit';
+  | 'Edit'
+  | 'PlusCircle';
 
 export interface Props {
   size?: IconSize;
@@ -80,6 +82,7 @@ export const Private: React.FC<Props> = (props) => Svg(PrivateSvg)(props);
 export const Link: React.FC<Props> = (props) => Svg(LinkSvg)(props);
 export const Bookmark: React.FC<Props> = (props) => Svg(BookmarkSvg)(props);
 export const Edit: React.FC<Props> = (props) => Svg(EditSvg)(props);
+export const PlusCircle: React.FC<Props> = (props) => Svg(PlusCircleSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;
