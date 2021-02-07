@@ -13,7 +13,8 @@
     "build-storybook": "build-storybook",
     "clearComponents": "find components -name '*' -delete",
     "storybook": "start-storybook -s ./src/assets/Svg/Icons -p 6006 watch-css",
-    "test": "jest -u"
+    "test": "jest -u",
+    "test:watch": "jest --watch --no-cache"
   },
   "dependencies": {
     "@popperjs/core": "^2.6.0",
