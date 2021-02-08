@@ -16,4 +16,7 @@ describe('testAddDefaultProtocol', () => {
   test('it should add url with https protocol if it doesnt have', () => {
     expect(testAddDefaultProtocol('hello.example.com')).toEqual('https://hello.example.com');
   });
+  test('it should not add url with https protocol if it starts with slash', () => {
+    expect(testAddDefaultProtocol('/example')).toEqual('/example');
+  });
 });
