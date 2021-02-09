@@ -39,27 +39,23 @@ const generateItems = ({
   const pages = Array.from({ length: totalPages }, (_, index) => ({ page: firstPage + index }))
     .map((item, index, array) => {
       const currentPageOffset = item.page * itemsPerPage - itemsPerPage;
+      const isNotFirstPage = item.page > 1;
+      const isNotLastPage = item.page < totalPages;
+      const isNotNeighbour = item.page < currentPage - pageNeighbours || item.page > currentPage + pageNeighbours;
+      const isCurrent = item.page === currentPage || (offset >= array.length && index + 1 === array.length);
+
+      if (isNotFirstPage && isNotLastPage && isNotNeighbour) return null;
 
       const myUrl = new URLWrapper(path);
       const pathWithCurrentOffSet = myUrl.upsertSearchParam('page[offset]', currentPageOffset);
 
-      const isNotFirstPage = item.page > 1;
-      const isNotLastPage = item.page < totalPages;
-      const isNotNeighbourOfCurrentPage =
-        item.page < currentPage - pageNeighbours || item.page > currentPage + pageNeighbours;
-      const currentOffsetIsLessThanTotalItems = currentPageOffset <= totalItems;
-
       const page = {
         page: item.page,
         path: pathWithCurrentOffSet,
-        current: item.page === currentPage || (offset > totalItems && index + 1 >= array.length),
+        current: isCurrent,
       };
 
-      if (isNotFirstPage && isNotLastPage && isNotNeighbourOfCurrentPage && currentOffsetIsLessThanTotalItems) {
-        return null;
-      } else {
-        return page;
-      }
+      return page;
     })
     .filter((item, index, array) => !!(item !== array[index - 1]));
 
