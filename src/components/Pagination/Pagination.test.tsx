@@ -3,9 +3,9 @@ import { shallow } from 'enzyme';
 import { Pagination } from '.';
 
 const defaultProps = {
-  totalItems: 837246,
-  itemsPerPage: 8,
-  page: 387,
+  totalItems: 100,
+  itemsPerPage: 7,
+  offset: 14,
   path: 'http://example.com',
 };
 

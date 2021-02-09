@@ -1,85 +1,89 @@
-import React, { Fragment, Component } from 'react';
-import './Pagination.less';
+import React, { Fragment } from 'react';
+import { URLWrapper } from '../../../tools/services/URLWrapper';
 import { A } from '../A';
 import { Border } from '../Border';
+
+import './Pagination.less';
 
 interface Props {
   totalItems: number;
   itemsPerPage: number;
-  page: number;
+  offset?: number;
   path: string;
-  pageNeighbours: number;
+  pageNeighbours?: number;
   grow?: boolean;
 }
 
-export class Pagination extends Component<Props> {
-  tempPreviousPage = 0;
+const generateItems = ({
+  totalItems,
+  itemsPerPage,
+  path,
+  offset,
+  pageNeighbours,
+}): Array<{ page: number; path: string; current: boolean } | null> => {
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const firstPage = 1;
+  const isOnePage = totalPages === 1;
+  const currentPage =
+    offset > totalItems ? Math.ceil(totalItems / itemsPerPage) : Math.ceil(offset / itemsPerPage) || 1;
+  const defaultPages = [
+    {
+      page: 1,
+      path: path,
+      current: true,
+    },
+  ];
 
-  static defaultProps = {
-    pageNeighbours: 1,
-  };
+  if (!totalItems || isOnePage) return defaultPages;
 
-  createPages = (from: number, to: number, totalPages: number): number[] => {
-    let i: number = from;
-    const range: number[] = [];
+  const pages = Array.from({ length: totalPages }, (_, index) => ({ page: firstPage + index }))
+    .map((item, index, array) => {
+      const currentPageOffset = item.page * itemsPerPage - itemsPerPage;
 
-    while (i <= to) {
-      range.push(i);
-      i += 1;
-    }
-    if (range[0] !== 1) range.unshift(1);
-    if (range[-1] !== totalPages) range.push(totalPages);
+      const myUrl = new URLWrapper(path);
+      const pathWithCurrentOffSet = myUrl.upsertSearchParam('page[offset]', currentPageOffset);
 
-    return range;
-  };
+      const isNotFirstPage = item.page > 1;
+      const isNotLastPage = item.page < totalPages;
+      const isNotNeighbourOfCurrentPage =
+        item.page < currentPage - pageNeighbours || item.page > currentPage + pageNeighbours;
+      const currentOffsetIsLessThanTotalItems = currentPageOffset <= totalItems;
 
-  renderNonConsecutiveItem = (item: number, href: string): JSX.Element => {
-    this.tempPreviousPage = item;
+      const page = {
+        page: item.page,
+        path: pathWithCurrentOffSet,
+        current: item.page === currentPage || (offset > totalItems && index + 1 >= array.length),
+      };
 
-    return (
-      <Fragment key={item}>
-        <span className="Pagination-dots Pagination-item">...</span>
-        <A className="Pagination-item" href={href} styled>
-          {item}
-        </A>
-      </Fragment>
-    );
-  };
+      if (isNotFirstPage && isNotLastPage && isNotNeighbourOfCurrentPage && currentOffsetIsLessThanTotalItems) {
+        return null;
+      } else {
+        return page;
+      }
+    })
+    .filter((item, index, array) => !!(item !== array[index - 1]));
 
-  renderConsecutiveItem = (item: number, href: string, page: number): JSX.Element => {
-    this.tempPreviousPage += 1;
+  return pages;
+};
 
-    return (
-      <A className="Pagination-item" href={href} key={item} styled disabled={item === page}>
-        {item}
-      </A>
-    );
-  };
+export const Pagination: React.FC<Props> = ({ totalItems, itemsPerPage, offset = 0, path, pageNeighbours, grow }) => {
+  const pages = generateItems({ totalItems, itemsPerPage, path, offset, pageNeighbours });
 
-  renderItems = (item: number, href: string, page: number): JSX.Element => {
-    if (this.tempPreviousPage !== item - 1 && item !== 1) {
-      return this.renderNonConsecutiveItem(item, href);
-    }
-
-    return this.renderConsecutiveItem(item, href, page);
-  };
-
-  render = (): JSX.Element => {
-    const { page, totalItems, itemsPerPage, path, pageNeighbours, grow } = this.props;
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-    const startPage = Math.max(2, page - pageNeighbours);
-    const endPage = Math.min(totalPages - 1, page + pageNeighbours);
-    const pages = this.createPages(startPage, endPage, totalPages);
-    const href = path + '?page=' + page;
-
-    return (
-      <div className={'Pagination ' + (grow ? 'Pagination-grow' : '')}>
-        <Border className="Pagination-border" padding="small" grow={grow}>
-          {pages.map((item) => {
-            return this.renderItems(item, href, page);
-          })}
-        </Border>
-      </div>
-    );
-  };
-}
+  return (
+    <div className={'Pagination ' + (grow ? 'Pagination-grow' : '')}>
+      <Border className="Pagination-border" padding="small" grow={grow}>
+        {pages.map((item, index) => {
+          return !!item ? (
+            <A className="Pagination-item" href={item.path} key={index} styled disabled={item.current}>
+              {item.page}
+            </A>
+          ) : (
+            <Fragment key={index}>
+              <span className="Pagination-dots Pagination-item">...</span>
+            </Fragment>
+          );
+        })}
+      </Border>
+    </div>
+  );
+};
