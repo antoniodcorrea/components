@@ -3,12 +3,14 @@
 @c: .Flex;
 
 @{c} {
-  .default();
-
   display: flex;
-  flex-shrink: 0;
   height: 100%;
   width: 100%;
+
+  // Avoid shrinking direct children of Flex component
+  > * {
+    flex-shrink: 0;
+  }
 
   &-horizontal,
   &-vertical {
