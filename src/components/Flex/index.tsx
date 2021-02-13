@@ -8,16 +8,16 @@ interface Props {
   children: React.ReactNode;
   horizontal?: FlexHorizontal;
   vertical?: FlexVertical;
-  wrap?: boolean;
+  noWrap?: boolean;
 }
 
-export const Flex: React.FC<Props> = ({ children, horizontal, vertical, wrap }) => (
+export const Flex: React.FC<Props> = ({ children, horizontal, vertical, noWrap }) => (
   <div
     className={
       'Flex' +
       (horizontal ? ' Flex-horizontal--' + horizontal : '') +
       (vertical ? ' Flex-vertical--' + vertical : '') +
-      (!!wrap ? ' Flex-wrap' : '')
+      (!!noWrap ? ' Flex-noWrap' : '')
     }
   >
     {children}
