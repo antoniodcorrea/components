@@ -14,7 +14,14 @@ interface Props {
   grow?: boolean;
 }
 
-export const Pagination: React.FC<Props> = ({ totalItems, itemsPerPage, offset = 0, path, pageNeighbours, grow }) => {
+export const Pagination: React.FC<Props> = ({
+  totalItems,
+  itemsPerPage,
+  offset = 0,
+  path,
+  pageNeighbours = 2,
+  grow,
+}) => {
   const pages = calculatePages({ totalItems, itemsPerPage, path, offset, pageNeighbours });
 
   return (
