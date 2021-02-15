@@ -29,7 +29,7 @@ export const Pagination: React.FC<Props> = ({
       <Border className="Pagination-border" padding="small" grow={grow}>
         {pages.map((item, index) =>
           !!item ? (
-            <A className="Pagination-item" href={item.path} key={index} styled disabled={item.current}>
+            <A className="Pagination-item" href={item.path} key={index} styled disabled={item.current} frontend>
               {item.page}
             </A>
           ) : (
