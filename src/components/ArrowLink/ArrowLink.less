@@ -3,6 +3,7 @@
 @c: .ArrowLink;
 
 @{c} {
+  display: flex;
   color: @c-base;
 
   &:hover {
@@ -15,9 +16,9 @@
   }
 
   &:active {
-    text-decoration-color: @c-accent;
     color: @c-accent;
     cursor: pointer;
+    text-decoration-color: @c-accent;
   }
 
   &--default {
@@ -37,6 +38,7 @@
   }
 
   &-svg {
+    align-self: center;
     margin-left: 2px;
     transition: transform @td-fast @ease;
   }

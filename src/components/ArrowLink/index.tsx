@@ -9,28 +9,13 @@ import './ArrowLink.less';
 export type Size = 'normal' | 'small';
 
 interface Props {
-  children: React.ReactNode;
   className?: string;
-  href: string;
-  targetBlank?: boolean;
-  disabled?: boolean;
-  title?: string;
-  onClick?: (any) => void;
   icon?: IconsType;
   size?: Size;
+  children: React.ReactNode;
 }
 
-export const ArrowLink: React.FC<Props> = ({
-  children,
-  className,
-  href,
-  targetBlank = false,
-  onClick,
-  disabled = false,
-  title,
-  icon = 'ArrowRight',
-  size = 'normal',
-}) => {
+export const ArrowLink: React.FC<Props> = ({ className, children, icon = 'ArrowRight', size = 'normal' }) => {
   const svgSizeMap: {
     [key: string]: IconSize;
   } = {
@@ -39,22 +24,11 @@ export const ArrowLink: React.FC<Props> = ({
   };
 
   return (
-    <A
-      className={'ArrowLink ' + (className ? className : '')}
-      title={title}
-      href={href}
-      onClick={onClick}
-      targetBlank={targetBlank}
-      styled={false}
-      disabled={disabled}
-      underlined={false}
-    >
-      <Flex vertical="center" horizontal="left">
-        <Span bold size={size}>
-          {children}
-        </Span>
-        {icon && <SvgIcon name={icon} size={svgSizeMap[size]} className="ArrowLink-svg" />}
-      </Flex>
-    </A>
+    <span className={'ArrowLink' + (className ? className : '')}>
+      <Span bold size={size}>
+        {children}
+      </Span>
+      {icon && <SvgIcon name={icon} size={svgSizeMap[size]} className="ArrowLink-svg" />}
+    </span>
   );
 };
