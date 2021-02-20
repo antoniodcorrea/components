@@ -37,18 +37,13 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, plac
     if (!parentElement) return;
 
     parentElement.addEventListener('mouseenter', mountTooltip);
-
-    return parentElement.removeEventListener('mouseenter', mountTooltip);
-  }, []);
-
-  useEffect(() => {
-    const parentElement = document.getElementById(parentElementId);
-    if (!parentElement) return;
-
     parentElement.addEventListener('mouseleave', unmountTooltip);
 
-    return parentElement.removeEventListener('mouseenter', unmountTooltip);
-  }, []);
+    return () => {
+      parentElement.removeEventListener('mouseenter', mountTooltip);
+      parentElement.removeEventListener('mouseleave', unmountTooltip);
+    };
+  });
 
   useEffect(() => {
     const parentElement = document.getElementById(parentElementId);
@@ -60,6 +55,15 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, plac
           name: 'offset',
           options: {
             offset: [0, 8],
+          },
+        },
+        // Important: to avoid creating scroll and resize listeners we need to pass this «modifier»
+        // https://github.com/chakra-ui/chakra-ui/issues/2531
+        {
+          name: 'eventListeners',
+          options: {
+            scroll: false,
+            resize: false,
           },
         },
       ],
