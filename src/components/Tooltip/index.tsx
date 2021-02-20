@@ -39,7 +39,7 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, plac
     parentElement.addEventListener('mouseenter', mountTooltip);
 
     return parentElement.removeEventListener('mouseenter', mountTooltip);
-  });
+  }, []);
 
   useEffect(() => {
     const parentElement = document.getElementById(parentElementId);
@@ -48,7 +48,7 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, plac
     parentElement.addEventListener('mouseleave', unmountTooltip);
 
     return parentElement.removeEventListener('mouseenter', unmountTooltip);
-  });
+  }, []);
 
   useEffect(() => {
     const parentElement = document.getElementById(parentElementId);
