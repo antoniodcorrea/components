@@ -1,7 +1,7 @@
-import { A } from 'components/A';
-import { Border } from 'components/Border';
-import { ArrowDown, ArrowUp } from 'components/Svg';
 import React from 'react';
+import { A } from '../A';
+import { Border } from '../Border';
+import { ArrowDown, ArrowUp } from '../Svg';
 import { URLWrapper } from '../../../tools/services/URLWrapper';
 
 import './SortBy.less';
@@ -16,7 +16,7 @@ interface Props {
   activeSort: string;
 }
 
-const SortBy: React.FC<Props> = ({ className, href, options, activeSort = 'id' }) => {
+export const SortBy: React.FC<Props> = ({ className, href, options, activeSort = 'id' }) => {
   const url = new URLWrapper(href);
   const activeSortIsAsc = !activeSort?.startsWith('-');
 
@@ -56,5 +56,3 @@ const SortBy: React.FC<Props> = ({ className, href, options, activeSort = 'id' }
     </Border>
   );
 };
-
-export default SortBy;

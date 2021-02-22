@@ -1,6 +1,6 @@
 import React from 'react';
-import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
-import SortBy from '.';
+import { withKnobs, select } from '@storybook/addon-knobs';
+import { SortBy } from '.';
 
 export default {
   component: SortBy,
