@@ -33,7 +33,7 @@ export const SortBy: React.FC<Props> = ({ className, href, options, activeSort =
 
           return (
             <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
-              <A href={displayedUrl} key={index} styled={false}>
+              <A href={displayedUrl} key={index} styled={false} frontend>
                 {item.label}{' '}
                 <span className="SortBy-listItemDirection">
                   {shouldDisplayArrowUp ? (
