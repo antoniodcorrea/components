@@ -10,5 +10,38 @@
 
   &-listItem {
     margin-right: 15px;
+    color: @c-traslucid--hardest;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-listItem--active {
+    color: @c-base;
+
+    &:hover {
+      @{c}-listItemIcon {
+        transform: scaleY(-1);
+      }
+    }
+  }
+
+  &-listItemIcon {
+    path {
+      fill: @c-traslucid--hardest;
+    }
+  }
+
+  &-listItemIcon--active {
+    transition: transform @td-fast @ease-outCubic;
+
+    path {
+      fill: @c-base;
+    }
   }
 }

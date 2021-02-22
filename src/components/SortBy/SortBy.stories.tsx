@@ -1,5 +1,5 @@
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text, select } from '@storybook/addon-knobs';
 import SortBy from '.';
 
 export default {
@@ -10,25 +10,38 @@ export default {
 
 const options = [
   {
+    label: 'Id',
+    field: 'id',
+  },
+  {
     label: 'Rating',
     field: 'rating',
   },
-
   {
     label: 'Vote',
     field: 'vote',
   },
-
   {
-    label: 'My Vote',
-    field: 'vote',
+    label: 'Created At',
+    field: 'createdat',
   },
 ];
 
-const activeOption = {
-  field: 'vote',
+const knobs = {
+  activeSort: (): string =>
+    select(
+      'activeSort',
+      [undefined, ...options.map((item) => item.field), ...options.map((item) => `-${item.field}`)],
+      'id'
+    ),
 };
 
 export const Default: React.FC = () => {
-  return <SortBy options={options} activeOption={activeOption} />;
+  return (
+    <SortBy
+      href="http://www.example.com/en/user/1?page[size]=10&filter[tag]=politics"
+      options={options}
+      activeSort={knobs.activeSort()}
+    />
+  );
 };

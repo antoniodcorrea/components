@@ -1,37 +1,60 @@
+import { A } from 'components/A';
 import { Border } from 'components/Border';
-import { Flex } from 'components/Flex';
-import { Hr } from 'components/Hr';
-import { ArrowUp } from 'components/Svg';
+import { ArrowDown, ArrowUp } from 'components/Svg';
 import React from 'react';
+import { URLWrapper } from '../../../tools/services/URLWrapper';
 
 import './SortBy.less';
 
 interface Props {
   className?: string;
+  href: string;
   options: {
     label: string;
     field: string;
   }[];
-  activeOption: {
-    field: string;
-  };
+  activeSort: string;
 }
 
-const SortBy: React.FC<Props> = ({ className, options }) => (
-  <Border className={'SortBy ' + (className ? className : '')} padding="small">
-    <ul className="SortBy-list">
-      {options.map((item, index) => {
-        return (
-          <li key={index} className="SortBy-listItem">
-            {item.label}{' '}
-            <span className="SortBy-listItemDirection">
-              <ArrowUp size="small" />
-            </span>
-          </li>
-        );
-      })}
-    </ul>
-  </Border>
-);
+const SortBy: React.FC<Props> = ({ className, href, options, activeSort = 'id' }) => {
+  const url = new URLWrapper(href);
+  const activeSortIsAsc = !activeSort?.startsWith('-');
+
+  return (
+    <Border className={'SortBy' + (className ? ' ' + className : '')} padding="small">
+      <ul className="SortBy-list">
+        {options.map((item, index) => {
+          const isActiveItem = item.field === activeSort || `-${item.field}` === activeSort;
+          const isActiveItemAndIsAsc = activeSortIsAsc && isActiveItem;
+          const shouldDisplayArrowUp = isActiveItemAndIsAsc || !isActiveItem;
+          const optionUrlAsc = url.upsertSearchParam('sort', item.field);
+          const optionUrlDesc = url.upsertSearchParam('sort', `-${item.field}`);
+          const displayedUrl = isActiveItemAndIsAsc ? optionUrlDesc : optionUrlAsc;
+
+          return (
+            <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
+              <A href={displayedUrl} key={index} styled={false}>
+                {item.label}{' '}
+                <span className="SortBy-listItemDirection">
+                  {shouldDisplayArrowUp ? (
+                    <ArrowUp
+                      size="small"
+                      className={'SortBy-listItemIcon' + (isActiveItem ? ' SortBy-listItemIcon--active' : '')}
+                    />
+                  ) : (
+                    <ArrowDown
+                      size="small"
+                      className={'SortBy-listItemIcon' + (isActiveItem ? ' SortBy-listItemIcon--active' : '')}
+                    />
+                  )}
+                </span>
+              </A>
+            </li>
+          );
+        })}
+      </ul>
+    </Border>
+  );
+};
 
 export default SortBy;
