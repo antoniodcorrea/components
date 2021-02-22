@@ -9,12 +9,10 @@
   width: 100%;
   max-height: 100%;
   max-width: 100%;
-  transition: fill @td-fastest @ease, opacity @td-fastest @ease;
-  will-change: fill, opacity;
+  transition: opacity @td-fastest @ease;
 
   path {
-    transition: fill @td-fastest @ease, opacity @td-fastest @ease;
-    will-change: fill, opacity;
+    transition: opacity @td-fastest @ease;
   }
 
   path[data-id='foreground'] {
