@@ -5,6 +5,7 @@ import './A.less';
 
 interface Props {
   children: React.ReactNode;
+  id?: string;
   className?: string;
   href: string;
   frontend?: boolean;
@@ -18,6 +19,7 @@ interface Props {
 
 export const A: React.FC<Props> = ({
   children,
+  id,
   className,
   href,
   frontend = false,
@@ -39,12 +41,12 @@ export const A: React.FC<Props> = ({
   return (
     <>
       {!frontend && (
-        <a className={_className} onClick={onClick} title={title} href={href} target={target}>
+        <a className={_className} id={id} onClick={onClick} title={title} href={href} target={target}>
           {children}
         </a>
       )}
       {frontend && (
-        <Link className={_className} onClick={onClick} title={title} to={href} target={target}>
+        <Link className={_className} id={id} onClick={onClick} title={title} to={href} target={target}>
           {children}
         </Link>
       )}
