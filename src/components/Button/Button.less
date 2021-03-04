@@ -57,9 +57,11 @@
 
   &--success {
     @{c}-content {
-      color: @c-background;
-      background: @c-base;
+      color: @c-success;
+      background: @c-background;
+      border-color: @c-success;
       pointer-events: none;
+      box-shadow: 4px 4px 0 0 @c-success;
 
       @{c}-svg {
         fill: @c-background;
@@ -72,7 +74,7 @@
       color: @c-error;
       background: @c-background;
       border-color: @c-error;
-      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-error;
+      box-shadow: 4px 4px 0 0 @c-error;
       pointer-events: none;
 
       @{c}-svg {
@@ -86,7 +88,7 @@
       color: @c-disabled;
       background: @c-background;
       border-color: @c-disabled;
-      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-disabled;
+      box-shadow: 4px 4px 0 0 @c-disabled;
       pointer-events: none;
 
       @{c}-svg {
