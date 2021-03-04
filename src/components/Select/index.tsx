@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { Select as SelectUi } from './Select';
 
-export type Value = {
+export type SelectValue = {
   value: string | number;
   label: string;
 };
@@ -10,12 +10,12 @@ export type Value = {
 interface Props {
   placeholder?: string;
   label?: string;
-  options: Value[];
-  value: Value[];
-  defaultOptions: Value[];
+  options: SelectValue[];
+  value: SelectValue[];
+  defaultOptions: SelectValue[];
   grow?: boolean;
   maxItems?: number;
-  onChange?: (params: Value[]) => void;
+  onChange?: (params: SelectValue[]) => void;
   onInputChange?: (params: unknown) => void;
 }
 
@@ -33,7 +33,7 @@ export const Select: React.FC<Props> = ({
   const [focus, setFocus] = useState(false);
   const focusOrContent = !!value?.length || focus;
 
-  const onValueChange = (values) => {
+  const onSelectValueChange = (values) => {
     onChange(values);
   };
 
@@ -46,7 +46,7 @@ export const Select: React.FC<Props> = ({
       value={value}
       defaultOptions={defaultOptions}
       onInputChange={onInputChange}
-      onChange={onValueChange}
+      onChange={onSelectValueChange}
       grow={grow}
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}

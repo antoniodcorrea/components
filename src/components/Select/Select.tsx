@@ -8,7 +8,7 @@ import CreatableSelect, {
 } from 'react-select';
 import { ArrowDown, Cross } from '../Svg';
 
-import { Value } from '.';
+import { SelectValue } from '.';
 
 import './Select.less';
 
@@ -16,12 +16,12 @@ interface Props {
   placeholder?: string;
   label?: string;
   focusOrContent: boolean;
-  options: Value[];
-  value: Value[];
-  defaultOptions: Value[];
+  options: SelectValue[];
+  value: SelectValue[];
+  defaultOptions: SelectValue[];
   grow?: boolean;
   maxItems?: number;
-  onChange?: (params: Value[]) => void;
+  onChange?: (params: SelectValue[]) => void;
   onInputChange: (params: unknown) => void;
   onFocus: () => void;
   onBlur: () => void;

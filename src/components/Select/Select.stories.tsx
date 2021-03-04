@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { Select, Value } from '.';
+import { Select, SelectValue } from '.';
 import { Hr } from '../Hr';
 import { H1 } from '../H1';
 import { Span } from '../Span';
@@ -12,7 +12,7 @@ export default {
 };
 
 export const Default = () => {
-  const [value, setValue] = useState<Value[]>([{ label: 'Tag', value: 'Tag' }]);
+  const [value, setValue] = useState<SelectValue[]>([{ label: 'Tag', value: 'Tag' }]);
 
   return (
     <div>
@@ -67,7 +67,7 @@ export const Default = () => {
             },
           ]}
           grow
-          onChange={(incomingValue: Value[]) => setValue(incomingValue)}
+          onChange={(incomingValue: SelectValue[]) => setValue(incomingValue)}
           maxItems={5}
         />
       </div>
