@@ -1,45 +1,93 @@
 import { URLWrapper } from './URLWrapper';
 
 describe('URLWrapper', () => {
-  const url = new URLWrapper('https://sub.example.com/path1/path2?a=1&b=2&c[d]=3');
+  test('it should return a full href', () => {
+    const urlString =
+      'https://dev.linking.me/en/links?field1=value1&field2[field211][]=value21&field2[field212][]=value22';
+    const urlObject = new URLWrapper(urlString);
+    const output =
+      'https://dev.linking.me/en/links?field1=value1&field2[field211][]=value21&field2[field212][]=value22';
 
-  test('it should return the href', () => {
-    expect(url.getHref()).toEqual('https://sub.example.com/path1/path2?a=1&b=2&c[d]=3');
+    expect(urlObject.getHref()).toEqual(output);
   });
 
-  test('it should return a domain', () => {
-    expect(url.getDomain()).toEqual('sub.example.com');
+  test('it should return all params', () => {
+    const urlString =
+      'https://dev.linking.me/en/links?field1=value1&field2[field21][]=value211&field2[field21][]=value212';
+    const urlObject = new URLWrapper(urlString);
+    const output = {
+      field1: 'value1',
+      field2: {
+        field21: ['value211', 'value212'],
+      },
+    };
+
+    expect(urlObject.getSearchParamAll()).toEqual(output);
   });
 
-  test('it should return a domain without subdomain', () => {
-    expect(url.getDomainWithoutSubdomain()).toEqual('example.com');
+  test('it should upsert params', () => {
+    const urlString =
+      'https://dev.linking.me/en/links?field1=value1&field2[field21][]=value211&field2[field21][]=value212';
+    const urlObject = new URLWrapper(urlString);
+    const newParams = {
+      field3: 'value3',
+      field4: {
+        field41: ['value41', 'value42'],
+      },
+    };
+    urlObject.upsertSearchParams(newParams);
+    expect(urlObject.getSearchParamOne('field4.field41')).toEqual(['value41', 'value42']);
   });
 
-  test('it should return the path', () => {
-    expect(url.getPath()).toEqual('/path1/path2');
+  test('it should delete all occurence of one param at a field', () => {
+    const urlString =
+      'https://dev.linking.me/en/links?field1=value1&field2[field21][]=value211&field2[field21][]=value212&field2[field22][]=value221&field2[field22][]=value222';
+    const urlObject = new URLWrapper(urlString);
+
+    const originalParams = urlObject.getSearchParamAll();
+    const result = {
+      field1: 'value1',
+      field2: {
+        field21: ['value211', 'value212'],
+        field22: ['value221', 'value222'],
+      },
+    };
+    expect(originalParams).toEqual(result);
+    const queryString = urlObject.deleteSearchParam('field2.field21');
+    const modifiedParams = urlObject.getSearchParamAll();
+    const resultantParams = {
+      field1: 'value1',
+      field2: {
+        field22: ['value221', 'value222'],
+      },
+    };
+    expect(modifiedParams).toEqual(resultantParams);
+    expect(queryString).toEqual('?field1=value1&field2[field22][]=value221&field2[field22][]=value222');
   });
 
-  test('it should return the search string', () => {
-    expect(url.getSearch()).toEqual('a=1&b=2&c[d]=3');
+  test('it should delete all occurence of one param at a field', () => {
+    const urlString =
+      'https://dev.linking.me/en/links?field1=value1&field2[field21][]=value211&field2[field21][]=value212&field2[field22][]=value221&field2[field22][]=value222';
+    const urlObject = new URLWrapper(urlString);
+
+    const param = urlObject.getSearchParamOne('field2.field21');
+    expect(param).toEqual(['value211', 'value212']);
   });
 
-  test('it should return a query param', () => {
-    expect(url.getSearchParam('a')).toEqual('1');
+  test('it should overwrite existing params', () => {
+    const urlString = 'https://dev.linking.me/en/links?field1[field12]=value121';
+    const urlObject = new URLWrapper(urlString);
+
+    const queryString = urlObject.upsertSearchParams({ field1: { field12: 'value_modified' } });
+    expect(queryString).toEqual('?field1[field12]=value_modified');
   });
 
-  test('it should return a query param', () => {
-    expect(url.getSearchParam('c[d]')).toEqual('3');
-  });
+  test('it should overwrite existing params', () => {
+    const urlString = 'https://dev.linking.me/en/links?a[]=1&a[]=2&b[c][]=1&b[c][]=2&b[d]=1';
+    const urlObject = new URLWrapper(urlString);
 
-  test('it should not fail if asked to return a query param and it doesnt exist', () => {
-    expect(url.getSearchParam('e')).toEqual(null);
-  });
+    const queryString = urlObject.upsertSearchParams({ b: { c: [312] } });
 
-  test('it should return path and search', () => {
-    expect(url.getPathAndSearch()).toEqual('/path1/path2?a=1&b=2&c[d]=3');
-  });
-
-  test('it should return the updated url when updating a query param', () => {
-    expect(url.upsertSearchParam('c[d]', 4)).toEqual('https://sub.example.com/path1/path2?a=1&b=2&c[d]=4');
+    expect(queryString).toEqual('?a[]=1&a[]=2&b[c][]=312&b[d]=1');
   });
 });

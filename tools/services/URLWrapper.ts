@@ -1,21 +1,56 @@
 import psl from 'psl';
+
+import { getNested } from '../utils/object/getNested';
+import { mergeDeep } from '../utils/object/mergeDeep';
+import { omit } from '../utils/object/omit';
 import { addDefaultHttps } from '../utils/url/addDefaultHttps';
+import { QueryStringWrapper } from './QueryStringWrapper';
+
+const DEFAULT_URL = 'example.com';
 
 export class URLWrapper {
-  private readonly url: URL;
-  private readonly host: string;
-  private readonly path: string;
-  private readonly searchParams: URLSearchParams;
+  private url: URL;
+  private host: string;
+  private path: string;
+  private search: string;
+  private searchParams: URLSearchParams;
+  private searchParamsObject: Record<string, unknown>;
 
   constructor(rawURL: string) {
-    try {
-      const editedURL = addDefaultHttps(rawURL);
+    this.instantiateURL(rawURL);
+  }
 
-      const url = new URL(editedURL);
+  instantiateURL(rawURL: string): void {
+    try {
+      let formattedURL;
+
+      // Test for cases when url is malformed
+      switch (true) {
+        case rawURL === '':
+          formattedURL = DEFAULT_URL;
+          break;
+        case rawURL === '/':
+          formattedURL = DEFAULT_URL;
+          break;
+        case rawURL.startsWith('/'):
+          formattedURL = `${DEFAULT_URL}${rawURL}`;
+          break;
+
+        default:
+          formattedURL = rawURL;
+          break;
+      }
+
+      const URLWithProtocol = addDefaultHttps(formattedURL);
+
+      const url = new URL(URLWithProtocol);
+
       this.url = url;
       this.host = url.hostname;
       this.path = url.pathname;
+      this.search = this.url.search;
       this.searchParams = this.url.searchParams;
+      this.searchParamsObject = this.getSearchParamAll();
     } catch (err) {
       console.error('Un-parsable URL', err);
     }
@@ -23,6 +58,10 @@ export class URLWrapper {
 
   getHref(): string | undefined {
     return this.url?.href;
+  }
+
+  getPathName(): string | undefined {
+    return this.url.pathname;
   }
 
   getPath(): string | undefined {
@@ -37,23 +76,43 @@ export class URLWrapper {
     return psl.get(this.url.hostname);
   }
 
-  getSearch(): string | undefined {
-    return decodeURI(this.searchParams.toString());
+  getSearchString(): string | undefined {
+    return this.search;
   }
 
   getPathAndSearch(): string | undefined {
-    const aaa = `${this.getPath()}?${this.getSearch()}`;
-
-    return aaa;
+    return `${this.getPath()}${this.getSearchString()}`;
   }
 
-  getSearchParam(field: string): any {
-    return this.searchParams.get(field);
+  upsertSearchParams(params: Record<string, unknown>): string {
+    const alreadyParams = QueryStringWrapper.parseQueryString(this.url.search);
+
+    const paramsEnhanced = mergeDeep(alreadyParams, params);
+    this.searchParamsObject = paramsEnhanced;
+    const stringifiedParams = QueryStringWrapper.stringifyQueryParams(paramsEnhanced);
+    const updatedURL = `${this.getDomain()}${this.getPath()}?${stringifiedParams}`;
+
+    this.instantiateURL(updatedURL);
+
+    return this.getSearchString();
   }
 
-  upsertSearchParam(field: string, value: string | number): string {
-    this.searchParams.set(field, String(value));
+  getSearchParamOne(path: string): any {
+    return getNested(this.searchParamsObject, path);
+  }
 
-    return decodeURI(this.url.href);
+  getSearchParamAll(): Record<string, unknown> {
+    return QueryStringWrapper.parseQueryString(this.url.search);
+  }
+
+  deleteSearchParam(path: string): string {
+    const params = this.getSearchParamAll();
+    const paramsWithoutOmmitedValue = omit(params, [path]);
+    const stringifiedParams = QueryStringWrapper.stringifyQueryParams(paramsWithoutOmmitedValue);
+    const updatedURL = `${this.getDomain()}${this.getPath()}?${stringifiedParams}`;
+
+    this.instantiateURL(updatedURL);
+
+    return this.getSearchString();
   }
 }
