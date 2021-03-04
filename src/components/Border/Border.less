@@ -3,8 +3,6 @@
 @c: .Border;
 
 @{c} {
-  .default();
-
   display: inline-block;
   background: @c-background;
   border-color: @c-base;
@@ -27,12 +25,14 @@
   }
 
   &--thin {
-    border: 2px solid;
-    box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
+    border: 2px solid @c-base;
+    box-shadow: 4px 4px 0 0 @c-base;
+    border-radius: 4px;
   }
 
   &--thick {
-    border: 4px solid;
-    box-shadow: 8px 8px 0 -4px @c-background, 8px 8px 0 0 @c-base;
+    border: 3px solid @c-base;
+    box-shadow: 6px 6px 0 0 @c-base;
+    border-radius: 4px;
   }
 }
