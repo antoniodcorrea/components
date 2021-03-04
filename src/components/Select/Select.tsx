@@ -5,8 +5,6 @@ import CreatableSelect, {
   IndicatorProps,
   MenuProps,
   MultiValueProps,
-  MultiValue,
-  MultiValueContainer,
 } from 'react-select';
 import { ArrowDown, Cross } from '../Svg';
 
@@ -68,14 +66,6 @@ const DropdownIndicator = (props: IndicatorProps<any, any>): JSX.Element => (
   </Components.DropdownIndicator>
 );
 
-const MultiValueContainer = (props: MultiValueProps<any, any>): JSX.Element => (
-  <Components.MultiValueContainer {...props}>{props.children}</Components.MultiValueContainer>
-);
-
-const MultiValue = (props: IndicatorProps<any, any>): JSX.Element => (
-  <Components.MultiValue {...props}>{props.children}</Components.MultiValue>
-);
-
 const LoadingMessage = (): null => null;
 
 const NoOptionsMessage = (): null => null;
@@ -117,8 +107,6 @@ export const Select: React.FC<Props> = ({
         SelectContainer: SelectContainer,
         LoadingMessage: LoadingMessage,
         NoOptionsMessage: NoOptionsMessage,
-        MultiValue: MultiValue,
-        MultiValueContainer: MultiValueContainer,
       }}
     />
     {!placeholder && (
