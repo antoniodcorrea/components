@@ -35,6 +35,18 @@
     right: -3px;
   }
 
+  &--medium {
+    @{c}-content {
+      font-size: @fs-micro;
+      border: 1.5px solid @c-base;
+      box-shadow: 2px 2px 0 0 @c-base;
+
+      &:hover {
+        border: 2px solid @c-accent;
+      }
+    }
+  }
+
   &--dark {
     @{c}-content {
       color: @c-background;

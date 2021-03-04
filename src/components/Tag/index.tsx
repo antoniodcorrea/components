@@ -19,13 +19,14 @@ export const Tag: React.FC<Props> = ({ children, size = 'small', variant, notifi
   const sizeMap = {
     nano: 'nano',
     small: 'micro',
-    medium: 'normal',
+    medium: 'micro',
   };
 
   const boldMap = {
     nano: false,
     small: true,
     medium: true,
+    big: true,
   };
 
   return (
