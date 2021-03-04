@@ -3,7 +3,6 @@ import React from 'react';
 import { URLWrapper } from '../../../tools/services/URLWrapper';
 import { ArrowUp } from '../Svg';
 import { A } from '../A';
-import { Border } from '../Border';
 
 import './SortBy.less';
 
@@ -23,7 +22,7 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort 
   const currentSortIsDesc = currentSort?.startsWith('-');
 
   return (
-    <Border className={'SortBy' + (className ? ' ' + className : '')} padding="small">
+    <div className={'SortBy' + (className ? ' ' + className : '')}>
       <ul className={'SortBy-list'}>
         {options.map((item, index) => {
           const isActiveItem = item.field === currentSort || `-${item.field}` === currentSort;
@@ -48,6 +47,6 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort 
           );
         })}
       </ul>
-    </Border>
+    </div>
   );
 };
