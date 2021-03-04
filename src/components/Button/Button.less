@@ -17,10 +17,10 @@
     margin: 0 4px 4px 0;
     padding: 1px 30px 0;
     background: @c-background;
-    border: 2px solid;
-    border-color: @c-base;
-    transition: box-shadow @td-fast, border @td-fast, color @td-fast, background @td-fast;
-    box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
+    border: 2px solid @c-base;
+    transition: transform @td-fastest, border @td-fast, color @td-fast, background @td-fast, box-shadow @td-fastest;
+    box-shadow: 4px 4px 0 0 @c-base;
+    border-radius: 4px;
 
     @{c}-svg {
       height: 15px;
@@ -33,12 +33,20 @@
       @{c}:not(@{c}--success)& {
         color: @c-accent;
         border-color: @c-accent;
+        transform: translate(0.5px, 0.5px);
         cursor: pointer;
-        box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-accent;
+        box-shadow: 3.5px 3.5px 0 0 @c-accent;
 
         @{c}-svg {
           fill: @c-accent;
         }
+      }
+    }
+
+    &:active {
+      @{c}:not(@{c}--success)& {
+        transform: translate(3px, 3px);
+        box-shadow: 2px 2px 0 0 @c-accent;
       }
     }
   }
