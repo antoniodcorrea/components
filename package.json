@@ -24,7 +24,7 @@
     "react-datepicker": "^2.13.0",
     "react-dropzone": "^4.3.0",
     "react-router-dom": "^5.2.0",
-    "react-select": "^3.0.8",
+    "react-select": "^3.2.0",
     "react-textarea-autosize": "^7.1.2"
   },
   "devDependencies": {

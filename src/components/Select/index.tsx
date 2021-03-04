@@ -1,60 +1,56 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import SelectUi from './SelectUi';
-import { LoadOptionsFromServer, Props, Value } from './Select.types';
+import React, { useState } from 'react';
 
-export class Select extends Component<Props> {
-  loadOptionsFromServer: LoadOptionsFromServer = async (inputValue) => {
-    const { optionFilterFieldName, apiUrl, token } = this.props;
-    const url =
-      apiUrl +
-      (optionFilterFieldName ? '/' + optionFilterFieldName + '/?' + optionFilterFieldName + '=' + inputValue : '');
+import { Select as SelectUi } from './Select';
 
-    const config = {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + token,
-      },
-    };
+export type Value = {
+  value: string | number;
+  label: string;
+};
 
-    return axios.get(url, config);
-  };
-
-  loadOptions = async (inputValue: string): Promise<Value[]> => {
-    const options = await this.loadOptionsFromServer(inputValue);
-    const optionsFormatted = options.data.map((item) =>
-      Object.assign(item, {
-        label: item.name,
-        value: item.name,
-      })
-    );
-
-    return optionsFormatted;
-  };
-
-  onChange = (newValues: Value[]): void => {
-    const { onChange, limit, value } = this.props;
-    const updateValues = !newValues || newValues.length <= limit;
-    const updatedValues = updateValues ? newValues : value;
-
-    onChange(updatedValues);
-  };
-
-  render = (): React.ReactNode => {
-    const { grow, value, label, limit } = this.props;
-
-    return (
-      <div className={'Select ' + (grow ? 'Select--grow' : '')}>
-        <SelectUi
-          label={label}
-          loadOptions={this.loadOptions}
-          limit={limit}
-          value={value}
-          onChange={this.onChange}
-          grow={grow}
-        />
-      </div>
-    );
-  };
+interface Props {
+  placeholder?: string;
+  label?: string;
+  options: Value[];
+  value: Value[];
+  defaultOptions: Value[];
+  grow?: boolean;
+  maxItems?: number;
+  onChange?: (params: Value[]) => void;
+  onInputChange?: (params: unknown) => void;
 }
+
+export const Select: React.FC<Props> = ({
+  placeholder,
+  label,
+  options,
+  value,
+  defaultOptions,
+  onInputChange,
+  grow,
+  onChange,
+  maxItems,
+}) => {
+  const [focus, setFocus] = useState(false);
+  const focusOrContent = !!value?.length || focus;
+
+  const onValueChange = (values) => {
+    onChange(values);
+  };
+
+  return (
+    <SelectUi
+      placeholder={placeholder}
+      label={label}
+      focusOrContent={focusOrContent}
+      options={options}
+      value={value}
+      defaultOptions={defaultOptions}
+      onInputChange={onInputChange}
+      onChange={onValueChange}
+      grow={grow}
+      onFocus={() => setFocus(true)}
+      onBlur={() => setFocus(false)}
+      maxItems={maxItems}
+    />
+  );
+};

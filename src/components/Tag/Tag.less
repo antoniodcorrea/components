@@ -3,8 +3,6 @@
 @c: .Tag;
 
 @{c} {
-  .default();
-
   position: relative;
   font-family: @ff-sans;
 
@@ -12,14 +10,14 @@
     display: flex;
     align-items: center;
     height: calc(100% - 4px);
-    margin: 0 4px 4px 0;
-    padding: 3px 10px 2px 10px;
+    padding: 4px 12px 4px 12px;
     white-space: nowrap;
     color: @c-base;
     background: @c-background;
-    border: 2px solid @c-base;
-    transition: box-shadow @td-fast @ease-custom, border @td-fast @ease-custom, color @td-fast @ease-custom;
-    box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-base;
+    border: 1px solid @c-base;
+    transition: all @td-fast @ease-custom;
+    box-shadow: 2px 2px 0 0 @c-base;
+    border-radius: 3px;
   }
 
   &:hover {
@@ -27,7 +25,7 @@
       color: @c-accent;
       border-color: @c-accent;
       cursor: pointer;
-      box-shadow: 4px 4px 0 -2px @c-background, 4px 4px 0 0 @c-accent;
+      box-shadow: 2px 2px 0 0 @c-accent;
     }
   }
 
@@ -37,14 +35,33 @@
     right: -3px;
   }
 
-  &--alternate {
+  &--dark {
     @{c}-content {
       color: @c-background;
       background: @c-base;
       box-shadow: 2px 2px 0 0 @c-background, 4px 4px 0 0 @c-base;
 
       &:hover {
-        border-color: @c-base;
+        color: @c-background;
+        background: @c-accent;
+        box-shadow: 2px 2px 0 0 @c-background, 4px 4px 0 0 @c-accent;
+      }
+    }
+  }
+
+  &--simple {
+    @{c}-content {
+      padding: 2px 8px 2px 8px;
+      font-size: @fs-nano;
+      color: @c-base;
+      border: 1.5px solid @c-base;
+      box-shadow: none;
+      border-radius: 4px;
+
+      &:hover {
+        color: @c-accent;
+        border: 1.5px solid @c-accent;
+        box-shadow: none;
       }
     }
   }

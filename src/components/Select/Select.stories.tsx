@@ -1,15 +1,9 @@
 import React, { useState } from 'react';
-import { withKnobs, boolean, text } from '@storybook/addon-knobs';
-import { Select } from '.';
+import { withKnobs } from '@storybook/addon-knobs';
+import { Select, Value } from '.';
 import { Hr } from '../Hr';
 import { H1 } from '../H1';
 import { Span } from '../Span';
-import { Button } from '../Button';
-import { Input } from '../Input';
-
-const TOKEN =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImU0ZTJiYjQ2LWMyMTAtNGE0Ny05ZTg0LWY0NWM3ODlmY2VjMSIsIm9yZGVyIjoxLCJuYW1lIjoiQW50b25pbyIsImVtYWlsIjoiYW50b25pby5kLmNvcnJlYUBnbWFpbC5jb20iLCJhY3RpdmUiOnRydWUsImxldmVsIjoiYWRtaW4iLCJpYXQiOjE1ODMwMDAzNDl9.snJHyzH8Td0Ot_F49Ve9yrw3nNE6JJAGLDp4vcrQKqA';
-const API_URL = 'http://0.0.0.0:3000/v1/tags';
 
 export default {
   component: Select,
@@ -17,59 +11,66 @@ export default {
   decorators: [withKnobs],
 };
 
-const knobs = {
-  grow: () => boolean('Grow', true),
-  name: () => text('Name', 'name'),
-  value: () => text('Value', 'Some value'),
-  placeholder: () => text('Placeholder', 'placeholder'),
-  label: () => text('Label', 'label'),
-  readOnly: () => boolean('Read only', false),
-  error: () => boolean('Error', false),
-  success: () => boolean('Success', false),
-  disabled: () => boolean('Disabled', false),
-};
-
 export const Default = () => {
-  const [value1, setValue1] = useState(undefined);
-  const [value2, setValue2] = useState(undefined);
-  const [success, setSuccess] = useState(undefined);
-
-  const onSubmit = () => {
-    setSuccess(true);
-  };
+  const [value, setValue] = useState<Value[]>([{ label: 'Tag', value: 'Tag' }]);
 
   return (
-    <div onSubmit={onSubmit}>
+    <div>
       <H1>Select</H1>
       <Span size="small">You can select tags here as example</Span>
       <Hr spacer />
-      <Select
-        label="Some options"
-        grow={knobs.grow()}
-        onChange={(nextData) => {
-          setValue1(nextData);
-        }}
-        value={value1}
-        limit={4}
-        apiUrl={API_URL}
-        optionFilterFieldName="name"
-        token={TOKEN}
-      />
-
-      <Hr spacer />
-      <Input
-        name={knobs.name()}
-        label="Password"
-        value={value2}
-        readOnly={knobs.readOnly()}
-        error={knobs.error()}
-        success={knobs.success()}
-        disabled={knobs.disabled()}
-        grow={knobs.grow()}
-        onChange={(e) => setValue2(e.target.value)}
-      />
-      <Hr spacer />
-      <Button text="Submit" onClick={onSubmit} success={success} />
+      <div style={{ width: '500px' }}>
+        <Select
+          label="Select tags"
+          value={value}
+          defaultOptions={[]}
+          options={[
+            {
+              label: 'Tag',
+              value: 'Tag',
+            },
+            {
+              label: 'label 2',
+              value: 'value 2',
+            },
+            {
+              label: 'label 3',
+              value: 'value 3',
+            },
+            {
+              label: 'label 4',
+              value: 'value 4',
+            },
+            {
+              label: 'label 5',
+              value: 'value 5',
+            },
+            {
+              label: 'label 6',
+              value: 'value 6',
+            },
+            {
+              label: 'label 7',
+              value: 'value 7',
+            },
+            {
+              label: 'label 8',
+              value: 'value 8',
+            },
+            {
+              label: 'label 9',
+              value: 'value 9',
+            },
+            {
+              label: 'label 10',
+              value: 'value 10',
+            },
+          ]}
+          grow
+          onChange={(incomingValue: Value[]) => setValue(incomingValue)}
+          maxItems={5}
+        />
+      </div>
     </div>
   );
 };
