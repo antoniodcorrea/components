@@ -6,7 +6,7 @@ interface Props {
   className?: string;
   children: React.ReactNode | React.ReactNode[];
   weight?: 'thick' | 'thin';
-  padding?: 'small' | 'normal' | 'big';
+  padding?: false | 'small' | 'normal' | 'big';
   grow?: boolean;
   onClick?: (any) => void;
   onMouseLeave?: (any) => void;
@@ -16,7 +16,7 @@ export const Border: React.FC<Props> = ({
   id,
   children,
   weight = 'thin',
-  padding,
+  padding = 'normal',
   grow,
   className,
   onClick,
