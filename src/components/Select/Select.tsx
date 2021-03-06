@@ -111,8 +111,8 @@ export const Select: React.FC<Props> = ({
         NoOptionsMessage: NoOptionsMessage,
       }}
     />
-    {/* {!placeholder && (
+    {!placeholder && (
       <label className={'Select__label ' + (focusOrContent ? 'Select__label--active' : '')}>{label}</label>
-    )} */}
+    )}
   </div>
 );

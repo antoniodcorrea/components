@@ -18,6 +18,7 @@
 
   &__control:not(.noClass) {
     align-items: flex-start;
+    height: 30px;
     width: 100%;
     max-height: 30px;
     min-height: unset;
@@ -41,10 +42,11 @@
     display: flex;
     position: absolute;
     align-items: center;
-    height: @fs-normal;
+    height: @fs-micro;
     top: 13px;
     left: 12px;
-    padding: 0 7px 2px 4px;
+    padding: 0 7px 6px 4px;
+    font-size: @fs-small;
     color: @c-base;
     background: @c-transparent;
     transform: translate(-4px, 0) scale(1);
@@ -56,7 +58,7 @@
   &__control--is-focused:not(.noClass) ~ @{c}__label,
   @{c}__label--active {
     background: @c-background;
-    transform: translate(-13px, -21px) scale(0.8);
+    transform: translate(-13px, -17px) scale(0.8);
   }
 
   &__indicator-separator:not(.noClass) {
@@ -81,7 +83,7 @@
   &__value-container:not(.noClass) {
     flex-wrap: nowrap;
     margin: 0;
-    padding: 0 0 0 6px;
+    padding: 2px 0 0 6px;
     font-size: @fs-small;
     overflow-x: scroll;
     overflow-y: hidden;
