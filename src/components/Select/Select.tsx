@@ -13,6 +13,7 @@ import { SelectValue } from '.';
 import './Select.less';
 
 interface Props {
+  className?: string;
   placeholder?: string;
   label?: string;
   focusOrContent: boolean;
@@ -71,6 +72,7 @@ const LoadingMessage = (): null => null;
 const NoOptionsMessage = (): null => null;
 
 export const Select: React.FC<Props> = ({
+  className,
   options,
   value,
   defaultOptions,
@@ -84,7 +86,7 @@ export const Select: React.FC<Props> = ({
   onBlur,
   maxItems,
 }) => (
-  <div className={'Select ' + (grow ? 'Select--grow' : '')}>
+  <div className={'Select ' + (className ? className : ' ') + (grow ? ' Select--grow' : ' ')}>
     <CreatableSelect
       className={'Select__container'}
       classNamePrefix={'Select'}

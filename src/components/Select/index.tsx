@@ -8,6 +8,7 @@ export type SelectValue = {
 };
 
 interface Props {
+  className?: string;
   placeholder?: string;
   label?: string;
   options: SelectValue[];
@@ -20,6 +21,7 @@ interface Props {
 }
 
 export const Select: React.FC<Props> = ({
+  className,
   placeholder,
   label,
   options,
@@ -39,6 +41,7 @@ export const Select: React.FC<Props> = ({
 
   return (
     <SelectUi
+      className={className}
       placeholder={placeholder}
       label={label}
       focusOrContent={focusOrContent}
