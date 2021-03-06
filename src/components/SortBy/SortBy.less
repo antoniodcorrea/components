@@ -24,6 +24,8 @@
   }
 
   &-listItemLink {
+    display: flex;
+    align-items: center;
     color: @c-traslucid--hardest;
     transition: color @td-fast @ease-outCubic;
 
@@ -32,6 +34,7 @@
     }
 
     @{c}-listItemIcon {
+      margin-left: 4px;
       fill: @c-traslucid--hardest;
       transition: fill @td-fast @ease-outCubic, transform @td-fast @ease-outCubic !important;
     }
