@@ -46,6 +46,7 @@ export {
   Bookmark,
   Edit,
   PlusCircle,
+  Sort,
 } from './Svg';
 export { Switch } from './Switch';
 export { Tag } from './Tag';

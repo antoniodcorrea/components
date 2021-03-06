@@ -27,7 +27,7 @@ export const Default: React.FC = () => (
             field: 'sort3',
           },
         ]}
-        currentSort="sort1"
+        currentSort="-sort1"
       />
     </div>
   </div>

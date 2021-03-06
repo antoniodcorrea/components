@@ -1,4 +1,5 @@
 import React from 'react';
+import SortSvg from '../../assets/svg/sort.svg';
 import TriangleSvg from '../../assets/svg/triangle.svg';
 import SquareSvg from '../../assets/svg/square.svg';
 import CircleSvg from '../../assets/svg/circle.svg';
@@ -24,6 +25,7 @@ import './Svg.less';
 export type IconSize = 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
 
 export type IconsType =
+  | 'Sort'
   | 'Triangle'
   | 'Square'
   | 'Circle'
@@ -83,6 +85,7 @@ export const Link: React.FC<Props> = (props) => Svg(LinkSvg)(props);
 export const Bookmark: React.FC<Props> = (props) => Svg(BookmarkSvg)(props);
 export const Edit: React.FC<Props> = (props) => Svg(EditSvg)(props);
 export const PlusCircle: React.FC<Props> = (props) => Svg(PlusCircleSvg)(props);
+export const Sort: React.FC<Props> = (props) => Svg(SortSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;

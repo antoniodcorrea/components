@@ -1,11 +1,11 @@
-import { addParameters } from '@storybook/react';
-
+import React from 'react';
+import { addParameters, addDecorator } from '@storybook/react';
+import { MemoryRouter } from 'react-router';
 /* Activate to center view */
 // import { addDecorator } from '@storybook/react';
 // import centered from '@storybook/addon-centered/react';
 // addDecorator(centered);
 /* END */
-
 const customViewports = {
   Desktop: {
     name: 'Desktop',
@@ -39,3 +39,4 @@ addParameters({
     defaultViewport: 'Desktop',
   },
 });
+addDecorator((story) => <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>);

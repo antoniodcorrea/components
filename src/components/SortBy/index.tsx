@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { URLWrapper } from '../../../tools/services/URLWrapper';
-import { ArrowUp } from '../Svg';
+import { Sort } from '../Svg';
 import { A } from '../A';
 
 import './SortBy.less';
@@ -22,31 +22,26 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort 
   const currentSortIsDesc = currentSort?.startsWith('-');
 
   return (
-    <div className={'SortBy' + (className ? ' ' + className : '')}>
-      <ul className={'SortBy-list'}>
-        {options.map((item, index) => {
-          const isActiveItem = item.field === currentSort || `-${item.field}` === currentSort;
-          const isActiveItemAndActiveSortIsAsc = !currentSortIsDesc && isActiveItem;
-          const iconDesc = currentSortIsDesc && isActiveItem;
-          url.upsertSearchParams({ sort: item.field });
-          const redirectUrlAsc = url.getPathAndSearch();
-          url.upsertSearchParams({ sort: `-${item.field}` });
-          const redirectUrlDesc = url.getPathAndSearch();
-          const displayedUrl = isActiveItemAndActiveSortIsAsc ? redirectUrlDesc : redirectUrlAsc;
+    <ul className={'SortBy' + (className ? ' ' + className : '')}>
+      {options.map((item, index) => {
+        const isActiveItem = item.field === currentSort || `-${item.field}` === currentSort;
+        const isActiveItemAndActiveSortIsAsc = !currentSortIsDesc && isActiveItem;
+        const iconDesc = currentSortIsDesc && isActiveItem;
+        url.upsertSearchParams({ sort: item.field });
+        const redirectUrlAsc = url.getPathAndSearch();
+        url.upsertSearchParams({ sort: `-${item.field}` });
+        const redirectUrlDesc = url.getPathAndSearch();
+        const displayedUrl = isActiveItemAndActiveSortIsAsc ? redirectUrlDesc : redirectUrlAsc;
 
-          return (
-            <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
-              <A href={displayedUrl} styled={false} frontend className="SortBy-listItemLink">
-                {item.label}{' '}
-                <ArrowUp
-                  size="small"
-                  className={'SortBy-listItemIcon' + (iconDesc ? ' SortBy-listItemIcon--desc' : '')}
-                />
-              </A>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
+        return (
+          <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
+            <A href={displayedUrl} styled={false} frontend className="SortBy-listItemLink">
+              {item.label}{' '}
+              <Sort size="micro" className={'SortBy-listItemIcon' + (iconDesc ? ' SortBy-listItemIcon--desc' : '')} />
+            </A>
+          </li>
+        );
+      })}
+    </ul>
   );
 };

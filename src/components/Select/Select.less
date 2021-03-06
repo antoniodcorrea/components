@@ -10,15 +10,19 @@
   font-family: @ff-sans;
 
   &__container:not(.noClass) {
-    height: 40px;
     width: 100%;
+    max-height: 30px;
     min-width: 150px;
+    padding: 0;
   }
 
   &__control:not(.noClass) {
+    align-items: flex-start;
     width: 100%;
-    min-height: 40px;
+    min-height: unset;
+    padding: 0;
     background: @c-background;
+    border: none;
     border: 2px solid @c-base;
     border-radius: 3px;
     box-shadow: none;
@@ -59,19 +63,26 @@
     background: @c-transparent;
   }
 
-  &__indicator:not(.noClass) {
+  &__indicators:not(.noClass) {
     &:hover {
       cursor: pointer;
     }
   }
 
+  &__clear-indicator:not(.noClass) {
+    padding: 3px;
+  }
+
+  &__dropdown-indicator:not(.noClass) {
+    padding: 3px 9px 3px 0;
+  }
+
   &__value-container:not(.noClass) {
     flex-wrap: nowrap;
-    height: 36px;
     margin: 0;
-    padding: 2px 5px;
     padding: 0 0 0 6px;
     overflow-x: scroll;
+    overflow-y: hidden;
     cursor: text;
 
     .hideScrollbar();
@@ -81,9 +92,8 @@
     flex-wrap: nowrap;
     min-width: unset;
     margin: 0 4px 0 0;
-    padding: 3px;
+    padding: 0;
     background: transparent;
-    border: 2px solid @c-base;
     border: 1.5px solid @c-base;
     transition: background @td-fast @ease;
     border-radius: 4px;
@@ -132,18 +142,19 @@
   &__menu-list:not(.noClass) {
     margin: 0;
     padding: 0;
-    border-radius: 0 0 4px 4px;
     border: 2px solid;
     border-top: 0;
+    border-radius: 0 0 4px 4px;
 
     .hideScrollbar();
   }
 
   &__option:not(.noClass) {
-    padding: 8px 12px;
+    padding: 6px 12px;
+    font-size: @fs-small;
     background: @c-transparent;
     border-top: 0 dashed @c-transparent;
-    border-bottom: 2px dashed @c-base;
+    border-bottom: 1.5px dashed @c-base;
     transition: color @td-fast @ease;
 
     &:last-child {
@@ -165,9 +176,9 @@
     font-weight: @fw-regular;
     color: @c-base;
     border-bottom: 2px solid @c-base;
-    box-shadow: 0 2px 0 0 @c-base;
     border-left: 2px solid @c-base;
     border-right: 2px solid @c-base;
+    box-shadow: 0 2px 0 0 @c-base;
     border-radius: 0 0 3px 3px;
   }
 
