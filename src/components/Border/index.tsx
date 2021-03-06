@@ -16,7 +16,7 @@ export const Border: React.FC<Props> = ({
   id,
   children,
   weight = 'thin',
-  padding = 'normal',
+  padding,
   grow,
   className,
   onClick,

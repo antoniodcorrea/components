@@ -23,7 +23,7 @@ export const Tag: React.FC<Props> = ({ children, size = 'small', variant, notifi
   };
 
   const boldMap = {
-    nano: false,
+    nano: true,
     small: true,
     medium: true,
     big: true,
