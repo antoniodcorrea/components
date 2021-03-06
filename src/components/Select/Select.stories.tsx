@@ -71,6 +71,7 @@ export const Default = () => {
           maxItems={5}
         />
       </div>
+      <div style={{ width: '100px', height: '1000px', background: 'red' }} />
     </div>
   );
 };

@@ -133,6 +133,13 @@
 
   body {
     line-height: 1;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  body::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+    width: 0;
+    background: transparent;
   }
 
   ol,
