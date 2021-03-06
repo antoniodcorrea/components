@@ -112,7 +112,10 @@ export const Select: React.FC<Props> = ({
       }}
     />
     {!placeholder && (
-      <label className={'Select__label ' + (focusOrContent ? 'Select__label--active' : '')}>{label}</label>
+      <label className={'Select__label ' + (focusOrContent ? 'Select__label--active' : '')}>
+        <span className="Select__label-background" />
+        {label}
+      </label>
     )}
   </div>
 );
