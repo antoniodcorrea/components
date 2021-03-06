@@ -6,7 +6,7 @@ interface Props {
   className?: string;
   children: React.ReactNode | React.ReactNode[];
   weight?: 'thick' | 'thin';
-  padding?: false | 'small' | 'normal' | 'big';
+  padding?: 'small' | 'normal' | 'big';
   grow?: boolean;
   onClick?: (any) => void;
   onMouseLeave?: (any) => void;
