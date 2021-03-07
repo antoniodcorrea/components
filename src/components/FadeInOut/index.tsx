@@ -29,7 +29,7 @@ export const FadeInOut: React.FC<Props> = ({
       key={valueToUpdate.toString()}
       appear={appear}
       classNames="FadeInOut"
-      className={'FadeInOut FadeInOut--' + speed + (classname ? classname : '')}
+      className={'FadeInOut FadeInOut--' + speed + (classname ? ` ${classname}` : ' ')}
       timeout={{
         enter: speedMap[speed],
         exit: speedMap[speed],
