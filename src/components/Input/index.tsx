@@ -15,7 +15,7 @@ interface Props {
   success?: boolean;
   disabled?: boolean;
   grow?: boolean;
-  type?: 'date' | 'search' | 'input' | 'password';
+  type?: 'text' | 'date' | 'search' | 'input' | 'password' | 'email' | 'number' | 'tel' | 'url';
   pattern?: string;
   onChange?: (e) => void;
   onKeyDown?: (e) => void;
