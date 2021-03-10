@@ -7,7 +7,7 @@ import { createPopper } from '@popperjs/core';
 import './Tooltip.less';
 
 const DELAY_SLOW_SECONDS = 2;
-const TIME_SHOWN_SECONDS = 2;
+const TIME_SHOWN_SECONDS = 3;
 
 interface Props {
   content: string;
