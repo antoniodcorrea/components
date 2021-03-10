@@ -42,6 +42,7 @@ export const Button: React.FC<Props> = ({
       }
       onClick={onClick}
       type={type}
+      disabled={!!disabled || !!error}
     >
       <Span className="Button-content" bold uppercase>
         {text}
