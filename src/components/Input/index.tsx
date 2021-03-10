@@ -11,7 +11,7 @@ interface Props {
   autoComplete?: boolean;
   spellCheck?: boolean;
   readOnly?: boolean;
-  error?: boolean;
+  error?: boolean | string;
   success?: boolean;
   disabled?: boolean;
   grow?: boolean;
