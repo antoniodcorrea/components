@@ -7,29 +7,38 @@ import { createPopper } from '@popperjs/core';
 import './Tooltip.less';
 
 const DELAY_SLOW_SECONDS = 2;
+const TIME_SHOWN_SECONDS = 2;
 
 interface Props {
   content: string;
   parentElementId: string;
   placement?: 'top' | 'bottom' | 'right' | 'left';
   delay?: number; // In seconds
+  timeShown?: number; // In seconds
 }
 
-export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, placement = 'right' }) => {
+export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, timeShown, placement = 'right' }) => {
   let MountDelayed;
+  let UnMountDelayed;
   const tooltipElementRef = useRef(null);
   const computedDelay = delay === 0 ? 0 : delay || DELAY_SLOW_SECONDS;
-
-  const mountTooltip = () => {
-    MountDelayed = setTimeout(() => {
-      tooltipElementRef.current.setAttribute('data-show', '');
-    }, computedDelay * 1000);
-  };
+  const computedTimeShown = timeShown === 0 ? 0 : timeShown || TIME_SHOWN_SECONDS;
 
   const unmountTooltip = () => {
     tooltipElementRef.current.removeAttribute('data-show');
 
     clearTimeout(MountDelayed);
+    clearTimeout(UnMountDelayed);
+  };
+
+  const mountTooltip = () => {
+    MountDelayed = setTimeout(() => {
+      tooltipElementRef.current.setAttribute('data-show', '');
+    }, computedDelay * 1000);
+
+    UnMountDelayed = setTimeout(() => {
+      unmountTooltip();
+    }, computedDelay * 1000 + computedTimeShown * 1000);
   };
 
   useEffect(() => {
