@@ -1,17 +1,17 @@
 import React from 'react';
 import { Check, Cross } from '../Svg';
+
 import './Switch.less';
 
 interface Props {
-  name?: string;
-  label?: string;
-  checked?: boolean;
-  onChange?: (e) => void;
+  name: string;
+  checked: boolean;
+  onChange?: (e: React.FormEvent<HTMLInputElement>) => void;
 }
 
-export const Switch: React.SFC<Props> = ({ name, checked, onChange }) => (
+export const Switch: React.FC<Props> = ({ name, checked = false, onChange }) => (
   <label className="Switch">
-    <input className="Switch-input" type="checkbox" name={name} checked={checked} onChange={onChange} />
+    <input className="Switch-input" type="checkbox" name={name} defaultChecked={checked} onChange={onChange} />
     <span className="Switch-slider " />
     <span className="Switch-icons">
       <span className="Switch-icon Switch-true">
