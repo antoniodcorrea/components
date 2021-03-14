@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Select as SelectUi } from './Select';
+import { SelectUi } from './Select';
 
 export type SelectValue = {
   value: string | number;
@@ -8,6 +8,7 @@ export type SelectValue = {
 };
 
 interface Props {
+  isCreatable?: boolean;
   className?: string;
   placeholder?: string;
   label?: string;
@@ -21,6 +22,7 @@ interface Props {
 }
 
 export const Select: React.FC<Props> = ({
+  isCreatable = false,
   className,
   placeholder,
   label,
@@ -41,6 +43,7 @@ export const Select: React.FC<Props> = ({
 
   return (
     <SelectUi
+      isCreatable={isCreatable}
       className={className}
       placeholder={placeholder}
       label={label}

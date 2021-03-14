@@ -1,11 +1,12 @@
 import React from 'react';
-import CreatableSelect, {
+import Select, {
   components as Components,
   ContainerProps,
   IndicatorProps,
   MenuProps,
   MultiValueProps,
 } from 'react-select';
+import CreatableSelect from 'react-select/creatable';
 import { ArrowDown, Cross } from '../Svg';
 
 import { SelectValue } from '.';
@@ -13,6 +14,7 @@ import { SelectValue } from '.';
 import './Select.less';
 
 interface Props {
+  isCreatable?: boolean;
   className?: string;
   placeholder?: string;
   label?: string;
@@ -71,7 +73,12 @@ const LoadingMessage = (): null => null;
 
 const NoOptionsMessage = (): null => null;
 
-export const Select: React.FC<Props> = ({
+const SelectComponent = ({ isCreatable, ...props }) => {
+  return isCreatable ? <CreatableSelect {...props} /> : <Select {...props} />;
+};
+
+export const SelectUi: React.FC<Props> = ({
+  isCreatable,
   className,
   options,
   value,
@@ -87,9 +94,10 @@ export const Select: React.FC<Props> = ({
   maxItems,
 }) => (
   <div className={'Select ' + (className ? className : ' ') + (grow ? ' Select--grow' : ' ')}>
-    <CreatableSelect
-      className={'Select__container'}
-      classNamePrefix={'Select'}
+    <SelectComponent
+      isCreatable={isCreatable}
+      className="Select__container"
+      classNamePrefix="Select"
       closeMenuOnSelect
       value={value}
       isMulti
@@ -102,6 +110,7 @@ export const Select: React.FC<Props> = ({
       onFocus={onFocus}
       onBlur={onBlur}
       maxItems={maxItems}
+      defaultMenuIsOpen
       components={{
         Menu: Menu,
         DropdownIndicator: DropdownIndicator,

@@ -69,6 +69,7 @@ export const Default = () => {
           grow
           onChange={(incomingValue: SelectValue[]) => setValue(incomingValue)}
           maxItems={5}
+          isCreatable
         />
       </div>
     </div>

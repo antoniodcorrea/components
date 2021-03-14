@@ -19,11 +19,11 @@ export const Empty: React.FC = () => {
       <H1>Switches</H1>
       <Hr spacer />
       <Border>
-        <Switch name="Test" label="Test" checked={value1} onChange={(e): void => setValue1(e.target.checked)} />
+        <Switch name="Test" checked={value1} onChange={(e): void => setValue1(e.currentTarget.checked)} />
         <Hr spacer size="small" />
-        <Switch name="Test2" label="Test2" checked={value2} onChange={(e): void => setValue2(e.target.checked)} />
+        <Switch name="Test2" checked={value2} onChange={(e): void => setValue2(e.currentTarget.checked)} />
         <Hr spacer size="small" />
-        <Switch name="Test3" label="Test3" checked={value3} onChange={(e): void => setValue3(e.target.checked)} />
+        <Switch name="Test3" checked={value3} onChange={(e): void => setValue3(e.currentTarget.checked)} />
         <Hr spacer size="small" />
       </Border>
       <Hr spacer />

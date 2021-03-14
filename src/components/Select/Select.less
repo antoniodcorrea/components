@@ -34,7 +34,7 @@
   }
 
   &__control--menu-is-open:not(.noClass) {
-    border-radius: 4px 4px 0 0;
+    // border-radius: 4px 4px 0 0;
   }
 
   &__label:not(.noClass) {
@@ -147,17 +147,18 @@
   }
 
   &__menu:not(.noClass) {
+    position: relative;
     margin: 0;
     padding: 0;
     font-weight: @fw-bold;
     background: @c-background;
+    transform: translateY(-1.5px);
+    box-shadow: none;
   }
 
   &__menu-list:not(.noClass) {
     margin: 0;
     padding: 0;
-    border: 2px solid;
-    border-top: 0;
     border-radius: 0 0 4px 4px;
 
     .hideScrollbar();
@@ -169,10 +170,17 @@
     background: @c-transparent;
     border-top: 0 dashed @c-transparent;
     border-bottom: 1px dashed @c-base;
+    border-left: 1.5px solid  @c-base;
+    border-right: 1.5px solid  @c-base;
     transition: color @td-fast @ease;
 
+    &:first-child {
+      border-top: 1.5px solid @c-base;
+    }
+
     &:last-child {
-      border-bottom: 0 solid @c-base;
+      border-radius: 0 0 4px 4px;
+      border-bottom: 1.5px solid  @c-base;
     }
 
     &:hover {
@@ -189,10 +197,10 @@
   &__option--is-disabled:not(.noClass) {
     font-weight: @fw-regular;
     color: @c-base;
-    border-bottom: 2px solid @c-base;
-    border-left: 2px solid @c-base;
-    border-right: 2px solid @c-base;
-    box-shadow: 0 2px 0 0 @c-base;
+    border-bottom: 1.5px solid @c-base;
+    border-left: 1.5px solid @c-base;
+    border-right: 1.5px solid @c-base;
+    box-shadow: 0 1.5px 0 0 @c-base;
     border-radius: 0 0 3px 3px;
   }
 
