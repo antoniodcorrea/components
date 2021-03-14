@@ -110,7 +110,6 @@ export const SelectUi: React.FC<Props> = ({
       onFocus={onFocus}
       onBlur={onBlur}
       maxItems={maxItems}
-      defaultMenuIsOpen
       components={{
         Menu: Menu,
         DropdownIndicator: DropdownIndicator,
