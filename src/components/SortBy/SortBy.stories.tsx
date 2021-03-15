@@ -12,7 +12,7 @@ export const Default: React.FC = () => (
   <div style={{ padding: '10px' }}>
     <div style={{ display: 'flex', flexWrap: 'wrap' }}>
       <SortBy
-        href="example.com"
+        href="http://example.com"
         options={[
           {
             label: 'sort1',

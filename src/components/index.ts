@@ -17,7 +17,6 @@ export { Flex } from './Flex';
 export { Loader } from './Loader';
 export { Notification } from './Notification';
 export { P } from './P';
-export { Pagination } from './Pagination';
 export { Palette } from './Palette';
 export { Radio } from './Radio';
 export { Range } from './Range';
