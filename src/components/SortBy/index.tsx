@@ -20,6 +20,7 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort 
   const url = new URLWrapper(href);
   url.deleteSearchParam('page[offset]'); // Reset offset on click
   const currentSortIsAsc = !currentSort?.startsWith('-');
+  const currentSortIsDesc = currentSort?.startsWith('-');
 
   return (
     <ul className={'SortBy' + (className ? ' ' + className : '')}>
@@ -29,7 +30,7 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort 
         const redirectUrlAsc = url.getPathAndSearch();
         url.upsertSearchParams({ sort: `-${item.field}` });
         const redirectUrlDesc = url.getPathAndSearch();
-        const displayedUrl = currentSortIsAsc ? redirectUrlDesc : redirectUrlAsc;
+        const displayedUrl = currentSortIsDesc && isActiveItem ? redirectUrlAsc : redirectUrlDesc;
 
         return (
           <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
@@ -37,7 +38,9 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort 
               {item.label}{' '}
               <Sort
                 size="micro"
-                className={'SortBy-listItemIcon' + (currentSortIsAsc ? ' SortBy-listItemIcon--asc' : '')}
+                className={
+                  'SortBy-listItemIcon' + (currentSortIsAsc && isActiveItem ? ' SortBy-listItemIcon--asc' : '')
+                }
               />
             </A>
           </li>
