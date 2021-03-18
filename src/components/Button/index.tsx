@@ -1,6 +1,8 @@
 import React from 'react';
 import { Span } from '../Span';
 import { SvgIcon, IconsType } from '../Svg';
+import { Fade } from '../Fade';
+import { SpinnerCircle } from '../SpinnerCircle';
 
 import './Button.less';
 
@@ -11,6 +13,7 @@ interface Props {
   success?: boolean;
   error?: boolean;
   disabled?: boolean;
+  loading?: boolean;
   icon?: IconsType;
   grow?: boolean;
   type?: 'button' | 'submit' | 'reset';
@@ -24,6 +27,7 @@ export const Button: React.FC<Props> = ({
   success,
   error,
   disabled,
+  loading,
   icon,
   grow,
   onClick,
@@ -48,6 +52,9 @@ export const Button: React.FC<Props> = ({
         {text}
         {icon && <SvgIcon name={icon} size="small" className="Button-svg" />}
       </Span>
+      <Fade mounted={loading} position="absolute">
+        <SpinnerCircle size="nano" />
+      </Fade>
     </button>
   );
 };

@@ -15,6 +15,7 @@ const knobs = {
   disabled: (): boolean => boolean('Disabled', false),
   success: (): boolean => boolean('Success', false),
   error: (): boolean => boolean('Error', false),
+  loading: (): boolean => boolean('Loading', false),
 };
 
 export const Default: React.FC = () => {
@@ -26,6 +27,7 @@ export const Default: React.FC = () => {
         disabled={knobs.disabled()}
         error={knobs.error()}
         success={knobs.success()}
+        loading={knobs.loading()}
       ></Button>
       <Hr spacer />
       <Button
@@ -34,6 +36,7 @@ export const Default: React.FC = () => {
         disabled={knobs.disabled()}
         error={knobs.error()}
         success={knobs.success()}
+        loading={knobs.loading()}
         icon="ArrowRight"
       ></Button>
     </>
