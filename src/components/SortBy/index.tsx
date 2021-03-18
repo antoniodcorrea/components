@@ -19,25 +19,26 @@ interface Props {
 export const SortBy: React.FC<Props> = ({ className, href, options, currentSort }) => {
   const url = new URLWrapper(href);
   url.deleteSearchParam('page[offset]'); // Reset offset on click
-  const currentSortIsDesc = currentSort?.startsWith('-');
+  const currentSortIsAsc = !currentSort?.startsWith('-');
 
   return (
     <ul className={'SortBy' + (className ? ' ' + className : '')}>
       {options.map((item, index) => {
         const isActiveItem = item.field === currentSort || `-${item.field}` === currentSort;
-        const isActiveItemAndActiveSortIsAsc = !currentSortIsDesc && isActiveItem;
-        const iconDesc = currentSortIsDesc && isActiveItem;
         url.upsertSearchParams({ sort: item.field });
         const redirectUrlAsc = url.getPathAndSearch();
         url.upsertSearchParams({ sort: `-${item.field}` });
         const redirectUrlDesc = url.getPathAndSearch();
-        const displayedUrl = isActiveItemAndActiveSortIsAsc ? redirectUrlDesc : redirectUrlAsc;
+        const displayedUrl = currentSortIsAsc ? redirectUrlDesc : redirectUrlAsc;
 
         return (
           <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
             <A href={displayedUrl} styled={false} frontend className="SortBy-listItemLink">
               {item.label}{' '}
-              <Sort size="micro" className={'SortBy-listItemIcon' + (iconDesc ? ' SortBy-listItemIcon--desc' : '')} />
+              <Sort
+                size="micro"
+                className={'SortBy-listItemIcon' + (currentSortIsAsc ? ' SortBy-listItemIcon--asc' : '')}
+              />
             </A>
           </li>
         );
