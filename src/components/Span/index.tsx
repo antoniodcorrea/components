@@ -1,9 +1,11 @@
 import React from 'react';
 import './Span.less';
 
+export type SpanSize = 'normal' | 'small' | 'micro' | 'nano';
+
 interface Props {
   children: React.ReactNode;
-  size?: 'normal' | 'small' | 'micro' | 'nano';
+  size?: SpanSize;
   bold?: boolean;
   italics?: boolean;
   uppercase?: boolean;
