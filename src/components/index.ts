@@ -56,3 +56,4 @@ export { Ul } from './Ul';
 export { SkeletonItem } from './SkeletonItem';
 export { AIcon } from './AIcon';
 export { SortBy } from './SortBy';
+export { Ellipsis } from './Ellipsis';
