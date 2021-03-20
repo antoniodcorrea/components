@@ -13,7 +13,6 @@
 
     path {
       fill: @c-background;
-      stroke: @c-base;
       stroke-width: 8px;
       transition: fill @td-fastest @ease;
       stroke-dasharray: 1;
@@ -21,7 +20,26 @@
   }
 
   &-minus {
+    stroke: @c-accent;
     transform: rotate(180deg) translateX(-4px);
+
+    &--active {
+      path {
+        fill: @c-error;
+        stroke: @c-error;
+      }
+    }
+  }
+
+  &-plus {
+    stroke: @c-accent;
+
+    &--active {
+      path {
+        fill: @c-success;
+        stroke: @c-success;
+      }
+    }
   }
 
   &--active {
