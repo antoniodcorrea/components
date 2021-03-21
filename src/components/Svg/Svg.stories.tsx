@@ -17,6 +17,8 @@ import {
   Bookmark,
   Edit,
   PlusCircle,
+  List,
+  Sort,
 } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
@@ -65,6 +67,8 @@ export const Icons: React.FC = () => (
       <Bookmark size={knobs.size()} filled={knobs.filled()} />
       <Edit size={knobs.size()} filled={knobs.filled()} />
       <PlusCircle size={knobs.size()} filled={knobs.filled()} />
+      <Sort size={knobs.size()} filled={knobs.filled()} />
+      <List size={knobs.size()} filled={knobs.filled()} />
     </div>
   </>
 );

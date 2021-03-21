@@ -46,6 +46,7 @@ export {
   Edit,
   PlusCircle,
   Sort,
+  List,
 } from './Svg';
 export { Switch } from './Switch';
 export { Tag } from './Tag';
