@@ -17,6 +17,7 @@ interface Props {
   grow?: boolean;
   type?: 'text' | 'date' | 'search' | 'input' | 'password' | 'email' | 'number' | 'tel' | 'url';
   pattern?: string;
+  autoFocus?: boolean;
   onChange?: (e) => void;
   onKeyDown?: (e) => void;
   onKeyPress?: (e) => void;
@@ -37,6 +38,7 @@ export const Input: React.FC<Props> = ({
   success,
   disabled,
   grow,
+  autoFocus,
   onChange,
   onKeyDown,
   onKeyPress,
@@ -74,6 +76,7 @@ export const Input: React.FC<Props> = ({
         onChange={onChange}
         type={type}
         pattern={pattern}
+        autoFocus={autoFocus}
         onKeyPress={onKeyPress}
         onKeyDown={onKeyDown}
         onFocus={onFocus}
