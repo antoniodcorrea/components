@@ -15,7 +15,14 @@ interface Props {
   onCloseClick?: () => void;
 }
 
-export const Notification: React.FC<Props> = ({ children, className, title, type, size = 'normal', onCloseClick }) => (
+export const Notification: React.FC<Props> = ({
+  children,
+  className,
+  title,
+  type = 'alert',
+  size = 'normal',
+  onCloseClick,
+}) => (
   <div
     className={
       'Notification' +
