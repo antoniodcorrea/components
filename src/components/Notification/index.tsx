@@ -33,7 +33,7 @@ export const Notification: React.FC<Props> = ({
   >
     {children}
     <div className="Notification-remove" onClick={onCloseClick}>
-      <Cross size="micro" />
+      <Cross size="small" />
     </div>
   </div>
 );
