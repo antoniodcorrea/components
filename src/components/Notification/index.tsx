@@ -1,5 +1,6 @@
 import React from 'react';
 import { Span } from '../Span';
+import { Cross } from '../Svg';
 
 import './Notification.less';
 
@@ -11,9 +12,10 @@ interface Props {
   title: string;
   type?: NotificationType;
   size?: NotificationSize;
+  onCloseClick?: () => void;
 }
 
-export const Notification: React.FC<Props> = ({ children, className, title, type, size = 'normal' }) => (
+export const Notification: React.FC<Props> = ({ children, className, title, type, size = 'normal', onCloseClick }) => (
   <div
     className={
       'Notification' +
@@ -28,5 +30,6 @@ export const Notification: React.FC<Props> = ({ children, className, title, type
     <Span className="Notification-description" size="small">
       {children}
     </Span>
+    <Cross className="Notification-remove" size="micro" onClick={onCloseClick} />
   </div>
 );

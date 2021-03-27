@@ -5,6 +5,7 @@
 @{c} {
   .default();
 
+  position: relative;
   border-radius: 5px;
   min-width: 300px;
   padding: 10px 20px;
@@ -17,17 +18,16 @@
     display: block;
   }
 
-  &-small {
-    //
-  }
+  &-remove {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    transition: fill @td-fast @ease;
 
-  &-normal {
-    // height: 8px;
-    // width: 8px;
-  }
-
-  &-big {
-    //
+    &:hover {
+      fill: @c-accent;
+      cursor: pointer;
+    }
   }
 
   &--error {
