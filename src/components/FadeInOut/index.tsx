@@ -5,7 +5,7 @@ import { speedMap } from './speedMap';
 
 import './FadeInOut.less';
 
-export type FadeSpeed = 'slow' | 'normal' | 'fast' | 'fastest';
+export type FadeSpeed = 'slow' | 'normal' | 'normalSlow' | 'fast' | 'fastest';
 
 interface Props {
   classname?: string;
