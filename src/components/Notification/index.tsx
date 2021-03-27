@@ -8,6 +8,7 @@ export type NotificationSize = 'small' | 'normal' | 'big';
 
 interface Props {
   className?: string;
+  id?: string;
   type?: NotificationType;
   size?: NotificationSize;
   onCloseClick?: () => void;
@@ -16,6 +17,7 @@ interface Props {
 export const Notification: React.FC<Props> = ({
   children,
   className,
+  id,
   type = 'alert',
   size = 'normal',
   onCloseClick,
@@ -27,6 +29,7 @@ export const Notification: React.FC<Props> = ({
       (type ? ' Notification--' + type : '') +
       (className ? ' ' + className : '')
     }
+    id={id}
   >
     {children}
     <div className="Notification-remove" onClick={onCloseClick}>
