@@ -16,6 +16,7 @@ export { Input } from './Input';
 export { Flex } from './Flex';
 export { Loader } from './Loader';
 export { Notification } from './Notification';
+export { NotificationDot } from './NotificationDot';
 export { P } from './P';
 export { Palette } from './Palette';
 export { Radio } from './Radio';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withKnobs, select } from '@storybook/addon-knobs';
-import { Tag, Notification, Size } from '.';
+import { Tag, NotificationDot, Size } from '.';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
 import { A } from '../A';
@@ -12,7 +12,7 @@ export default {
 };
 
 const knobs = {
-  notification: (): Notification => select('Notification', ['success', 'error', 'alert', undefined], undefined),
+  notification: (): NotificationDot => select('NotificationDot', ['success', 'error', 'alert', undefined], undefined),
   size: (): Size => select('Size', ['small', 'medium', 'big', undefined], undefined),
   variant: (): undefined | 'dark' => select('Variant', [undefined, 'dark'], undefined),
 };

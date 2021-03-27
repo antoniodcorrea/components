@@ -5,34 +5,40 @@
 @{c} {
   .default();
 
-  border-radius: 50%;
-  background: @c-transparent;
-  transition: background @td-fast @ease;
+  border-radius: 5px;
+  min-width: 300px;
+  padding: 10px 20px;
+
+  &-title {
+    display: block;
+  }
+
+  &-description {
+    display: block;
+  }
 
   &-small {
-    height: 4px;
-    width: 4px;
+    //
   }
 
   &-normal {
-    height: 8px;
-    width: 8px;
+    // height: 8px;
+    // width: 8px;
   }
 
   &-big {
-    height: 12px;
-    width: 12px;
+    //
   }
 
   &--error {
-    background: @c-error;
+    background: @gradientColors[red-4];
   }
 
   &--alert {
-    background: @c-alert;
+    background: @gradientColors[yellow-3];
   }
 
   &--success {
-    background: @c-success;
+    background: @gradientColors[green-4];
   }
 }

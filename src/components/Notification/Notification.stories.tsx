@@ -1,6 +1,8 @@
 import React from 'react';
-import { withKnobs, select } from '@storybook/addon-knobs';
-import { Notification, NotificationType, NotificationSize } from '.';
+import { withKnobs } from '@storybook/addon-knobs';
+import { Notification } from '.';
+import { Hr } from '../Hr';
+import { A } from '../A';
 
 export default {
   component: Notification,
@@ -8,9 +10,30 @@ export default {
   decorators: [withKnobs],
 };
 
-const knobs = {
-  size: (): NotificationSize => select('Size', ['small', 'normal', 'big', undefined], 'small'),
-  type: (): NotificationType => select('Notification', ['success', 'alert', 'error', undefined], 'error'),
-};
-
-export const Default: React.FC = () => <Notification type={knobs.type()} size={knobs.size()} />;
+export const Default: React.FC = () => (
+  <>
+    <Notification type="success" title="This is a notification">
+      Something happened, click{' '}
+      <A href="https://google.es" targetBlank frontend underlined>
+        here
+      </A>{' '}
+      to know more{' '}
+    </Notification>
+    <Hr spacer size="small" />
+    <Notification type="alert" title="This is a notification">
+      Something happened, click{' '}
+      <A href="https://google.es" targetBlank frontend underlined>
+        here
+      </A>{' '}
+      to know more{' '}
+    </Notification>
+    <Hr spacer size="small" />
+    <Notification type="error" title="This is a notification">
+      Something happened, click{' '}
+      <A href="https://google.es" targetBlank frontend underlined>
+        here
+      </A>{' '}
+      to know more{' '}
+    </Notification>
+  </>
+);
