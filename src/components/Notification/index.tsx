@@ -1,5 +1,4 @@
 import React from 'react';
-import { Span } from '../Span';
 import { Cross } from '../Svg';
 
 import './Notification.less';
@@ -30,6 +29,8 @@ export const Notification: React.FC<Props> = ({
     }
   >
     {children}
-    <Cross className="Notification-remove" size="micro" onClick={onCloseClick} />
+    <div className="Notification-remove" onClick={onCloseClick}>
+      <Cross size="micro" />
+    </div>
   </div>
 );

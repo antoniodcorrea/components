@@ -2,6 +2,7 @@ import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { Notification } from '.';
 import { Hr } from '../Hr';
+import { Span } from '../Span';
 import { A } from '../A';
 
 export default {
@@ -12,28 +13,50 @@ export default {
 
 export const Default: React.FC = () => (
   <>
-    <Notification type="success" title="This is a notification">
-      Something happened, click{' '}
-      <A href="https://google.es" targetBlank frontend underlined>
-        here
-      </A>{' '}
-      to know more{' '}
+    <Notification type="success">
+      <Span bold size="normal">
+        Some title
+      </Span>
+      <div>
+        <Span size="small">
+          Something happened, click{' '}
+          <A href="https://google.es" targetBlank frontend underlined>
+            here
+          </A>{' '}
+          to know more{' '}
+        </Span>
+      </div>
     </Notification>
     <Hr spacer size="small" />
-    <Notification type="alert" title="This is a notification">
-      Something happened, click{' '}
-      <A href="https://google.es" targetBlank frontend underlined>
-        here
-      </A>{' '}
-      to know more{' '}
+    <Notification type="error">
+      <Span bold size="normal">
+        Some title
+      </Span>
+      <div>
+        <Span size="small">
+          Something happened, click{' '}
+          <A href="https://google.es" targetBlank frontend underlined>
+            here
+          </A>{' '}
+          to know more{' '}
+        </Span>
+      </div>
     </Notification>
     <Hr spacer size="small" />
-    <Notification type="error" title="This is a notification">
-      Something happened, click{' '}
-      <A href="https://google.es" targetBlank frontend underlined>
-        here
-      </A>{' '}
-      to know more{' '}
+    <Notification type="alert">
+      <Span bold size="normal">
+        Some title
+      </Span>
+      <div>
+        <Span size="small">
+          Something happened, click{' '}
+          <A href="https://google.es" targetBlank frontend underlined>
+            here
+          </A>{' '}
+          to know more
+        </Span>
+      </div>
     </Notification>
+    <Hr spacer size="small" />
   </>
 );
