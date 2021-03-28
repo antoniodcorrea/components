@@ -48,6 +48,7 @@ export {
   BookmarkWithBackground,
   Edit,
   PlusCircle,
+  plusCircleWithBackground,
   Sort,
   List,
 } from './Svg';
