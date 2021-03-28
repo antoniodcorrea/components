@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 import SortSvg from '../../assets/svg/sort.svg';
 import TriangleSvg from '../../assets/svg/triangle.svg';
 import SquareSvg from '../../assets/svg/square.svg';
@@ -46,18 +46,22 @@ export type IconsType =
   | 'PlusCircle'
   | 'List';
 
-export interface Props {
+export interface Props extends SVGProps<SVGElement> {
   size?: IconSize;
   className?: string;
   filled?: boolean;
   onClick?: (event: SvgClickEvent) => void;
 }
 
-export type SvgSpriteType = (
-  SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-) => (props: Props) => JSX.Element;
+export type SvgSpriteType = (SvgComponent: React.FC<Props>) => (props: Props) => JSX.Element;
 
-const Svg: SvgSpriteType = (SvgComponent) => ({ className, size = 'normal', onClick, filled }): React.ReactElement => (
+const Svg: SvgSpriteType = (SvgComponent) => ({
+  className,
+  size = 'normal',
+  onClick,
+  filled,
+  ...props
+}): React.ReactElement => (
   <SvgComponent
     className={
       'Svg ' +
@@ -67,6 +71,7 @@ const Svg: SvgSpriteType = (SvgComponent) => ({ className, size = 'normal', onCl
       (filled ? ' Svg--filled' : '')
     }
     onClick={onClick}
+    {...props}
   />
 );
 
@@ -94,8 +99,8 @@ interface IconProps extends Props {
   name: IconsType;
 }
 
-export const SvgIcon: React.FC<IconProps> = ({ name, size, className }) => {
+export const SvgIcon: React.FC<IconProps> = ({ name, size, className, ...props }) => {
   const Component = Icons[name];
 
-  return <Component size={size} className={className} />;
+  return <Component size={size} className={className} {...props} />;
 };
