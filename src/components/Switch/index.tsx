@@ -11,7 +11,14 @@ interface Props {
 
 export const Switch: React.FC<Props> = ({ name, checked = false, onChange }) => (
   <label className="Switch">
-    <input className="Switch-input" type="checkbox" name={name} defaultChecked={checked} onChange={onChange} />
+    <input
+      className="Switch-input"
+      type="checkbox"
+      name={name}
+      defaultChecked={checked}
+      checked={checked}
+      onChange={onChange}
+    />
     <span className="Switch-slider " />
     <span className="Switch-icons">
       <span className="Switch-icon Switch-true">

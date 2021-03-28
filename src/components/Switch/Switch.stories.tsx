@@ -3,10 +3,17 @@ import { Switch } from '.';
 import { Hr } from '../Hr';
 import { H1 } from '../H1';
 import { Border } from '../Border';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { Span } from '../Span';
 
 export default {
   component: Switch,
   title: 'Switch',
+  decorators: [withKnobs],
+};
+
+const knobs = {
+  checked: (): boolean => boolean('Value', true),
 };
 
 export const Empty: React.FC = () => {
@@ -19,6 +26,14 @@ export const Empty: React.FC = () => {
       <H1>Switches</H1>
       <Hr spacer />
       <Border>
+        <Span bold>With default value</Span>
+        <Hr spacer size="small" />
+        <Switch name="Test" checked={knobs.checked()} />
+        <Hr spacer size="small" />
+        <Hr size="nano" />
+        <Hr spacer />
+        <Span bold>Other situations</Span>
+        <Hr spacer size="small" />
         <Switch name="Test" checked={value1} onChange={(e): void => setValue1(e.currentTarget.checked)} />
         <Hr spacer size="small" />
         <Switch name="Test2" checked={value2} onChange={(e): void => setValue2(e.currentTarget.checked)} />
