@@ -8,7 +8,7 @@ import './FadeInOut.less';
 export type FadeSpeed = 'slow' | 'normal' | 'normalSlow' | 'fast' | 'fastest';
 
 interface Props {
-  classname?: string;
+  className?: string;
   children: React.ReactNode | React.ReactNode[];
   valueToUpdate: string | boolean | number;
   speed?: FadeSpeed;
@@ -18,7 +18,7 @@ interface Props {
 
 export const FadeInOut: React.FC<Props> = ({
   children,
-  classname,
+  className,
   valueToUpdate = '',
   speed = 'fast',
   scrollToTop,
@@ -29,7 +29,7 @@ export const FadeInOut: React.FC<Props> = ({
       key={valueToUpdate.toString()}
       appear={appear}
       classNames="FadeInOut"
-      className={'FadeInOut FadeInOut--' + speed + (classname ? ` ${classname}` : ' ')}
+      className={'FadeInOut FadeInOut--' + speed + (className ? ` ${className}` : ' ')}
       timeout={{
         enter: speedMap[speed],
         exit: speedMap[speed],

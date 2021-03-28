@@ -50,7 +50,6 @@ export interface Props extends SVGProps<SVGElement> {
   size?: IconSize;
   className?: string;
   filled?: boolean;
-  onClick?: (event: SvgClickEvent) => void;
 }
 
 export type SvgSpriteType = (SvgComponent: React.FC<Props>) => (props: Props) => JSX.Element;
