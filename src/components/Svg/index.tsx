@@ -15,11 +15,12 @@ import UserSvg from '../../assets/svg/user.svg';
 import PrivateSvg from '../../assets/svg/private.svg';
 import LinkSvg from '../../assets/svg/link.svg';
 import BookmarkSvg from '../../assets/svg/bookmark.svg';
+import BookmarkFilledSvg from '../../assets/svg/bookmarkFilled.svg';
+import BookmarkWithBackgroundSvg from '../../assets/svg/bookmarkWithBackground.svg';
 import EditSvg from '../../assets/svg/edit.svg';
 import PlusCircleSvg from '../../assets/svg/plusCircle.svg';
 import ListSvg from '../../assets/svg/list.svg';
 import * as Icons from '.';
-import { SvgClickEvent } from './Svg.types';
 
 import './Svg.less';
 
@@ -41,6 +42,8 @@ export type IconsType =
   | 'User'
   | 'Link'
   | 'Bookmark'
+  | 'BookmarkFilled'
+  | 'BookmarkWithBackground'
   | 'Private'
   | 'Edit'
   | 'PlusCircle'
@@ -89,6 +92,8 @@ export const User: React.FC<Props> = (props) => Svg(UserSvg)(props);
 export const Private: React.FC<Props> = (props) => Svg(PrivateSvg)(props);
 export const Link: React.FC<Props> = (props) => Svg(LinkSvg)(props);
 export const Bookmark: React.FC<Props> = (props) => Svg(BookmarkSvg)(props);
+export const BookmarkFilled: React.FC<Props> = (props) => Svg(BookmarkFilledSvg)(props);
+export const BookmarkWithBackground: React.FC<Props> = (props) => Svg(BookmarkWithBackgroundSvg)(props);
 export const Edit: React.FC<Props> = (props) => Svg(EditSvg)(props);
 export const PlusCircle: React.FC<Props> = (props) => Svg(PlusCircleSvg)(props);
 export const Sort: React.FC<Props> = (props) => Svg(SortSvg)(props);

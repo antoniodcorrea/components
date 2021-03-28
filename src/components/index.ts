@@ -44,6 +44,8 @@ export {
   Private,
   Link,
   Bookmark,
+  BookmarkFilled,
+  BookmarkWithBackground,
   Edit,
   PlusCircle,
   Sort,

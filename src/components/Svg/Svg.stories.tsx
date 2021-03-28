@@ -15,6 +15,8 @@ import {
   User,
   Private,
   Bookmark,
+  BookmarkFilled,
+  BookmarkWithBackground,
   Edit,
   PlusCircle,
   List,
@@ -65,6 +67,8 @@ export const Icons: React.FC = () => (
       <User size={knobs.size()} filled={knobs.filled()} />
       <Private size={knobs.size()} filled={knobs.filled()} />
       <Bookmark size={knobs.size()} filled={knobs.filled()} />
+      <BookmarkFilled size={knobs.size()} filled={knobs.filled()} />
+      <BookmarkWithBackground size={knobs.size()} filled={knobs.filled()} />
       <Edit size={knobs.size()} filled={knobs.filled()} />
       <PlusCircle size={knobs.size()} filled={knobs.filled()} />
       <Sort size={knobs.size()} filled={knobs.filled()} />
