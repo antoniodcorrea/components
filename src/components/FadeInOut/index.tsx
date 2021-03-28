@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 
 import { speedMap } from './speedMap';
@@ -7,7 +7,7 @@ import './FadeInOut.less';
 
 export type FadeSpeed = 'slow' | 'normal' | 'normalSlow' | 'fast' | 'fastest';
 
-interface Props {
+interface Props extends HTMLProps<HTMLDivElement> {
   className?: string;
   children: React.ReactNode | React.ReactNode[];
   valueToUpdate: string | boolean | number;
@@ -23,6 +23,7 @@ export const FadeInOut: React.FC<Props> = ({
   speed = 'fast',
   scrollToTop,
   appear = false,
+  ...props
 }) => (
   <SwitchTransition>
     <CSSTransition
@@ -41,7 +42,7 @@ export const FadeInOut: React.FC<Props> = ({
           });
       }}
     >
-      <div>{children}</div>
+      <div {...props}>{children}</div>
     </CSSTransition>
   </SwitchTransition>
 );
