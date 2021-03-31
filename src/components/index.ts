@@ -41,6 +41,7 @@ export {
   Loupe,
   Upload,
   User,
+  UserAdmin,
   UserAdd,
   UserRemove,
   Private,
