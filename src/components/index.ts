@@ -41,6 +41,8 @@ export {
   Loupe,
   Upload,
   User,
+  UserAdd,
+  UserRemove,
   Private,
   Link,
   Bookmark,

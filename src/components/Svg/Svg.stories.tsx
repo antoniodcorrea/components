@@ -13,6 +13,8 @@ import {
   ArrowUp,
   Loupe,
   User,
+  UserAdd,
+  UserRemove,
   Private,
   Bookmark,
   BookmarkFilled,
@@ -64,6 +66,9 @@ export const Icons: React.FC = () => (
       <ArrowUp size={knobs.size()} filled={knobs.filled()} />
       <Check size={knobs.size()} filled={knobs.filled()} />
       <Loupe size={knobs.size()} filled={knobs.filled()} />
+      <User size={knobs.size()} filled={knobs.filled()} />
+      <UserAdd size={knobs.size()} filled={knobs.filled()} />
+      <UserRemove size={knobs.size()} filled={knobs.filled()} />
       <User size={knobs.size()} filled={knobs.filled()} />
       <Private size={knobs.size()} filled={knobs.filled()} />
       <Bookmark size={knobs.size()} filled={knobs.filled()} />

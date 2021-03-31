@@ -12,6 +12,8 @@ import ArrowLeftSvg from '../../assets/svg/arrowLeft.svg';
 import LoupeSvg from '../../assets/svg/loupe.svg';
 import UploadSvg from '../../assets/svg/upload.svg';
 import UserSvg from '../../assets/svg/user.svg';
+import UserAddSvg from '../../assets/svg/userAdd.svg';
+import UserRemoveSvg from '../../assets/svg/userRemove.svg';
 import PrivateSvg from '../../assets/svg/private.svg';
 import LinkSvg from '../../assets/svg/link.svg';
 import BookmarkSvg from '../../assets/svg/bookmark.svg';
@@ -41,6 +43,8 @@ export type IconsType =
   | 'Loupe'
   | 'Upload'
   | 'User'
+  | 'UserAdd'
+  | 'UserRemove'
   | 'Link'
   | 'Bookmark'
   | 'BookmarkFilled'
@@ -91,6 +95,8 @@ export const ArrowLeft: React.FC<Props> = (props) => Svg(ArrowLeftSvg)(props);
 export const Loupe: React.FC<Props> = (props) => Svg(LoupeSvg)(props);
 export const Upload: React.FC<Props> = (props) => Svg(UploadSvg)(props);
 export const User: React.FC<Props> = (props) => Svg(UserSvg)(props);
+export const UserAdd: React.FC<Props> = (props) => Svg(UserAddSvg)(props);
+export const UserRemove: React.FC<Props> = (props) => Svg(UserRemoveSvg)(props);
 export const Private: React.FC<Props> = (props) => Svg(PrivateSvg)(props);
 export const Link: React.FC<Props> = (props) => Svg(LinkSvg)(props);
 export const Bookmark: React.FC<Props> = (props) => Svg(BookmarkSvg)(props);
