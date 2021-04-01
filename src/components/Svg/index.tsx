@@ -22,6 +22,7 @@ import BookmarkFilledSvg from '../../assets/svg/bookmarkFilled.svg';
 import BookmarkWithBackgroundSvg from '../../assets/svg/bookmarkWithBackground.svg';
 import EditSvg from '../../assets/svg/edit.svg';
 import PlusCircleSvg from '../../assets/svg/plusCircle.svg';
+import EditCircleSvg from '../../assets/svg/editCircle.svg';
 import PlusCircleWithBackgroundSvg from '../../assets/svg/plusCircleWithBackground.svg';
 import ListSvg from '../../assets/svg/list.svg';
 import * as Icons from '.';
@@ -54,6 +55,7 @@ export type IconsType =
   | 'Private'
   | 'Edit'
   | 'PlusCircle'
+  | 'EditCircle'
   | 'PlusCircleWithBackground'
   | 'List';
 
@@ -107,6 +109,7 @@ export const BookmarkFilled: React.FC<Props> = (props) => Svg(BookmarkFilledSvg)
 export const BookmarkWithBackground: React.FC<Props> = (props) => Svg(BookmarkWithBackgroundSvg)(props);
 export const Edit: React.FC<Props> = (props) => Svg(EditSvg)(props);
 export const PlusCircle: React.FC<Props> = (props) => Svg(PlusCircleSvg)(props);
+export const EditCircle: React.FC<Props> = (props) => Svg(EditCircleSvg)(props);
 export const PlusCircleWithBackground: React.FC<Props> = (props) => Svg(PlusCircleWithBackgroundSvg)(props);
 export const Sort: React.FC<Props> = (props) => Svg(SortSvg)(props);
 export const List: React.FC<Props> = (props) => Svg(ListSvg)(props);

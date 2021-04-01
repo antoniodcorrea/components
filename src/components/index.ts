@@ -52,6 +52,7 @@ export {
   BookmarkWithBackground,
   Edit,
   PlusCircle,
+  EditCircle,
   PlusCircleWithBackground,
   Sort,
   List,
