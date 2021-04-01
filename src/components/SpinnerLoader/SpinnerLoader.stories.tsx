@@ -18,7 +18,7 @@ const knobs = {
 export const Default: React.FC = () => (
   <>
     <Hr spacer />
-    <div style={{ width: '300px', position: 'relative' }}>
+    <div style={{ width: '300px', position: 'relative', background: 'tomato' }}>
       <SpinnerLoader size={knobs.size()} />
     </div>
   </>
