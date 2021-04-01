@@ -1,12 +1,16 @@
 import React from 'react';
 import './SpinnerLoader.less';
 
-export type SpinnerLoaderSize = 'nano' | 'small' | 'medium';
-export type SpinnerLoaderSpeed = 'fast' | 'normal' | 'slow';
+export type SpinnerLoaderSize = 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
 
-export const SpinnerLoader: React.FC<any> = ({ size = 'medium', speed = 'normal' }) => (
+interface Props {
+  className?: string;
+  size?: SpinnerLoaderSize;
+}
+
+export const SpinnerLoader: React.FC<Props> = ({ className, size = 'medium' }) => (
   <svg
-    className={'SpinnerLoader' + (size ? ' SpinnerLoader--' + size : '') + (speed ? ' SpinnerLoader--' + speed : '')}
+    className={'SpinnerLoader' + (className ? ' ' + className : '') + (size ? ' SpinnerLoader--' + size : '')}
     viewBox="0 0 50 50"
   >
     <circle className="SpinnerLoader-circle" cx="25" cy="25" r="20"></circle>
