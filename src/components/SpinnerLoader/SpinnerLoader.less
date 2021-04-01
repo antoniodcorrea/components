@@ -1,0 +1,38 @@
+@import '../../css/imports.less';
+
+@c: .SpinnerLoader;
+
+@{c} {
+  animation: rotate @td-sluggish linear infinite;
+
+  &-circle {
+    fill: none;
+    stroke: @c-success;
+    stroke-linecap: round;
+    stroke-width: 4;
+    animation: animation1 @td-oneHalf linear infinite;
+  }
+
+  @keyframes animation1 {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}

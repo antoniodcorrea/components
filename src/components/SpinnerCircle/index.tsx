@@ -9,6 +9,7 @@ interface Props {
   background?: boolean;
   speed?: SpinnerCircleSpeed;
 }
+
 export const SpinnerCircle: React.FC<Props> = ({ size = 'medium', background = true, speed = 'normal' }) => (
   <div
     className={
