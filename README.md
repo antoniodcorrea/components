@@ -34,8 +34,8 @@ Whole process
 
 ### DatePicker
 
-- Probably will need validation for custom input: https://stackoverflow.com/questions/56608135/react-datepicker-with-custom-input-for-user-input-not-working
+- Probably will need validation for custom input: <https://stackoverflow.com/questions/56608135/react-datepicker-with-custom-input-for-user-input-not-working>
 
 ### Update for test
 
-...
+[Update 1]
