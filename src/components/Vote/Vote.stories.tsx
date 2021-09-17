@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-import { Vote } from '.';
-import { Hr } from '../Hr';
 import { H1 } from '../H1';
+import { Hr } from '../Hr';
+import { Vote } from '.';
 
 export default {
   component: Vote,

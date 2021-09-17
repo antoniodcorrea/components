@@ -3,8 +3,6 @@
 @c: .Flex;
 
 @{c} {
-  .default();
-
   display: flex;
   flex-wrap: wrap;
   flex-shrink: 0;
@@ -59,6 +57,14 @@
 
     &--bottom {
       align-items: flex-end;
+    }
+
+    &--baseline {
+      align-items: baseline;
+    }
+
+    &--stretch {
+      align-items: stretch;
     }
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { withKnobs, select } from '@storybook/addon-knobs';
+
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { SortBy } from '.';
 
 export default {
@@ -10,6 +11,7 @@ export default {
 
 const knobs = {
   sort: (): string => select('Sort', ['sort1', '-sort1', 'sort2', '-sort2', 'sort3', '-sort3', undefined], '-sort1'),
+  loading: (): boolean => boolean('Loading', false),
 };
 
 export const Default: React.FC = () => (
@@ -32,6 +34,7 @@ export const Default: React.FC = () => (
           },
         ]}
         currentSort={knobs.sort()}
+        loading={knobs.loading()}
       />
     </div>
   </div>

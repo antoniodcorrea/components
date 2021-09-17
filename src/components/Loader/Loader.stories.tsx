@@ -1,8 +1,9 @@
 import React from 'react';
-import { withKnobs, boolean, number } from '@storybook/addon-knobs';
-import { Loader } from '.';
-import { Hr } from '../Hr';
+
+import { boolean, number, withKnobs } from '@storybook/addon-knobs';
 import { H1 } from '../H1';
+import { Hr } from '../Hr';
+import { Loader } from '.';
 
 export default {
   component: Loader,
@@ -16,15 +17,13 @@ const knobs = {
   grow: (): boolean => boolean('Grow', false),
 };
 
-export const Default: React.FC = () => {
-  return (
-    <div>
-      <H1>Loader</H1>
-      <Hr spacer />
-      <Hr size="micro" />
-      <Hr spacer />
-      <Hr spacer />
-      <Loader loaded={knobs.loaded()} error={knobs.error()} grow={knobs.grow()} />
-    </div>
-  );
-};
+export const Default: React.FC = () => (
+  <div>
+    <H1>Loader</H1>
+    <Hr spacer />
+    <Hr size="micro" />
+    <Hr spacer />
+    <Hr spacer />
+    <Loader loaded={knobs.loaded()} error={knobs.error()} grow={knobs.grow()} />
+  </div>
+);

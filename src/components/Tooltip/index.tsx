@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-import { Border } from '../Border';
-import { Span } from '../Span';
 import { createPopper } from '@popperjs/core';
 
 import './Tooltip.less';
@@ -25,7 +23,7 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, time
   const computedTimeShown = timeShown === 0 ? 0 : timeShown || TIME_SHOWN_SECONDS;
 
   const unmountTooltip = () => {
-    tooltipElementRef.current.removeAttribute('data-show');
+    tooltipElementRef?.current?.removeAttribute('data-show');
 
     clearTimeout(MountDelayed);
     clearTimeout(UnMountDelayed);
@@ -33,7 +31,7 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, time
 
   const mountTooltip = () => {
     MountDelayed = setTimeout(() => {
-      tooltipElementRef.current.setAttribute('data-show', '');
+      tooltipElementRef?.current?.setAttribute('data-show', '');
     }, computedDelay * 1000);
 
     UnMountDelayed = setTimeout(() => {
@@ -45,19 +43,19 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, time
     const parentElement = document.getElementById(parentElementId);
     if (!parentElement) return;
 
-    parentElement.addEventListener('mouseenter', mountTooltip);
-    parentElement.addEventListener('mouseleave', unmountTooltip);
+    parentElement?.addEventListener('mouseenter', mountTooltip);
+    parentElement?.addEventListener('mouseleave', unmountTooltip);
 
     return () => {
-      parentElement.removeEventListener('mouseenter', mountTooltip);
-      parentElement.removeEventListener('mouseleave', unmountTooltip);
+      parentElement?.removeEventListener('mouseenter', mountTooltip);
+      parentElement?.removeEventListener('mouseleave', unmountTooltip);
     };
   });
 
   useEffect(() => {
     const parentElement = document.getElementById(parentElementId);
 
-    createPopper(parentElement, tooltipElementRef.current, {
+    createPopper(parentElement, tooltipElementRef?.current, {
       placement,
       modifiers: [
         {
@@ -81,9 +79,7 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, time
 
   return (
     <div className="Tooltip" ref={tooltipElementRef} aria-describedby="tooltip">
-      <Border padding="small">
-        <Span bold>{content}</Span>
-      </Border>
+      <span className="Tooltip-text">{content}</span>
       <div className="Tooltip-arrow" data-popper-arrow />
     </div>
   );

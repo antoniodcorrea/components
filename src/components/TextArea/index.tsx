@@ -1,9 +1,10 @@
-import React from 'react';
-import uniqueId from 'lodash/uniqueId';
+import React, { HTMLProps } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
+import uniqueId from 'lodash/uniqueId';
+
 import './TextArea.less';
 
-interface Props {
+interface Props extends HTMLProps<HTMLTextAreaElement> {
   name: string;
   value?: string;
   label?: string;
@@ -14,6 +15,7 @@ interface Props {
   success?: boolean;
   disabled?: boolean;
   grow?: boolean;
+  maxLength?: number;
   onChange?: (e) => void;
 }
 
@@ -29,6 +31,7 @@ export const TextArea: React.FC<Props> = ({
   disabled,
   grow,
   onChange,
+  maxLength,
 }) => {
   const id = uniqueId();
 
@@ -44,19 +47,21 @@ export const TextArea: React.FC<Props> = ({
         (grow ? ' TextArea--grow' : '')
       }
     >
-      <TextareaAutosize
-        id={'Input-' + id}
-        className="TextArea-textArea"
-        value={value}
-        onChange={onChange}
-        placeholder=" "
-        spellCheck={spellCheck}
-      />
       {label && (
         <label className="TextArea-label" htmlFor={'Input-' + id}>
           {label}
         </label>
       )}
+      <TextareaAutosize
+        id={'Input-' + id}
+        name={name}
+        className="TextArea-textArea"
+        value={value}
+        onChange={onChange}
+        placeholder=" "
+        spellCheck={spellCheck}
+        maxLength={maxLength}
+      />
     </div>
   );
 };

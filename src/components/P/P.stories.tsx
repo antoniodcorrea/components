@@ -1,5 +1,6 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+
+import { text, withKnobs } from '@storybook/addon-knobs';
 import { P } from '.';
 
 export default {
@@ -21,11 +22,9 @@ const knobs = {
     ),
 };
 
-export const Default: React.FC = () => {
-  return (
-    <>
-      <P>{knobs.text1()}</P>
-      <P>{knobs.text2()}</P>
-    </>
-  );
-};
+export const Default: React.FC = () => (
+  <>
+    <P>{knobs.text1()}</P>
+    <P>{knobs.text2()}</P>
+  </>
+);

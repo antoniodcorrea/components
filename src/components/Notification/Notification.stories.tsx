@@ -1,9 +1,10 @@
 import React from 'react';
+
 import { withKnobs } from '@storybook/addon-knobs';
-import { Notification } from '.';
+import { A } from '../A';
 import { Hr } from '../Hr';
 import { Span } from '../Span';
-import { A } from '../A';
+import { Notification } from '.';
 
 export default {
   component: Notification,
@@ -14,7 +15,7 @@ export default {
 export const Default: React.FC = () => (
   <>
     <Notification type="success">
-      <Span bold size="normal">
+      <Span weight="semiBold" size="normal">
         Some title
       </Span>
       <div>
@@ -29,7 +30,7 @@ export const Default: React.FC = () => (
     </Notification>
     <Hr spacer size="small" />
     <Notification type="error">
-      <Span bold size="normal">
+      <Span weight="semiBold" size="normal">
         Some title
       </Span>
       <div>
@@ -44,7 +45,7 @@ export const Default: React.FC = () => (
     </Notification>
     <Hr spacer size="small" />
     <Notification type="alert">
-      <Span bold size="normal">
+      <Span weight="semiBold" size="normal">
         Some title
       </Span>
       <div>

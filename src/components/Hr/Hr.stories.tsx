@@ -1,7 +1,8 @@
 import React from 'react';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
-import { Hr, HrSize } from '.';
+
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { Flex } from '../Flex';
+import { Hr, HrSize } from '.';
 
 export default {
   component: Hr,

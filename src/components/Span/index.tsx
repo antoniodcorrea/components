@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
+
 import './Span.less';
 
-export type SpanSize = 'normal' | 'small' | 'micro' | 'nano';
+export type SpanSize = 'normal' | 'small' | 'micro' | 'nano' | 'medium' | 'big';
+export type SpanWeight = 'regular' | 'medium' | 'semiBold' | 'bold' | 'extraBold';
 
-interface Props {
+interface Props extends Omit<HTMLProps<HTMLSpanElement>, 'size'> {
   children: React.ReactNode;
   size?: SpanSize;
-  bold?: boolean;
+  weight?: SpanWeight;
+  extraBold?: boolean;
   italics?: boolean;
   uppercase?: boolean;
   disabled?: boolean;
@@ -16,10 +19,11 @@ interface Props {
   center?: boolean;
 }
 
-export const Span: React.SFC<Props> = ({
+export const Span: React.FC<Props> = ({
   children,
   size = 'normal',
-  bold = false,
+  weight = 'medium',
+  extraBold = false,
   italics = false,
   disabled = false,
   uppercase = false,
@@ -27,13 +31,15 @@ export const Span: React.SFC<Props> = ({
   id,
   grow,
   center,
+  ...props
 }) => (
   <span
     id={id}
     className={
       'Span' +
       (' Span-' + size) +
-      (bold ? ' Span--bold' : '') +
+      (weight ? ' Span--' + weight : '') +
+      (extraBold ? ' Span--extraBold' : '') +
       (italics ? ' Span--italics' : '') +
       (disabled ? ' Span--disabled' : '') +
       (uppercase ? ' Span--uppercase' : '') +
@@ -41,6 +47,7 @@ export const Span: React.SFC<Props> = ({
       (center ? ' Span--center' : '') +
       (className ? ' ' + className : '')
     }
+    {...props}
   >
     {children}
   </span>

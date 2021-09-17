@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Switch } from '.';
-import { Hr } from '../Hr';
+
+import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { Frame } from '../Frame';
 import { H1 } from '../H1';
-import { Border } from '../Border';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
+import { Hr } from '../Hr';
 import { Span } from '../Span';
+import { Switch } from '.';
 
 export default {
   component: Switch,
@@ -25,14 +26,14 @@ export const Empty: React.FC = () => {
     <>
       <H1>Switches</H1>
       <Hr spacer />
-      <Border>
-        <Span bold>With default value</Span>
+      <Frame>
+        <Span weight="semiBold">With default value</Span>
         <Hr spacer size="small" />
         <Switch name="Test" checked={knobs.checked()} />
         <Hr spacer size="small" />
         <Hr size="nano" />
         <Hr spacer />
-        <Span bold>Other situations</Span>
+        <Span weight="semiBold">Other situations</Span>
         <Hr spacer size="small" />
         <Switch name="Test" checked={value1} onChange={(e): void => setValue1(e.currentTarget.checked)} />
         <Hr spacer size="small" />
@@ -40,7 +41,7 @@ export const Empty: React.FC = () => {
         <Hr spacer size="small" />
         <Switch name="Test3" checked={value3} onChange={(e): void => setValue3(e.currentTarget.checked)} />
         <Hr spacer size="small" />
-      </Border>
+      </Frame>
       <Hr spacer />
       <Hr size="micro" />
     </>

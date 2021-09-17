@@ -4,10 +4,9 @@
 
 @{c} {
   display: inline-flex;
+  position: relative;
   flex-direction: column;
   user-select: none;
-
-  .default();
 
   &-label {
     //
@@ -43,9 +42,20 @@
     border-color: @c-base;
     transition: border-color @td-fast @ease, color @td-fast @ease;
     cursor: pointer;
-
-    .default();
   }
+
+  // &-overlay {
+  //   content: ' ';
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   opacity: 1;
+  //   background: @c-traslucid--hard;
+  //   background: @c-success;
+  //   transition: opacity @td-fast @ease;
+  // }
 
   &-textIcon {
     margin-right: 10px;
@@ -159,6 +169,8 @@
   }
 
   &--disabled {
+    pointer-events: none;
+
     @{c}-dropzone {
       color: @c-disabled;
       border-color: @c-disabled;

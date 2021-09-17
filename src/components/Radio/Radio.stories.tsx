@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { withKnobs, boolean } from '@storybook/addon-knobs';
-import { Radio } from '.';
+
+import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { Frame } from '../Frame';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
-import { Border } from '../Border';
+import { Radio } from '.';
 
 export default {
   component: Radio,
@@ -25,7 +26,7 @@ export const Empty: React.FC = () => {
       <Hr spacer size="micro" />
       <Hr size="micro" />
       <Hr spacer />
-      <Border>
+      <Frame>
         <Radio
           value={value}
           name="gender"
@@ -44,12 +45,12 @@ export const Empty: React.FC = () => {
             },
           ]}
           onChange={(e): void => {
-            setValue(e.target.value);
+            setValue(e.currentTarget.value);
           }}
           grow={knobs.grow()}
           inline={knobs.inline()}
         />
-      </Border>
+      </Frame>
     </>
   );
 };

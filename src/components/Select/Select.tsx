@@ -7,8 +7,9 @@ import Select, {
   MultiValueProps,
 } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
-import { ArrowDown, Cross } from '../Svg';
 
+import Cross from '../../assets/svg/cross.svg';
+import { ArrowDown } from '../Svg';
 import { SelectValue } from '.';
 
 import './Select.less';
@@ -18,29 +19,32 @@ interface Props {
   className?: string;
   placeholder?: string;
   label?: string;
+  hideLabelOnFill?: boolean;
   focusOrContent: boolean;
   options: SelectValue[];
+  isMulti: boolean;
   value: SelectValue[];
   defaultOptions: SelectValue[];
   grow?: boolean;
   maxItems?: number;
+  height?: 'small' | 'medium';
   onChange?: (params: SelectValue[]) => void;
   onInputChange: (params: unknown) => void;
   onFocus: () => void;
   onBlur: () => void;
 }
 
-type MenyType = {
+type MenuType = {
   selectProps: {
     maxItems: number;
   };
 };
 
-const Menu = ({ ...props }: MenyType & MenuProps<any, any>): JSX.Element => {
+const Menu = ({ ...props }: MenuType & MenuProps<any, any>): JSX.Element => {
   const {
-    selectProps: { maxItems },
+    selectProps: { maxItems, isMulti },
   } = props;
-  const showOptions = !maxItems || (props.getValue().length || 0) < maxItems;
+  const showOptions = !isMulti || !maxItems || (props.getValue().length || 0) < maxItems;
 
   return (
     <Components.Menu {...props}>
@@ -55,7 +59,7 @@ const Menu = ({ ...props }: MenyType & MenuProps<any, any>): JSX.Element => {
 
 const MultiValueRemove = (props: MultiValueProps<unknown>): JSX.Element => (
   <Components.MultiValueRemove {...props}>
-    <Cross size="nano" />
+    <Cross className="Select__multi-value__remove__svg" />
   </Components.MultiValueRemove>
 );
 
@@ -73,14 +77,14 @@ const LoadingMessage = (): null => null;
 
 const NoOptionsMessage = (): null => null;
 
-const SelectComponent = ({ isCreatable, ...props }) => {
-  return isCreatable ? <CreatableSelect {...props} /> : <Select {...props} />;
-};
+const SelectComponent = ({ isCreatable, ...props }) =>
+  isCreatable ? <CreatableSelect {...props} /> : <Select {...props} />;
 
 export const SelectUi: React.FC<Props> = ({
   isCreatable,
   className,
   options,
+  isMulti,
   value,
   defaultOptions,
   onInputChange,
@@ -88,19 +92,22 @@ export const SelectUi: React.FC<Props> = ({
   onChange,
   placeholder,
   label,
+  hideLabelOnFill,
   focusOrContent,
   onFocus,
   onBlur,
   maxItems,
+  height,
 }) => (
-  <div className={'Select ' + (className ? className : ' ') + (grow ? ' Select--grow' : ' ')}>
+  <div className={'Select ' + (className ? className : ' ') + (grow ? ' Select--grow' : ' ') + (' Select--' + height)}>
     <SelectComponent
       isCreatable={isCreatable}
       className="Select__container"
       classNamePrefix="Select"
       closeMenuOnSelect
       value={value}
-      isMulti
+      isMulti={isMulti}
+      isClearable
       placeholder={!label ? placeholder : ' '}
       cacheOptions
       defaultOptions={defaultOptions}
@@ -119,10 +126,16 @@ export const SelectUi: React.FC<Props> = ({
         NoOptionsMessage: NoOptionsMessage,
       }}
     />
-    {!placeholder && (
-      <label className={'Select__label ' + (focusOrContent ? 'Select__label--active' : '')}>
+    {!placeholder && label && (
+      <label
+        className={
+          'Select__label' +
+          (focusOrContent ? ' Select__label--active' : '') +
+          (hideLabelOnFill ? ' Select__label--hideLabel' : '')
+        }
+      >
         <span className="Select__label-background" />
-        {label}
+        <span className="Select__multi-value__label Select__multi-value__label-custom">{label}</span>
       </label>
     )}
   </div>

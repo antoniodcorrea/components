@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import DatePickerComponent from 'react-datepicker';
-import { Input } from '../Input';
 import moment from 'moment';
+
+import { Input } from '../Input';
+
 import './DatePicker.less';
 
 const MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
@@ -28,7 +30,7 @@ interface State {
 export class DatePicker extends Component<Props, State> {
   private calendarRef;
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
     this.calendarRef = React.createRef();
 
@@ -41,12 +43,12 @@ export class DatePicker extends Component<Props, State> {
     };
   }
 
-  handleInputChange = (event): void => {
+  handleInputChange = (event: React.FormEvent<HTMLInputElement>): void => {
     const { onChange } = this.props;
-    const date = moment(event.target.value, MOMENT_DATE_FORMAT);
+    const date = moment(event.currentTarget.value, MOMENT_DATE_FORMAT);
 
     this.setState({
-      inputValue: event.target.value,
+      inputValue: event.currentTarget.value,
     });
 
     if (date.isValid()) {
@@ -58,7 +60,7 @@ export class DatePicker extends Component<Props, State> {
     }
   };
 
-  handleDatePickerChange = (date): void => {
+  handleDatePickerChange = (date: Date): void => {
     const { onChange } = this.props;
 
     this.setState({

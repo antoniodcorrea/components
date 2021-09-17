@@ -1,5 +1,6 @@
 import React from 'react';
-import { withKnobs, text, select } from '@storybook/addon-knobs';
+
+import { select, text, withKnobs } from '@storybook/addon-knobs';
 import { AIcon, Size } from '.';
 
 export default {

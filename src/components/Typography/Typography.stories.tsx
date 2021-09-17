@@ -1,11 +1,12 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+
+import { text, withKnobs } from '@storybook/addon-knobs';
 import { H1 } from '../H1';
 import { H2 } from '../H2';
 import { H3 } from '../H3';
 import { H4 } from '../H4';
-import { Span } from '../Span';
 import { Hr } from '../Hr';
+import { Span } from '../Span';
 
 export default {
   title: 'Typography',
@@ -27,40 +28,38 @@ const knobs = {
   SpanNanoRegular: (): string => text('Span nano regular', 'p — nano text: Arial 8'),
 };
 
-export const Default: React.FC = () => {
-  return (
-    <>
-      <H1>{knobs.H1()}</H1>
-      <Hr spacer size="micro" />
-      <H2>{knobs.H2()}</H2>
-      <Hr spacer size="micro" />
-      <H3>{knobs.H3()}</H3>
-      <Hr spacer size="micro" />
-      <H4>{knobs.H4()}</H4>
-      <Hr spacer size="micro" />
-      <Span bold>{knobs.SpanNormalBold()}</Span>
-      <Hr spacer size="micro" />
-      <Span>{knobs.SpanNormalRegular()}</Span>
-      <Hr spacer size="micro" />
-      <Span bold size="small">
-        {knobs.SpanSmallBold()}
-      </Span>
-      <Hr spacer size="zero" />
-      <Span size="small">{knobs.SpanSmallRegular()}</Span>
-      <Hr spacer size="micro" />
-      <Span bold size="micro">
-        {knobs.SpanMicroBold()}
-      </Span>
-      <Hr spacer size="zero" />
-      <Span size="micro">{knobs.SpanMicroRegular()}</Span>
-      <Hr spacer size="micro" />
-      <Span bold size="nano">
-        {knobs.SpanNanoBold()}
-      </Span>
-      <Hr spacer size="zero" />
-      <Span size="nano">{knobs.SpanNanoRegular()}</Span>
-      <Hr spacer />
-      <Hr size="micro" />
-    </>
-  );
-};
+export const Default: React.FC = () => (
+  <>
+    <H1>{knobs.H1()}</H1>
+    <Hr spacer size="micro" />
+    <H2>{knobs.H2()}</H2>
+    <Hr spacer size="micro" />
+    <H3>{knobs.H3()}</H3>
+    <Hr spacer size="micro" />
+    <H4>{knobs.H4()}</H4>
+    <Hr spacer size="micro" />
+    <Span weight="semiBold">{knobs.SpanNormalBold()}</Span>
+    <Hr spacer size="micro" />
+    <Span>{knobs.SpanNormalRegular()}</Span>
+    <Hr spacer size="micro" />
+    <Span weight="semiBold" size="small">
+      {knobs.SpanSmallBold()}
+    </Span>
+    <Hr spacer size="zero" />
+    <Span size="small">{knobs.SpanSmallRegular()}</Span>
+    <Hr spacer size="micro" />
+    <Span weight="semiBold" size="micro">
+      {knobs.SpanMicroBold()}
+    </Span>
+    <Hr spacer size="zero" />
+    <Span size="micro">{knobs.SpanMicroRegular()}</Span>
+    <Hr spacer size="micro" />
+    <Span weight="semiBold" size="nano">
+      {knobs.SpanNanoBold()}
+    </Span>
+    <Hr spacer size="zero" />
+    <Span size="nano">{knobs.SpanNanoRegular()}</Span>
+    <Hr spacer />
+    <Hr size="micro" />
+  </>
+);

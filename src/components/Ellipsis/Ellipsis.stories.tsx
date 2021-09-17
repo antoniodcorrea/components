@@ -1,6 +1,7 @@
 import React from 'react';
-import { Ellipsis } from '.';
+
 import { select, withKnobs } from '@storybook/addon-knobs';
+import { Ellipsis } from '.';
 
 export default {
   title: 'Ellipsis',
@@ -10,6 +11,4 @@ export default {
 
 const size = () => select('Size', [undefined, 'normal', 'small', 'micro', 'nano'], undefined);
 
-export const Default = () => {
-  return <Ellipsis size={size()} />;
-};
+export const Default: React.FC = () => <Ellipsis size={size()} />;

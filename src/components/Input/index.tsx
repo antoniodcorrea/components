@@ -1,10 +1,12 @@
-import React from 'react';
-import { Loupe } from '../Svg';
+import React, { HTMLProps } from 'react';
+
+import { Space } from '..';
 
 import './Input.less';
 
-interface Props {
+interface Props extends Omit<HTMLProps<HTMLInputElement>, 'autoComplete'> {
   name: string;
+  placeholder?: string;
   value?: string | number;
   label?: string;
   className?: string;
@@ -15,15 +17,9 @@ interface Props {
   success?: boolean;
   disabled?: boolean;
   grow?: boolean;
-  type?: 'text' | 'date' | 'search' | 'input' | 'password' | 'email' | 'number' | 'tel' | 'url';
+  type?: 'text' | 'date' | 'input' | 'password' | 'email' | 'number' | 'tel' | 'url';
   pattern?: string;
   autoFocus?: boolean;
-  onChange?: (e) => void;
-  onKeyDown?: (e) => void;
-  onKeyPress?: (e) => void;
-  onFocus?: (e) => void;
-  onClick?: (e) => void;
-  onBlur?: (e) => void;
 }
 
 export const Input: React.FC<Props> = ({
@@ -39,61 +35,49 @@ export const Input: React.FC<Props> = ({
   disabled,
   grow,
   autoFocus,
-  onChange,
-  onKeyDown,
-  onKeyPress,
-  onFocus,
-  onClick,
-  onBlur,
   pattern,
   type,
-}) => {
-  const isSearch = type === 'search';
-
-  return (
-    <div
-      className={
-        'Input ' +
-        (className ? className : '') +
-        (error ? ' Input--error' : '') +
-        (success ? ' Input--success' : '') +
-        (disabled ? ' Input--disabled' : '') +
-        (readOnly ? ' Input--readOnly' : '') +
-        (grow ? ' Input--grow' : '')
-      }
-    >
-      <input
-        name={name}
-        className="Input-input"
-        id={'Input-' + name}
-        value={value}
-        placeholder=" "
-        autoComplete={autoComplete ? 'on' : 'off'}
-        required
-        spellCheck={spellCheck ? 'true' : 'false'}
-        disabled={disabled}
-        readOnly={readOnly}
-        onChange={onChange}
-        type={type}
-        pattern={pattern}
-        autoFocus={autoFocus}
-        onKeyPress={onKeyPress}
-        onKeyDown={onKeyDown}
-        onFocus={onFocus}
-        onClick={onClick}
-        onBlur={onBlur}
-        results={2}
-      />
-      {label && (
-        <label className="Input-label" htmlFor={'Input-' + name}>
-          {label}
-        </label>
-      )}
-      {isSearch && (
-        <div className="Input-svgBackground" onClick={onClick}>
-          <Loupe className="Input-svg" size="normal" />
-        </div>
-      )}
+  placeholder = '',
+  ...props
+}) => (
+  <div
+    className={
+      'Input ' +
+      (className ? className : '') +
+      (!!error ? ' Input--error' : '') +
+      (success ? ' Input--success' : '') +
+      (disabled ? ' Input--disabled' : '') +
+      (readOnly ? ' Input--readOnly' : '') +
+      (grow ? ' Input--grow' : '')
+    }
+  >
+    {label && (
+      <label className="Input-label" htmlFor={'Input-' + name}>
+        {label}
+      </label>
+    )}
+    <input
+      name={name}
+      className="Input-input"
+      id={'Input-' + name}
+      value={value}
+      placeholder={placeholder}
+      size={1} // Fix for Firefox. Input width changes with font-size size https://stackoverflow.com/questions/49284045/why-does-font-size-increase-an-inputs-width
+      autoComplete={autoComplete ? 'on' : 'off'}
+      required
+      spellCheck={spellCheck ? 'true' : 'false'}
+      disabled={disabled}
+      readOnly={readOnly}
+      type={type}
+      pattern={pattern}
+      autoFocus={autoFocus}
+      results={2}
+      {...props}
+    />
+    <div className="Input-errorContent">
+      {error}
+      {/* Space to force height when there is no error present */}
+      <Space />
     </div>
-  );
-};
+  </div>
+);

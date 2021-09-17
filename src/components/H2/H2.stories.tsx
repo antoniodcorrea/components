@@ -1,5 +1,6 @@
 import React from 'react';
-import { withKnobs, text } from '@storybook/addon-knobs';
+
+import { text, withKnobs } from '@storybook/addon-knobs';
 import { H2 } from '.';
 
 export default {
@@ -12,6 +13,4 @@ const knobs = {
   text: (): string => text('Text', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'),
 };
 
-export const Default: React.FC = () => {
-  return <H2>{knobs.text()}</H2>;
-};
+export const Default: React.FC = () => <H2>{knobs.text()}</H2>;

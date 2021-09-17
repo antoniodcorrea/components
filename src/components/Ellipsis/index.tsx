@@ -1,5 +1,6 @@
-import { Span, SpanSize } from '../Span';
 import React from 'react';
+
+import { Span, SpanSize } from '../Span';
 
 import './Ellipsis.less';
 

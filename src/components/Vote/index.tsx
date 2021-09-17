@@ -1,5 +1,6 @@
 import React from 'react';
-import { Triangle } from '../Svg';
+
+import Triangle from '../../assets/svg/triangle.svg';
 
 import './Vote.less';
 

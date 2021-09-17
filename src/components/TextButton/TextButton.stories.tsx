@@ -1,6 +1,7 @@
 import React from 'react';
+
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { TextButton, TextButtonIcon } from '.';
-import { withKnobs, text, select, boolean } from '@storybook/addon-knobs';
 
 export default {
   component: TextButton,

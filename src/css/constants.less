@@ -22,8 +22,11 @@
 @ease-outQuint: cubic-bezier(0.23, 1, 0.32, 1);
 @ease-custom: cubic-bezier(0.89, 0, 0.68, 0.47);
 @ease-outCubic: cubic-bezier(0.22, 0.61, 0.36, 1);
+@ease-outCustom1: cubic-bezier(0.42, 0, 0.13, 0.71);
 
 /* Z-index */
+@z-index--1: -1;
+@z-index-0: 0;
 @z-index-1: 1;
 @z-index-2: 2;
 @z-index-3: 3;
@@ -42,3 +45,30 @@
 @svgSize-small: 12px;
 @svgSize-micro: 10px;
 @svgSize-nano: 8px;
+
+// Keyframes
+@keyframes hearthBeat {
+  0% {
+    transform: scale(1);
+  }
+
+  5% {
+    transform: scale(1.05);
+  }
+
+  10% {
+    transform: scale(1);
+  }
+
+  15% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

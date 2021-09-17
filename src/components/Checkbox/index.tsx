@@ -1,7 +1,9 @@
 import React from 'react';
 import uniqueId from 'lodash/uniqueId';
-import './Checkbox.less';
+
 import { Check } from '../Svg';
+
+import './Checkbox.less';
 
 interface Props {
   id?: string;

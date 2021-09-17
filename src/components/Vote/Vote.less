@@ -5,39 +5,44 @@
 @{c} {
   display: flex;
   position: relative;
+  justify-content: space-between;
   opacity: 1;
 
   &-icon {
-    height: 12px;
-    width: 12px;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    transition: filter @td-fastest @ease;
 
     path {
-      fill: @c-background;
-      stroke-width: 8px;
+      fill: @c-base;
       transition: fill @td-fastest @ease;
-      stroke-dasharray: 1;
+    }
+
+    &:hover {
+      filter: drop-shadow(0 0 1px @c-accent);
+      cursor: pointer;
     }
   }
 
   &-minus {
-    stroke: @c-accent;
-    transform: rotate(180deg) translateX(-4px);
+    left: 0;
+    transform: rotate(180deg);
 
     &--active {
       path {
         fill: @c-error;
-        stroke: @c-error;
       }
     }
   }
 
   &-plus {
-    stroke: @c-accent;
+    right: 0;
 
     &--active {
       path {
         fill: @c-success;
-        stroke: @c-success;
       }
     }
   }
@@ -50,22 +55,22 @@
 
   &--loading {
     path {
-      fill: @c-background;
+      fill: @c-alert;
       animation: voteLoadingAnimation @td-one @ease-out infinite;
     }
   }
 
   @keyframes voteLoadingAnimation {
     0% {
-      stroke-dashoffset: 1;
+      fill: @c-accentLight;
     }
 
     50% {
-      stroke-dashoffset: 0;
+      fill: @c-accentLight-hard;
     }
 
     100% {
-      stroke-dashoffset: -1;
+      fill: @c-accentLight;
     }
   }
 }

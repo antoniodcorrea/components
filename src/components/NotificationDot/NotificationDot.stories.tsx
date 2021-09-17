@@ -1,6 +1,7 @@
 import React from 'react';
-import { withKnobs, select } from '@storybook/addon-knobs';
-import { NotificationDot, NotificationDotType, NotificationDotSize } from '.';
+
+import { select, withKnobs } from '@storybook/addon-knobs';
+import { NotificationDot, NotificationDotSize, NotificationDotType } from '.';
 
 export default {
   component: NotificationDot,

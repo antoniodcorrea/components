@@ -1,6 +1,7 @@
 import React from 'react';
+
 import { action } from '@storybook/addon-actions';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { A } from '.';
 
 export default {

@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
+
 import './P.less';
 
-interface Props {
+interface Props extends HTMLProps<HTMLParagraphElement> {
   children: React.ReactNode;
 }
 
-export const P: React.SFC<Props> = ({ children }) => <p className={'P'}>{children}</p>;
+export const P: React.FC<Props> = ({ children, ...props }) => (
+  <p className={'P'} {...props}>
+    {children}
+  </p>
+);

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import { DatePicker } from '.';
-import { Hr } from '../Hr';
+
+import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { H1 } from '../H1';
+import { Hr } from '../Hr';
 import { Span } from '../Span';
+import { DatePicker } from '.';
 
 export default {
   component: DatePicker,

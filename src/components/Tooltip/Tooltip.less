@@ -4,10 +4,19 @@
 
 @{c} {
   max-width: 300px;
+  padding: 10px 15px;
   opacity: 0;
+  background: @c-background;
+  outline: 2px solid @c-traslucid--light;
   transition: opacity @td-fast @ease;
-  z-index: @z-index-1000;
   pointer-events: none;
+  border-radius: 4px;
+
+  .boxShadow;
+
+  &-text {
+    font-weight: @fw-semibold;
+  }
 
   &[data-show] {
     opacity: 1;
@@ -20,40 +29,44 @@
     width: 10px;
     background: @c-background;
     transform: rotate(45deg);
-    box-shadow: -2px -2px 0 0 @c-base;
+    box-shadow: -2px -2px 0 0 @c-traslucid--light;
   }
 
   &[data-popper-placement^='top'] > @{c}-arrow {
-    bottom: 8px;
+    bottom: 5px;
 
     &:before {
-      box-shadow: 2px 2px 0 0 @c-base;
+      background: @c-background;
+      box-shadow: 2px 2px 0 0 @c-traslucid--light;
     }
   }
 
   &[data-popper-placement^='bottom'] > @{c}-arrow {
-    top: -2px;
+    top: -5px;
 
     &:before {
-      box-shadow: -2px -2px 0 0 @c-base;
+      background: @c-background;
+      box-shadow: -2px -2px 0 0 @c-traslucid--light;
     }
   }
 
   &[data-popper-placement^='left'] > @{c}-arrow {
-    right: 8px;
+    right: 5px;
 
     &:before {
       top: -4px;
-      box-shadow: 2px -2px 0 0 @c-base;
+      background: @c-background;
+      box-shadow: 2px -2px 0 0 @c-traslucid--light;
     }
   }
 
   &[data-popper-placement^='right'] > @{c}-arrow {
-    left: -2px;
+    left: -5px;
 
     &:before {
       top: -3px;
-      box-shadow: -2px 2px 0 0 @c-base;
+      background: @c-background;
+      box-shadow: -2px 2px 0 0 @c-traslucid--light;
     }
   }
 }

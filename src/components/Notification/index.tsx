@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Cross } from '../Svg';
 
 import './Notification.less';

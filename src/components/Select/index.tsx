@@ -13,10 +13,13 @@ interface Props {
   placeholder?: string;
   label?: string;
   options: SelectValue[];
+  isMulti?: boolean;
   value: SelectValue[];
   defaultOptions: SelectValue[];
   grow?: boolean;
   maxItems?: number;
+  hideLabelOnFill?: boolean;
+  height?: 'small' | 'medium';
   onChange?: (params: SelectValue[]) => void;
   onInputChange?: (params: unknown) => void;
 }
@@ -26,19 +29,27 @@ export const Select: React.FC<Props> = ({
   className,
   placeholder,
   label,
+  hideLabelOnFill,
   options,
+  isMulti = true,
   value,
   defaultOptions,
   onInputChange,
   grow,
   onChange,
   maxItems,
+  height = 'medium',
 }) => {
   const [focus, setFocus] = useState(false);
-  const focusOrContent = !!value?.length || focus;
+  const focusOrContent = (!!value?.length && value[0] !== null) || focus;
 
   const onSelectValueChange = (values) => {
-    onChange(values);
+    const isArray = Array.isArray(values);
+    const valuesArray = !isArray ? [values] : values;
+    const valuesArrayNoNull = valuesArray.filter((item) => item !== null);
+    const finalValues = valuesArrayNoNull;
+
+    onChange(finalValues);
   };
 
   return (
@@ -47,8 +58,10 @@ export const Select: React.FC<Props> = ({
       className={className}
       placeholder={placeholder}
       label={label}
+      hideLabelOnFill={hideLabelOnFill}
       focusOrContent={focusOrContent}
       options={options}
+      isMulti={isMulti}
       value={value}
       defaultOptions={defaultOptions}
       onInputChange={onInputChange}
@@ -57,6 +70,7 @@ export const Select: React.FC<Props> = ({
       onFocus={() => setFocus(true)}
       onBlur={() => setFocus(false)}
       maxItems={maxItems}
+      height={height}
     />
   );
 };

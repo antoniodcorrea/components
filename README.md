@@ -18,7 +18,7 @@ Whole process
 
     git checkout master && git merge dev
     npm run build
-    git add . && git commit -m "Merge with master"
+    git add . && git commit -m "Update library"
     npm version patch | minor | major
     npm run publish:custom
 

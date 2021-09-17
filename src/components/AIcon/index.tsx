@@ -1,6 +1,7 @@
+import React from 'react';
+
 import { Span } from '../Span';
 import { IconSize, IconsType, SvgIcon } from '../Svg';
-import React from 'react';
 
 import './AIcon.less';
 
@@ -23,7 +24,7 @@ export const AIcon: React.FC<Props> = ({ className, children, icon = 'ArrowRight
 
   return (
     <span className={'AIcon' + (className ? className : '')}>
-      <Span bold size={size}>
+      <Span weight="semiBold" size={size}>
         {children}
       </Span>
       {icon && <SvgIcon name={icon} size={svgSizeMap[size]} className="AIcon-svg" />}

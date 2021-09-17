@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Palette } from '.';
 
 export default {
@@ -8,6 +9,4 @@ export default {
 
 const defaultProps = {};
 
-export const Default: React.FC = () => {
-  return <Palette {...defaultProps} />;
-};
+export const Default: React.FC = () => <Palette {...defaultProps} />;

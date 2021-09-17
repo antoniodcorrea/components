@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import uniqueId from 'lodash/uniqueId';
-import { Span } from '../Span';
+
 import { Hr } from '../Hr';
+import { Span } from '../Span';
 import { Check, Cross } from '../Svg';
+
 import './Range.less';
 
-interface Props {
+interface Props extends HTMLProps<HTMLInputElement> {
   name: string;
   value?: string | number;
   label?: string;
@@ -18,7 +20,19 @@ interface Props {
   onChange: (e) => void;
 }
 
-export const Range: React.FC<Props> = ({ name, value, label, min, max, error, success, disabled, grow, onChange }) => {
+export const Range: React.FC<Props> = ({
+  name,
+  value,
+  label,
+  min,
+  max,
+  error,
+  success,
+  disabled,
+  grow,
+  onChange,
+  ...props
+}) => {
   const id = uniqueId();
   const valueInitial: number = max / 2;
   const reachedMax: boolean = value === max.toString();
@@ -49,7 +63,7 @@ export const Range: React.FC<Props> = ({ name, value, label, min, max, error, su
       {label && (
         <>
           <label className="Range-label" htmlFor={'Range-' + id}>
-            <Span bold> {label}</Span>
+            <Span weight="semiBold"> {label}</Span>
           </label>
           <Hr spacer size="micro" />
         </>
@@ -66,6 +80,7 @@ export const Range: React.FC<Props> = ({ name, value, label, min, max, error, su
           value={value}
           onChange={onChange}
           id={'Range-' + id}
+          {...props}
         />
       </div>
     </div>

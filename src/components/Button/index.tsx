@@ -1,60 +1,53 @@
-import React from 'react';
-import { Span } from '../Span';
-import { SvgIcon, IconsType } from '../Svg';
-import { Fade } from '../Fade';
-import { SpinnerCircle } from '../SpinnerCircle';
+import React, { HTMLProps } from 'react';
+
+import ArrowRight from '../../assets/svg/arrowRight.svg';
+import { Spinner } from '../Spinner';
 
 import './Button.less';
 
-interface Props {
+interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
+  className?: string;
   text: string;
-  size?: 'small' | 'medium' | 'big';
-  variant?: 'alternate';
   success?: boolean;
   error?: boolean;
   disabled?: boolean;
   loading?: boolean;
-  icon?: IconsType;
+  arrow?: boolean;
   grow?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  onClick?: (value) => void;
+  size?: 'normal' | 'small';
 }
 
 export const Button: React.FC<Props> = ({
+  className,
   text,
-  size = 'medium',
-  variant,
   success,
   error,
   disabled,
   loading,
-  icon,
+  arrow,
   grow,
-  onClick,
   type = 'button',
-}): JSX.Element => {
-  return (
-    <button
-      className={
-        'Button ' +
-        (size ? 'Button--' + size : '') +
-        (variant ? ' Button--' + variant : '') +
-        (grow ? ' Button--grow' : '') +
-        (success ? ' Button--success' : '') +
-        (error ? ' Button--error' : '') +
-        (disabled ? ' Button--disabled' : '')
-      }
-      onClick={onClick}
-      type={type}
-      disabled={!!disabled || !!error}
-    >
-      <Span className="Button-content" bold uppercase>
-        {text}
-        {icon && <SvgIcon name={icon} size="small" className="Button-svg" />}
-      </Span>
-      <Fade mounted={loading} position="absolute">
-        <SpinnerCircle size="nano" />
-      </Fade>
-    </button>
-  );
-};
+  size = 'normal',
+  ...props
+}): JSX.Element => (
+  <button
+    className={
+      'Button' +
+      (className ? ' ' + className : '') +
+      (size ? ' Button--' + size : '') +
+      (grow ? ' Button--grow' : '') +
+      (!disabled && !error && success ? ' Button--success' : '') +
+      (!disabled && !error && loading ? ' Button--loading' : '') +
+      (disabled ? ' Button--disabled' : '') +
+      (error ? ' Button--error' : '')
+    }
+    type={type}
+    disabled={!!disabled || !!error}
+    {...props}
+  >
+    <span className="Button-text">{text}</span>
+    {arrow && <ArrowRight className="Button-arrow" />}
+    {!disabled && !error && <Spinner className="Button-loader" />}
+  </button>
+);

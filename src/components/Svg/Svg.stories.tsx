@@ -1,33 +1,34 @@
 import React from 'react';
-import { withKnobs, select, boolean } from '@storybook/addon-knobs';
+
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
+import { H1 } from '../H1';
+import { Hr } from '../Hr';
 import {
-  IconSize,
-  Triangle,
-  Circle,
-  Square,
-  Check,
-  Cross,
-  ArrowRight,
   ArrowDown,
   ArrowLeft,
+  ArrowRight,
   ArrowUp,
-  Loupe,
-  User,
-  UserAdmin,
-  UserAdd,
-  UserRemove,
-  Private,
   Bookmark,
   BookmarkFilled,
   BookmarkWithBackground,
+  Check,
+  Circle,
+  Cross,
   Edit,
   EditCircle,
-  PlusCircle,
+  IconSize,
   List,
+  Loupe,
+  PlusCircle,
+  Private,
   Sort,
+  Square,
+  Triangle,
+  User,
+  UserAdd,
+  UserAdmin,
+  UserRemove,
 } from '.';
-import { H1 } from '../H1';
-import { Hr } from '../Hr';
 
 export default {
   component: Triangle,

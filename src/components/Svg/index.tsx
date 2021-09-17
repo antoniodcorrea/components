@@ -1,35 +1,40 @@
 import React, { SVGProps } from 'react';
-import SortSvg from '../../assets/svg/sort.svg';
-import TriangleSvg from '../../assets/svg/triangle.svg';
-import SquareSvg from '../../assets/svg/square.svg';
-import CircleSvg from '../../assets/svg/circle.svg';
-import CheckSvg from '../../assets/svg/check.svg';
-import CrossSvg from '../../assets/svg/cross.svg';
-import ArrowRightSvg from '../../assets/svg/arrowRight.svg';
+
 import ArrowDownSvg from '../../assets/svg/arrowDown.svg';
-import ArrowUpSvg from '../../assets/svg/arrowUp.svg';
 import ArrowLeftSvg from '../../assets/svg/arrowLeft.svg';
-import LoupeSvg from '../../assets/svg/loupe.svg';
-import UploadSvg from '../../assets/svg/upload.svg';
-import UserSvg from '../../assets/svg/user.svg';
-import UserAdminSvg from '../../assets/svg/userAdmin.svg';
-import UserAddSvg from '../../assets/svg/userAdd.svg';
-import UserRemoveSvg from '../../assets/svg/userRemove.svg';
-import PrivateSvg from '../../assets/svg/private.svg';
-import LinkSvg from '../../assets/svg/link.svg';
+import ArrowRightSvg from '../../assets/svg/arrowRight.svg';
+import ArrowUpSvg from '../../assets/svg/arrowUp.svg';
 import BookmarkSvg from '../../assets/svg/bookmark.svg';
 import BookmarkFilledSvg from '../../assets/svg/bookmarkFilled.svg';
 import BookmarkWithBackgroundSvg from '../../assets/svg/bookmarkWithBackground.svg';
+import CheckSvg from '../../assets/svg/check.svg';
+import CircleSvg from '../../assets/svg/circle.svg';
+import CrossSvg from '../../assets/svg/cross.svg';
+import DotsVerticalSvg from '../../assets/svg/dotsVertical.svg';
 import EditSvg from '../../assets/svg/edit.svg';
-import PlusCircleSvg from '../../assets/svg/plusCircle.svg';
 import EditCircleSvg from '../../assets/svg/editCircle.svg';
-import PlusCircleWithBackgroundSvg from '../../assets/svg/plusCircleWithBackground.svg';
+import EyeSvg from '../../assets/svg/eye.svg';
+import FolderSvg from '../../assets/svg/folder.svg';
+import LinkSvg from '../../assets/svg/link.svg';
 import ListSvg from '../../assets/svg/list.svg';
+import LoupeSvg from '../../assets/svg/loupe.svg';
+import PlusCircleSvg from '../../assets/svg/plusCircle.svg';
+import PlusCircleWithBackgroundSvg from '../../assets/svg/plusCircleWithBackground.svg';
+import PrivateSvg from '../../assets/svg/private.svg';
+import SendSvg from '../../assets/svg/send.svg';
+import SortSvg from '../../assets/svg/sort.svg';
+import SquareSvg from '../../assets/svg/square.svg';
+import TriangleSvg from '../../assets/svg/triangle.svg';
+import UploadSvg from '../../assets/svg/upload.svg';
+import UserSvg from '../../assets/svg/user.svg';
+import UserAddSvg from '../../assets/svg/userAdd.svg';
+import UserAdminSvg from '../../assets/svg/userAdmin.svg';
+import UserRemoveSvg from '../../assets/svg/userRemove.svg';
 import * as Icons from '.';
 
 import './Svg.less';
 
-export type IconSize = 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
+export type IconSize = 'pico' | 'nano' | 'micro' | 'small' | 'normal' | 'medium' | 'big' | 'biggest' | 'huge';
 
 export type IconsType =
   | 'Sort'
@@ -42,6 +47,8 @@ export type IconsType =
   | 'ArrowUp'
   | 'ArrowDown'
   | 'ArrowLeft'
+  | 'DotsVertical'
+  | 'Folder'
   | 'Loupe'
   | 'Upload'
   | 'User'
@@ -54,10 +61,12 @@ export type IconsType =
   | 'BookmarkWithBackground'
   | 'Private'
   | 'Edit'
+  | 'Send'
   | 'PlusCircle'
   | 'EditCircle'
   | 'PlusCircleWithBackground'
-  | 'List';
+  | 'List'
+  | 'Eye';
 
 export interface Props extends SVGProps<SVGElement> {
   size?: IconSize;
@@ -96,6 +105,8 @@ export const ArrowRight: React.FC<Props> = (props) => Svg(ArrowRightSvg)(props);
 export const ArrowUp: React.FC<Props> = (props) => Svg(ArrowUpSvg)(props);
 export const ArrowDown: React.FC<Props> = (props) => Svg(ArrowDownSvg)(props);
 export const ArrowLeft: React.FC<Props> = (props) => Svg(ArrowLeftSvg)(props);
+export const DotsVertical: React.FC<Props> = (props) => Svg(DotsVerticalSvg)(props);
+export const Folder: React.FC<Props> = (props) => Svg(FolderSvg)(props);
 export const Loupe: React.FC<Props> = (props) => Svg(LoupeSvg)(props);
 export const Upload: React.FC<Props> = (props) => Svg(UploadSvg)(props);
 export const User: React.FC<Props> = (props) => Svg(UserSvg)(props);
@@ -111,8 +122,10 @@ export const Edit: React.FC<Props> = (props) => Svg(EditSvg)(props);
 export const PlusCircle: React.FC<Props> = (props) => Svg(PlusCircleSvg)(props);
 export const EditCircle: React.FC<Props> = (props) => Svg(EditCircleSvg)(props);
 export const PlusCircleWithBackground: React.FC<Props> = (props) => Svg(PlusCircleWithBackgroundSvg)(props);
+export const Send: React.FC<Props> = (props) => Svg(SendSvg)(props);
 export const Sort: React.FC<Props> = (props) => Svg(SortSvg)(props);
 export const List: React.FC<Props> = (props) => Svg(ListSvg)(props);
+export const Eye: React.FC<Props> = (props) => Svg(EyeSvg)(props);
 
 interface IconProps extends Props {
   name: IconsType;

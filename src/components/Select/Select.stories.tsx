@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+
 import { withKnobs } from '@storybook/addon-knobs';
-import { Select, SelectValue } from '.';
-import { Hr } from '../Hr';
 import { H1 } from '../H1';
+import { Hr } from '../Hr';
 import { Span } from '../Span';
+import { Select, SelectValue } from '.';
 
 export default {
   component: Select,
@@ -11,7 +12,7 @@ export default {
   decorators: [withKnobs],
 };
 
-export const Default = () => {
+export const Default: React.FC = () => {
   const [value, setValue] = useState<SelectValue[]>([{ label: 'Tag', value: 'Tag' }]);
 
   return (
@@ -21,7 +22,7 @@ export const Default = () => {
       <Hr spacer />
       <div style={{ width: '500px' }}>
         <Select
-          label="Select tags"
+          placeholder="Select tags"
           value={value}
           defaultOptions={[]}
           options={[

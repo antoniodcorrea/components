@@ -1,45 +1,59 @@
-.frame-shadow-squared(@borderSize) {
-  @unit: unit(@borderSize, px);
-  @doubleUnit: @unit * 2;
-  @minusUnit: -@unit;
-
-  background: @c-background;
-  border: @unit solid @c-base;
-  box-shadow: @doubleUnit @doubleUnit 0 @minusUnit @c-background, @doubleUnit @doubleUnit 0 0 @c-base;
-}
-
-.frame-shadow-smooth(@borderSize) {
-  @doubleBorderSize: @borderSize * 2;
-  @shadowDisplacement: unit(@doubleBorderSize, px);
-
-  background: @c-background;
-  border-radius: 1px;
-  border: unit(@borderSize, px) solid @c-base;
-  box-shadow: @shadowDisplacement @shadowDisplacement 0 0 @c-base;
-}
-
-.notification-color(@c) {
-  @{c}--error& {
-    background: @c-error;
-  }
-
-  @{c}--alert& {
-    background: @c-alert;
-  }
-
-  @{c}--success& {
-    background: @c-success;
-  }
-}
-
-.insetShadow() {
-  box-shadow: inset -2px -2px 5px @c-traslucid;
-}
+@import './breakpoints.less';
 
 .hideScrollbar() {
   scrollbar-width: none; /* Firefox */
 
   &::-webkit-scrollbar {
     display: none; /* Chrome Safari */
+    width: 0;
+    background: transparent;
   }
+}
+
+.hoverTransition(@opacity: 0.7) {
+  &:hover {
+    opacity: @opacity;
+    transition: opacity @td-fast @ease;
+    cursor: pointer;
+  }
+}
+
+.skeletonItem(@height, @width, @borderRadius: 2px) {
+  height: @height;
+  width: @width;
+  background: @c-base;
+  animation: skeletonItemAnimation 1s ease infinite;
+  border-radius: @borderRadius;
+
+  @keyframes skeletonItemAnimation {
+    0% {
+      background-color: @c-base;
+    }
+
+    15% {
+      background-color: @c-accent;
+    }
+
+    100% {
+      background-color: @c-base;
+    }
+  }
+}
+
+.boxShadow() {
+  box-shadow: 2px 2px 0 2px @c-traslucid--light;
+}
+
+.boxShadowLight() {
+  box-shadow: 2px 2px 0 2px @c-traslucid--lightest;
+}
+
+.boxInsetShadowLight() {
+  box-shadow: inset 0 0 6px 0 @c-accentLight-hard;
+}
+
+.default() {
+  font-family: @ff-sans;
+  font-size: @fs-normal;
+  line-height: @fh-normal;
 }

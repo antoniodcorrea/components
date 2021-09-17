@@ -1,5 +1,6 @@
-import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import React from 'react';
+
+import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 import { Fade } from '.';
 
 export default {
@@ -9,7 +10,7 @@ export default {
   parameters: { viewport: { defaultViewport: 'mobile1' } },
 };
 
-export const OneElement = () => {
+export const OneElement: React.FC = () => {
   const mounted = boolean('Mounted', true);
   const speed = select('Speed', ['slow', 'normal', 'fast', 'fastest'], 'fast');
   const direction = select('Direction', [undefined, 'up', 'down', 'left', 'right'], 'up');
@@ -31,7 +32,7 @@ export const OneElement = () => {
   );
 };
 
-export const ManyElements = () => {
+export const ManyElements: React.FC = () => {
   const mounted = boolean('Mounted', true);
   const speed = select('Speed', ['slow', 'normal', 'fast', 'fastest'], 'fast');
   const direction = select('Direction', [undefined, 'up', 'down', 'left', 'right'], 'up');

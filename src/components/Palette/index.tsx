@@ -1,7 +1,9 @@
 import React from 'react';
-import './Palette.less';
-import { Span } from '../Span';
+
 import { Hr } from '../Hr';
+import { Span } from '../Span';
+
+import './Palette.less';
 
 export const Palette: React.FC = () => (
   <div className="Palette">
@@ -9,7 +11,7 @@ export const Palette: React.FC = () => (
       <div className="Palette-color Palette-color--base">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" size="small" bold>
+          <Span className="Palette-title" size="small" weight="semiBold">
             Base
           </Span>
           <Span className="Palette-html" size="small">
@@ -23,7 +25,7 @@ export const Palette: React.FC = () => (
       <div className="Palette-color Palette-color--background">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" size="small" bold>
+          <Span className="Palette-title" size="small" weight="semiBold">
             Background
           </Span>
           <Span className="Palette-html" size="small">
@@ -37,7 +39,7 @@ export const Palette: React.FC = () => (
       <div className="Palette-color Palette-color--accent">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" size="small" bold>
+          <Span className="Palette-title" size="small" weight="semiBold">
             Accent
           </Span>
           <Span className="Palette-html" size="small">
@@ -51,7 +53,7 @@ export const Palette: React.FC = () => (
       <div className="Palette-color Palette-color--success">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" size="small" bold>
+          <Span className="Palette-title" size="small" weight="semiBold">
             Success
           </Span>
           <Span className="Palette-html" size="small">
@@ -65,7 +67,7 @@ export const Palette: React.FC = () => (
       <div className="Palette-color Palette-color--alert">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" size="small" bold>
+          <Span className="Palette-title" size="small" weight="semiBold">
             Alert
           </Span>
           <Span className="Palette-html" size="small">
@@ -79,7 +81,7 @@ export const Palette: React.FC = () => (
       <div className="Palette-color Palette-color--error">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" size="small" bold>
+          <Span className="Palette-title" size="small" weight="semiBold">
             Error
           </Span>
           <Span className="Palette-html" size="small">
@@ -93,7 +95,7 @@ export const Palette: React.FC = () => (
       <div className="Palette-color Palette-color--disabled">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" size="small" bold>
+          <Span className="Palette-title" size="small" weight="semiBold">
             Disabled
           </Span>
           <Span className="Palette-html" size="small">
@@ -107,7 +109,7 @@ export const Palette: React.FC = () => (
       <div className="Palette-color Palette-color--?">
         <div className="Palette-sample" />
         <div className="Palette-description">
-          <Span className="Palette-title" size="small" bold>
+          <Span className="Palette-title" size="small" weight="semiBold">
             ?
           </Span>
           <Span className="Palette-html" size="small">

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { HTMLProps } from 'react';
+
 import './Radio.less';
 
-interface Props {
+interface Props extends HTMLProps<HTMLInputElement> {
   name?: string;
   options?: {
     value: string;
@@ -11,10 +12,9 @@ interface Props {
   className?: string;
   grow?: boolean;
   inline?: boolean;
-  onChange?: (e) => void;
 }
 
-export const Radio: React.FC<Props> = ({ name, options, value, className, grow, onChange, inline }) => (
+export const Radio: React.FC<Props> = ({ name, options, value, className, grow, inline, ...props }) => (
   <div
     className={
       'Radio' +
@@ -22,7 +22,7 @@ export const Radio: React.FC<Props> = ({ name, options, value, className, grow, 
       (grow ? ' Radio--grow' : '') +
       (inline ? ' Radio--inline' : '')
     }
-    onChange={(e): void => onChange(e)}
+    {...props}
   >
     {options.map((item) => (
       <React.Fragment key={item.value}>
