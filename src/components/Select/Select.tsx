@@ -8,8 +8,8 @@ import Select, {
 } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
+import ArrowDown from '../../assets/svg/arrowDown.svg';
 import Cross from '../../assets/svg/cross.svg';
-import { ArrowDown } from '../Svg';
 import { SelectValue } from '.';
 
 import './Select.less';
@@ -69,7 +69,7 @@ const SelectContainer = ({ children, ...props }: ContainerProps<any, any>): JSX.
 
 const DropdownIndicator = (props: IndicatorProps<any, any>): JSX.Element => (
   <Components.DropdownIndicator {...props}>
-    <ArrowDown size="small" />
+    <ArrowDown className="Select__multi-value__dropdown__svg" />
   </Components.DropdownIndicator>
 );
 
