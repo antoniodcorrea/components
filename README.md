@@ -16,9 +16,9 @@ To publish do:
 
 Whole process
 
-    git checkout master && git merge dev
+    <!-- git checkout master && git merge dev -->
     npm run build
-    git add . && git commit -m "Update library"
+    git add . && git commit -m "[COMMIT_MESSAGE]"
     npm version patch | minor | major
     npm run publish:custom
 

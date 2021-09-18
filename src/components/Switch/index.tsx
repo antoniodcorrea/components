@@ -10,10 +10,9 @@ interface Props extends HTMLProps<HTMLInputElement> {
   checked: boolean;
 }
 
-export const Switch: React.FC<Props> = ({ name, checked = false, ...props }) => (
-  <label className="Switch">
+export const Switch: React.FC<Props> = ({ name, checked = false, className, ...props }) => (
+  <label className={'Switch' + (!className ? ` ${className}` : '')}>
     <input
-      className="Switch-input"
       type="checkbox"
       name={name}
       /*defaultChecked={checked} This may be needed*/
