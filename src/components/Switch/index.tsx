@@ -7,6 +7,7 @@ import './Switch.less';
 
 interface Props extends HTMLProps<HTMLInputElement> {
   name: string;
+  className?: string;
   checked: boolean;
 }
 
