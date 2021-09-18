@@ -12,7 +12,7 @@ interface Props extends HTMLProps<HTMLInputElement> {
 }
 
 export const Switch: React.FC<Props> = ({ name, checked = false, className, ...props }) => (
-  <label className={'Switch' + (!className ? ` ${className}` : '')}>
+  <label className={'Switch' + (className ? ` ${className}` : '')}>
     <input
       type="checkbox"
       name={name}
