@@ -42,18 +42,27 @@
 
   &--success {
     background: @gradientColors[blue-3];
+
+    @{c}-successIcon {
+      max-width: 16px;
+      margin-left: 8px;
+    }
   }
 
   &--error {
     background: @gradientColors[red-3];
   }
 
-  &-loader {
+  &-loader,
+  &-success {
     display: flex;
     align-items: center;
     max-width: 0;
     margin-left: 0;
     overflow: hidden;
+  }
+
+  &-loader {
     background: @gradientColors[blue-1];
 
     &:after {
@@ -71,6 +80,12 @@
         background: @gradientColors[blue-1];
       }
     }
+  }
+
+  &-successIcon {
+    height: 15px;
+    width: 15px;
+    fill: @gradientColors[yellow-6];
   }
 
   &--loading {

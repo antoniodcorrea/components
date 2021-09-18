@@ -1,6 +1,7 @@
 import React, { HTMLProps } from 'react';
 
 import ArrowRight from '../../assets/svg/arrowRight.svg';
+import Check from '../../assets/svg/check.svg';
 import { Spinner } from '../Spinner';
 
 import './Button.less';
@@ -37,7 +38,7 @@ export const Button: React.FC<Props> = ({
       (className ? ' ' + className : '') +
       (size ? ' Button--' + size : '') +
       (grow ? ' Button--grow' : '') +
-      (!disabled && !error && success ? ' Button--success' : '') +
+      (!disabled && !error && !loading && success ? ' Button--success' : '') +
       (!disabled && !error && loading ? ' Button--loading' : '') +
       (disabled ? ' Button--disabled' : '') +
       (error ? ' Button--error' : '')
@@ -47,7 +48,8 @@ export const Button: React.FC<Props> = ({
     {...props}
   >
     <span className="Button-text">{text}</span>
-    {arrow && <ArrowRight className="Button-arrow" />}
+    {arrow && !success && !loading && <ArrowRight className="Button-arrow" />}
     {!disabled && !error && <Spinner className="Button-loader" />}
+    {success && !loading && <Check className="Button-successIcon" />}
   </button>
 );
