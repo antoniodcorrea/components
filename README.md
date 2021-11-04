@@ -18,7 +18,7 @@ Whole process
 
     <!-- git checkout master && git merge dev -->
     npm run build
-    git add . && git commit -m "[COMMIT_MESSAGE]"
+    git add . && git commit -m "Update react-dom"
     npm version patch | minor | major
     npm run publish:custom
 
