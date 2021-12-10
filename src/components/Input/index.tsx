@@ -1,4 +1,5 @@
-import React, { HTMLProps } from 'react';
+import React, { HTMLProps, useState } from 'react';
+import EyeSmall from '../../assets/svg/eyeSmall.svg';
 
 import { Space } from '..';
 
@@ -39,45 +40,63 @@ export const Input: React.FC<Props> = ({
   type,
   placeholder = '',
   ...props
-}) => (
-  <div
-    className={
-      'Input ' +
-      (className ? className : '') +
-      (!!error ? ' Input--error' : '') +
-      (success ? ' Input--success' : '') +
-      (disabled ? ' Input--disabled' : '') +
-      (readOnly ? ' Input--readOnly' : '') +
-      (grow ? ' Input--grow' : '')
-    }
-  >
-    {label && (
-      <label className="Input-label" htmlFor={'Input-' + name}>
-        {label}
-      </label>
-    )}
-    <input
-      name={name}
-      className="Input-input"
-      id={'Input-' + name}
-      value={value}
-      placeholder={placeholder}
-      size={1} // Fix for Firefox. Input width changes with font-size size https://stackoverflow.com/questions/49284045/why-does-font-size-increase-an-inputs-width
-      autoComplete={autoComplete ? 'on' : 'off'}
-      required
-      spellCheck={spellCheck ? 'true' : 'false'}
-      disabled={disabled}
-      readOnly={readOnly}
-      type={type}
-      pattern={pattern}
-      autoFocus={autoFocus}
-      results={2}
-      {...props}
-    />
-    <div className="Input-errorContent">
-      {error}
-      {/* Space to force height when there is no error present */}
-      <Space />
+}) => {
+  const [passwordShown, setPasswordShown] = useState<boolean>(false);
+  const computedType = type === 'password' && passwordShown ? 'text' : type;
+
+  return (
+    <div
+      className={
+        'Input ' +
+        (className ? className : '') +
+        (!!error ? ' Input--error' : '') +
+        (success ? ' Input--success' : '') +
+        (disabled ? ' Input--disabled' : '') +
+        (readOnly ? ' Input--readOnly' : '') +
+        (grow ? ' Input--grow' : '')
+      }
+    >
+      {label && (
+        <label className="Input-label" htmlFor={'Input-' + name}>
+          {label}
+        </label>
+      )}
+      <div className="Input-inputWrapper">
+        <input
+          name={name}
+          className="Input-input"
+          id={'Input-' + name}
+          value={value}
+          placeholder={placeholder}
+          size={1} // Fix for Firefox. Input width changes with font-size size https://stackoverflow.com/questions/49284045/why-does-font-size-increase-an-inputs-width
+          autoComplete={autoComplete ? 'on' : 'off'}
+          required
+          spellCheck={spellCheck ? 'true' : 'false'}
+          disabled={disabled}
+          readOnly={readOnly}
+          type={computedType}
+          pattern={pattern}
+          autoFocus={autoFocus}
+          results={2}
+          {...props}
+        />
+        {type === 'password' && !!value && (
+          <EyeSmall
+            className="Input-passwordShowIcon"
+            onMouseDown={() => {
+              setPasswordShown(true);
+            }}
+            onMouseUp={() => {
+              setPasswordShown(false);
+            }}
+          />
+        )}
+      </div>
+      <div className="Input-errorContent">
+        {error}
+        {/* Space to force height when there is no error present */}
+        <Space />
+      </div>
     </div>
-  </div>
-);
+  );
+};

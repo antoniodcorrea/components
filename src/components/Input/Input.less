@@ -23,18 +23,24 @@
     user-select: none;
   }
 
+  &-inputWrapper {
+    position: relative;
+    width: 100%;
+  }
+
   &-input {
     height: 40px;
+    width: 100%;
     padding-left: 12px;
     padding-right: 12px;
     font-size: @fs-normal;
     font-weight: @fw-semibold;
     color: @gradientColors[black-2];
     background: @gradientColors[black-5];
-    box-shadow: 0 0 0 0 @c-shadow;
     border: 0;
     outline: 2px solid @c-transparent;
     transition: color @td-fast @ease, box-shadow @td-fast @ease, outline-color @td-fast @ease;
+    box-shadow: 0 0 0 0 @c-shadow;
     outline-offset: -2px;
     border-radius: 8px;
 
@@ -48,8 +54,8 @@
 
     &:focus,
     &:not(:placeholder-shown) {
-      box-shadow: 4px 4px 0 0 @c-shadow;
       outline: 2px solid @c-transparent;
+      box-shadow: 4px 4px 0 0 @c-shadow;
     }
 
     &[type='date']::-webkit-inner-spin-button,
@@ -72,13 +78,32 @@
     }
 
     @{c}--success:not(.noClass) & {
-      box-shadow: 0 0 0 0 @c-shadow;
       outline: 2px solid @gradientColors[blue-2];
+      box-shadow: 0 0 0 0 @c-shadow;
     }
 
     @{c}--error:not(.noClass) & {
-      box-shadow: 0 0 0 0 @c-shadow;
       outline: 2px solid @c-errorAccent;
+      box-shadow: 0 0 0 0 @c-shadow;
+    }
+  }
+
+  &-passwordShowIcon {
+    position: absolute;
+    height: 18px;
+    top: 12px;
+    bottom: 0;
+    right: 10px;
+    fill: @c-accentLight;
+    transition: fill @td-fast @ease;
+
+    &:hover {
+      fill: @c-base;
+      cursor: pointer;
+    }
+
+    &:active {
+      fill: @c-success;
     }
   }
 
