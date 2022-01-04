@@ -16,15 +16,10 @@
   &:hover {
     cursor: pointer;
 
-    @{c}-background {
-      opacity: 1;
-    }
-
-    @{c}-icon {
-      opacity: 1;
-    }
-
-    @{c}-upload {
+    @{c}-background ,
+    @{c}-icon ,
+    @{c}-upload,
+    @{c}-overlay {
       opacity: 1;
     }
   }
@@ -65,6 +60,7 @@
   }
 
   &-icon {
+    fill: @c-background;
     z-index: @z-index-1;
 
     .hoverTransition();
@@ -95,10 +91,6 @@
     @{c}-upload,
     @{c}-remove {
       opacity: 0;
-    }
-
-    @{c}-icon {
-      fill: @c-background;
     }
   }
 

@@ -10,16 +10,16 @@ To build, run:
 
 The build is done via script that flat the structure inside `./dist`
 
-To publish do:
-
-    npm run publish:custom
-
 Whole process
 
     <!-- git checkout master && git merge dev -->
     npm run build
     git add . && git commit -m "[COMMIT_MESSAGE]"
     npm version patch | minor | major
+    npm run publish:custom
+
+Only publish:
+
     npm run publish:custom
 
 ## Test
