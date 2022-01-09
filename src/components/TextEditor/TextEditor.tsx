@@ -5,7 +5,7 @@ import { Editable, Slate, withReact } from 'slate-react';
 import { PLACEHOLDER_TEXT } from './constants';
 import { EditorToolbar } from './toolbars/EditorToolbar';
 import { EditorToolbarHover } from './toolbars/EditorToolbarHover';
-import { ImageUpload } from './types';
+import { ImageUpload, TextEditorValue } from './types';
 import { useComponentRenders } from './useComponentRenders';
 import { useEvents } from './useEvents';
 import { useWrappers } from './useWrappers';
@@ -23,8 +23,6 @@ export const textEditorDefaultValue = [
     ],
   },
 ];
-
-export type TextEditorValue = Array<any>;
 
 interface Props {
   initialValue: TextEditorValue;

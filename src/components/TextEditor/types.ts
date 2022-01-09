@@ -36,6 +36,9 @@ export type CustomNode = Node & {
   bold: boolean;
 };
 
+export type TextEditorNode = CustomElement | LinkElement | ImageElement | CustomText;
+export type TextEditorValue = Array<TextEditorNode>;
+
 declare module 'slate' {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor & { type: string };

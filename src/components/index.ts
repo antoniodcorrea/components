@@ -64,7 +64,7 @@ export { Tag } from './Tag';
 export { TagsSkeleton } from './Tag/TagsSkeleton';
 export { TextArea } from './TextArea';
 export { TextButton } from './TextButton';
-export { TextEditor, TextEditorValue, textEditorDefaultValue } from './TextEditor';
+export { TextEditor, TextEditorValue, textEditorDefaultValue, toHtml } from './TextEditor';
 export { SortableList, SortableItem } from './SortableList';
 export { PopOver } from './PopOver';
 export { Tooltip } from './Tooltip';

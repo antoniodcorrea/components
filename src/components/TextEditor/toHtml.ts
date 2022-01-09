@@ -1,7 +1,8 @@
 import { Text } from 'slate';
 import escapeHtml from 'escape-html';
+import { TextEditorNode } from './types';
 
-export const toHtml = (node): string => {
+export const toHtml = (node: TextEditorNode): string => {
   if (Text.isText(node)) {
     let string = escapeHtml(node.text);
     if (node.bold) {
@@ -23,7 +24,7 @@ export const toHtml = (node): string => {
     return string;
   }
 
-  const children = node.children.map((n) => toHtml(n)).join('');
+  const children = node.children.map((item) => toHtml(item)).join('');
 
   switch (node.type) {
     case 'h1':
