@@ -3,7 +3,7 @@ import React from 'react';
 import { withKnobs } from '@storybook/addon-knobs';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
-import { TextEditor } from '.';
+import { TextEditor, toHtml } from '.';
 
 type UploadFileToServer = (options: {
   file: File;
@@ -30,7 +30,12 @@ export const Default: React.FC = () => {
   const imageUpload = new ImageUpload();
 
   const onChangeTextEditorValue = (editorData) => {
+    const dataToHtml = toHtml({ children: editorData });
+
+    console.clear();
     console.log('=======');
+    console.log('dataToHtml');
+    console.log(dataToHtml);
     console.log('editorData:');
     console.log(JSON.stringify(editorData, null, 4));
     console.log('=======');

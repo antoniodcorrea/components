@@ -9,6 +9,7 @@ import { ImageUpload } from './types';
 import { useComponentRenders } from './useComponentRenders';
 import { useEvents } from './useEvents';
 import { useWrappers } from './useWrappers';
+export { toHtml } from './toHtml';
 
 import './TextEditor.less';
 
