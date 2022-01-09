@@ -47,7 +47,7 @@ export const SortableList: React.FC<Props> = ({
           order,
         });
       },
-      handle: handleClass,
+      handle: `.${handleClass}`,
       ghostClass,
       chosenClass,
       dragClass,
