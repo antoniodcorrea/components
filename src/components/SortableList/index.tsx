@@ -8,10 +8,22 @@ export type SortableItem = {
 
 interface Props {
   className?: string;
+  handleClass?: string;
+  ghostClass?: string;
+  chosenClass?: string;
+  dragClass?: string;
   onSortChange: (sortableItem: SortableItem) => void;
 }
 
-export const SortableList: React.FC<Props> = ({ className, children, onSortChange }) => {
+export const SortableList: React.FC<Props> = ({
+  className,
+  children,
+  onSortChange,
+  handleClass,
+  ghostClass,
+  chosenClass,
+  dragClass,
+}) => {
   // Avoid instantiating Sortable if there are no children present
   const childrenLength = React.Children.count(children);
   if (!childrenLength) return null;
@@ -35,7 +47,10 @@ export const SortableList: React.FC<Props> = ({ className, children, onSortChang
           order,
         });
       },
-      handle: '.Sortable-handle',
+      handle: handleClass,
+      ghostClass,
+      chosenClass,
+      dragClass,
     });
   }, [children]);
 
