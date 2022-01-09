@@ -22,7 +22,6 @@
     "@types/react-datepicker": "^3.1.8",
     "@types/react-dropzone": "^5.1.0",
     "@types/react-select": "^4.0.13",
-    "@types/slate-html-serializer": "^0.6.5",
     "babel-loader": "^8.1.0",
     "escape-html": "^1.0.3",
     "eslint-plugin-prettier": "^3.4.0",
@@ -42,11 +41,11 @@
     "react-transition-group": "^4.3.0",
     "slate": "^0.72.3",
     "slate-history": "^0.66.0",
-    "slate-html-serializer": "^0.8.13",
     "slate-react": "^0.72.1",
     "sortablejs": "^1.14.0",
     "ts-unused-exports": "^7.0.3",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "colors": "1.1.2"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.4.9",
