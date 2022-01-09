@@ -3,12 +3,7 @@ const path = require('path');
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   excludeStories: /.*Props$/,
-  addons: [
-    '@storybook/addon-actions',
-    '@storybook/addon-links',
-    '@storybook/addon-knobs/register',
-    '@storybook/addon-viewport/register',
-  ],
+  addons: ['@storybook/addon-actions', '@storybook/addon-links'],
   // https://storybook.js.org/docs/react/configure/typescript
   typescript: {
     check: false,
