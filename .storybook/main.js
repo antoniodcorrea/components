@@ -26,7 +26,6 @@ module.exports = {
       include: path.resolve(__dirname, '../'),
     });
 
-
     /* START https://github.com/storybookjs/storybook/issues/5708#issuecomment-467364602 */
     config.module.rules.push({
       test: /\.svg$/,

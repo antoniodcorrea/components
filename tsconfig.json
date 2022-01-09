@@ -12,7 +12,8 @@
     "target": "es5",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "declaration": true
+    "declaration": true,
+    "downlevelIteration": true
   },
   "include": ["./tools/**/*", "./src/**/*", "src/index.ts", "./build/webpack.config.ts"],
   "exclude": ["node_modules", "**/*.stories.*", "**/*.test.*", "./dist"]
