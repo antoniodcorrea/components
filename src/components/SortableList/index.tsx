@@ -7,29 +7,33 @@ export type SortableItem = {
 };
 
 interface Props {
+  id: string;
   className?: string;
   handleClass?: string;
   ghostClass?: string;
   chosenClass?: string;
   dragClass?: string;
+  direction: 'vertical' | 'horizontal';
   onSortChange: (sortableItem: SortableItem) => void;
 }
 
 export const SortableList: React.FC<Props> = ({
+  id,
   className,
   children,
-  onSortChange,
   handleClass,
   ghostClass,
   chosenClass,
   dragClass,
+  direction = 'vertical',
+  onSortChange,
 }) => {
   // Avoid instantiating Sortable if there are no children present
   const childrenLength = React.Children.count(children);
   if (!childrenLength) return null;
 
   useEffect(() => {
-    const el = document.getElementById('SortableList');
+    const el = document.getElementById(id);
 
     Sortable.create(el, {
       animation: 300,
@@ -51,11 +55,12 @@ export const SortableList: React.FC<Props> = ({
       ghostClass,
       chosenClass,
       dragClass,
+      direction,
     });
   }, [children]);
 
   return (
-    <ul id="SortableList" className={'SortableList' + (className ? ` ${className}` : '')}>
+    <ul id={id} className={'SortableList' + (className ? ` ${className}` : '')}>
       {children}
     </ul>
   );
