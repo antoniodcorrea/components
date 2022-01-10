@@ -59,7 +59,8 @@ export const ImageField: React.FC<Props> = ({
         (error ? ' ImageField--error' : '') +
         (success ? ' ImageField--success' : '') +
         (disabled || loading ? ' ImageField--disabled' : '') +
-        (hasImage ? ' ImageField--hasImage' : '')
+        (hasImage ? ' ImageField--hasImage' : '') +
+        (!hasImage ? ' ImageField--noImage' : '')
       }
     >
       {hasImage && <img className="ImageField-image" src={image} alt={fileName} title={fileName} />}
