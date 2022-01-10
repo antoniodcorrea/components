@@ -13,7 +13,7 @@ interface Props {
   ghostClass?: string;
   chosenClass?: string;
   dragClass?: string;
-  direction: 'vertical' | 'horizontal';
+  direction?: 'vertical' | 'horizontal';
   onSortChange: (sortableItem: SortableItem) => void;
 }
 
