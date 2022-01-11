@@ -37,7 +37,7 @@ export const SortableList: React.FC<Props> = ({
 
     Sortable.create(el, {
       animation: 300,
-      onEnd: (e) => {
+      onChange: (e) => {
         const oldIndex = e.oldIndex;
         const newIndex = e.newIndex;
         const directionUp = oldIndex < newIndex;
