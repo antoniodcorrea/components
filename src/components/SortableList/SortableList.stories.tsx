@@ -52,7 +52,7 @@ export const Default: React.FC = () => {
       <H1>Sortable list</H1>
       <Hr spacer />
       <div style={{ width: '500px' }}>
-        <SortableList onSortChange={onSortChange}>
+        <SortableList id="SortableList" onSortChange={onSortChange}>
           {articles?.map((item) => (
             <li
               className="SortableList-sortableItem"

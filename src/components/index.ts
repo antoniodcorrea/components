@@ -74,3 +74,4 @@ export { AIcon } from './AIcon';
 export { SortBy } from './SortBy';
 export { Ellipsis } from './Ellipsis';
 export { Space } from './Space';
+export { CarouselField } from './CarouselField';
