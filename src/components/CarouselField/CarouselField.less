@@ -34,8 +34,10 @@
   &-list {
     display: flex;
     padding: 2px 5px 5px 2px;
+    padding: 20px;
     overflow-x: scroll;
     overflow-y: visible;
+    border: 2px solid @gradientColors[blue-2];
 
     .hideScrollbar;
   }
@@ -47,8 +49,8 @@
   &-item {
     position: relative;
     flex-shrink: 0;
-    height: 150px;
-    width: 150px;
+    height: 70px;
+    width: 70px;
     margin-right: 30px;
     box-shadow: 0 0 10px 5px @c-traslucid--light;
     outline: 2px solid @c-transparent;
@@ -85,10 +87,10 @@
 
   &-iconRemove {
     position: absolute;
-    height: 20px;
-    width: 20px;
-    top: 10px;
-    right: 10px;
+    height: 15px;
+    width: 15px;
+    top: 5px;
+    right: 5px;
     margin-left: 10px;
     opacity: 0;
     fill: @c-background;
@@ -103,8 +105,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
-    width: 150px;
+    height: 70px;
+    width: 70px;
     margin-right: 0;
 
     &:hover {
@@ -113,8 +115,8 @@
   }
 
   &-iconAdd {
-    height: 40px;
-    width: 40px;
+    height: 20px;
+    width: 20px;
   }
 
   &-overlay {

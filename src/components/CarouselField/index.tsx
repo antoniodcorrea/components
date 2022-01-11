@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Cross from '../../assets/svg/cross.svg';
 import Plus from '../../assets/svg/plusCircle.svg';
 import { ImageField, Input, SortableList } from '..';
-
 import './CarouselField.less';
 
 export const emptyImage = {
@@ -80,6 +79,19 @@ export const CarouselField: React.FC<Props> = ({ images, onChange, onFileUpload,
     setCurrentSlide(item);
   };
 
+  const scrollToRight = (id: string) => {
+    const carouselList = document.getElementById(id);
+    if (!carouselList) return;
+
+    const width = carouselList.getBoundingClientRect().width;
+
+    carouselList.scrollTo({
+      left: width,
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   // Add a slide to the list and focus it on top
   const onSlideAdd = () => {
     const imagesWithoutImage = sortedImages.some((item) => !item.src);
@@ -98,12 +110,18 @@ export const CarouselField: React.FC<Props> = ({ images, onChange, onFileUpload,
 
     onChange(allImages);
     setCurrentSlide(newImage);
+    scrollToRight('CarouselField-list');
   };
 
   const onSlideRemove = async (removedSlide: Image) => {
-    await onFileRemove(removedSlide.src);
-    const imagesWithoutRemoved = sortedImages.filter((item) => item.id !== removedSlide.id);
-    onChange(imagesWithoutRemoved);
+    try {
+      await onFileRemove(removedSlide.src);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      const imagesWithoutRemoved = sortedImages.filter((item) => item.id !== removedSlide.id);
+      onChange(imagesWithoutRemoved);
+    }
   };
 
   const onFileUploadRequest = async (file) => {
@@ -122,6 +140,7 @@ export const CarouselField: React.FC<Props> = ({ images, onChange, onFileUpload,
 
     setCurrentSlide(currentImageModified);
     onChange(imagesModified);
+    scrollToRight('CarouselField-list');
   };
 
   const onTitleChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -174,7 +193,7 @@ export const CarouselField: React.FC<Props> = ({ images, onChange, onFileUpload,
         value={sortedImages.find((item) => item.id === currentSlide?.id)?.title}
         onChange={onTitleChange}
       />
-      <div className="CarouselField-list">
+      <div className="CarouselField-list" id="CarouselField-list">
         <SortableList
           id="CarouselField-sortable"
           direction="horizontal"
