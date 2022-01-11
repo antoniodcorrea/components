@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Sortable from 'sortablejs';
 
 export type SortableItem = {
@@ -10,10 +10,10 @@ interface Props {
   id: string;
   className?: string;
   handleClass?: string;
+  direction?: 'vertical' | 'horizontal';
   ghostClass?: string;
   chosenClass?: string;
   dragClass?: string;
-  direction?: 'vertical' | 'horizontal';
   onSortChange: (sortableItem: SortableItem) => void;
 }
 
@@ -22,22 +22,24 @@ export const SortableList: React.FC<Props> = ({
   className,
   children,
   handleClass,
+  direction = 'vertical',
   ghostClass,
   chosenClass,
   dragClass,
-  direction = 'vertical',
   onSortChange,
 }) => {
-  // Avoid instantiating Sortable if there are no children present
+  // // Avoid instantiating Sortable if there are no children present
   const childrenLength = React.Children.count(children);
   if (!childrenLength) return null;
+
+  const [newItem, setNewItem] = useState({ id: undefined, order: undefined });
 
   useEffect(() => {
     const el = document.getElementById(id);
 
     Sortable.create(el, {
       animation: 300,
-      onChange: (e) => {
+      onEnd: (e) => {
         const oldIndex = e.oldIndex;
         const newIndex = e.newIndex;
         const directionUp = oldIndex < newIndex;
@@ -46,18 +48,22 @@ export const SortableList: React.FC<Props> = ({
         const element = directionUp ? e.item.previousElementSibling : e.item.nextElementSibling;
         const order = Number(element.getAttribute('data-order'));
 
-        onSortChange({
+        setNewItem({
           id: itemId,
           order,
         });
       },
       handle: `.${handleClass}`,
+      direction,
       ghostClass,
       chosenClass,
       dragClass,
-      direction,
     });
   }, [children]);
+
+  useEffect(() => {
+    onSortChange(newItem);
+  }, [newItem]);
 
   return (
     <ul id={id} className={'SortableList' + (className ? ` ${className}` : '')}>
