@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Cross from '../../assets/svg/cross.svg';
 import Plus from '../../assets/svg/plusCircle.svg';
 import { ImageField, Input, SortableList } from '..';
+
 import './CarouselField.less';
 
 export const emptyImage = {
@@ -140,7 +141,11 @@ export const CarouselField: React.FC<Props> = ({ images, onChange, onFileUpload,
 
     setCurrentSlide(currentImageModified);
     onChange(imagesModified);
-    scrollToRight('CarouselField-list');
+
+    // If the image corresponds to the last item in the list, scroll to show the «add» button
+    const allOrderIds = sortedImages.map((item) => item.order);
+    const maxOrderId = Math.max(...allOrderIds);
+    if (maxOrderId === currentImageModified.order) scrollToRight('CarouselField-list');
   };
 
   const onTitleChange = (e: React.FormEvent<HTMLInputElement>) => {
