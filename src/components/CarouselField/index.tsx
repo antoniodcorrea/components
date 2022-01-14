@@ -24,13 +24,14 @@ type Image = {
 };
 
 interface Props {
+  className?: string;
   images: Array<Image>;
   onChange: (images: Array<Image>) => void;
   onFileUpload: (file: File) => Promise<{ image: string }>;
   onFileRemove?: (url: string) => Promise<void>;
 }
 
-export const CarouselField: React.FC<Props> = ({ images, onChange, onFileUpload, onFileRemove }) => {
+export const CarouselField: React.FC<Props> = ({ className, images, onChange, onFileUpload, onFileRemove }) => {
   const [currentSlide, setCurrentSlide] = useState<Image>(undefined);
   const [listImages, setListImages] = useState<Array<Image>>(images);
   const sortedImages = listImages.sort((prev, next) => prev.order - next.order);
@@ -179,7 +180,7 @@ export const CarouselField: React.FC<Props> = ({ images, onChange, onFileUpload,
   }, [images]);
 
   return (
-    <div className="CarouselField">
+    <div className={'CarouselField' + (className ? ` ${className}` : '')}>
       <ImageField
         className="CarouselField-current"
         label={currentSlide?.title}
