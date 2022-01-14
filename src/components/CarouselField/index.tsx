@@ -3,8 +3,14 @@ import React, { useEffect, useState } from 'react';
 import Cross from '../../assets/svg/cross.svg';
 import Plus from '../../assets/svg/plusCircle.svg';
 import { ImageField, Input, SortableList } from '..';
-
 import './CarouselField.less';
+
+export type CarouselFieldImage = {
+  id: number;
+  order: number;
+  title: string;
+  src: string;
+};
 
 export const emptyImage = {
   id: 0,
@@ -16,27 +22,20 @@ export const emptyImage = {
   alt: '',
 };
 
-type Image = {
-  id: number;
-  order: number;
-  title: string;
-  src: string;
-};
-
 interface Props {
   className?: string;
-  images: Array<Image>;
-  onChange: (images: Array<Image>) => void;
+  images: Array<CarouselFieldImage>;
+  onChange: (images: Array<CarouselFieldImage>) => void;
   onFileUpload: (file: File) => Promise<{ image: string }>;
   onFileRemove?: (url: string) => Promise<void>;
 }
 
 export const CarouselField: React.FC<Props> = ({ className, images, onChange, onFileUpload, onFileRemove }) => {
-  const [currentSlide, setCurrentSlide] = useState<Image>(undefined);
-  const [listImages, setListImages] = useState<Array<Image>>(images);
+  const [currentSlide, setCurrentSlide] = useState<CarouselFieldImage>(undefined);
+  const [listImages, setListImages] = useState<Array<CarouselFieldImage>>(images);
   const sortedImages = listImages.sort((prev, next) => prev.order - next.order);
 
-  function onSortChange(image: Partial<Image>) {
+  function onSortChange(image: Partial<CarouselFieldImage>) {
     const imageFound = sortedImages?.find((item) => item.id === image.id);
     const originalOrder = imageFound?.order;
     const directionUp = image.order > originalOrder;
@@ -77,7 +76,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
     setCurrentSlide(currentImage);
   }
 
-  const onImageListClick = (item: Image) => {
+  const onImageListClick = (item: CarouselFieldImage) => {
     setCurrentSlide(item);
   };
 
@@ -115,7 +114,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
     scrollToRight('CarouselField-list');
   };
 
-  const onSlideRemove = async (removedSlide: Image) => {
+  const onSlideRemove = async (removedSlide: CarouselFieldImage) => {
     try {
       await onFileRemove(removedSlide.src);
     } catch (err) {
