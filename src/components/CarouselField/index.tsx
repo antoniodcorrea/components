@@ -8,8 +8,11 @@ import './CarouselField.less';
 export type CarouselFieldImage = {
   id: number;
   order: number;
-  title: string;
   src: string;
+  sizes: string;
+  srcSet: string;
+  title: string;
+  alt: string;
 };
 
 export const emptyImage = {
