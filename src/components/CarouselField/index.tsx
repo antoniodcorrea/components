@@ -3,43 +3,43 @@ import React, { useEffect, useState } from 'react';
 import Cross from '../../assets/svg/cross.svg';
 import Plus from '../../assets/svg/plusCircle.svg';
 import { ImageField, Input, SortableList } from '..';
+
 import './CarouselField.less';
 
-export type CarouselFieldImage = {
+export type CarouselFieldSlide = {
   id: number;
   order: number;
-  src: string;
-  sizes: string;
-  srcSet: string;
   title: string;
-  alt: string;
+  images: {
+    original: string;
+    [key: string]: string;
+  };
 };
 
-export const emptyImage = {
+export const emptySlide = {
   id: 0,
   order: 0,
-  src: '',
-  sizes: '',
-  srcSet: '',
   title: '',
-  alt: '',
+  images: {
+    original: '',
+  },
 };
 
 interface Props {
   className?: string;
-  images: Array<CarouselFieldImage>;
-  onChange: (images: Array<CarouselFieldImage>) => void;
+  images: Array<CarouselFieldSlide>;
+  onChange: (images: Array<CarouselFieldSlide>) => void;
   onFileUpload: (file: File) => Promise<{ image: string }>;
   onFileRemove?: (url: string) => Promise<void>;
 }
 
 export const CarouselField: React.FC<Props> = ({ className, images, onChange, onFileUpload, onFileRemove }) => {
-  const [currentSlide, setCurrentSlide] = useState<CarouselFieldImage>(undefined);
-  const [listImages, setListImages] = useState<Array<CarouselFieldImage>>(images);
+  const [currentSlide, setCurrentSlide] = useState<CarouselFieldSlide>(undefined);
+  const [listImages, setListImages] = useState<Array<CarouselFieldSlide>>(images);
   const sortedImages = listImages.sort((prev, next) => prev.order - next.order);
 
-  function onSortChange(image: Partial<CarouselFieldImage>) {
-    const imageFound = sortedImages?.find((item) => item.id === image.id);
+  function onSortChange(image: Partial<CarouselFieldSlide>) {
+    const imageFound = sortedImages.find((item) => item.id === image.id);
     const originalOrder = imageFound?.order;
     const directionUp = image.order > originalOrder;
 
@@ -79,7 +79,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
     setCurrentSlide(currentImage);
   }
 
-  const onImageListClick = (item: CarouselFieldImage) => {
+  const onImageListClick = (item: CarouselFieldSlide) => {
     setCurrentSlide(item);
   };
 
@@ -98,7 +98,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
 
   // Add a slide to the list and focus it on top
   const onSlideAdd = () => {
-    const imagesWithoutImage = sortedImages.some((item) => !item.src);
+    const imagesWithoutImage = sortedImages.some((item) => !item.images?.original);
     if (imagesWithoutImage) return;
 
     const allIds = sortedImages.map((item) => item.id);
@@ -106,7 +106,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
     const maxId = Math.max(0, ...allIds);
     const maxOrder = Math.max(0, ...allOrders);
     const newImage = {
-      ...emptyImage,
+      ...emptySlide,
       order: maxOrder + 1,
       id: maxId + 1,
     };
@@ -117,9 +117,9 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
     scrollToRight('CarouselField-list');
   };
 
-  const onSlideRemove = async (removedSlide: CarouselFieldImage) => {
+  const onSlideRemove = async (removedSlide: CarouselFieldSlide) => {
     try {
-      await onFileRemove(removedSlide.src);
+      await onFileRemove(removedSlide?.images?.original);
     } catch (err) {
       console.log(err);
     } finally {
@@ -130,9 +130,11 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
 
   const onFileUploadRequest = async (file) => {
     const data = await onFileUpload(file);
-    const currentImageModified = {
+    const currentImageModified: CarouselFieldSlide = {
       ...currentSlide,
-      src: data.image,
+      images: {
+        original: data.image,
+      },
     };
     const imagesModified = sortedImages.map((item) => {
       if (item.id === currentSlide?.id) {
@@ -170,7 +172,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
 
   useEffect(() => {
     // If the current slide is missing from the slides, don't update
-    const currentIsInImages = sortedImages?.some((item) => item.id === currentSlide?.id);
+    const currentIsInImages = sortedImages.some((item) => item.id === currentSlide?.id);
     if (currentSlide && currentIsInImages) return;
 
     // Base case, focus first image
@@ -178,7 +180,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
   }, [sortedImages]);
 
   useEffect(() => {
-    setListImages(images);
+    setListImages(images || []);
   }, [images]);
 
   return (
@@ -187,7 +189,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
         className="CarouselField-current"
         label={currentSlide?.title}
         name={currentSlide?.title}
-        image={currentSlide?.src}
+        image={currentSlide?.images?.original}
         disabled={!sortedImages.length}
         grow={false}
         uploadFiles={onFileUploadRequest}
@@ -209,15 +211,15 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
           onSortChange={onSortChange}
           handleClass="CarouselField-overlay"
         >
-          {sortedImages?.map((item) => (
+          {sortedImages.map((item) => (
             <li
               className={'CarouselField-item' + (item.id === currentSlide?.id ? ' CarouselField-item--current' : '')}
-              key={item.src}
+              key={item?.images?.original}
               data-id={String(item.id)}
               data-order={item.order}
             >
               <div className="CarouselField-overlay" onMouseDown={() => onImageListClick(item)} />
-              <img src={item.src} />
+              <img src={item?.images?.original} />
               <Cross
                 className="CarouselField-editCarouselIcon CarouselField-iconRemove"
                 onClick={() => onSlideRemove(item)}
