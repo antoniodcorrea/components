@@ -195,7 +195,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
         uploadFiles={onFileUploadRequest}
         onRemove={onFileRemove}
         percentCompleted={0}
-        accept=".jpg,.jpeg"
+        accept=".jpg,.jpeg,.png"
       />
       <Input
         className="CarouselField-input"
