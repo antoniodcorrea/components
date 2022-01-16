@@ -3,6 +3,17 @@ import { useSlate } from 'slate-react';
 
 import { ENTER_URL_MESSAGE } from '../constants';
 import { useCustomEditor } from '../useCustomEditor';
+import Italic from '../../../assets/svg/italic.svg';
+import Ul from '../../../assets/svg/ul.svg';
+import Bold from '../../../assets/svg/bold.svg';
+import Link from '../../../assets/svg/link.svg';
+import Image from '../../../assets/svg/image.svg';
+import Uppercase from '../../../assets/svg/uppercase.svg';
+import Code from '../../../assets/svg/code.svg';
+import CodeBlock from '../../../assets/svg/codeBlock.svg';
+import H1 from '../../../assets/svg/iconH1.svg';
+import H2 from '../../../assets/svg/iconH2.svg';
+import H3 from '../../../assets/svg/iconH3.svg';
 
 import './EditorToolbar.less';
 
@@ -53,82 +64,78 @@ export const EditorToolbar: React.FC = () => {
 
   return (
     <div className="EditorToolbar">
-      <button
-        className={'EditorToolbar-button' + (isBlockActive(editor, 'link') ? ' EditorToolbar-button--active' : '')}
-        onClick={onLinkClick}
-      >
-        ℋ
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isBlockActive(editor, 'image') ? ' EditorToolbar-button--active' : '')}
-        onClick={onImageClick}
-      >
-        ⨕
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isFormatActive(editor, 'bold') ? ' EditorToolbar-button--active' : '')}
-        onClick={(e) => onFormatClick(e, 'bold')}
-      >
-        <b>B</b>
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isFormatActive(editor, 'italic') ? ' EditorToolbar-button--active' : '')}
-        onClick={(e) => onFormatClick(e, 'italic')}
-      >
-        <em>I</em>
-      </button>
-      <button
+      <Bold
         className={
-          'EditorToolbar-button' + (isFormatActive(editor, 'underlined') ? ' EditorToolbar-button--active' : '')
+          'EditorToolbar-icon EditorToolbar-bold' +
+          (isFormatActive(editor, 'bold') ? ' EditorToolbar-icon--active' : '')
         }
-        onClick={(e) => onFormatClick(e, 'underlined')}
-      >
-        <u>U</u>
-      </button>
-      <button
+        onClick={(e) => onFormatClick(e, 'bold')}
+      />
+      <Italic
         className={
-          'EditorToolbar-button' + (isFormatActive(editor, 'inlineCode') ? ' EditorToolbar-button--active' : '')
+          'EditorToolbar-icon EditorToolbar-italic' +
+          (isFormatActive(editor, 'italic') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onFormatClick(e, 'italic')}
+      />
+      <Uppercase
+        className={
+          'EditorToolbar-icon EditorToolbar-uppercase' +
+          (isFormatActive(editor, 'uppercase') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onFormatClick(e, 'uppercase')}
+      />
+      <Ul
+        className={
+          'EditorToolbar-icon EditorToolbar-ul' + (isBlockActive(editor, 'ul') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onBlockClick(e, 'ul')}
+      />
+      <Link
+        className={
+          'EditorToolbar-icon EditorToolbar-link' + (isBlockActive(editor, 'link') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={onLinkClick}
+      />
+      <Code
+        className={
+          'EditorToolbar-icon EditorToolbar-code' +
+          (isFormatActive(editor, 'code') ? ' EditorToolbar-icon--active' : '')
         }
         onClick={(e) => onFormatClick(e, 'inlineCode')}
-      >
-        <code>{`< >`}</code>
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isBlockActive(editor, 'quote') ? ' EditorToolbar-button--active' : '')}
-        onClick={(e) => onBlockClick(e, 'quote')}
-      >
-        <blockquote>„</blockquote>
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isBlockActive(editor, 'code') ? ' EditorToolbar-button--active' : '')}
+      />
+      <CodeBlock
+        className={
+          'EditorToolbar-icon EditorToolbar-codeBlock' +
+          (isBlockActive(editor, 'code') ? ' EditorToolbar-icon--active' : '')
+        }
         onClick={(e) => onBlockClick(e, 'code')}
-      >
-        Code
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isBlockActive(editor, 'h1') ? ' EditorToolbar-button--active' : '')}
+      />
+      <H1
+        className={
+          'EditorToolbar-icon EditorToolbar-h1' + (isBlockActive(editor, 'h1') ? ' EditorToolbar-icon--active' : '')
+        }
         onClick={(e) => onBlockClick(e, 'h1')}
-      >
-        H1
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isBlockActive(editor, 'h2') ? ' EditorToolbar-button--active' : '')}
+      />
+      <H2
+        className={
+          'EditorToolbar-icon EditorToolbar-h2' + (isBlockActive(editor, 'h2') ? ' EditorToolbar-icon--active' : '')
+        }
         onClick={(e) => onBlockClick(e, 'h2')}
-      >
-        H2
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isBlockActive(editor, 'h3') ? ' EditorToolbar-button--active' : '')}
+      />
+      <H3
+        className={
+          'EditorToolbar-icon EditorToolbar-h3' + (isBlockActive(editor, 'h3') ? ' EditorToolbar-icon--active' : '')
+        }
         onClick={(e) => onBlockClick(e, 'h3')}
-      >
-        H3
-      </button>
-      <button
-        className={'EditorToolbar-button' + (isBlockActive(editor, 'ul') ? ' EditorToolbar-button--active' : '')}
-        onClick={(e) => onBlockClick(e, 'ul')}
-      >
-        Ul
-      </button>
+      />
+      <Image
+        className={
+          'EditorToolbar-icon EditorToolbar-image' +
+          (isBlockActive(editor, 'image') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={onImageClick}
+      />
     </div>
   );
 };

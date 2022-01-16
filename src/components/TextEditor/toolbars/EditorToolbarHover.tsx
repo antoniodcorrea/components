@@ -4,12 +4,15 @@ import { ReactEditor, useSlate } from 'slate-react';
 
 import { HOVERING_TOOLBAR_ENABLED } from '../constants';
 import { useCustomEditor } from '../useCustomEditor';
+import Italic from '../../../assets/svg/italic.svg';
+import Bold from '../../../assets/svg/bold.svg';
+import Uppercase from '../../../assets/svg/uppercase.svg';
 
 import './EditorToolbarHover.less';
 
 export const EditorToolbarHover: React.FC = () => {
   const editor = useSlate();
-  const { toggleBlock, toggleFormat, isFormatActive, isBlockActive } = useCustomEditor();
+  const { toggleFormat, isFormatActive } = useCustomEditor();
 
   useEffect(() => {
     const toolbarElement = document.getElementById('EditorToolbarHover');
@@ -52,80 +55,31 @@ export const EditorToolbarHover: React.FC = () => {
     toggleFormat(editor, format);
   };
 
-  const onBlockClick = (e: React.MouseEvent, block: string) => {
-    e.preventDefault();
-    toggleBlock(editor, block);
-  };
-
   if (!HOVERING_TOOLBAR_ENABLED) return null;
 
   return (
     <div className="EditorToolbarHover" id="EditorToolbarHover" onMouseLeave={onMouseLeave}>
-      <button
+      <Bold
         className={
-          'EditorToolbarHover-button' + (isFormatActive(editor, 'bold') ? ' EditorToolbarHover-button--active' : '')
+          'EditorToolbarHover-icon EditorToolbarHover-bold' +
+          (isFormatActive(editor, 'bold') ? ' EditorToolbarHover-icon--active' : '')
         }
         onClick={(e) => onFormatClick(e, 'bold')}
-      >
-        <b>B</b>
-      </button>
-      <button
+      />
+      <Italic
         className={
-          'EditorToolbarHover-button' + (isFormatActive(editor, 'italic') ? ' EditorToolbarHover-button--active' : '')
+          'EditorToolbarHover-icon EditorToolbarHover-italic' +
+          (isFormatActive(editor, 'italic') ? ' EditorToolbarHover-icon--active' : '')
         }
         onClick={(e) => onFormatClick(e, 'italic')}
-      >
-        <em>I</em>
-      </button>
-      <button
+      />
+      <Uppercase
         className={
-          'EditorToolbarHover-button' +
-          (isFormatActive(editor, 'underlined') ? ' EditorToolbarHover-button--active' : '')
+          'EditorToolbarHover-icon EditorToolbarHover-uppercase' +
+          (isFormatActive(editor, 'uppercase') ? ' EditorToolbarHover-icon--active' : '')
         }
-        onClick={(e) => onFormatClick(e, 'underlined')}
-      >
-        <u>U</u>
-      </button>
-      <button
-        className={
-          'EditorToolbarHover-button' + (isBlockActive(editor, 'code') ? ' EditorToolbarHover-button--active' : '')
-        }
-        onClick={(e) => onBlockClick(e, 'code')}
-      >
-        Code
-      </button>
-      <button
-        className={
-          'EditorToolbarHover-button' + (isBlockActive(editor, 'h1') ? ' EditorToolbarHover-button--active' : '')
-        }
-        onClick={(e) => onBlockClick(e, 'h1')}
-      >
-        H1
-      </button>
-      <button
-        className={
-          'EditorToolbarHover-button' + (isBlockActive(editor, 'h2') ? ' EditorToolbarHover-button--active' : '')
-        }
-        onClick={(e) => onBlockClick(e, 'h2')}
-      >
-        H2
-      </button>
-      <button
-        className={
-          'EditorToolbarHover-button' + (isBlockActive(editor, 'h3') ? ' EditorToolbarHover-button--active' : '')
-        }
-        onClick={(e) => onBlockClick(e, 'h3')}
-      >
-        H3
-      </button>
-      <button
-        className={
-          'EditorToolbarHover-button' + (isBlockActive(editor, 'ul') ? ' EditorToolbarHover-button--active' : '')
-        }
-        onClick={(e) => onBlockClick(e, 'ul')}
-      >
-        Ul
-      </button>
+        onClick={(e) => onFormatClick(e, 'uppercase')}
+      />
     </div>
   );
 };

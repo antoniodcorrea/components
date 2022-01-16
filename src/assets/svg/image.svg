@@ -1,0 +1,9 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+  style="enable-background: new 0 0 100 100"
+  xml:space="preserve"
+>
+  <path d="M38 38h24v24H38V38z" style="fill: none" />
+  <path d="M100 80V0H20v80h80zM45 50l10.1 13.5L70 45l20 25H30l15-20zM0 20v80h80V90H10V20H0z" />
+</svg>
