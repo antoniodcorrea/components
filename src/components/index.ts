@@ -59,6 +59,7 @@ export {
   DotsVertical,
   Eye,
 } from './Svg';
+export { Img } from './Img';
 export { Switch } from './Switch';
 export { Tag } from './Tag';
 export { TagsSkeleton } from './Tag/TagsSkeleton';
