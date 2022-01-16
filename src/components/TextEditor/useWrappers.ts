@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Editor, Node as SlateNode, Path as SlatePath, Range, Transforms } from 'slate';
 import { withHistory } from 'slate-history';
-import { testStringIsValidUrl } from '../../../tools/utils/url/testStringIsValidUrl';
+import { testStringIsValidUrl } from '@antoniodcorrea/utils';
 
 import { ImageUpload } from './types';
 import { useCustomEditor } from './useCustomEditor';

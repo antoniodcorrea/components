@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Sort from '../../assets/svg/sort.svg';
-import { URLWrapper } from '../../../tools/services/URLWrapper';
+import { URLWrapper } from '@antoniodcorrea/utils';
 import { A } from '../A';
 
 import './SortBy.less';

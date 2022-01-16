@@ -17,12 +17,14 @@
     "test:watch": "jest --watch --no-cache"
   },
   "dependencies": {
+    "@antoniodcorrea/utils": "0.0.6",
     "@popperjs/core": "^2.9.2",
     "@types/qs": "^6.9.5",
     "@types/react-datepicker": "^3.1.8",
     "@types/react-dropzone": "^5.1.0",
     "@types/react-select": "^4.0.13",
     "babel-loader": "^8.1.0",
+    "colors": "1.1.2",
     "escape-html": "^1.0.3",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-simple-import-sort": "^5.0.3",
@@ -44,8 +46,7 @@
     "slate-react": "^0.72.1",
     "sortablejs": "^1.14.0",
     "ts-unused-exports": "^7.0.3",
-    "tslib": "^2.1.0",
-    "colors": "1.1.2"
+    "tslib": "^2.1.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.4.9",
