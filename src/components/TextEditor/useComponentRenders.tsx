@@ -24,6 +24,10 @@ type UseComponentRenders = (imageUploadService: ImageUpload) => {
 export const useComponentRenders: UseComponentRenders = (imageUploadService: ImageUpload) => {
   const renderElement = useCallback((props) => {
     switch (props.element.type) {
+      case 'text':
+        return <p>{props.children}</p>;
+      case 'paragraph':
+        return <p>{props.children}</p>;
       case 'h1':
         return <EditorH1>{props.children}</EditorH1>;
       case 'h2':

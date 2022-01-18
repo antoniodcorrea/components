@@ -27,8 +27,6 @@ export const toHtml = (node: TextEditorNode): string => {
   const children = node.children.map((item) => toHtml(item)).join('');
 
   switch (node.type) {
-    case 'text':
-      return `<p>${children}</p>`;
     case 'h1':
       return `<h1>${children}</h1>`;
     case 'h2':
@@ -44,6 +42,8 @@ export const toHtml = (node: TextEditorNode): string => {
     case 'image':
       return `<img src="${escapeHtml(node.image?.original)}" />`;
     case 'paragraph':
+      return `<p>${children}</p>`;
+    case 'text':
       return `<p>${children}</p>`;
     case 'link':
       return `<a href="${escapeHtml(node.url)}">${children}</a>`;
