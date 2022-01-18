@@ -46,7 +46,7 @@ export const toHtml = (node: TextEditorNode): string => {
     case 'text':
       return `<p>${children}</p>`;
     case 'link':
-      return `<a href="${escapeHtml(node.url)}">${children}</a>`;
+      return `<a href="${escapeHtml(node.url)}" target="_blank">${children}</a>`;
     default:
       return children;
   }
