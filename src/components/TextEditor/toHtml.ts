@@ -27,6 +27,8 @@ export const toHtml = (node: TextEditorNode): string => {
   const children = node.children.map((item) => toHtml(item)).join('');
 
   switch (node.type) {
+    case 'text':
+      return `<p>${children}</p>`;
     case 'h1':
       return `<h1>${children}</h1>`;
     case 'h2':

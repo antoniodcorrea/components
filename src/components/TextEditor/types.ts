@@ -28,7 +28,7 @@ export type LinkElement = {
 };
 
 export type CustomElement = {
-  type: 'paragraph' | 'code' | 'h1' | 'h2' | 'h3' | 'ul' | 'quote';
+  type: 'paragraph' | 'code' | 'h1' | 'h2' | 'h3' | 'ul' | 'quote' | 'text';
   children: CustomText[];
 };
 
