@@ -25,12 +25,13 @@ export const textEditorDefaultValue = [
 ];
 
 interface Props {
+  className?: string;
   initialValue: TextEditorValue;
   imageUploadService: ImageUpload;
   onChange: (value: TextEditorValue) => void;
 }
 
-export const TextEditor: React.FC<Props> = ({ initialValue, imageUploadService, onChange }) => {
+export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUploadService, onChange }) => {
   const [loaded, setLoaded] = useState(false);
   const { withInlinesWrapper, withHistoryWrapper, withCorrectVoidBehavior, withImages } =
     useWrappers(imageUploadService);
@@ -76,7 +77,7 @@ export const TextEditor: React.FC<Props> = ({ initialValue, imageUploadService, 
         <EditorToolbar />
         <Editable
           placeholder={PLACEHOLDER_TEXT}
-          className="TextEditor-textBox"
+          className={'TextEditor-textBox' + (className ? ` ${className}` : '')}
           renderElement={renderElement}
           renderLeaf={renderLeaf}
           onKeyDown={onKeyDown}
