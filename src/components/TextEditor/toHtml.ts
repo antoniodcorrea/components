@@ -5,6 +5,9 @@ import { TextEditorNode } from './types';
 export const toHtml = (node: TextEditorNode): string => {
   if (Text.isText(node)) {
     let string = escapeHtml(node.text);
+    if (!string || string === '') {
+      string = `<p style="text-transform:uppercase">${string}</p>`;
+    }
     if (node.bold) {
       string = `<strong>${string}</strong>`;
     }
