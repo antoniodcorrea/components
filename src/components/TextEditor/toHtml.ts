@@ -25,7 +25,7 @@ export const toHtml = (node: TextEditorNode): string => {
       string = `<code>${string}</code>`;
     }
     if (node.centered) {
-      string = `<div style="width:100%; text-align: center;">${string}</div>`;
+      string = `<span style="display: block; width:100%; text-align: center;">${string}</span>`;
     }
 
     return string;
