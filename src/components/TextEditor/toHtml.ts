@@ -5,8 +5,10 @@ import { TextEditorNode } from './types';
 export const toHtml = (node: TextEditorNode): string => {
   if (Text.isText(node)) {
     let string = escapeHtml(node.text);
-    if (!string || !string.trim().length) return '<p style="text-transform:uppercase"></p>';
 
+    if (!string?.trim().length) {
+      return '<p style="display: inline-block"></p>';
+    }
     if (node.bold) {
       string = `<strong>${string}</strong>`;
     }
