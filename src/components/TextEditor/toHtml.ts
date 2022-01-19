@@ -7,7 +7,7 @@ export const toHtml = (node: TextEditorNode): string => {
     let string = escapeHtml(node.text);
 
     if (!string?.trim().length) {
-      string = `<p style="display: inline-block">${string}</p>`;
+      string = `<span style="display: inline-block">${string}</span>`;
     }
     if (node.bold) {
       string = `<strong>${string}</strong>`;
