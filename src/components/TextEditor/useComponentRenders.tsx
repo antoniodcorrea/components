@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 
 import { EditorA } from './components/EditorA';
 import { EditorBold } from './components/EditorBold';
+import { EditorCenter } from './components/EditorCenter';
 import { EditorCode } from './components/EditorCode';
 import { EditorCodeInlined } from './components/EditorCodeInlined';
 import { EditorH1 } from './components/EditorH1';
@@ -68,6 +69,10 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
 
     if (leaf.inlineCode) {
       children = <EditorCodeInlined>{children}</EditorCodeInlined>;
+    }
+
+    if (leaf.centered) {
+      children = <EditorCenter>{children}</EditorCenter>;
     }
 
     return <span {...attributes}>{children}</span>;

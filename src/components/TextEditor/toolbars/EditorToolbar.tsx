@@ -3,6 +3,7 @@ import { useSlate } from 'slate-react';
 
 import { ENTER_URL_MESSAGE } from '../constants';
 import { useCustomEditor } from '../useCustomEditor';
+import Centered from '../../../assets/svg/centered.svg';
 import Italic from '../../../assets/svg/italic.svg';
 import Ul from '../../../assets/svg/ul.svg';
 import Bold from '../../../assets/svg/bold.svg';
@@ -128,6 +129,13 @@ export const EditorToolbar: React.FC = () => {
           'EditorToolbar-icon EditorToolbar-h3' + (isBlockActive(editor, 'h3') ? ' EditorToolbar-icon--active' : '')
         }
         onClick={(e) => onBlockClick(e, 'h3')}
+      />
+      <Centered
+        className={
+          'EditorToolbar-icon EditorToolbar-centered' +
+          (isFormatActive(editor, 'centered') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onFormatClick(e, 'centered')}
       />
       <Image
         className={

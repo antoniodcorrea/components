@@ -6,6 +6,7 @@ export interface CustomText {
   text?: string;
   bold?: boolean;
   code?: boolean;
+  centered?: boolean;
   italic?: boolean;
   underlined?: boolean;
   uppercase?: boolean;

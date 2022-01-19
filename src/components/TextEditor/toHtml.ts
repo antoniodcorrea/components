@@ -15,10 +15,13 @@ export const toHtml = (node: TextEditorNode): string => {
       string = `<u>${string}</u>`;
     }
     if (node.uppercase) {
-      string = `<span class="TextEditor-uppercase">${string}</span>`;
+      string = `<span style="text-transform:uppercase">${string}</span>`;
     }
     if (node.inlineCode) {
       string = `<code>${string}</code>`;
+    }
+    if (node.centered) {
+      string = `<div style="width:100%; text-align: center;">${string}</div>`;
     }
 
     return string;

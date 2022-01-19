@@ -7,6 +7,7 @@ import { useCustomEditor } from '../useCustomEditor';
 import Italic from '../../../assets/svg/italic.svg';
 import Bold from '../../../assets/svg/bold.svg';
 import Uppercase from '../../../assets/svg/uppercase.svg';
+import Centered from '../../../assets/svg/centered.svg';
 
 import './EditorToolbarHover.less';
 
@@ -79,6 +80,13 @@ export const EditorToolbarHover: React.FC = () => {
           (isFormatActive(editor, 'uppercase') ? ' EditorToolbarHover-icon--active' : '')
         }
         onClick={(e) => onFormatClick(e, 'uppercase')}
+      />
+      <Centered
+        className={
+          'EditorToolbar-icon EditorToolbar-centered' +
+          (isFormatActive(editor, 'centered') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onFormatClick(e, 'centered')}
       />
     </div>
   );
