@@ -76,3 +76,4 @@ export { SortBy } from './SortBy';
 export { Ellipsis } from './Ellipsis';
 export { Space } from './Space';
 export { CarouselField, CarouselFieldSlide } from './CarouselField';
+export { Sortable, SortableSortProps, sortArrayByIdAndOrder } from './Sortable';
