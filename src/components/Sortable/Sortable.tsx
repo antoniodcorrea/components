@@ -3,6 +3,7 @@ import React from 'react';
 import { DndContext, KeyboardSensor, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { SortableContext } from '@dnd-kit/sortable';
 import { SortableItem } from './SortableItem';
+import { restrictToParentElement } from '@dnd-kit/modifiers';
 
 import './Sortable.less';
 import './SortableItem.less';
@@ -14,7 +15,7 @@ export type SortableSortProps = {
 
 export interface Props {
   children: React.ReactNode | React.ReactNode[];
-  className: string;
+  className?: string;
   disabled?: boolean;
   onRemove?(id: string): void;
   onSortEnd?(data: SortableSortProps): void;
@@ -49,14 +50,14 @@ export const Sortable: React.FC<Props> = ({ children, className, onRemove, onSor
   };
 
   return (
-    <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
+    <DndContext sensors={sensors} onDragEnd={handleDragEnd} modifiers={[restrictToParentElement]}>
       <SortableContext items={listItems}>
-        <ul className={'Sortable' + (className ? ` ${className}` : '') + (disabled ? ` Sortable--disabled` : '')}>
-          {React.Children.map(children, (child, index) => {
+        <ul className={'Sortable' + (className ? ` ${className}` : '') + (disabled ? ' Sortable--disabled' : '')}>
+          {React.Children.map(children, (child) => {
             if (!React.isValidElement(child)) return;
 
             return (
-              <SortableItem key={child.key} id={String(child.key)} index={index} onRemove={handleRemove}>
+              <SortableItem key={child.key} id={String(child.key)} onRemove={handleRemove}>
                 {child}
               </SortableItem>
             );
