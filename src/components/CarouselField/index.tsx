@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import Cross from '../../assets/svg/cross.svg';
 import Plus from '../../assets/svg/plusCircle.svg';
-import { ImageField, Input, SortableList } from '..';
+import { ImageField, Input, Sortable } from '..';
+import { sortArrayByIdAndOrder } from '@antoniodcorrea/utils';
 
 import './CarouselField.less';
 
@@ -38,46 +39,14 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
   const [listImages, setListImages] = useState<Array<CarouselFieldSlide>>(images);
   const sortedImages = listImages.sort((prev, next) => prev.order - next.order);
 
-  function onSortChange(image: Partial<CarouselFieldSlide>) {
-    const imageFound = sortedImages.find((item) => item.id === image.id);
-    const originalOrder = imageFound?.order;
-    const directionUp = image.order > originalOrder;
-
-    const selectionModified = sortedImages.map((item) => {
-      if (directionUp) {
-        if (item.order > originalOrder && item.order <= image.order) {
-          return {
-            ...item,
-            order: item.order - 1,
-          };
-        } else if (item.id === image.id) {
-          return {
-            ...item,
-            order: image.order,
-          };
-        }
-      } else {
-        if (item.order < originalOrder && item.order >= image.order) {
-          return {
-            ...item,
-            order: item.order + 1,
-          };
-        } else if (item.id === image.id) {
-          return {
-            ...item,
-            order: image.order,
-          };
-        }
-      }
-
-      return item;
-    });
-
+  const onSortChange = (image: Partial<CarouselFieldSlide>) => {
+    const selectionModified = sortArrayByIdAndOrder({ data: sortedImages, id: image.id, order: image.order });
     const currentImage = selectionModified.find((item) => item.id === currentSlide?.id);
 
+    setListImages(selectionModified); // To avoid re-renders with different set of images we previously set local order
     onChange(selectionModified);
     setCurrentSlide(currentImage);
-  }
+  };
 
   const onImageListClick = (item: CarouselFieldSlide) => {
     setCurrentSlide(item);
@@ -204,18 +173,12 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
         onChange={onTitleChange}
       />
       <div className="CarouselField-list" id="CarouselField-list">
-        <SortableList
-          id="CarouselField-sortable"
-          direction="horizontal"
-          className="CarouselField-images"
-          onSortChange={onSortChange}
-          handleClass="CarouselField-overlay"
-        >
+        <Sortable className="CarouselField-images" onSortEnd={onSortChange}>
           {sortedImages.map((item) => (
             <li
               className={'CarouselField-item' + (item.id === currentSlide?.id ? ' CarouselField-item--current' : '')}
-              key={item?.images?.original}
-              data-id={String(item.id)}
+              key={item.id}
+              data-id={item.id}
               data-order={item.order}
             >
               <div className="CarouselField-overlay" onMouseDown={() => onImageListClick(item)} />
@@ -226,7 +189,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
               />
             </li>
           ))}
-        </SortableList>
+        </Sortable>
         <li className="CarouselField-item CarouselField-itemAdd" onClick={onSlideAdd}>
           <div className="CarouselField-overlay" />
           <Plus className="CarouselField-iconAdd" />

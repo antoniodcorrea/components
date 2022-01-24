@@ -1,46 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { withKnobs } from '@storybook/addon-knobs';
 import { H1 } from '../H1';
 import { Hr } from '../Hr';
 import { CarouselField } from '.';
 
-const images = [
+const originalImages = [
   {
     id: 1,
-    order: 10,
-    src: 'https://picsum.photos/id/100/1000',
-    sizes: '',
-    srcSet: '',
-    title: 'https://picsum.photos/id/100/1000',
-    alt: 'https://picsum.photos/id/100/1000',
+    order: 1,
+    title: 'https://picsum.photos/1/100',
+    images: {
+      original: 'https://picsum.photos/1/100',
+    },
   },
   {
     id: 2,
-    order: 1,
-    src: 'https://picsum.photos/id/200/1000',
-    sizes: '',
-    srcSet: '',
-    title: 'https://picsum.photos/id/200/1000',
-    alt: 'https://picsum.photos/id/200/1000',
+    order: 2,
+    title: 'https://picsum.photos/2/100',
+    images: {
+      original: 'https://picsum.photos/2/100',
+    },
   },
   {
     id: 3,
-    order: 2,
-    src: 'https://picsum.photos/id/301/1000',
-    sizes: '',
-    srcSet: '',
-    title: 'https://picsum.photos/id/301/1000',
-    alt: 'https://picsum.photos/id/301/1000',
+    order: 3,
+    title: 'https://picsum.photos/3/100',
+    images: {
+      original: 'https://picsum.photos/3/100',
+    },
   },
   {
     id: 4,
-    order: 3,
-    src: 'https://picsum.photos/id/400/1000',
-    sizes: '',
-    srcSet: '',
-    title: 'https://picsum.photos/id/400/1000',
-    alt: 'https://picsum.photos/id/400/1000',
+    order: 4,
+    title: 'https://picsum.photos/4/100',
+    images: {
+      original: 'https://picsum.photos/4/100',
+    },
+  },
+  {
+    id: 5,
+    order: 5,
+    title: 'https://picsum.photos/5/100',
+    images: {
+      original: 'https://picsum.photos/5/100',
+    },
+  },
+  {
+    id: 6,
+    order: 6,
+    title: 'https://picsum.photos/6/100',
+    images: {
+      original: 'https://picsum.photos/6/100',
+    },
   },
 ];
 
@@ -51,10 +63,10 @@ export default {
 };
 
 export const Default: React.FC = () => {
-  const onImagesChange = (e) => {
-    console.log(e);
+  const [images, setImages] = useState([]);
 
-    return null;
+  const onImagesChange = (images) => {
+    setImages(images);
   };
 
   const onFileUpload = (e) => {
@@ -68,6 +80,10 @@ export const Default: React.FC = () => {
 
     return null;
   };
+
+  useEffect(() => {
+    setImages(originalImages);
+  }, []);
 
   return (
     <div>
