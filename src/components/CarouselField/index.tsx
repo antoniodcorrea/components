@@ -184,6 +184,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
               <div className="CarouselField-overlay" onMouseDown={() => onImageListClick(item)} />
               <img src={item?.images?.original} />
               <Cross
+                id="Remove"
                 className="CarouselField-editCarouselIcon CarouselField-iconRemove"
                 onClick={() => onSlideRemove(item)}
               />
