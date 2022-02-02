@@ -28,7 +28,7 @@ export const toHtml = (node: TextEditorNode): string => {
       string = `<span style="display: block; width:100%; text-align: center;">${string}</span>`;
     }
 
-    return string;
+    return `<p>${string}</p>`;
   }
 
   const children = node.children.map((item) => toHtml(item)).join('');
@@ -55,6 +55,6 @@ export const toHtml = (node: TextEditorNode): string => {
     case 'link':
       return `<a href="${escapeHtml(node.url)}" target="_blank">${children}</a>`;
     default:
-      return `<p>${children}</p>`;
+      return children;
   }
 };
