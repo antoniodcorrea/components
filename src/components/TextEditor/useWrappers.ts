@@ -133,14 +133,10 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
         try {
           imageUploadService.removeFileFromServer({
             src: currentNode['src'],
-            onRemoved: () => {
-              //
-            },
+            onRemoved: () => removeImageBlock(editor, parentPath),
           });
         } catch (error) {
           console.error(error);
-        } finally {
-          removeImageBlock(editor, parentPath);
         }
       } else {
         deleteBackward(unit);
