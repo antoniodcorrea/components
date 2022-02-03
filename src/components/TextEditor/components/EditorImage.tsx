@@ -11,9 +11,10 @@ interface Props {
   attributes: any;
   imageUploadService?: ImageUpload;
   element: ImageElement;
+  ratio: number;
 }
 
-export const EditorImage: React.FC<Props> = ({ attributes, element, children, imageUploadService }) => {
+export const EditorImage: React.FC<Props> = ({ attributes, element, children, imageUploadService, ratio }) => {
   const [percentCompleted, setPercentCompleted] = useState<number>(0);
   const [image, setImage] = useState<string | ArrayBuffer>(undefined);
   const [imageError, setImageError] = useState<string>(null);
@@ -101,6 +102,7 @@ export const EditorImage: React.FC<Props> = ({ attributes, element, children, im
         uploadFiles={uploadFilesToServer}
         onRemove={removeFilesFromServer}
         percentCompleted={percentCompleted}
+        ratio={ratio}
         accept=".jpg,.jpeg,.png"
       />
       <Fade mounted={!!imageError} position="absolute">

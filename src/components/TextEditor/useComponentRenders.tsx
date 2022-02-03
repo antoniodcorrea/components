@@ -44,7 +44,14 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
       case 'link':
         return <EditorA element={props.element}>{props.children}</EditorA>;
       case 'image':
-        return <EditorImage element={props.element} {...props} imageUploadService={imageUploadService} />;
+        return (
+          <EditorImage
+            element={props.element}
+            ratio={props.element.ratio}
+            {...props}
+            imageUploadService={imageUploadService}
+          />
+        );
       default:
         return <EditorText>{props.children}</EditorText>;
     }

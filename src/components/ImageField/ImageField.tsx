@@ -22,6 +22,7 @@ export interface Props {
   success: boolean;
   disabled: boolean;
   rounded: boolean;
+  ratio?: number;
   onDropAccepted: (acceptedFiles: File[]) => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFileRemove: (e: React.MouseEvent) => void;
@@ -40,6 +41,7 @@ export const ImageField: React.FC<Props> = ({
   error,
   success,
   disabled,
+  ratio,
   onDropAccepted,
   onChange,
   onFileRemove,
@@ -63,7 +65,7 @@ export const ImageField: React.FC<Props> = ({
         (!hasImage ? ' ImageField--noImage' : '')
       }
     >
-      {hasImage && <img className="ImageField-image" src={image} alt={fileName} title={fileName} />}
+      {hasImage && <img className="ImageField-image" src={image} alt={fileName} title={fileName} data-ratio={ratio} />}
       <div className={'ImageField-progress ' + (percentCompleted > 0 ? 'ImageField--loading' : '')}>
         <Loader loaded={percentCompleted} grow />
       </div>

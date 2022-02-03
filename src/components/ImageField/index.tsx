@@ -16,6 +16,7 @@ export interface Props {
   maxSize?: number;
   error?: boolean;
   success?: boolean;
+  ratio?: number;
   uploadFiles: (file: File) => void;
   onRemove?: (url: string) => void;
 }
@@ -34,6 +35,7 @@ export const ImageField: React.FC<Props> = ({
   error,
   success,
   percentCompleted,
+  ratio,
   uploadFiles,
   onRemove,
 }) => {
@@ -79,6 +81,7 @@ export const ImageField: React.FC<Props> = ({
       disabled={disabled}
       error={error}
       success={success}
+      ratio={ratio}
       onDropAccepted={onDropAccepted}
       onChange={onChange}
       onFileRemove={onFileRemove}
