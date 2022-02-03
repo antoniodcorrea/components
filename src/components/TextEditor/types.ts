@@ -12,7 +12,7 @@ export interface CustomText {
   uppercase?: boolean;
   inlineCode?: boolean;
   children?: any;
-  breakline?: boolean;
+  tab?: boolean;
 }
 
 export type ImageElement = {
