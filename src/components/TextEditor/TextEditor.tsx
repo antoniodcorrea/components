@@ -38,7 +38,7 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   const [editor] = useState(() =>
     withImages(withInlinesWrapper(withCorrectVoidBehavior(withHistoryWrapper(withReact(createEditor())))))
   );
-  const [localValue, setLocalValue] = useState<Descendant[]>([]);
+  const [localValue, setLocalValue] = useState<Descendant[]>(textEditorDefaultValue);
   const { renderElement, renderLeaf } = useComponentRenders(imageUploadService);
   const { onKeyDown } = useEvents(editor);
 

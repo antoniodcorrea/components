@@ -3,6 +3,8 @@ import { Editor, Element, Range, Text, Transforms } from 'slate';
 import { CustomElement, CustomText, ImageElement, LinkElement } from './types';
 
 type UseCustomEditor = () => {
+  breakLine: (editor: Editor) => void;
+  insertTab: (editor: Editor) => void;
   isBlockActive: (editor: Editor, blockType: string) => boolean;
   toggleBlock: (editor: Editor, blockType: string) => void;
   wrapLink: (editor: Editor, url: string) => void;
@@ -16,6 +18,14 @@ type UseCustomEditor = () => {
 };
 
 export const useCustomEditor: UseCustomEditor = () => {
+  const insertTab = (editor: Editor) => {
+    Transforms.insertText(editor, '\u2005\u2005');
+  };
+
+  const breakLine = (editor: Editor) => {
+    Transforms.insertText(editor, '\n\u2060');
+  };
+
   const isBlockActive = (editor: Editor, blockType: string): boolean => {
     const [match] = Editor.nodes(editor, {
       match: (node: CustomElement) => node.type === blockType,
@@ -134,6 +144,8 @@ export const useCustomEditor: UseCustomEditor = () => {
   };
 
   return {
+    insertTab,
+    breakLine,
     isBlockActive,
     toggleBlock,
     wrapLink,

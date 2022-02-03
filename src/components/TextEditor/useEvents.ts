@@ -8,31 +8,45 @@ type UseEvents = (editor: Editor) => {
 
 export const useEvents: UseEvents = (editor) => {
   const onKeyDown = (e: React.KeyboardEvent) => {
-    const { toggleFormat } = useCustomEditor();
+    const { toggleFormat, breakLine, insertTab } = useCustomEditor();
 
-    if ((!e.metaKey && !e.ctrlKey) || (e.key !== 'b' && e.key !== 'i' && e.key !== 'u')) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      breakLine(editor);
+
       return;
     }
 
-    let key;
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      insertTab(editor);
 
-    switch (e.key) {
-      case 'b':
-        key = 'bold';
-
-        break;
-      case 'i':
-        key = 'italic';
-
-        break;
-      case 'u':
-        key = 'underlined';
-
-        break;
+      return;
     }
 
-    e.preventDefault();
-    toggleFormat(editor, key);
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'b' || e.key === 'i' || e.key === 'u')) {
+      let key;
+
+      switch (e.key) {
+        case 'b':
+          key = 'bold';
+
+          break;
+        case 'i':
+          key = 'italic';
+
+          break;
+        case 'u':
+          key = 'underlined';
+
+          break;
+      }
+
+      e.preventDefault();
+      toggleFormat(editor, key);
+
+      return;
+    }
   };
 
   return {
