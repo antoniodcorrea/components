@@ -38,4 +38,4 @@ Only publish:
 
 ### Update for test
 
-[Update 1]
+[1][2]
