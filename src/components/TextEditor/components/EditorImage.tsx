@@ -48,6 +48,8 @@ export const EditorImage: React.FC<Props> = ({ attributes, element, children, im
   };
 
   const onRemoved = (): void => {
+    removeImageBlock(editor, path);
+
     setImageError(undefined);
     setImage(undefined);
   };
@@ -68,8 +70,6 @@ export const EditorImage: React.FC<Props> = ({ attributes, element, children, im
       });
     } catch (error) {
       setImageError(error.message);
-    } finally {
-      removeImageBlock(editor, path);
     }
   };
 
