@@ -66,26 +66,28 @@ export const ImageField: React.FC<Props> = ({
       }
     >
       {hasImage && <img className="ImageField-image" src={image} alt={fileName} title={fileName} data-ratio={ratio} />}
-      <div className={'ImageField-progress ' + (percentCompleted > 0 ? 'ImageField--loading' : '')}>
-        <Loader loaded={percentCompleted} grow />
-      </div>
-      <Dropzone
-        multiple={false}
-        accept={accept}
-        maxSize={maxSize}
-        onDropAccepted={onDropAccepted}
-        disabled={disabled || loading}
-      >
-        {({ getRootProps, getInputProps }) => (
-          <div {...getRootProps()}>
-            <input {...getInputProps()} onChange={onChange} name={name} type="file" />
+      <div className="ImageField-utils">
+        <div className={'ImageField-progress ' + (percentCompleted > 0 ? 'ImageField--loading' : '')}>
+          <Loader loaded={percentCompleted} grow />
+        </div>
+        <Dropzone
+          multiple={false}
+          accept={accept}
+          maxSize={maxSize}
+          onDropAccepted={onDropAccepted}
+          disabled={disabled || loading}
+        >
+          {({ getRootProps, getInputProps }) => (
+            <div {...getRootProps()}>
+              <input {...getInputProps()} onChange={onChange} name={name} type="file" />
 
-            {!loading && <div className="ImageField-overlay" />}
-          </div>
-        )}
-      </Dropzone>
-      {!loading && <Upload className="ImageField-icon ImageField-upload" size="big" />}
-      {removable && <Cross className="ImageField-icon ImageField-remove" size="small" onClick={onFileRemove} />}
+              {!loading && <div className="ImageField-overlay" />}
+            </div>
+          )}
+        </Dropzone>
+        {!loading && <Upload className="ImageField-icon ImageField-upload" size="big" />}
+        {removable && <Cross className="ImageField-icon ImageField-remove" size="small" onClick={onFileRemove} />}
+      </div>
     </div>
   );
 };

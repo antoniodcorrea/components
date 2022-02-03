@@ -9,49 +9,49 @@ const originalImages = [
   {
     id: 1,
     order: 1,
-    title: 'https://picsum.photos/1/100',
+    title: 'https://picsum.photos/id/1/1000',
     images: {
-      original: 'https://picsum.photos/1/100',
+      original: 'https://picsum.photos/id/1/1000',
     },
   },
   {
     id: 2,
     order: 2,
-    title: 'https://picsum.photos/2/100',
+    title: 'https://picsum.photos/id/2/1000',
     images: {
-      original: 'https://picsum.photos/2/100',
+      original: 'https://picsum.photos/id/2/1000',
     },
   },
   {
     id: 3,
     order: 3,
-    title: 'https://picsum.photos/3/100',
+    title: 'https://picsum.photos/id/3/1000',
     images: {
-      original: 'https://picsum.photos/3/100',
+      original: 'https://picsum.photos/id/3/1000',
     },
   },
   {
     id: 4,
     order: 4,
-    title: 'https://picsum.photos/4/100',
+    title: 'https://picsum.photos/id/4/1000',
     images: {
-      original: 'https://picsum.photos/4/100',
+      original: 'https://picsum.photos/id/4/1000',
     },
   },
   {
     id: 5,
     order: 5,
-    title: 'https://picsum.photos/5/100',
+    title: 'https://picsum.photos/id/5/1000',
     images: {
-      original: 'https://picsum.photos/5/100',
+      original: 'https://picsum.photos/id/5/1000',
     },
   },
   {
     id: 6,
     order: 6,
-    title: 'https://picsum.photos/6/100',
+    title: 'https://picsum.photos/id/6/1000',
     images: {
-      original: 'https://picsum.photos/6/100',
+      original: 'https://picsum.photos/id/6/1000',
     },
   },
 ];
