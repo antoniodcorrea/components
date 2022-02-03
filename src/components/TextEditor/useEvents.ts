@@ -10,7 +10,7 @@ export const useEvents: UseEvents = (editor) => {
   const onKeyDown = (e: React.KeyboardEvent) => {
     const { toggleFormat, breakLine, insertTab } = useCustomEditor();
 
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && e.shiftKey) {
       e.preventDefault();
       breakLine(editor);
 
