@@ -47,7 +47,7 @@ export const toHtml = (node: TextEditorNode): string => {
     case 'code':
       return `<pre><code>${children}</code></pre>`;
     case 'image':
-      return `<img src="${escapeHtml(node.image?.original)}" />`;
+      return `<img src="${escapeHtml(node.image?.original)}" data-ratio="${escapeHtml(node.ratio)}" />`;
     case 'paragraph':
       return `<p>${children}</p>`;
     case 'text':

@@ -19,6 +19,7 @@ export type ImageElement = {
   image: {
     original: string | ArrayBuffer;
   };
+  ratio?: number;
   children?: any;
 };
 
