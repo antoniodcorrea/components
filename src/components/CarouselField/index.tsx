@@ -32,9 +32,17 @@ interface Props {
   onChange: (images: Array<CarouselFieldSlide>) => void;
   onFileUpload: (file: File) => Promise<{ image: string }>;
   onFileRemove?: (url: string) => Promise<void>;
+  maxSize?: number;
 }
 
-export const CarouselField: React.FC<Props> = ({ className, images, onChange, onFileUpload, onFileRemove }) => {
+export const CarouselField: React.FC<Props> = ({
+  className,
+  images,
+  onChange,
+  onFileUpload,
+  onFileRemove,
+  maxSize,
+}) => {
   const [currentSlide, setCurrentSlide] = useState<CarouselFieldSlide>(undefined);
   const [listImages, setListImages] = useState<Array<CarouselFieldSlide>>(images);
   const sortedImages = listImages.sort((prev, next) => prev.order - next.order);
@@ -165,6 +173,7 @@ export const CarouselField: React.FC<Props> = ({ className, images, onChange, on
         onRemove={onFileRemove}
         percentCompleted={0}
         accept=".jpg,.jpeg,.png"
+        maxSize={maxSize}
       />
       <Input
         className="CarouselField-input"

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FILE_MAX_SIZE_BYTES } from './constants';
 
 import { FileType, ImageField as ImageFieldUi } from './ImageField';
 
@@ -30,7 +31,7 @@ export const ImageField: React.FC<Props> = ({
   name,
   accept,
   removable = false,
-  maxSize,
+  maxSize = FILE_MAX_SIZE_BYTES,
   disabled,
   error,
   success,
