@@ -13,7 +13,7 @@
   box-sizing: border-box;
   user-select: none;
 
-  &:hover {
+  &:hover:not(@{c}--error) {
     cursor: pointer;
 
     @{c}-background ,
@@ -25,13 +25,17 @@
   }
 
   &-image {
+    height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
   }
 
   &-utils {
+    display: flex;
     position: absolute;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
   }
@@ -65,9 +69,8 @@
 
   &-icon {
     fill: @c-background;
+    transition: opacity @td-fast @ease @td-fastest;
     z-index: @z-index-1;
-
-    .hoverTransition();
   }
 
   &-remove {
@@ -116,8 +119,18 @@
     width: 100%;
   }
 
+  @{c}-error {
+    padding: 30px;
+    font-family: @ff-sans;
+    line-height: @fh-normal;
+    text-align: center;
+    color: @c-error;
+    pointer-events: none;
+  }
+
   &--error {
     outline: 2px dashed @c-error;
+    outline-offset: -2px;
 
     @{c}-icon {
       fill: @c-error;

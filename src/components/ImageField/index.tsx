@@ -1,5 +1,6 @@
-import React from 'react';
-import { FILE_MAX_SIZE_BYTES } from './constants';
+import React, { useEffect, useState } from 'react';
+import { FileRejection } from 'react-dropzone';
+import { ERROR_MESSAGE_DEFAULT, ERROR_MESSAGE_FILE_TOO_BIG, FILE_MAX_SIZE_BYTES } from './constants';
 
 import { FileType, ImageField as ImageFieldUi } from './ImageField';
 
@@ -15,7 +16,7 @@ export interface Props {
   percentCompleted: number;
   disabled?: boolean;
   maxSize?: number;
-  error?: boolean;
+  error?: string;
   success?: boolean;
   ratio?: number;
   uploadFiles: (file: File) => void;
@@ -40,6 +41,8 @@ export const ImageField: React.FC<Props> = ({
   uploadFiles,
   onRemove,
 }) => {
+  const [localError, setLocalError] = useState<string>();
+
   const onChange = (e: React.FormEvent<HTMLInputElement>) => {
     const { files } = e.currentTarget;
     if (!files || !files.length) return;
@@ -56,7 +59,25 @@ export const ImageField: React.FC<Props> = ({
     uploadFilesToServer(file);
   };
 
+  const onDropRejected = (fileRejection: FileRejection[]) => {
+    if (!fileRejection.length) return;
+
+    // Try/catch in case we can not navigate properly
+    try {
+      const error = fileRejection[0].errors[0].message;
+      setLocalError(error);
+    } catch {
+      setLocalError(ERROR_MESSAGE_DEFAULT);
+    }
+  };
+
   const uploadFilesToServer = async (file: File) => {
+    if (file.size > FILE_MAX_SIZE_BYTES) {
+      setLocalError(ERROR_MESSAGE_FILE_TOO_BIG);
+
+      return;
+    }
+
     await uploadFiles(file);
   };
 
@@ -66,6 +87,19 @@ export const ImageField: React.FC<Props> = ({
 
     onRemove(image);
   };
+
+  const onImageFieldLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setLocalError(undefined);
+  };
+
+  useEffect(() => {
+    if (!error) return;
+
+    setLocalError(error);
+  }, []);
 
   return (
     <ImageFieldUi
@@ -80,12 +114,14 @@ export const ImageField: React.FC<Props> = ({
       percentCompleted={percentCompleted}
       rounded={rounded}
       disabled={disabled}
-      error={error}
+      error={localError}
       success={success}
       ratio={ratio}
       onDropAccepted={onDropAccepted}
+      onDropRejected={onDropRejected}
       onChange={onChange}
       onFileRemove={onFileRemove}
+      onImageFieldLeave={onImageFieldLeave}
     />
   );
 };

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
 import { withKnobs } from '@storybook/addon-knobs';
-import { H1 } from '../H1';
-import { Hr } from '../Hr';
 import { CarouselField } from '.';
 
 const originalImages = [
@@ -86,17 +84,13 @@ export const Default: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <H1>Sortable list</H1>
-      <Hr spacer />
-      <div style={{ width: '500px' }}>
-        <CarouselField
-          images={images}
-          onChange={onImagesChange}
-          onFileUpload={onFileUpload}
-          onFileRemove={onFileRemove}
-        />
-      </div>
+    <div style={{ width: '500px' }}>
+      <CarouselField
+        images={images}
+        onChange={onImagesChange}
+        onFileUpload={onFileUpload}
+        onFileRemove={onFileRemove}
+      />
     </div>
   );
 };

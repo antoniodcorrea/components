@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropzone from 'react-dropzone';
+import Dropzone, { FileRejection } from 'react-dropzone';
 
 import { Loader } from '../Loader';
 import { Cross, Upload } from '../Svg';
@@ -18,14 +18,16 @@ export interface Props {
   removable: boolean;
   accept: FileType;
   maxSize: number;
-  error: boolean;
+  error: string;
   success: boolean;
   disabled: boolean;
   rounded: boolean;
   ratio?: number;
   onDropAccepted: (acceptedFiles: File[]) => void;
+  onDropRejected: (fileRejection: FileRejection[]) => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFileRemove: (e: React.MouseEvent) => void;
+  onImageFieldLeave: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
 
 export const ImageField: React.FC<Props> = ({
@@ -43,8 +45,10 @@ export const ImageField: React.FC<Props> = ({
   disabled,
   ratio,
   onDropAccepted,
+  onDropRejected,
   onChange,
   onFileRemove,
+  onImageFieldLeave,
 }) => {
   const fileName = image && image.split('/').pop();
   const hasImage = !!image;
@@ -64,8 +68,11 @@ export const ImageField: React.FC<Props> = ({
         (hasImage ? ' ImageField--hasImage' : '') +
         (!hasImage ? ' ImageField--noImage' : '')
       }
+      onMouseLeave={onImageFieldLeave}
     >
-      {hasImage && <img className="ImageField-image" src={image} alt={fileName} title={fileName} data-ratio={ratio} />}
+      {hasImage && !error && (
+        <img className="ImageField-image" src={image} alt={fileName} title={fileName} data-ratio={ratio} />
+      )}
       <div className="ImageField-utils">
         <div className={'ImageField-progress ' + (percentCompleted > 0 ? 'ImageField--loading' : '')}>
           <Loader loaded={percentCompleted} grow />
@@ -75,6 +82,7 @@ export const ImageField: React.FC<Props> = ({
           accept={accept}
           maxSize={maxSize}
           onDropAccepted={onDropAccepted}
+          onDropRejected={onDropRejected}
           disabled={disabled || loading}
         >
           {({ getRootProps, getInputProps }) => (
@@ -86,7 +94,10 @@ export const ImageField: React.FC<Props> = ({
           )}
         </Dropzone>
         {!loading && <Upload className="ImageField-icon ImageField-upload" size="big" />}
-        {removable && <Cross className="ImageField-icon ImageField-remove" size="small" onClick={onFileRemove} />}
+        {!!error && <span className="ImageField-error">{error}</span>}
+        {removable && !error && (
+          <Cross className="ImageField-icon ImageField-remove" size="small" onClick={onFileRemove} />
+        )}
       </div>
     </div>
   );

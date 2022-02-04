@@ -23,7 +23,7 @@ export const Default: React.FC = () => {
   };
 
   return (
-    <div style={{ width: '200px', height: '200px', outline: '2px solid tomato', margin: '10px' }}>
+    <div style={{ width: '200px', height: '200px', margin: '10px' }}>
       <ImageField
         label="My file"
         name="Some image"
@@ -33,7 +33,8 @@ export const Default: React.FC = () => {
         onRemove={removeFilesFromServer}
         percentCompleted={0}
         removable
-        accept=".jpg,.jpeg"
+        maxSize={10}
+        accept=".jpg,.jpeg,.png"
       />
     </div>
   );
