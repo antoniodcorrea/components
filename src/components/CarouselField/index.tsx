@@ -32,6 +32,7 @@ interface Props {
   onChange: (images: Array<CarouselFieldSlide>) => void;
   onFileUpload: (file: File) => Promise<{ image: string }>;
   onFileRemove?: (url: string) => Promise<void>;
+  percentCompleted?: number;
   maxSize?: number;
 }
 
@@ -41,6 +42,7 @@ export const CarouselField: React.FC<Props> = ({
   onChange,
   onFileUpload,
   onFileRemove,
+  percentCompleted,
   maxSize,
 }) => {
   const [currentSlide, setCurrentSlide] = useState<CarouselFieldSlide>(undefined);
@@ -171,7 +173,7 @@ export const CarouselField: React.FC<Props> = ({
         grow={false}
         uploadFiles={onFileUploadRequest}
         onRemove={onFileRemove}
-        percentCompleted={0}
+        percentCompleted={percentCompleted}
         accept=".jpg,.jpeg,.png"
         maxSize={maxSize}
       />
