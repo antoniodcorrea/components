@@ -63,7 +63,7 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
       editor.children = initialValue;
     } else if (!initialValue) {
       setLocalValueOrDefault(textEditorDefaultValue);
-      editor.children = textEditorDefaultValue;
+      // editor.children = textEditorDefaultValue; // Avoid force updating state if no value
     }
   }, [initialValue]);
 
