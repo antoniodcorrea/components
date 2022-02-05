@@ -9,6 +9,7 @@ import { ImageUpload, TextEditorValue } from './types';
 import { useComponentRenders } from './useComponentRenders';
 import { useEvents } from './useEvents';
 import { useWrappers } from './useWrappers';
+
 export { toHtml } from './toHtml';
 
 import './TextEditor.less';
@@ -63,8 +64,13 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
       editor.children = initialValue;
     } else if (!initialValue) {
       setLocalValueOrDefault(textEditorDefaultValue);
-      // editor.children = textEditorDefaultValue; // Avoid force updating state if no value
     }
+
+    // On leave, force reset of the local values
+    return () => {
+      setLocalValueOrDefault(textEditorDefaultValue);
+      editor.children = textEditorDefaultValue;
+    };
   }, [initialValue]);
 
   // Don't render on server side
