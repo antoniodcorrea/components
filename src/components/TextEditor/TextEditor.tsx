@@ -59,7 +59,7 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   // 1. defer rendering to available state: if (!value) return <div />;
   // 2. editor.children within useEffect
   useEffect(() => {
-    if (!!initialValue && initialValue?.length) {
+    if (!!initialValue) {
       editor.children = initialValue;
     } else if (!initialValue) {
       setLocalValueOrDefault(textEditorDefaultValue);
