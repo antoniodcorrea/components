@@ -18,6 +18,10 @@ export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt
     if (!img) return;
 
     img.decode().then(() => {
+      setLoaded(true);
+
+      if (!srcSet) return;
+
       // Conflict betweeen img.decode and srcSet:
       // https://stackoverflow.com/questions/65146920/domexception-invalid-image-request
       // We need to set srcSet after image is loaded
@@ -27,7 +31,6 @@ export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt
         .join(',');
 
       img.setAttribute('srcSet', srcSetArray);
-      setLoaded(true);
     });
   };
 
