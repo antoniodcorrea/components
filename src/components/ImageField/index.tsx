@@ -72,7 +72,7 @@ export const ImageField: React.FC<Props> = ({
   };
 
   const uploadFilesToServer = async (file: File) => {
-    if (file.size > FILE_MAX_SIZE_BYTES) {
+    if (file.size > maxSize) {
       setLocalError(ERROR_MESSAGE_FILE_TOO_BIG);
 
       return;
