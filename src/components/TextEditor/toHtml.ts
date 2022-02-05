@@ -1,10 +1,16 @@
-import { Text } from 'slate';
 import escapeHtml from 'escape-html';
+import { Text } from 'slate';
+
 import { TextEditorNode } from './types';
 
 export const toHtml = (node: TextEditorNode): string => {
   if (Text.isText(node)) {
-    let string = escapeHtml(node.text);
+    const escapedNodeText = escapeHtml(node.text);
+
+    // We need to replace manually the html entities within the text into html elements to render in the frontend: breaklines (\n) and spaces (\u2005)
+    const spaceHtmlTag = '<span style="width: 10px; display: inline-block"></span>';
+    const breackHtmlTag = '<br />';
+    let string = escapedNodeText.replace(/\n/g, breackHtmlTag).replace(/\u2005/g, spaceHtmlTag);
 
     if (!string?.trim().length) {
       string = `<span style="display: inline-block">${string}</span>`;
