@@ -11,7 +11,7 @@ export type CarouselFieldSlide = {
   id: number;
   order: number;
   title: string;
-  images: {
+  image: {
     original: string;
     [key: string]: string;
   };
@@ -21,7 +21,7 @@ export const emptySlide = {
   id: 0,
   order: 0,
   title: '',
-  images: {
+  image: {
     original: '',
   },
 };
@@ -77,7 +77,7 @@ export const CarouselField: React.FC<Props> = ({
 
   // Add a slide to the list and focus it on top
   const onSlideAdd = () => {
-    const imagesWithoutImage = sortedImages.some((item) => !item.images?.original);
+    const imagesWithoutImage = sortedImages.some((item) => !item.image?.original);
     if (imagesWithoutImage) return;
 
     const allIds = sortedImages.map((item) => item.id);
@@ -98,7 +98,7 @@ export const CarouselField: React.FC<Props> = ({
 
   const onSlideRemove = async (removedSlide: CarouselFieldSlide) => {
     try {
-      await onFileRemove(removedSlide?.images?.original);
+      await onFileRemove(removedSlide?.image?.original);
     } catch (err) {
       console.log(err);
     } finally {
@@ -111,7 +111,7 @@ export const CarouselField: React.FC<Props> = ({
     const data = await onFileUpload(file);
     const currentImageModified: CarouselFieldSlide = {
       ...currentSlide,
-      images: {
+      image: {
         original: data.image,
       },
     };
@@ -168,7 +168,7 @@ export const CarouselField: React.FC<Props> = ({
         className="CarouselField-current"
         label={currentSlide?.title}
         name={currentSlide?.title}
-        image={currentSlide?.images?.original}
+        image={currentSlide?.image?.original}
         disabled={!sortedImages.length}
         grow={false}
         uploadFiles={onFileUploadRequest}
@@ -193,7 +193,7 @@ export const CarouselField: React.FC<Props> = ({
               data-order={item.order}
             >
               <div className="CarouselField-overlay" onMouseDown={() => onImageListClick(item)} />
-              <img src={item?.images?.original} />
+              <img src={item?.image?.original} />
               <Cross
                 id="Remove"
                 className="CarouselField-editCarouselIcon CarouselField-iconRemove"
