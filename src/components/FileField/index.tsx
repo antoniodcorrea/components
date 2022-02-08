@@ -48,11 +48,11 @@ export const FileField: React.FC<Props> = ({
   onRemove,
 }) => {
   const fileUrlWrapper = new URLWrapper(fileUrl);
-  const filename = fileUrlWrapper.getFilename();
+  const filename = fileUrlWrapper?.getFilename();
   const buttonTextToRender = buttonText ? buttonText : 'Upload file';
-  const shouldBeShortened = !maxLength || filename.length <= maxLength;
+  const shouldBeShortened = !maxLength || filename?.length <= maxLength;
   const extension = fileUrl && fileUrl.split('.').pop();
-  const truncatedFilename = shouldBeShortened ? filename.substring(0, maxLength) + '[...].' + extension : filename;
+  const truncatedFilename = shouldBeShortened ? filename?.substring(0, maxLength) + '[...].' + extension : filename;
 
   const uploadFilesToServer = async (file: File) => {
     await uploadFiles(file);
