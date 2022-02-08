@@ -108,7 +108,7 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
             setPercentCompleted,
           });
 
-          insertImageBlockFromUserSelect(editor, data?.image);
+          insertImageBlockFromUserSelect(editor, data?.file);
         }
       } else if (testStringIsValidUrl(text)) {
         insertImageBlockFromUserSelect(editor, text);

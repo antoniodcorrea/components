@@ -9,13 +9,13 @@ import { toHtml } from './toHtml';
 type UploadFileToServer = (options: {
   file: File;
   setPercentCompleted: (number: number) => void;
-}) => Promise<{ image: string }>;
+}) => Promise<{ file: string }>;
 
 type RemoveFileFromServer = (options: { src: string; onRemoved: () => void }) => Promise<void>;
 
 class ImageUpload {
   uploadFileToServer: UploadFileToServer = async () => ({
-    image: '',
+    file: '',
   });
 
   removeFileFromServer: RemoveFileFromServer = async () => null;

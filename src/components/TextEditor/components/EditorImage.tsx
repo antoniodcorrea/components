@@ -38,7 +38,7 @@ export const EditorImage: React.FC<Props> = ({ attributes, element, children, im
       const image: ImageElement = {
         ...element,
         image: {
-          original: data?.image,
+          original: data?.file,
         },
       };
       updateImageBlock(editor, image, path);

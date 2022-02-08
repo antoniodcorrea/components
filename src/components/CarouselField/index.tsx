@@ -30,7 +30,7 @@ interface Props {
   className?: string;
   images: Array<CarouselFieldSlide>;
   onChange: (images: Array<CarouselFieldSlide>) => void;
-  onFileUpload: (file: File) => Promise<{ image: string }>;
+  onFileUpload: (file: File) => Promise<{ file: string }>;
   onFileRemove?: (url: string) => Promise<void>;
   percentCompleted?: number;
   maxSize?: number;
@@ -112,7 +112,7 @@ export const CarouselField: React.FC<Props> = ({
     const currentImageModified: CarouselFieldSlide = {
       ...currentSlide,
       image: {
-        original: data.image,
+        original: data.file,
       },
     };
     const imagesModified = sortedImages.map((item) => {

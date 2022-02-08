@@ -55,6 +55,6 @@ export interface ImageUpload {
   uploadFileToServer: (options: {
     file: File;
     setPercentCompleted: (number: number) => void;
-  }) => Promise<{ image: string }>;
+  }) => Promise<{ file: string }>;
   removeFileFromServer: (options: { src: string; onRemoved: () => void }) => Promise<void>;
 }
