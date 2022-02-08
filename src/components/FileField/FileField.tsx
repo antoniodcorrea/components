@@ -67,11 +67,13 @@ export const FileField: React.FC<Props> = ({
       }
     >
       {label && (
-        <label className="FileField-label">
-          <Span weight="semiBold">{label}</Span>
-        </label>
+        <>
+          <label className="FileField-label">
+            <Span weight="semiBold">{label}</Span>
+          </label>
+          <Hr spacer size="micro" />
+        </>
       )}
-      <Hr spacer size="micro" />
       <Dropzone
         multiple={false}
         accept={accept}
