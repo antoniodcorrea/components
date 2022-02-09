@@ -44,65 +44,68 @@
     cursor: pointer;
   }
 
-  // &-overlay {
-  //   content: ' ';
-  //   position: absolute;
-  //   top: 0;
-  //   bottom: 0;
-  //   left: 0;
-  //   right: 0;
-  //   opacity: 1;
-  //   background: @c-traslucid--hard;
-  //   background: @c-success;
-  //   transition: opacity @td-fast @ease;
-  // }
-
   &-textIcon {
     margin-right: 10px;
   }
 
   &-file {
     display: flex;
-    position: relative;
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    width: 100%;
-    padding: 0 45px 0 20px;
-    border-bottom: 2px solid @c-base;
-    transition: border-bottom @td-fast @ease;
   }
 
   &-name {
-    position: absolute;
-    left: 10px;
-    right: 10px;
+    display: block;
+    height: 50px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
     white-space: nowrap;
+    overflow: hidden;
     overflow-x: hidden;
     transition: color @td-fast @ease;
+
+    .Input-inputWrapper {
+      height: 100%;
+    }
+
+    input {
+      height: 100%;
+      padding-left: 5px;
+      background: @c-transparent !important;
+      box-shadow: none !important;
+      border: none !important;
+      border-radius: none !important;
+    }
 
     @{c}--removable & {
       right: 30px;
     }
-
-    &:before {
-      content: ' ';
-      position: absolute;
-      width: 10px;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      background: linear-gradient(90deg, @c-transparent 0%, @c-background 90%);
-    }
   }
 
-  &-remove {
-    position: absolute;
-    right: 10px;
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 10px 0 0;
+  }
+
+  &-remove,
+  &-open {
+    height: 20px;
+    width: 20px;
 
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &-remove {
+    height: 15px;
+    width: 15px;
   }
 
   &--loading {
@@ -136,11 +139,12 @@
       border-bottom: 2px solid @c-success;
     }
 
-    @{c}-name {
+    @{c}-name input {
       color: @c-success;
     }
 
-    @{c}-remove {
+    @{c}-remove,
+    @{c}-open {
       fill: @c-success;
     }
   }
@@ -159,11 +163,12 @@
       border-bottom: 2px solid @c-error;
     }
 
-    @{c}-name {
+    @{c}-name input {
       color: @c-error;
     }
 
-    @{c}-remove {
+    @{c}-remove,
+    @{c}-open {
       fill: @c-error;
     }
   }
@@ -184,11 +189,11 @@
       border-bottom: 2px solid @c-disabled;
     }
 
-    @{c}-name {
+    @{c}-name input {
       color: @c-disabled;
     }
 
-    @{c}-remove {
+    @{c}-open {
       fill: @c-disabled;
     }
   }

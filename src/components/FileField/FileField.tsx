@@ -5,7 +5,8 @@ import { A } from '../A';
 import { Hr } from '../Hr';
 import { Loader } from '../Loader';
 import { Span } from '../Span';
-import { Cross, Upload } from '../Svg';
+import { Input } from '../Input';
+import { Cross, Upload, Eye } from '../Svg';
 
 import './FileField.less';
 
@@ -16,7 +17,6 @@ export interface Props {
   buttonText?: string;
   className?: string;
   grow?: boolean;
-  rounded?: boolean;
   maxSize: number;
   percentCompleted?: number;
   removable?: boolean;
@@ -26,10 +26,12 @@ export interface Props {
   success?: boolean;
   disabled?: boolean;
   buttonTextToRender: string;
-  truncatedFilename: string;
+  filenameOrUrl: string;
   onDropAccepted: (acceptedFiles: File[]) => void;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onFileRemove: (e: React.MouseEvent) => void;
+  onFileNameChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onInputBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const FileField: React.FC<Props> = ({
@@ -46,10 +48,12 @@ export const FileField: React.FC<Props> = ({
   success,
   disabled,
   buttonTextToRender,
-  truncatedFilename,
+  filenameOrUrl,
   onDropAccepted,
   onChange,
   onFileRemove,
+  onFileNameChange,
+  onInputBlur,
 }) => {
   const loading = percentCompleted > 0 && percentCompleted < 100;
 
@@ -96,14 +100,26 @@ export const FileField: React.FC<Props> = ({
       </Dropzone>
       {fileUrl && (
         <div className="FileField-file">
-          <Span weight="semiBold" className="FileField-name">
-            {fileUrl && (
-              <A href={fileUrl} title={fileUrl} targetBlank styled={false}>
-                {truncatedFilename}
-              </A>
-            )}
-          </Span>
-          {removable && fileUrl && <Cross className="FileField-remove" size="small" onClick={onFileRemove} />}
+          <Input
+            className="FileField-name"
+            name=""
+            type="text"
+            onChange={onFileNameChange}
+            onBlur={onInputBlur}
+            value={filenameOrUrl}
+            error={false}
+            grow
+          />
+          {fileUrl && (
+            <A className="FileField-icon" href={fileUrl} title={fileUrl} styled={false} targetBlank>
+              <Eye className="FileField-open" />
+            </A>
+          )}
+          {removable && fileUrl && (
+            <div className="FileField-icon">
+              <Cross className="FileField-remove" onClick={onFileRemove} />
+            </div>
+          )}
         </div>
       )}
     </div>

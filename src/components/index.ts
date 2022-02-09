@@ -14,6 +14,7 @@ export { H4 } from './H4';
 export { Hr } from './Hr';
 export { ImageField } from './ImageField';
 export { FileField } from './FileField';
+export { FileFieldMultiple } from './FileFieldMultiple';
 export { Input } from './Input';
 export { Flex } from './Flex';
 export { Loader } from './Loader';

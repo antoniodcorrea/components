@@ -44,7 +44,7 @@
     "react-scroll": "^1.8.1",
     "react-select": "^3.2.0",
     "react-textarea-autosize": "^7.1.2",
-    "react-transition-group": "^4.3.0",
+    "react-transition-group": "^4.4.2",
     "slate": "^0.72.3",
     "slate-history": "^0.66.0",
     "slate-react": "^0.72.1",

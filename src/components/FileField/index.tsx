@@ -9,15 +9,14 @@ export interface Props {
   name?: string;
   label?: string;
   fileUrl?: string;
+  fileName?: string;
   buttonText?: string;
   className?: string;
   grow?: boolean;
-  rounded?: boolean;
   percentCompleted?: number;
   removable?: boolean;
   accept?: string;
   size?: string;
-  maxLength?: number;
   maxSize?: number;
   error?: boolean;
   success?: boolean;
@@ -25,11 +24,13 @@ export interface Props {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   uploadFiles: (file: File) => void;
   onRemove?: (url: string) => void;
+  onNameChange?: (name: string) => void;
 }
 
 export const FileField: React.FC<Props> = ({
   className,
   fileUrl,
+  fileName,
   grow,
   label,
   buttonText,
@@ -37,8 +38,6 @@ export const FileField: React.FC<Props> = ({
   accept,
   removable = true,
   percentCompleted,
-  rounded,
-  maxLength,
   maxSize,
   size,
   error,
@@ -46,13 +45,11 @@ export const FileField: React.FC<Props> = ({
   disabled,
   uploadFiles,
   onRemove,
+  onNameChange,
 }) => {
   const fileUrlWrapper = new URLWrapper(fileUrl);
-  const filename = fileUrlWrapper?.getFilename();
+  const filenameOrUrl = fileName === undefined || fileName === null ? fileUrlWrapper?.getFilename() : fileName;
   const buttonTextToRender = buttonText ? buttonText : 'Upload file';
-  const shouldBeShortened = !maxLength || filename?.length <= maxLength;
-  const extension = fileUrl && fileUrl.split('.').pop();
-  const truncatedFilename = shouldBeShortened ? filename?.substring(0, maxLength) + '[...].' + extension : filename;
 
   const uploadFilesToServer = async (file: File) => {
     await uploadFiles(file);
@@ -81,6 +78,19 @@ export const FileField: React.FC<Props> = ({
     onRemove(fileUrl);
   };
 
+  const onFileNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.currentTarget;
+
+    onNameChange(value);
+  };
+
+  const onInputBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.currentTarget;
+    const valueOrUrl = value || fileUrl;
+
+    onNameChange(valueOrUrl);
+  };
+
   return (
     <FileFieldUi
       name={name}
@@ -89,7 +99,6 @@ export const FileField: React.FC<Props> = ({
       buttonText={buttonText}
       className={className}
       grow={grow}
-      rounded={rounded}
       maxSize={maxSize}
       percentCompleted={percentCompleted}
       removable={removable}
@@ -99,10 +108,12 @@ export const FileField: React.FC<Props> = ({
       success={success}
       disabled={disabled}
       buttonTextToRender={buttonTextToRender}
-      truncatedFilename={truncatedFilename}
+      filenameOrUrl={filenameOrUrl}
       onDropAccepted={onDropAccepted}
       onChange={onChange}
       onFileRemove={onFileRemove}
+      onFileNameChange={onFileNameChange}
+      onInputBlur={onInputBlur}
     />
   );
 };
