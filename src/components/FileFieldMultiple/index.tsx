@@ -94,7 +94,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
     if (someEmptyFile) return;
 
     const filesWithNewEmptyFile = [
-      ...files,
+      ...(files || []),
       {
         id: files?.length,
         url: null,
