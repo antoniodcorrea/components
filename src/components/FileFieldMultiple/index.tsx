@@ -76,18 +76,32 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
   };
 
   const onAddFile = (): void => {
+    if (!files) {
+      const filesWithEmptyFile = [
+        {
+          id: 0,
+          url: null,
+          name: null,
+        },
+      ];
+      onChange(filesWithEmptyFile);
+
+      return;
+    }
+
+    // If we already have a new file without url, return
     const someEmptyFile = files?.some((item) => !item.url);
     if (someEmptyFile) return;
 
-    const filesWithNewFile = [
+    const filesWithNewEmptyFile = [
       ...files,
       {
-        id: files.length,
+        id: files?.length,
         url: null,
         name: null,
       },
     ];
-    onChange(filesWithNewFile);
+    onChange(filesWithNewEmptyFile);
   };
 
   const onNameChange = (fileName: string, id: number) => {
@@ -107,7 +121,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
 
   return (
     <FileFieldMultipleUi
-    files={files}
+      files={files}
       onPressFileUpdated={onPressFileUpdated}
       onNameChange={onNameChange}
       onPressFileRemove={onPressFileRemove}
