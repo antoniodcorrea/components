@@ -7,7 +7,7 @@ import { FileUploadItem } from './types';
 import './FileFieldMultiple.less';
 
 interface Props {
-  localFiles?: FileUploadItem[];
+  files?: FileUploadItem[];
   onPressFileUpdated: (file: File, index) => Promise<void>;
   onNameChange: (fileName: string, index) => void;
   onPressFileRemove: (src: string) => Promise<void>;
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export const FileFieldMultiple: React.FC<Props> = ({
-  localFiles,
+  files,
   onPressFileUpdated,
   onPressFileRemove,
   onAddFile,
@@ -25,7 +25,7 @@ export const FileFieldMultiple: React.FC<Props> = ({
 }) => (
   <div className="FileFieldMultiple" id="FileFieldMultiple">
     <div className="ControlProject-files">
-      {localFiles?.map((item, index) => (
+      {files?.map((item, index) => (
         <FileField
           key={item.url}
           className="ControlProject-file"

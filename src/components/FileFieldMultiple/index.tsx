@@ -11,7 +11,7 @@ interface Props {
 
 export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, onChange }) => {
   // If there are no files, or every input already has a file
-  const renderAdd = !files?.length || files.every((item) => !!item.url);
+  const renderAdd = !files?.length || files?.every((item) => !!item.url);
 
   const onFileUpload = async (file: File, id?: number): Promise<{ file: string }> => {
     if (!imageUploadService) {
@@ -22,7 +22,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
       const data = await imageUploadService.uploadFileToServer({
         file,
         setPercentCompleted: (completed: number) => {
-          const filesWithPercentCompleted = files.map((item) => {
+          const filesWithPercentCompleted = files?.map((item) => {
             // If the item is the one we are updating, or if its a new one
             if (item.id === id || !item.url) {
               return {
@@ -46,7 +46,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
   const onPressFileUpdated = async (file: File, id: number) => {
     const uploadedFile = await onFileUpload(file, id);
 
-    const filesUpdated = files.map((item) => {
+    const filesUpdated = files?.map((item) => {
       if (item.id === id) {
         return {
           id,
@@ -68,7 +68,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
       await imageUploadService.removeFileFromServer({
         src,
         onRemoved: () => {
-          const filteredFiles = files.filter((item) => item.url !== src);
+          const filteredFiles = files?.filter((item) => item.url !== src);
           onChange(filteredFiles);
         },
       });
@@ -76,7 +76,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
   };
 
   const onAddFile = (): void => {
-    const someEmptyFile = files.some((item) => !item.url);
+    const someEmptyFile = files?.some((item) => !item.url);
     if (someEmptyFile) return;
 
     const filesWithNewFile = [
@@ -91,7 +91,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
   };
 
   const onNameChange = (fileName: string, id: number) => {
-    const filesWithUpdatedName = files.map((item) => {
+    const filesWithUpdatedName = files?.map((item) => {
       if (item.id === id) {
         return {
           ...item,
@@ -107,7 +107,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
 
   return (
     <FileFieldMultipleUi
-      localFiles={files}
+    files={files}
       onPressFileUpdated={onPressFileUpdated}
       onNameChange={onNameChange}
       onPressFileRemove={onPressFileRemove}
