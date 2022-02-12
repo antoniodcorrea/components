@@ -76,5 +76,6 @@ export { AIcon } from './AIcon';
 export { SortBy } from './SortBy';
 export { Ellipsis } from './Ellipsis';
 export { Space } from './Space';
+export { HideShow } from './HideShow';
 export { CarouselField, CarouselFieldSlide } from './CarouselField';
 export { Sortable, SortableSortProps } from './Sortable';
