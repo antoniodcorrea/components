@@ -14,6 +14,7 @@ interface Props extends HTMLProps<HTMLDivElement> {
   speed?: FadeSpeed;
   scrollToTop?: boolean;
   appear?: boolean;
+  unmountOnExit?: boolean;
 }
 
 export const FadeInOut: React.FC<Props> = ({
@@ -23,6 +24,7 @@ export const FadeInOut: React.FC<Props> = ({
   speed = 'fast',
   scrollToTop,
   appear = false,
+  unmountOnExit = true,
   ...props
 }) => (
   <SwitchTransition>
@@ -30,6 +32,7 @@ export const FadeInOut: React.FC<Props> = ({
       key={valueToUpdate.toString()}
       appear={appear}
       classNames="FadeInOut"
+      unmountOnExit={unmountOnExit}
       className={'FadeInOut FadeInOut--' + speed + (className ? ` ${className}` : ' ')}
       timeout={{
         enter: speedMap[speed],
