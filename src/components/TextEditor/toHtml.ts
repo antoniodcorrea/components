@@ -13,7 +13,7 @@ export const toHtml = (node: TextEditorNode): string => {
     let string = escapedNodeText.replace(/\n/g, breackHtmlTag).replace(/\u2005/g, spaceHtmlTag);
 
     if (!string?.trim().length) {
-      string = `<span style="display: inline-block">${string}</span>`;
+      string = '&nbsp;';
     }
     if (node.bold) {
       string = `<strong>${string}</strong>`;
@@ -27,11 +27,8 @@ export const toHtml = (node: TextEditorNode): string => {
     if (node.uppercase) {
       string = `<span style="text-transform:uppercase">${string}</span>`;
     }
-    if (node.inlineCode) {
-      string = `<code>${string}</code>`;
-    }
-    if (node.centered) {
-      string = `<span style="display: block; width:100%; text-align: center;">${string}</span>`;
+    if (node.mark) {
+      string = `<mark>${string}</mark>`;
     }
 
     return string;
@@ -56,6 +53,8 @@ export const toHtml = (node: TextEditorNode): string => {
       return `<img src="${escapeHtml(node.image?.original)}" data-ratio="${escapeHtml(node.ratio)}" />`;
     case 'paragraph':
       return `<p>${children}</p>`;
+    case 'centered':
+      return `<p class="centered" style="text-align: center">${children}</p>`;
     case 'text':
       return `<p>${children}</p>`;
     case 'link':

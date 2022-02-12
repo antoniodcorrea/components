@@ -2,14 +2,14 @@ import React, { useCallback } from 'react';
 
 import { EditorA } from './components/EditorA';
 import { EditorBold } from './components/EditorBold';
-import { EditorCenter } from './components/EditorCenter';
+import { EditorCentered } from './components/EditorCentered';
 import { EditorCode } from './components/EditorCode';
-import { EditorCodeInlined } from './components/EditorCodeInlined';
 import { EditorH1 } from './components/EditorH1';
 import { EditorH2 } from './components/EditorH2';
 import { EditorH3 } from './components/EditorH3';
 import { EditorImage } from './components/EditorImage';
 import { EditorItalic } from './components/EditorItalic';
+import { EditorMark } from './components/EditorMark';
 import { EditorQuote } from './components/EditorQuote';
 import { EditorText } from './components/EditorText';
 import { EditorUl } from './components/EditorUl';
@@ -43,6 +43,8 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
         return <EditorQuote>{props.children}</EditorQuote>;
       case 'link':
         return <EditorA element={props.element}>{props.children}</EditorA>;
+      case 'centered':
+        return <EditorCentered>{props.children}</EditorCentered>;
       case 'image':
         return (
           <EditorImage
@@ -74,12 +76,8 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
       children = <EditorUppercase>{children}</EditorUppercase>;
     }
 
-    if (leaf.inlineCode) {
-      children = <EditorCodeInlined>{children}</EditorCodeInlined>;
-    }
-
-    if (leaf.centered) {
-      children = <EditorCenter>{children}</EditorCenter>;
+    if (leaf.mark) {
+      children = <EditorMark>{children}</EditorMark>;
     }
 
     return <span {...attributes}>{children}</span>;

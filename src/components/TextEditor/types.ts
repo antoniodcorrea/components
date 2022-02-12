@@ -5,12 +5,10 @@ export interface CustomText {
   type: string;
   text?: string;
   bold?: boolean;
-  code?: boolean;
-  centered?: boolean;
+  mark?: boolean;
   italic?: boolean;
   underlined?: boolean;
   uppercase?: boolean;
-  inlineCode?: boolean;
   children?: any;
   tab?: boolean;
 }
@@ -31,7 +29,7 @@ export type LinkElement = {
 };
 
 export type CustomElement = {
-  type: 'paragraph' | 'code' | 'h1' | 'h2' | 'h3' | 'ul' | 'quote' | 'text';
+  type: 'paragraph' | 'code' | 'h1' | 'h2' | 'h3' | 'ul' | 'quote' | 'text' | 'centered';
   children: CustomText[];
 };
 

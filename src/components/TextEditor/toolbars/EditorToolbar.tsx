@@ -10,7 +10,7 @@ import Bold from '../../../assets/svg/bold.svg';
 import Link from '../../../assets/svg/link.svg';
 import Image from '../../../assets/svg/image.svg';
 import Uppercase from '../../../assets/svg/uppercase.svg';
-import Code from '../../../assets/svg/code.svg';
+import Mark from '../../../assets/svg/mark.svg';
 import CodeBlock from '../../../assets/svg/codeBlock.svg';
 import H1 from '../../../assets/svg/iconH1.svg';
 import H2 from '../../../assets/svg/iconH2.svg';
@@ -98,12 +98,12 @@ export const EditorToolbar: React.FC = () => {
         }
         onClick={onLinkClick}
       />
-      <Code
+      <Mark
         className={
-          'EditorToolbar-icon EditorToolbar-code' +
-          (isFormatActive(editor, 'code') ? ' EditorToolbar-icon--active' : '')
+          'EditorToolbar-icon EditorToolbar-mark' +
+          (isFormatActive(editor, 'mark') ? ' EditorToolbar-icon--active' : '')
         }
-        onClick={(e) => onFormatClick(e, 'inlineCode')}
+        onClick={(e) => onFormatClick(e, 'mark')}
       />
       <CodeBlock
         className={
@@ -133,9 +133,9 @@ export const EditorToolbar: React.FC = () => {
       <Centered
         className={
           'EditorToolbar-icon EditorToolbar-centered' +
-          (isFormatActive(editor, 'centered') ? ' EditorToolbar-icon--active' : '')
+          (isBlockActive(editor, 'centered') ? ' EditorToolbar-icon--active' : '')
         }
-        onClick={(e) => onFormatClick(e, 'centered')}
+        onClick={(e) => onBlockClick(e, 'centered')}
       />
       <Image
         className={

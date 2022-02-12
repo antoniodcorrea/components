@@ -13,7 +13,7 @@ import './EditorToolbarHover.less';
 
 export const EditorToolbarHover: React.FC = () => {
   const editor = useSlate();
-  const { toggleFormat, isFormatActive } = useCustomEditor();
+  const { toggleFormat, isFormatActive, isBlockActive, toggleBlock } = useCustomEditor();
 
   useEffect(() => {
     const toolbarElement = document.getElementById('EditorToolbarHover');
@@ -56,6 +56,12 @@ export const EditorToolbarHover: React.FC = () => {
     toggleFormat(editor, format);
   };
 
+  const onBlockClick = (e: React.MouseEvent, block: string) => {
+    e.preventDefault();
+
+    toggleBlock(editor, block);
+  };
+
   if (!HOVERING_TOOLBAR_ENABLED) return null;
 
   return (
@@ -84,9 +90,9 @@ export const EditorToolbarHover: React.FC = () => {
       <Centered
         className={
           'EditorToolbar-icon EditorToolbar-centered' +
-          (isFormatActive(editor, 'centered') ? ' EditorToolbar-icon--active' : '')
+          (isBlockActive(editor, 'centered') ? ' EditorToolbar-icon--active' : '')
         }
-        onClick={(e) => onFormatClick(e, 'centered')}
+        onClick={(e) => onBlockClick(e, 'centered')}
       />
     </div>
   );
