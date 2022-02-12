@@ -2,11 +2,11 @@ import React, { useCallback } from 'react';
 
 import { EditorA } from './components/EditorA';
 import { EditorBold } from './components/EditorBold';
+import { EditorCaption } from './components/EditorCaption';
 import { EditorCentered } from './components/EditorCentered';
 import { EditorCode } from './components/EditorCode';
 import { EditorH1 } from './components/EditorH1';
 import { EditorH2 } from './components/EditorH2';
-import { EditorH3 } from './components/EditorH3';
 import { EditorImage } from './components/EditorImage';
 import { EditorItalic } from './components/EditorItalic';
 import { EditorMark } from './components/EditorMark';
@@ -33,8 +33,6 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
         return <EditorH1>{props.children}</EditorH1>;
       case 'h2':
         return <EditorH2>{props.children}</EditorH2>;
-      case 'h3':
-        return <EditorH3>{props.children}</EditorH3>;
       case 'ul':
         return <EditorUl>{props.children}</EditorUl>;
       case 'code':
@@ -45,6 +43,12 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
         return <EditorA element={props.element}>{props.children}</EditorA>;
       case 'centered':
         return <EditorCentered>{props.children}</EditorCentered>;
+      case 'caption':
+        return (
+          <EditorCentered>
+            <EditorCaption>{props.children}</EditorCaption>
+          </EditorCentered>
+        );
       case 'image':
         return (
           <EditorImage

@@ -4,6 +4,7 @@ import { useSlate } from 'slate-react';
 import { ENTER_URL_MESSAGE } from '../constants';
 import { useCustomEditor } from '../useCustomEditor';
 import Centered from '../../../assets/svg/centered.svg';
+import Caption from '../../../assets/svg/caption.svg';
 import Italic from '../../../assets/svg/italic.svg';
 import Ul from '../../../assets/svg/ul.svg';
 import Bold from '../../../assets/svg/bold.svg';
@@ -14,7 +15,6 @@ import Mark from '../../../assets/svg/mark.svg';
 import CodeBlock from '../../../assets/svg/codeBlock.svg';
 import H1 from '../../../assets/svg/iconH1.svg';
 import H2 from '../../../assets/svg/iconH2.svg';
-import H3 from '../../../assets/svg/iconH3.svg';
 
 import './EditorToolbar.less';
 
@@ -124,12 +124,6 @@ export const EditorToolbar: React.FC = () => {
         }
         onClick={(e) => onBlockClick(e, 'h2')}
       />
-      <H3
-        className={
-          'EditorToolbar-icon EditorToolbar-h3' + (isBlockActive(editor, 'h3') ? ' EditorToolbar-icon--active' : '')
-        }
-        onClick={(e) => onBlockClick(e, 'h3')}
-      />
       <Centered
         className={
           'EditorToolbar-icon EditorToolbar-centered' +
@@ -143,6 +137,13 @@ export const EditorToolbar: React.FC = () => {
           (isBlockActive(editor, 'image') ? ' EditorToolbar-icon--active' : '')
         }
         onClick={onImageClick}
+      />
+      <Caption
+        className={
+          'EditorToolbar-icon EditorToolbar-caption' +
+          (isBlockActive(editor, 'caption') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onBlockClick(e, 'caption')}
       />
     </div>
   );

@@ -8,6 +8,8 @@ import Italic from '../../../assets/svg/italic.svg';
 import Bold from '../../../assets/svg/bold.svg';
 import Uppercase from '../../../assets/svg/uppercase.svg';
 import Centered from '../../../assets/svg/centered.svg';
+import Caption from '../../../assets/svg/caption.svg';
+import Mark from '../../../assets/svg/mark.svg';
 
 import './EditorToolbarHover.less';
 
@@ -93,6 +95,20 @@ export const EditorToolbarHover: React.FC = () => {
           (isBlockActive(editor, 'centered') ? ' EditorToolbar-icon--active' : '')
         }
         onClick={(e) => onBlockClick(e, 'centered')}
+      />
+      <Mark
+        className={
+          'EditorToolbar-icon EditorToolbar-mark' +
+          (isFormatActive(editor, 'mark') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onFormatClick(e, 'mark')}
+      />
+      <Caption
+        className={
+          'EditorToolbar-icon EditorToolbar-caption' +
+          (isBlockActive(editor, 'caption') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onBlockClick(e, 'caption')}
       />
     </div>
   );

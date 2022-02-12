@@ -41,8 +41,6 @@ export const toHtml = (node: TextEditorNode): string => {
       return `<h1>${children}</h1>`;
     case 'h2':
       return `<h2>${children}</h2>`;
-    case 'h3':
-      return `<h3>${children}</h3>`;
     case 'ul':
       return `<ul>${children}</ul>`;
     case 'quote':
@@ -55,6 +53,8 @@ export const toHtml = (node: TextEditorNode): string => {
       return `<p>${children}</p>`;
     case 'centered':
       return `<p class="centered" style="text-align: center">${children}</p>`;
+    case 'caption':
+      return `<p class="centered" style="text-align: center"><figcaption>${children}</figcaption></p>`;
     case 'text':
       return `<p>${children}</p>`;
     case 'link':
