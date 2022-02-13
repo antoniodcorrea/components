@@ -7,4 +7,8 @@ interface Props {
   element: LinkElement;
 }
 
-export const EditorA: React.FC<Props> = ({ children, element }) => <a href={element.url}>{children}</a>;
+export const EditorA: React.FC<Props> = ({ children, element }) => (
+  <a href={element.url} target="_blank" rel="noreferrer">
+    {children}
+  </a>
+);
