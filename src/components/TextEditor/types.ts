@@ -11,6 +11,7 @@ export interface CustomText {
   uppercase?: boolean;
   children?: any;
   tab?: boolean;
+  path?: string;
 }
 
 export type ImageElement = {
