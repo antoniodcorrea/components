@@ -8,13 +8,15 @@
   top: 0;
   left: 0;
   padding: 10px;
+  padding: 10px 20px;
   opacity: 0;
   background: @c-background;
-  border: 1px solid;
+  border: 2px solid @c-base;
   transition: opacity @td-fast @ease;
   z-index: @z-index-1;
-  border-radius: 5px;
   pointer-events: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 0 0 @c-base;
 
   &--active {
     opacity: 1;
