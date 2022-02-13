@@ -23,32 +23,84 @@ class ImageUpload {
 
 const initialValue = [
   {
+    type: 'h1',
     children: [
       {
-        text: 'List',
+        text: 'Lorem ipsum dolor sit amet',
       },
     ],
   },
   {
-    type: 'bulleted-list',
+    type: 'h2',
     children: [
       {
-        type: 'list-item',
-        children: [
-          {
-            code: true,
-            text: 'One',
-          },
-        ],
+        text: 'Lorem ipsum dolor sit amet',
+      },
+    ],
+  },
+  {
+    children: [
+      {
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris turpis neque, ',
       },
       {
-        type: 'list-item',
-        children: [
-          {
-            code: true,
-            text: 'Two',
-          },
-        ],
+        text: 'dapibus',
+        mark: true,
+      },
+      {
+        text: ' eu dapibus nec, sollicitudin sed purus. Integer varius tortor metus, eu ullamcorper risus semper id. Nunc in fringilla enim. Nam bibendum consequat enim id convallis. Donec elementum lacus id massa tincidunt, sed tristique neque convallis. Aenean iaculis sem orci, quis maximus sem ultricies vitae. Fusce gravida ultricies accumsan.',
+      },
+    ],
+  },
+  {
+    children: [
+      {
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris turpis neque, dapibus eu dapibus nec, sollicitudin sed purus. Integer varius tortor metus, eu ullamcorper risus semper id. Nunc in fringilla enim. Nam bibendum consequat enim id convallis. Donec elementum lacus id massa tincidunt, sed tristique neque convallis. Aenean iaculis sem orci, quis maximus sem ultricies vitae. Fusce gravida ultricies accumsan.',
+      },
+    ],
+  },
+  {
+    type: 'image',
+    image: {
+      original: 'https://picsum.photos/id/134/1200/1200',
+      w200h200: 'https://picsum.photos/id/134/200/200',
+      w600h600: 'https://picsum.photos/id/134/600/600',
+      w1200h1200: 'https://picsum.photos/id/134/1200/1200',
+    },
+    ratio: 1.31,
+    children: [
+      {
+        text: 'Some text',
+      },
+    ],
+  },
+  {
+    type: 'caption',
+    children: [
+      {
+        text: 'Lorem ipsum dolor sit amet',
+      },
+    ],
+  },
+  {
+    children: [
+      {
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris turpis neque, dapibus eu dapibus nec, sollicitudin sed purus. Integer varius tortor metus, eu ullamcorper risus semper id. Nunc in fringilla enim. Nam bibendum consequat enim id convallis. Donec elementum lacus id massa tincidunt, sed tristique neque convallis. Aenean iaculis sem orci, quis maximus sem ultricies vitae. Fusce gravida ultricies accumsan.',
+      },
+    ],
+  },
+  {
+    type: 'image',
+    image: {
+      original: 'https://picsum.photos/id/13/1200/1200',
+      w200h200: 'https://picsum.photos/id/13/200/200',
+      w600h600: 'https://picsum.photos/id/13/600/600',
+      w1200h1200: 'https://picsum.photos/id/13/1200/1200',
+    },
+    ratio: 1.31,
+    children: [
+      {
+        text: '',
       },
     ],
   },

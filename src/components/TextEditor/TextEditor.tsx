@@ -46,14 +46,6 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   const { renderElement, renderLeaf } = useComponentRenders(imageUploadService);
   const { onKeyDown } = useEvents(editor);
 
-  useEffect(() => {
-    const wrapper = document.getElementById('TextEditor');
-    const childImgs = wrapper?.getElementsByTagName('img') || [];
-    const imagesArray = Array.from(childImgs);
-
-    imagesArray?.forEach((element) => element.decode().then(() => element.classList.add('TextEditor-image--loaded')));
-  }, [localValue]);
-
   // Avoid empty array as value using a default one
   const setLocalValueOrDefault = (value: Descendant[]) => {
     onChange(value);
