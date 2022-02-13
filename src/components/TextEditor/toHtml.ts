@@ -42,7 +42,7 @@ export const toHtml = (node: TextEditorNode): string => {
     case 'h2':
       return `<h2>${children}</h2>`;
     case 'ul':
-      return `<ul>${children}</ul>`;
+      return `<ul><li>${children}</li></ul>`;
     case 'quote':
       return `<blockquote>${children}</blockquote>`;
     case 'code':
