@@ -23,20 +23,21 @@
   }
 
   a {
+    font-weight: @fw-bold;
     text-decoration: underline;
     text-decoration-color: @c-transparent;
     text-decoration-thickness: 2px;
-    color: @c-brand;
+    color: @c-blue--pastel;
     transition: text-decoration-color @td-fast @ease;
+    cursor: pointer;
 
     &:hover {
-      text-decoration-color: fade(@c-brand, 90%);
+      text-decoration-color: @c-blue--light;
     }
   }
 
   p {
     margin-bottom: 10px;
-    color: red;
   }
 
   // Set margin only for ul elements that are not children of another ul
@@ -49,10 +50,8 @@
     list-style-type: disc;
     list-style-position: inside;
     margin-top: 5px;
-    margin-left: 20px;
 
     li {
-      list-style: disc;
       list-style-position: inside;
       margin-top: 5px;
       padding-left: 1.4em;
@@ -61,6 +60,7 @@
 
     ul:not(.noClass) {
       list-style-type: circle;
+      margin-left: 15px;
     }
 
     ul:not(.noClass) ul:not(.noClass) {
