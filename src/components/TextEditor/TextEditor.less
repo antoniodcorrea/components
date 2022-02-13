@@ -5,6 +5,7 @@
 @{c} {
   width: 100%;
   padding: 20px;
+  font-family: @ff-sans;
   border: 2px dashed;
   border-radius: 8px;
 
@@ -25,11 +26,11 @@
   a {
     font-weight: @fw-bold;
     text-decoration: underline;
-    text-decoration-color: @c-transparent;
-    text-decoration-thickness: 2px;
     color: @c-blue--pastel;
     transition: text-decoration-color @td-fast @ease;
     cursor: pointer;
+    text-decoration-color: @c-transparent;
+    text-decoration-thickness: 2px;
 
     &:hover {
       text-decoration-color: @c-blue--light;
@@ -38,6 +39,7 @@
 
   p {
     margin-bottom: 10px;
+    line-height: @fh-normal;
   }
 
   // Set margin only for ul elements that are not children of another ul
@@ -71,11 +73,22 @@
   img {
     width: 100%;
     margin: 20px 0;
-    box-shadow: 0 0 10px 5px @c-traslucid--light;
     object-fit: cover;
     object-position: center;
     transition: opacity @td-normal @ease;
+    box-shadow: 0 0 10px 5px @c-traslucid--light;
     border-radius: 4px;
+  }
+
+  figcaption {
+    font-family: @ff-sans;
+    font-size: @fs-small;
+    font-weight: @fw-bold;
+    line-height: @fh-small;
+
+    mark {
+      font-size: @fs-small;
+    }
   }
 
   label {
@@ -102,11 +115,27 @@
     padding: 30px;
     font-family: @ff-code;
     font-size: @fs-small;
-    border-radius: 4px;
     white-space: pre;
+    border-radius: 4px;
 
     code {
       white-space: pre;
     }
+  }
+
+  blockquote {
+    margin: 10px 0;
+    padding-left: 10px;
+    color: @c-accent;
+    border-left: 2px solid @c-accent;
+    font-style: italic;
+  }
+
+  .centered {
+    text-align: center;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
   }
 }

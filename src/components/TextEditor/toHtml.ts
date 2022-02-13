@@ -27,7 +27,7 @@ export const toHtml = (node: TextEditorNode): string => {
       string = `<u>${string}</u>`;
     }
     if (node.uppercase) {
-      string = `<span style="text-transform:uppercase">${string}</span>`;
+      string = `<span class="uppercase">${string}</span>`;
     }
     if (node.mark) {
       string = `<mark>${string}</mark>`;
