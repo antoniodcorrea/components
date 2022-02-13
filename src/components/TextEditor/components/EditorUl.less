@@ -5,4 +5,13 @@
 @{c} {
   list-style-type: disc;
   list-style-position: inside;
+
+  ul:not(.noClass) {
+    list-style-type: circle;
+    margin-left: 10px;
+  }
+
+  ul:not(.noClass) ul:not(.noClass) {
+    list-style-type: square;
+  }
 }

@@ -7,6 +7,8 @@ export const toHtml = (node: TextEditorNode): string => {
   if (Text.isText(node)) {
     const escapedNodeText = escapeHtml(node.text);
 
+    console.log('node.type: ', node.type);
+
     // We need to replace manually the html entities within the text into html elements to render in the frontend: breaklines (\n) and spaces (\u2005)
     const spaceHtmlTag = '<span style="width: 10px; display: inline-block"></span>';
     const breackHtmlTag = '<br />';
@@ -41,8 +43,10 @@ export const toHtml = (node: TextEditorNode): string => {
       return `<h1>${children}</h1>`;
     case 'h2':
       return `<h2>${children}</h2>`;
-    case 'ul':
-      return `<ul><li>${children}</li></ul>`;
+    case 'bulleted-list':
+      return `<ul>${children}</ul>`;
+    case 'list-item':
+      return `<li>${children}</li>`;
     case 'quote':
       return `<blockquote>${children}</blockquote>`;
     case 'code':

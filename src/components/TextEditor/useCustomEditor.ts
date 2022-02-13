@@ -1,12 +1,14 @@
-import { Editor, Element, Range, Text, Transforms } from 'slate';
+import { Editor, Element, Range, Text, Transforms, Node as SlateNode, Path } from 'slate';
 
 import { CustomElement, CustomText, ImageElement, LinkElement } from './types';
+import { unSetList } from './plugins/withLists';
 
 type UseCustomEditor = () => {
   breakLine: (editor: Editor) => void;
   insertTab: (editor: Editor) => void;
   isBlockActive: (editor: Editor, blockType: string) => boolean;
   toggleBlock: (editor: Editor, blockType: string) => void;
+  toggleUl: (editor: Editor, blockType: string) => void;
   wrapLink: (editor: Editor, url: string) => void;
   unWrapLink: (editor: Editor) => void;
   toggleFormat: (editor: Editor, format: string) => void;
@@ -34,8 +36,46 @@ export const useCustomEditor: UseCustomEditor = () => {
     return !!match;
   };
 
+  const toggleUl = (editor: Editor, blockType: string): void => {
+    const isActive = isBlockActive(editor, blockType);
+    const path = editor.selection.anchor.path;
+    const node = SlateNode.get(editor, path);
+
+    console.log('=======');
+    console.log('node:');
+    console.log(JSON.stringify(node, null, 4));
+    console.log('=======');
+
+    if (isActive) {
+      unSetList(editor);
+
+      return;
+    }
+
+    const newNode = {
+      type: 'bulleted-list',
+      children: [
+        {
+          type: 'list-item',
+          children: [
+            {
+              code: true,
+              ...node,
+            },
+          ],
+        },
+      ],
+    };
+    const parentPath = Path.parent(path);
+    Transforms.removeNodes(editor, { at: parentPath });
+    Transforms.insertNodes(editor, newNode, { at: parentPath });
+
+    return;
+  };
+
   const toggleBlock = (editor: Editor, blockType: string): void => {
     const isActive = isBlockActive(editor, blockType);
+
     Transforms.setNodes(
       editor,
       {
@@ -148,6 +188,7 @@ export const useCustomEditor: UseCustomEditor = () => {
     breakLine,
     isBlockActive,
     toggleBlock,
+    toggleUl,
     wrapLink,
     unWrapLink,
     toggleFormat,

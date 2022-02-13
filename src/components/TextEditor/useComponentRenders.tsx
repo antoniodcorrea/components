@@ -9,7 +9,9 @@ import { EditorH1 } from './components/EditorH1';
 import { EditorH2 } from './components/EditorH2';
 import { EditorImage } from './components/EditorImage';
 import { EditorItalic } from './components/EditorItalic';
+import { EditorLi } from './components/EditorLi';
 import { EditorMark } from './components/EditorMark';
+import { EditorOl } from './components/EditorOl';
 import { EditorQuote } from './components/EditorQuote';
 import { EditorText } from './components/EditorText';
 import { EditorUl } from './components/EditorUl';
@@ -25,6 +27,12 @@ type UseComponentRenders = (imageUploadService: ImageUpload) => {
 export const useComponentRenders: UseComponentRenders = (imageUploadService: ImageUpload) => {
   const renderElement = useCallback((props) => {
     switch (props.element.type) {
+      case 'bulleted-list':
+        return <EditorUl {...props.attributes}>{props.children}</EditorUl>;
+      case 'numbered-list':
+        return <EditorOl {...props.attributes}>{props.children}</EditorOl>;
+      case 'list-item':
+        return <EditorLi {...props.attributes}>{props.children}</EditorLi>;
       case 'text':
         return <p>{props.children}</p>;
       case 'paragraph':
@@ -33,8 +41,6 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
         return <EditorH1>{props.children}</EditorH1>;
       case 'h2':
         return <EditorH2>{props.children}</EditorH2>;
-      case 'ul':
-        return <EditorUl>{props.children}</EditorUl>;
       case 'code':
         return <EditorCode>{props.children}</EditorCode>;
       case 'quote':

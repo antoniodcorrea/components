@@ -29,6 +29,7 @@ export const EditorToolbar: React.FC = () => {
     toggleBlock,
     toggleFormat,
     insertImageBlockFromToolbar,
+    toggleUl,
   } = useCustomEditor();
 
   const onFormatClick = (e: React.MouseEvent, format: string) => {
@@ -39,6 +40,11 @@ export const EditorToolbar: React.FC = () => {
   const onBlockClick = (e: React.MouseEvent, block: string) => {
     e.preventDefault();
     toggleBlock(editor, block);
+  };
+
+  const onBlockUlClick = (e: React.MouseEvent, block: string) => {
+    e.preventDefault();
+    toggleUl(editor, block);
   };
 
   const onImageClick = (e: React.MouseEvent) => {
@@ -88,9 +94,10 @@ export const EditorToolbar: React.FC = () => {
       />
       <Ul
         className={
-          'EditorToolbar-icon EditorToolbar-ul' + (isBlockActive(editor, 'ul') ? ' EditorToolbar-icon--active' : '')
+          'EditorToolbar-icon EditorToolbar-ul' +
+          (isBlockActive(editor, 'bulleted-list') ? ' EditorToolbar-icon--active' : '')
         }
-        onClick={(e) => onBlockClick(e, 'ul')}
+        onClick={(e) => onBlockUlClick(e, 'bulleted-list')}
       />
       <Link
         className={

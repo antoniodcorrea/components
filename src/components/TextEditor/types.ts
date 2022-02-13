@@ -29,8 +29,20 @@ export type LinkElement = {
   children: any; // TODO: type children here
 };
 
+export type CustomElementType =
+  | 'paragraph'
+  | 'code'
+  | 'h1'
+  | 'h2'
+  | 'ul'
+  | 'quote'
+  | 'text'
+  | 'centered'
+  | 'caption'
+  | 'bulleted-list'
+  | 'list-item';
 export type CustomElement = {
-  type: 'paragraph' | 'code' | 'h1' | 'h2' | 'ul' | 'quote' | 'text' | 'centered' | 'caption';
+  type: CustomElementType;
   children: CustomText[];
 };
 

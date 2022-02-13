@@ -11,6 +11,8 @@ import { useEvents } from './useEvents';
 import { useWrappers } from './useWrappers';
 export { toHtml } from './toHtml';
 
+import { withMarkdown } from './plugins/withMarkdown';
+import { withLists } from './plugins/withLists';
 import './TextEditor.less';
 
 export const textEditorDefaultValue = [
@@ -36,7 +38,9 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   const { withInlinesWrapper, withHistoryWrapper, withCorrectVoidBehavior, withImages } =
     useWrappers(imageUploadService);
   const [editor] = useState(() =>
-    withImages(withInlinesWrapper(withCorrectVoidBehavior(withHistoryWrapper(withReact(createEditor())))))
+    withMarkdown(
+      withImages(withInlinesWrapper(withCorrectVoidBehavior(withHistoryWrapper(withLists(withReact(createEditor()))))))
+    )
   );
   const [localValue, setLocalValue] = useState<Descendant[]>(textEditorDefaultValue);
   const { renderElement, renderLeaf } = useComponentRenders(imageUploadService);

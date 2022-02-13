@@ -1,33 +1,49 @@
-import { Editor } from 'slate';
+import { Editor, Node } from 'slate';
 
 import { useCustomEditor } from './useCustomEditor';
-
+import { indentItem, undentItem } from './plugins/withLists';
 type UseEvents = (editor: Editor) => {
   onKeyDown: (e: React.KeyboardEvent) => void;
 };
 
 export const useEvents: UseEvents = (editor) => {
-  const onKeyDown = (e: React.KeyboardEvent) => {
+  const onKeyDown = (event: React.KeyboardEvent) => {
     const { toggleFormat, breakLine, insertTab } = useCustomEditor();
 
-    if (e.key === 'Enter' && e.shiftKey) {
-      e.preventDefault();
+    const node = Node.parent(editor, editor.selection.anchor.path);
+
+    if (event.key === 'Tab' && event.shiftKey && node.type === 'list-item') {
+      event.preventDefault();
+      undentItem(editor);
+
+      return;
+    }
+
+    if (event.key === 'Tab' && node.type === 'list-item') {
+      event.preventDefault();
+      indentItem(editor);
+
+      return;
+    }
+
+    if (event.key === 'Enter' && event.shiftKey) {
+      event.preventDefault();
       breakLine(editor);
 
       return;
     }
 
-    if (e.key === 'Tab') {
-      e.preventDefault();
+    if (event.key === 'Tab') {
+      event.preventDefault();
       insertTab(editor);
 
       return;
     }
 
-    if ((e.metaKey || e.ctrlKey) && (e.key === 'b' || e.key === 'i' || e.key === 'u')) {
+    if ((event.metaKey || event.ctrlKey) && (event.key === 'b' || event.key === 'i' || event.key === 'u')) {
       let key;
 
-      switch (e.key) {
+      switch (event.key) {
         case 'b':
           key = 'bold';
 
@@ -42,7 +58,7 @@ export const useEvents: UseEvents = (editor) => {
           break;
       }
 
-      e.preventDefault();
+      event.preventDefault();
       toggleFormat(editor, key);
 
       return;

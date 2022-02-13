@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Editor, Node as SlateNode, Path as SlatePath, Range, Transforms } from 'slate';
+import { Editor, Node as SlateNode, Path as SlatePath, Range, Transforms, Point } from 'slate';
 import { withHistory } from 'slate-history';
 import { testStringIsValidUrl } from '@antoniodcorrea/utils';
 
