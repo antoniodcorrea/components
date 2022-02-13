@@ -2,8 +2,6 @@ import React from 'react';
 
 import { LinkElement } from '../types';
 
-import './EditorA.less';
-
 interface Props {
   children: React.ReactChildren;
   element: LinkElement;

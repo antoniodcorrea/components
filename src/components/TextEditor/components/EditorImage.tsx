@@ -5,8 +5,6 @@ import { Fade, ImageField } from '../..';
 import { ImageElement, ImageUpload } from '../types';
 import { useCustomEditor } from '../useCustomEditor';
 
-import './EditorImage.less';
-
 interface Props {
   attributes: any;
   imageUploadService?: ImageUpload;
