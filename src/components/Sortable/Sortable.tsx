@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { DndContext, KeyboardSensor, MouseSensor, TouchSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { restrictToParentElement } from '@dnd-kit/modifiers';
 import { SortableContext } from '@dnd-kit/sortable';
 import { SortableItem } from './SortableItem';
-import { restrictToParentElement } from '@dnd-kit/modifiers';
 
 import './Sortable.less';
 import './SortableItem.less';

@@ -57,10 +57,9 @@ export const Default: React.FC = () => {
       <H1>Sortable list</H1>
       <Hr spacer />
       <div style={{ width: '500px' }}>
-        <Sortable onSortEnd={onSortChange}>
+        <Sortable onSortEnd={onSortChange} onRemove={() => null}>
           {articles?.map((item) => (
             <li
-              className="Sortable-sortableItem"
               key={item.id}
               data-id={item.id}
               data-order={item.order}
@@ -73,20 +72,7 @@ export const Default: React.FC = () => {
                 borderRadius: '8px',
               }}
             >
-              <span>
-                item {item.id} <span style={{ color: 'lightgray' }}>— order: {item.order}</span>
-              </span>
-              <span
-                className="Sortable-sortableItemHandle Sortable-handle"
-                style={{
-                  padding: '5px 8px',
-                  border: '1px solid',
-                  borderRadius: '8px',
-                  cursor: 'grab',
-                }}
-              >
-                ≡
-              </span>
+              <span id="Handle">ITEM</span>
             </li>
           ))}
         </Sortable>
