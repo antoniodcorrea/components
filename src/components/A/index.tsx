@@ -49,12 +49,28 @@ export const A: React.FC<Props> = ({
   return (
     <>
       {!frontend && (
-        <a className={_className} id={id} onClick={onClick} title={title} href={href} target={target}>
+        <a
+          className={_className}
+          id={id}
+          onClick={onClick}
+          title={title}
+          href={href}
+          target={target}
+          data-id="backend-anchor"
+        >
           {children}
         </a>
       )}
       {frontend && (
-        <Link className={_className} id={id} onClick={onClick} title={title} to={href} target={target}>
+        <Link
+          className={_className}
+          id={id}
+          onClick={onClick}
+          title={title}
+          to={href}
+          target={target}
+          data-id="frontend-anchor"
+        >
           {children}
         </Link>
       )}
