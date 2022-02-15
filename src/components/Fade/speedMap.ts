@@ -1,6 +1,7 @@
 // Sync this with src/css/constants/speeds
 
 export const speedMap = {
+  debug: 3000,
   slow: 700,
   normal: 300,
   fast: 150,

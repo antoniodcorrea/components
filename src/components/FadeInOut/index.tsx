@@ -5,7 +5,7 @@ import { speedMap } from './speedMap';
 
 import './FadeInOut.less';
 
-export type FadeSpeed = 'slow' | 'normal' | 'normalSlow' | 'fast' | 'fastest';
+export type FadeSpeed = 'debug' | 'slow' | 'normal' | 'fast' | 'fastest';
 
 interface Props extends HTMLProps<HTMLDivElement> {
   className?: string;
