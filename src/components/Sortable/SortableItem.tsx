@@ -38,30 +38,36 @@ export const SortableItem: React.FC<Props> = ({ children, id, onRemove }) => {
   useEffect(() => {
     // The handle behavior has to be tied to the handle only. Here we tie the original handler to DND behavior
     // The strategy is to get original handle, create a new one with behaviour, set the new one within the original one, and swap them
+    // Due to particularities with SVG we need to render outerHTML or innerHTML depending on the case, as well as getting correctly the class
 
     // Get current handle
     const handle = node.current.querySelector('#Handle') as HTMLElement;
     if (!handle) return;
+
     // Get tag to create new element
     const tag = handle.tagName;
+    const classCastedAsSvgClass = handle.className as unknown as SVGAnimatedString;
+    const isSvg = !!classCastedAsSvgClass?.baseVal;
+    const className = isSvg ? classCastedAsSvgClass.baseVal : handle.className;
+    const html = isSvg ? handle.outerHTML : handle.innerHTML;
 
     // Create new element using original handle tag and its innerHtml
-    const handleWrapper: React.ReactElement = React.createElement(
-      tag.toLowerCase(),
-      {
-        className: handle.className,
-        id: handle.id,
-        ...listeners,
-        ...attributes,
-      },
-      handle.innerHTML
-    );
+    const handleWrapper: React.ReactElement = React.createElement(tag.toLowerCase(), {
+      id: handle.id,
+      dangerouslySetInnerHTML: { __html: html },
+      className,
+      ...listeners,
+      ...attributes,
+    });
 
     // Render clone within handle and do actions asynchronously
     ReactDOM.render(handleWrapper, handle, () => {
       // Replace outer handle with inner one
       const outerHandle = node.current.querySelector('#Handle');
+      // innerHandle.classList.add(className);
       handle.parentElement.replaceChild(outerHandle.firstChild, outerHandle);
+      // Finally restore classes to element
+      handle.classList.add(...className.split(' '));
     });
   }, []);
 
