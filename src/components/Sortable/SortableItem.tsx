@@ -41,7 +41,7 @@ export const SortableItem: React.FC<Props> = ({ children, id, onRemove }) => {
     // Due to particularities with SVG we need to render outerHTML or innerHTML depending on the case, as well as getting correctly the class
 
     // Get current handle
-    const handle = node.current.querySelector('#Handle') as HTMLElement;
+    const handle = node.current?.querySelector('#Handle') as HTMLElement;
     if (!handle) return;
 
     // Get tag to create new element
