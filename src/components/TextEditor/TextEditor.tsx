@@ -9,10 +9,12 @@ import { ImageUpload, TextEditorValue } from './types';
 import { useComponentRenders } from './useComponentRenders';
 import { useEvents } from './useEvents';
 import { useWrappers } from './useWrappers';
+
 export { toHtml } from './toHtml';
 
-import { withMarkdown } from './plugins/withMarkdown';
 import { withLists } from './plugins/withLists';
+import { withMarkdown } from './plugins/withMarkdown';
+
 import './TextEditor.less';
 
 export const textEditorDefaultValue = [
@@ -65,15 +67,13 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   useEffect(() => {
     if (!!initialValue) {
       editor.children = initialValue;
-    } else if (!initialValue) {
+    } else if (!initialValue && !localValue.length) {
       setLocalValueOrDefault(textEditorDefaultValue);
       editor.children = textEditorDefaultValue; // Avoid force updating state if no value
     }
   }, [initialValue]);
 
-  if (!initialValue && !!localValue) return null;
-
-  // Don't render on server side
+  if (!initialValue && !localValue) return null;
   if (!loaded) return null;
 
   return (
