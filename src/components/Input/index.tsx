@@ -5,7 +5,7 @@ import { Space } from '..';
 
 import './Input.less';
 
-interface Props extends Omit<HTMLProps<HTMLInputElement>, 'autoComplete'> {
+export interface Props extends Omit<HTMLProps<HTMLInputElement>, 'autoComplete'> {
   name: string;
   placeholder?: string;
   value?: string | number;
