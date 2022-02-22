@@ -12,6 +12,7 @@ export interface CustomText {
   children?: any;
   tab?: boolean;
   path?: string;
+  mathInline?: boolean;
 }
 
 export type ImageElement = {
@@ -26,6 +27,12 @@ export type ImageElement = {
 export type LinkElement = {
   type: 'link';
   url: string;
+  children: any; // TODO: type children here
+};
+
+export type MathBlock = {
+  type: 'math';
+  formula: string;
   children: any; // TODO: type children here
 };
 
@@ -50,13 +57,13 @@ export type CustomNode = Node & {
   bold: boolean;
 };
 
-export type TextEditorNode = CustomElement | LinkElement | ImageElement | CustomText;
+export type TextEditorNode = CustomElement | LinkElement | ImageElement | CustomText | MathBlock;
 export type TextEditorValue = Array<TextEditorNode>;
 
 declare module 'slate' {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor & { type: string };
-    Element: CustomElement | LinkElement | CustomElement | ImageElement;
+    Element: CustomElement | LinkElement | CustomElement | ImageElement | MathBlock;
     Text: CustomText;
     Node: CustomNode;
   }

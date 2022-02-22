@@ -41,11 +41,6 @@ export const useCustomEditor: UseCustomEditor = () => {
     const path = editor.selection.anchor.path;
     const node = SlateNode.get(editor, path);
 
-    console.log('=======');
-    console.log('node:');
-    console.log(JSON.stringify(node, null, 4));
-    console.log('=======');
-
     if (isActive) {
       unSetList(editor);
 

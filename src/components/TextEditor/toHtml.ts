@@ -32,6 +32,9 @@ export const toHtml = (node: TextEditorNode): string => {
     if (node.mark) {
       string = `<mark>${string}</mark>`;
     }
+    if (node.mathInline) {
+      string = `<span class="math-inline">${string}</span>`;
+    }
 
     return string;
   }
@@ -49,6 +52,8 @@ export const toHtml = (node: TextEditorNode): string => {
       return `<li>${children}</li>`;
     case 'quote':
       return `<blockquote>${children}</blockquote>`;
+    case 'math':
+      return `<div class="math">${children}</div>`;
     case 'code':
       return `<pre><code>${children}</code></pre>`;
     case 'image':

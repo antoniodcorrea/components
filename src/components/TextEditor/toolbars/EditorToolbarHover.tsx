@@ -10,6 +10,7 @@ import Uppercase from '../../../assets/svg/uppercase.svg';
 import Centered from '../../../assets/svg/centered.svg';
 import Caption from '../../../assets/svg/caption.svg';
 import Mark from '../../../assets/svg/mark.svg';
+import Math from '../../../assets/svg/math.svg';
 
 import './EditorToolbarHover.less';
 
@@ -109,6 +110,13 @@ export const EditorToolbarHover: React.FC = () => {
           (isBlockActive(editor, 'caption') ? ' EditorToolbar-icon--active' : '')
         }
         onClick={(e) => onBlockClick(e, 'caption')}
+      />
+      <Math
+        className={
+          'EditorToolbar-icon EditorToolbar-mathBlock' +
+          (isFormatActive(editor, 'mathInline') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onFormatClick(e, 'mathInline')}
       />
     </div>
   );

@@ -31,6 +31,31 @@ const initialValue = [
     ],
   },
   {
+    children: [
+      {
+        text: 'Lorem ',
+      },
+      {
+        text: String.raw`c = \pm\sqrt{a^2 + b^2}\\ ba^2`,
+        mathInline: true,
+      },
+      {
+        text: ' ipsum dolor sit amet, consectetur adipiscing elit. Mauris turpis neque, ',
+      },
+      {
+        text: ' eu dapibus nec, sollicitudin sed purus. Integer varius tortor metus, eu ullamcorper risus semper id. Nunc in fringilla enim. Nam bibendum consequat enim id convallis. Donec elementum lacus id massa tincidunt, sed tristique neque convallis. Aenean iaculis sem orci, quis maximus sem ultricies vitae. Fusce gravida ultricies accumsan.',
+      },
+    ],
+  },
+  {
+    children: [
+      {
+        text: String.raw`c = \pm\sqrt{a^2 + b^2}\\ ba^2`,
+      },
+    ],
+    type: 'math',
+  },
+  {
     type: 'h2',
     children: [
       {
@@ -120,13 +145,13 @@ export const Default: React.FC = () => {
       children: editorData,
     });
 
-    console.clear();
-    console.log('=======');
-    console.log('dataToHtml');
-    console.log(dataToHtml);
-    console.log('editorData:');
-    console.log(JSON.stringify(editorData, null, 4));
-    console.log('=======');
+    //   console.clear();
+    //   console.log('=======');
+    //   console.log('dataToHtml');
+    //   console.log(dataToHtml);
+    //   console.log('editorData:');
+    //   console.log(JSON.stringify(editorData, null, 4));
+    //   console.log('=======');
   };
 
   useEffect(() => {

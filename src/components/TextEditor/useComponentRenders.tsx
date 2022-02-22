@@ -11,12 +11,14 @@ import { EditorImage } from './components/EditorImage';
 import { EditorItalic } from './components/EditorItalic';
 import { EditorLi } from './components/EditorLi';
 import { EditorMark } from './components/EditorMark';
+import { EditorMath } from './components/EditorMath';
 import { EditorOl } from './components/EditorOl';
 import { EditorQuote } from './components/EditorQuote';
 import { EditorText } from './components/EditorText';
 import { EditorUl } from './components/EditorUl';
 import { EditorUnderlined } from './components/EditorUnderlined';
 import { EditorUppercase } from './components/EditorUppercase';
+import { EditorMathInline } from './components/EditorMathInline';
 import { ImageUpload } from './types';
 
 type UseComponentRenders = (imageUploadService: ImageUpload) => {
@@ -43,6 +45,8 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
         return <EditorH2>{props.children}</EditorH2>;
       case 'code':
         return <EditorCode>{props.children}</EditorCode>;
+      case 'math':
+        return <EditorMath>{props.children}</EditorMath>;
       case 'quote':
         return <EditorQuote>{props.children}</EditorQuote>;
       case 'link':
@@ -88,6 +92,9 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
 
     if (leaf.mark) {
       children = <EditorMark>{children}</EditorMark>;
+    }
+    if (leaf.mathInline) {
+      children = <EditorMathInline>{children}</EditorMathInline>;
     }
 
     return <span {...attributes}>{children}</span>;

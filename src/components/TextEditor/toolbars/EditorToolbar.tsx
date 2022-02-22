@@ -15,6 +15,7 @@ import Mark from '../../../assets/svg/mark.svg';
 import CodeBlock from '../../../assets/svg/codeBlock.svg';
 import H1 from '../../../assets/svg/iconH1.svg';
 import H2 from '../../../assets/svg/iconH2.svg';
+import Math from '../../../assets/svg/math.svg';
 
 import './EditorToolbar.less';
 
@@ -118,6 +119,13 @@ export const EditorToolbar: React.FC = () => {
           (isBlockActive(editor, 'code') ? ' EditorToolbar-icon--active' : '')
         }
         onClick={(e) => onBlockClick(e, 'code')}
+      />
+      <Math
+        className={
+          'EditorToolbar-icon EditorToolbar-mathBlock' +
+          (isBlockActive(editor, 'math') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onBlockClick(e, 'math')}
       />
       <H1
         className={
