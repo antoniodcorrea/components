@@ -14,6 +14,7 @@ export { toHtml } from './toHtml';
 
 import { withLists } from './plugins/withLists';
 import { withMarkdown } from './plugins/withMarkdown';
+import { ErrorBoundary } from '../ErrorBoundary';
 
 import './TextEditor.less';
 
@@ -81,13 +82,15 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
       <Slate editor={editor} value={localValue} onChange={setLocalValueOrDefault}>
         <EditorToolbarHover />
         <EditorToolbar />
-        <Editable
-          placeholder={PLACEHOLDER_TEXT}
-          className={'TextEditor-textBox' + (className ? ` ${className}` : '')}
-          renderElement={renderElement}
-          renderLeaf={renderLeaf}
-          onKeyDown={onKeyDown}
-        />
+        <ErrorBoundary message="Something went wrong">
+          <Editable
+            placeholder={PLACEHOLDER_TEXT}
+            className={'TextEditor-textBox' + (className ? ` ${className}` : '')}
+            renderElement={renderElement}
+            renderLeaf={renderLeaf}
+            onKeyDown={onKeyDown}
+          />
+        </ErrorBoundary>
       </Slate>
     </div>
   );
