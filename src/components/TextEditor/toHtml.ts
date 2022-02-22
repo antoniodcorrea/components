@@ -6,13 +6,15 @@ import { TextEditorNode } from './types';
 export const toHtml = (node: TextEditorNode): string => {
   if (Text.isText(node)) {
     const escapedNodeText = escapeHtml(node.text);
+    let string = escapedNodeText;
 
-    console.log('node.type: ', node.type);
-
-    // We need to replace manually the html entities within the text into html elements to render in the frontend: breaklines (\n) and spaces (\u2005)
-    const spaceHtmlTag = '<span style="width: 10px; display: inline-block"></span>';
-    const breackHtmlTag = '<br />';
-    let string = escapedNodeText.replace(/\n/g, breackHtmlTag).replace(/\u2005/g, spaceHtmlTag);
+    if (node.type !== 'math' && !node.mathInline) {
+      // We need to replace manually the html entities within the text into html elements to render in the frontend: breaklines (\n) and spaces (\u2005)
+      // Dont do it for math formulas
+      const spaceHtmlTag = '<span style="width: 10px; display: inline-block"></span>';
+      const breackHtmlTag = '<br />';
+      string = escapedNodeText.replace(/\n/g, breackHtmlTag).replace(/\u2005/g, spaceHtmlTag);
+    }
 
     if (!string?.trim().length) {
       string = '&nbsp;';

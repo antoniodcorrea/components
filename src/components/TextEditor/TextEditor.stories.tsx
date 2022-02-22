@@ -145,13 +145,13 @@ export const Default: React.FC = () => {
       children: editorData,
     });
 
-    //   console.clear();
-    //   console.log('=======');
-    //   console.log('dataToHtml');
-    //   console.log(dataToHtml);
-    //   console.log('editorData:');
-    //   console.log(JSON.stringify(editorData, null, 4));
-    //   console.log('=======');
+    console.clear();
+    console.log('=======');
+    console.log('dataToHtml');
+    console.log(dataToHtml);
+    console.log('editorData:');
+    console.log(JSON.stringify(editorData, null, 4));
+    console.log('=======');
   };
 
   useEffect(() => {
