@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import katex from 'katex';
-import 'katex/dist/katex.min.css';
 
 export const EditorMath: React.FC = ({ children }) => {
   const [formula, setFormula] = useState('');
