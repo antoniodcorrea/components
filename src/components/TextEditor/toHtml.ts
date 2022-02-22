@@ -55,7 +55,10 @@ export const toHtml = (node: TextEditorNode): string => {
     case 'quote':
       return `<blockquote>${children}</blockquote>`;
     case 'math':
-      return `<div><div class="math">${children}</div></div>`;
+      // We need to clean the <br> added in the inline nodes
+      const childrenWithoutBr = children.replace(/<br.*>/g, '');
+
+      return `<div><div class="math">${childrenWithoutBr}</div></div>`;
     case 'code':
       return `<pre><code>${children}</code></pre>`;
     case 'image':
