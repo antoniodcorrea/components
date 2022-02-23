@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import katex from 'katex';
 
 export const EditorMathInline: React.FC = ({ children }) => {
-  const ref = useRef<HTMLDivElement>();
-  const [html, setHtml] = useState<string>('');
+  const [formula, setFormula] = useState<string>('');
 
   useEffect(() => {
     try {
@@ -13,9 +12,9 @@ export const EditorMathInline: React.FC = ({ children }) => {
         const text = child?.props?.text?.text;
 
         const htmlString = katex.renderToString(text, {
-          output: 'mathml',
+          output: 'html',
         });
-        setHtml(htmlString);
+        setFormula(htmlString);
       });
     } catch (error) {
       console.log(error);
@@ -24,9 +23,9 @@ export const EditorMathInline: React.FC = ({ children }) => {
 
   return (
     <span
-      ref={ref}
-      dangerouslySetInnerHTML={{ __html: html }}
-      style={{ userSelect: !!html.length ? 'none' : 'unset' }}
+      className="math-inline"
+      dangerouslySetInnerHTML={{ __html: formula }}
+      style={{ userSelect: !!formula.length ? 'none' : 'unset' }}
     ></span>
   );
 };

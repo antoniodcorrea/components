@@ -36,7 +36,7 @@ const initialValue = [
         text: 'Lorem ',
       },
       {
-        text: String.raw`c = \pm\sqrt{a^2 + b^2}\\ ba^2`,
+        text: String.raw`c = \pm\sqrt{a^2 + b^2}`,
         mathInline: true,
       },
       {
