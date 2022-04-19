@@ -18,7 +18,7 @@ interface Props {
   options: SortByOption[];
   currentSort: string;
   loading?: boolean;
-  onItemClick?: (href: string) => void;
+  onItemClick?: (url: string) => void;
 }
 
 export const SortBy: React.FC<Props> = ({ className, href, options, currentSort, loading, onItemClick = null }) => {
@@ -27,10 +27,10 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort,
   const currentSortIsAsc = !currentSort?.startsWith('-');
   const currentSortIsDesc = currentSort?.startsWith('-');
 
-  const onItemClickLocal = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const onItemClickLocal = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
     if (!!onItemClick) {
       e.preventDefault();
-      onItemClick(href);
+      onItemClick(url);
     }
   };
 
@@ -47,7 +47,13 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort,
 
         return (
           <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
-            <A href={displayedUrl} styled={false} frontend className="SortBy-listItemLink" onClick={onItemClickLocal}>
+            <A
+              href={displayedUrl}
+              styled={false}
+              frontend
+              className="SortBy-listItemLink"
+              onClick={(e) => onItemClickLocal(e, displayedUrl)}
+            >
               <span className="SortBy-label">{item.label}</span>
               {item?.icon && <Icon className="SortBy-icon" />}
               <Sort className={'SortBy-sortIcon' + (currentSortIsAsc && isActiveItem ? ' SortBy-sortIcon--asc' : '')} />
