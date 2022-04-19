@@ -1,5 +1,4 @@
 import React from 'react';
-import { animateScroll as scroll, Events } from 'react-scroll';
 
 import Sort from '../../assets/svg/sort.svg';
 import { URLWrapper } from '@antoniodcorrea/utils';
@@ -19,21 +18,13 @@ interface Props {
   options: SortByOption[];
   currentSort: string;
   loading?: boolean;
-  onItemClick?: (href: string) => void;
 }
 
-export const SortBy: React.FC<Props> = ({ className, href, options, currentSort, loading, onItemClick = null }) => {
+export const SortBy: React.FC<Props> = ({ className, href, options, currentSort, loading }) => {
   const url = new URLWrapper(href);
   url.deleteSearchParam('page[offset]'); // Reset offset on click
   const currentSortIsAsc = !currentSort?.startsWith('-');
   const currentSortIsDesc = currentSort?.startsWith('-');
-
-  const onItemClickLocal = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (!!onItemClick) {
-      e.preventDefault();
-      onItemClick(href);
-    }
-  };
 
   return (
     <ul className={'SortBy' + (className ? ' ' + className : '') + (loading ? ' SortBy--loading' : '')}>
@@ -48,7 +39,7 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort,
 
         return (
           <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
-            <A href={displayedUrl} styled={false} frontend className="SortBy-listItemLink" onClick={onItemClickLocal}>
+            <A href={displayedUrl} styled={false} frontend className="SortBy-listItemLink">
               <span className="SortBy-label">{item.label}</span>
               {item?.icon && <Icon className="SortBy-icon" />}
               <Sort className={'SortBy-sortIcon' + (currentSortIsAsc && isActiveItem ? ' SortBy-sortIcon--asc' : '')} />
