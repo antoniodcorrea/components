@@ -8,7 +8,7 @@ stages:
 install:
   stage: install
   script:
-    - npm install
+    - npm install --verbose -f
   artifacts:
     paths:
       - node_modules/
@@ -27,6 +27,4 @@ build:
     - apt-get update -qq && apt-get install -y -qq rsync
   script:
     - npm run build
-  artifacts:
-    paths:
-      - dist
+
