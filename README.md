@@ -26,6 +26,12 @@ Only publish:
 
     npm run test
 
+## Run Storybook
+
+- Set proper node version with `nvm use`
+- Remove packages with `rm -rf ./.node_modules package-lock.json``
+- Reintall packages with `npm i --legacy-peer-deps`
+
 ## Notes
 
 - Use of aliased urls is forbidden, as the client code can't interpret aliased routes
