@@ -78,14 +78,14 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   if (!loaded) return null;
 
   return (
-    <div className="TextEditor" id="TextEditor">
+    <div className={'TextEditor' + (className ? ` ${className}` : '')} id="TextEditor">
       <Slate editor={editor} value={localValue} onChange={setLocalValueOrDefault}>
         <EditorToolbarHover />
         <EditorToolbar />
         <ErrorBoundary message="Something went wrong">
           <Editable
             placeholder={PLACEHOLDER_TEXT}
-            className={'TextEditor-textBox' + (className ? ` ${className}` : '')}
+            className={'TextEditor-textBox'}
             renderElement={renderElement}
             renderLeaf={renderLeaf}
             onKeyDown={onKeyDown}
