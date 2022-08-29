@@ -56,6 +56,15 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
     setLocalValue(value);
   };
 
+  useEffect(() => {
+    if (!!initialValue) {
+      editor.children = initialValue;
+    } else if (!initialValue && !localValue.length) {
+      setLocalValueOrDefault(textEditorDefaultValue);
+      editor.children = textEditorDefaultValue; // Avoid force updating state if no value
+    }
+  }, [initialValue]);
+
   // «The PR #4540 removed the ability to update the slate state using the value prop. As a result, we cannot inject externally changed state anymore.»
   // https://github.com/ianstormtaylor/slate/issues/4612#issuecomment-1041971128
   useEffect(() => {
@@ -64,7 +73,6 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   }, [editor, initialValue, forceUpdate]);
 
   if (!initialValue && !localValue) return null;
-  if (!editor?.children?.length) return null;
 
   return (
     <div className={'TextEditor' + (className ? ` ${className}` : '')} id="TextEditor">
