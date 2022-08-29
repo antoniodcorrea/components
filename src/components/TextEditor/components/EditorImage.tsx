@@ -3,7 +3,7 @@ import { ReactEditor, useFocused, useSelected, useSlate } from 'slate-react';
 
 import { Fade, ImageField } from '../..';
 import { ImageElement, ImageUpload } from '../types';
-import { useCustomEditor } from '../useCustomEditor';
+import { useCustomEditor } from '../hooks/useCustomEditor';
 
 interface Props {
   attributes: any;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useSlate } from 'slate-react';
 
 import { ENTER_URL_MESSAGE } from '../constants';
-import { useCustomEditor } from '../useCustomEditor';
+import { useCustomEditor } from '../hooks/useCustomEditor';
 import Centered from '../../../assets/svg/centered.svg';
 import Caption from '../../../assets/svg/caption.svg';
 import Italic from '../../../assets/svg/italic.svg';

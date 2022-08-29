@@ -1,25 +1,25 @@
 import React, { useCallback } from 'react';
 
-import { EditorA } from './components/EditorA';
-import { EditorBold } from './components/EditorBold';
-import { EditorCaption } from './components/EditorCaption';
-import { EditorCentered } from './components/EditorCentered';
-import { EditorCode } from './components/EditorCode';
-import { EditorH1 } from './components/EditorH1';
-import { EditorH2 } from './components/EditorH2';
-import { EditorImage } from './components/EditorImage';
-import { EditorItalic } from './components/EditorItalic';
-import { EditorLi } from './components/EditorLi';
-import { EditorMark } from './components/EditorMark';
-import { EditorMath } from './components/EditorMath';
-import { EditorOl } from './components/EditorOl';
-import { EditorQuote } from './components/EditorQuote';
-import { EditorText } from './components/EditorText';
-import { EditorUl } from './components/EditorUl';
-import { EditorUnderlined } from './components/EditorUnderlined';
-import { EditorUppercase } from './components/EditorUppercase';
-import { EditorMathInline } from './components/EditorMathInline';
-import { ImageUpload } from './types';
+import { EditorA } from '../components/EditorA';
+import { EditorBold } from '../components/EditorBold';
+import { EditorCaption } from '../components/EditorCaption';
+import { EditorCentered } from '../components/EditorCentered';
+import { EditorCode } from '../components/EditorCode';
+import { EditorH1 } from '../components/EditorH1';
+import { EditorH2 } from '../components/EditorH2';
+import { EditorImage } from '../components/EditorImage';
+import { EditorItalic } from '../components/EditorItalic';
+import { EditorLi } from '../components/EditorLi';
+import { EditorMark } from '../components/EditorMark';
+import { EditorMath } from '../components/EditorMath';
+import { EditorOl } from '../components/EditorOl';
+import { EditorQuote } from '../components/EditorQuote';
+import { EditorText } from '../components/EditorText';
+import { EditorUl } from '../components/EditorUl';
+import { EditorUnderlined } from '../components/EditorUnderlined';
+import { EditorUppercase } from '../components/EditorUppercase';
+import { EditorMathInline } from '../components/EditorMathInline';
+import { ImageUpload } from '../types';
 
 type UseComponentRenders = (imageUploadService: ImageUpload) => {
   renderElement: (props) => React.ReactElement;

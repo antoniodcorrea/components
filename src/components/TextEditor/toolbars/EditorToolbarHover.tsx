@@ -3,7 +3,7 @@ import { Editor, Range } from 'slate';
 import { ReactEditor, useSlate } from 'slate-react';
 
 import { HOVERING_TOOLBAR_ENABLED } from '../constants';
-import { useCustomEditor } from '../useCustomEditor';
+import { useCustomEditor } from '../hooks/useCustomEditor';
 import Italic from '../../../assets/svg/italic.svg';
 import Bold from '../../../assets/svg/bold.svg';
 import Uppercase from '../../../assets/svg/uppercase.svg';

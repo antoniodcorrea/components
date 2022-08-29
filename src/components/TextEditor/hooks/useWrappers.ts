@@ -3,7 +3,7 @@ import { Editor, Node as SlateNode, Path as SlatePath, Range, Transforms } from 
 import { withHistory } from 'slate-history';
 import { testStringIsValidUrl } from '@antoniodcorrea/utils';
 
-import { ImageUpload } from './types';
+import { ImageUpload } from '../types';
 import { useCustomEditor } from './useCustomEditor';
 
 type UseWrappers = (imageUploadService: ImageUpload) => {

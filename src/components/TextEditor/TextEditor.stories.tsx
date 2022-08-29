@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { TextEditorValue } from './types';
 
 import { withKnobs } from '@storybook/addon-knobs';
 import { H1 } from '../H1';
@@ -18,7 +19,9 @@ class ImageUpload {
     file: '',
   });
 
-  removeFileFromServer: RemoveFileFromServer = async () => null;
+  removeFileFromServer: RemoveFileFromServer = async () => {
+    return;
+  };
 }
 
 const initialValue = [
@@ -31,6 +34,7 @@ const initialValue = [
     ],
   },
   {
+    type: 'text',
     children: [
       {
         text: 'Lorem ',
@@ -48,12 +52,12 @@ const initialValue = [
     ],
   },
   {
+    type: 'math',
     children: [
       {
         text: String.raw`c = \pm\sqrt{a^2 + b^2}\\ ba^2`,
       },
     ],
-    type: 'math',
   },
   {
     type: 'h2',
@@ -64,6 +68,7 @@ const initialValue = [
     ],
   },
   {
+    type: 'text',
     children: [
       {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris turpis neque, ',
@@ -78,6 +83,7 @@ const initialValue = [
     ],
   },
   {
+    type: 'text',
     children: [
       {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris turpis neque, dapibus eu dapibus nec, sollicitudin sed purus. Integer varius tortor metus, eu ullamcorper risus semper id. Nunc in fringilla enim. Nam bibendum consequat enim id convallis. Donec elementum lacus id massa tincidunt, sed tristique neque convallis. Aenean iaculis sem orci, quis maximus sem ultricies vitae. Fusce gravida ultricies accumsan.',
@@ -108,6 +114,7 @@ const initialValue = [
     ],
   },
   {
+    type: 'text',
     children: [
       {
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris turpis neque, dapibus eu dapibus nec, sollicitudin sed purus. Integer varius tortor metus, eu ullamcorper risus semper id. Nunc in fringilla enim. Nam bibendum consequat enim id convallis. Donec elementum lacus id massa tincidunt, sed tristique neque convallis. Aenean iaculis sem orci, quis maximus sem ultricies vitae. Fusce gravida ultricies accumsan.',
@@ -138,7 +145,8 @@ export default {
 
 export const Default: React.FC = () => {
   const imageUpload = new ImageUpload();
-  const [value, setValue] = useState([]);
+  const [value, setValue] = useState<TextEditorValue>([]);
+
   const onChangeTextEditorValue = (editorData) => {
     const dataToHtml = toHtml({
       type: '',
@@ -157,6 +165,8 @@ export const Default: React.FC = () => {
   useEffect(() => {
     setValue(initialValue);
   }, []);
+
+  console.log('initialValue: ', initialValue);
 
   return (
     <div>

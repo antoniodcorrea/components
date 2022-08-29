@@ -3,12 +3,13 @@ import { createEditor, Descendant } from 'slate';
 import { Editable, Slate, withReact } from 'slate-react';
 
 import { PLACEHOLDER_TEXT } from './constants';
+import { useForceUpdate } from './hooks/useForceUpdate';
 import { EditorToolbar } from './toolbars/EditorToolbar';
 import { EditorToolbarHover } from './toolbars/EditorToolbarHover';
 import { ImageUpload, TextEditorValue } from './types';
-import { useComponentRenders } from './useComponentRenders';
-import { useEvents } from './useEvents';
-import { useWrappers } from './useWrappers';
+import { useComponentRenders } from './hooks/useComponentRenders';
+import { useEvents } from './hooks/useEvents';
+import { useWrappers } from './hooks/useWrappers';
 
 export { toHtml } from './toHtml';
 
@@ -37,7 +38,7 @@ interface Props {
 }
 
 export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUploadService, onChange }) => {
-  const [loaded, setLoaded] = useState(false);
+  const forceUpdate = useForceUpdate();
   const { withInlinesWrapper, withHistoryWrapper, withCorrectVoidBehavior, withImages } =
     useWrappers(imageUploadService);
   const [editor] = useState(() =>
@@ -55,27 +56,14 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
     setLocalValue(value);
   };
 
+  // «The PR #4540 removed the ability to update the slate state using the value prop. As a result, we cannot inject externally changed state anymore.»
+  // https://github.com/ianstormtaylor/slate/issues/4612#issuecomment-1041971128
   useEffect(() => {
-    setLoaded(true);
-  }, []);
-
-  // Bug on recent versions when initializing state from API
-  // https://github.com/ianstormtaylor/slate/issues/4612
-  // https://github.com/ianstormtaylor/slate/pull/4540#issuecomment-951380551
-  // Viable fix:
-  // 1. defer rendering to available state: if (!value) return <div />;
-  // 2. editor.children within useEffect
-  useEffect(() => {
-    if (!!initialValue) {
-      editor.children = initialValue;
-    } else if (!initialValue && !localValue.length) {
-      setLocalValueOrDefault(textEditorDefaultValue);
-      editor.children = textEditorDefaultValue; // Avoid force updating state if no value
-    }
-  }, [initialValue]);
+    editor.children = initialValue;
+    forceUpdate();
+  }, [editor, initialValue, forceUpdate]);
 
   if (!initialValue && !localValue) return null;
-  if (!loaded) return null;
 
   return (
     <div className={'TextEditor' + (className ? ` ${className}` : '')} id="TextEditor">

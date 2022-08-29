@@ -1,7 +1,7 @@
 import { Editor, Element, Range, Text, Transforms, Node as SlateNode, Path } from 'slate';
 
-import { CustomElement, CustomText, ImageElement, LinkElement } from './types';
-import { unSetList } from './plugins/withLists';
+import { CustomElement, CustomText, ImageElement, LinkElement } from '../types';
+import { unSetList } from '../plugins/withLists';
 
 type UseCustomEditor = () => {
   breakLine: (editor: Editor) => void;

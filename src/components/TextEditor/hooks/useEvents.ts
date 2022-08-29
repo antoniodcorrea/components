@@ -1,7 +1,7 @@
 import { Editor, Node } from 'slate';
 
 import { useCustomEditor } from './useCustomEditor';
-import { indentItem, undentItem } from './plugins/withLists';
+import { indentItem, undentItem } from '../plugins/withLists';
 type UseEvents = (editor: Editor) => {
   onKeyDown: (e: React.KeyboardEvent) => void;
 };
