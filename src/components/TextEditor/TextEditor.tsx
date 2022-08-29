@@ -64,6 +64,7 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   }, [editor, initialValue, forceUpdate]);
 
   if (!initialValue && !localValue) return null;
+  if (!editor?.children?.length) return null;
 
   return (
     <div className={'TextEditor' + (className ? ` ${className}` : '')} id="TextEditor">
