@@ -39,6 +39,7 @@ interface Props {
 
 export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUploadService, onChange }) => {
   const forceUpdate = useForceUpdate();
+  const [loaded, setLoaded] = useState(false);
   const { withInlinesWrapper, withHistoryWrapper, withCorrectVoidBehavior, withImages } =
     useWrappers(imageUploadService);
   const [editor] = useState(() =>
@@ -57,6 +58,10 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   };
 
   useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  useEffect(() => {
     if (!!initialValue) {
       editor.children = initialValue;
     } else if (!initialValue && !localValue.length) {
@@ -73,6 +78,7 @@ export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUplo
   }, [editor, initialValue, forceUpdate]);
 
   if (!initialValue && !localValue) return null;
+  if (!loaded) return null;
 
   return (
     <div className={'TextEditor' + (className ? ` ${className}` : '')} id="TextEditor">
