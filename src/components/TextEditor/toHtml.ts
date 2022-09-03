@@ -1,9 +1,9 @@
 import escapeHtml from 'escape-html';
 import { Text } from 'slate';
+import { TextEditorElement } from './types/TextEditorElement';
+import { TextElement } from './types/TextElement';
 
-import { TextEditorNode } from './types';
-
-export const toHtml = (node: TextEditorNode): string => {
+export const toHtml = (node: TextEditorElement | TextElement): string => {
   if (Text.isText(node)) {
     const escapedNodeText = escapeHtml(node.text);
     let string = escapedNodeText;

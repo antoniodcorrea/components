@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { ReactEditor, useFocused, useSelected, useSlate } from 'slate-react';
 
 import { Fade, ImageField } from '../..';
-import { ImageElement, ImageUpload } from '../types';
 import { useCustomEditor } from '../hooks/useCustomEditor';
+import { ImageUpload } from '../types';
+import { ImageElement } from '../types/ImageElement';
 
 interface Props {
   attributes: any;

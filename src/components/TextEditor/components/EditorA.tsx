@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { LinkElement } from '../types';
+import { AnchorElement } from '../types/AnchorElement';
 
 interface Props {
   children: React.ReactChildren;
-  element: LinkElement;
+  element: AnchorElement;
 }
 
 export const EditorA: React.FC<Props> = ({ children, element }) => (

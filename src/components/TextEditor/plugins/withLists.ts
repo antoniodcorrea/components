@@ -1,7 +1,8 @@
 // Taken from https://www.npmjs.com/package/@york-ie-labs/slate-lists
 // Edited and refactored
-import { Editor, Transforms, Range, Point } from 'slate';
-import { CustomElementType } from '../types';
+import { Editor, Point, Range, Transforms } from 'slate';
+
+import { ParagraphElementType } from '../types/ParagraphElement';
 
 const defaultMax = 5;
 
@@ -18,8 +19,11 @@ const withLists = (editor: Editor): Editor => {
     if (selection && Range.isCollapsed(selection)) {
       // find the 'closest' `list-item` element
       const [match] = Editor.nodes(editor, {
-        match: (n) =>
-          n.type === 'list-item' && n.children && n.children[0] && (!n.children[0].text || n.children[0].text === ''),
+        match: (node) =>
+          node.type === 'list-item' &&
+          node.children &&
+          node.children[0] &&
+          (!node.children[0].text || node.children[0].text === ''),
       });
 
       // check that there was a match
@@ -119,7 +123,7 @@ const indentItem = (editor: Editor, maxDepth = defaultMax): void => {
         const depth = listMatch[1].length;
         if (depth <= maxDepth) {
           Transforms.wrapNodes(editor, {
-            type: listMatch[0].type as CustomElementType,
+            type: listMatch[0].type as ParagraphElementType,
             children: [],
           });
         }

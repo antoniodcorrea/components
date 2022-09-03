@@ -1,7 +1,10 @@
-import { Editor, Element, Range, Text, Transforms, Node as SlateNode, Path } from 'slate';
+import { Editor, Element, Node as SlateNode, Path, Range, Text, Transforms } from 'slate';
 
-import { CustomElement, CustomText, ImageElement, LinkElement } from '../types';
 import { unSetList } from '../plugins/withLists';
+import { AnchorElement } from '../types/AnchorElement';
+import { ImageElement } from '../types/ImageElement';
+import { ParagraphElement } from '../types/ParagraphElement';
+import { TextElement } from '../types/TextElement';
 
 type UseCustomEditor = () => {
   breakLine: (editor: Editor) => void;
@@ -30,7 +33,7 @@ export const useCustomEditor: UseCustomEditor = () => {
 
   const isBlockActive = (editor: Editor, blockType: string): boolean => {
     const [match] = Editor.nodes(editor, {
-      match: (node: CustomElement) => node.type === blockType,
+      match: (node: ParagraphElement) => node.type === blockType,
     });
 
     return !!match;
@@ -106,6 +109,7 @@ export const useCustomEditor: UseCustomEditor = () => {
       },
       children: [
         {
+          type: 'text',
           text: '',
         },
       ],
@@ -135,10 +139,10 @@ export const useCustomEditor: UseCustomEditor = () => {
   const wrapLink = (editor: Editor, url: string): void => {
     const { selection } = editor;
     const isCollapsed = selection && Range.isCollapsed(selection);
-    const link: LinkElement = {
+    const link: AnchorElement = {
       type: 'link',
       url,
-      children: isCollapsed ? [{ text: url }] : [],
+      children: isCollapsed ? [{ text: url, type: 'text' }] : [],
     };
 
     if (isCollapsed) {
@@ -171,7 +175,7 @@ export const useCustomEditor: UseCustomEditor = () => {
 
   const isFormatActive = (editor: Editor, format: string): boolean => {
     const [match] = Editor.nodes(editor, {
-      match: (node: CustomText) => node[format] === true,
+      match: (node: TextElement) => node[format] === true,
       mode: 'all',
     });
 

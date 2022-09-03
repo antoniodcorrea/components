@@ -57,7 +57,12 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
       if (Editor.isVoid(editor, selectedNode)) {
         Editor.insertNode(editor, {
           type: 'paragraph',
-          children: [{ text: '' }],
+          children: [
+            {
+              type: 'text',
+              text: '',
+            },
+          ],
         });
 
         return;

@@ -1,71 +1,18 @@
-import { BaseEditor, Node } from 'slate';
+import { AnchorElement } from './types/AnchorElement';
+import { ImageElement } from './types/ImageElement';
+import { MathBlockElement } from './types/MathBockElement';
+import { ParagraphElement } from './types/ParagraphElement';
+import { TextElement } from './types/TextElement';
+import { BaseEditor } from 'slate';
 import { ReactEditor } from 'slate-react';
 
-export interface CustomText {
-  type: string;
-  text?: string;
-  bold?: boolean;
-  mark?: boolean;
-  italic?: boolean;
-  underlined?: boolean;
-  uppercase?: boolean;
-  children?: any;
-  tab?: boolean;
-  path?: string;
-  mathInline?: boolean;
-}
-
-export type ImageElement = {
-  type: 'image';
-  image: {
-    original: string | ArrayBuffer;
-  };
-  ratio?: number;
-  children?: any;
-};
-
-export type LinkElement = {
-  type: 'link';
-  url: string;
-  children: any; // TODO: type children here
-};
-
-export type MathBlock = {
-  type: 'math';
-  formula: string;
-  children: any; // TODO: type children here
-};
-
-export type CustomElementType =
-  | 'paragraph'
-  | 'code'
-  | 'h1'
-  | 'h2'
-  | 'ul'
-  | 'quote'
-  | 'text'
-  | 'centered'
-  | 'caption'
-  | 'bulleted-list'
-  | 'list-item';
-export type CustomElement = {
-  type: CustomElementType;
-  children: CustomText[];
-};
-
-export type CustomNode = Node & {
-  bold: boolean;
-};
-
-export type TextEditorNode = CustomElement | LinkElement | ImageElement | CustomText | MathBlock;
-export type TextEditorValue = Array<TextEditorNode>;
+export type TextEditorValue = Array<ParagraphElement | AnchorElement | ImageElement | TextElement | MathBlockElement>;
 
 declare module 'slate' {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor & { type: string };
-    Element: CustomElement | LinkElement | CustomElement | ImageElement | MathBlock;
-    Text: CustomText;
-    Node: CustomNode;
+    Element: ParagraphElement | AnchorElement | ImageElement | MathBlockElement;
+    Text: TextElement;
   }
 }
 
