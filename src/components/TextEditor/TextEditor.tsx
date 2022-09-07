@@ -30,14 +30,14 @@ export const textEditorDefaultValue = [
   },
 ];
 
-interface Props {
+export interface TextEditorProps {
   className?: string;
   initialValue: TextEditorValue;
   imageUploadService: ImageUpload;
   onChange: (value: TextEditorValue) => void;
 }
 
-export const TextEditor: React.FC<Props> = ({ className, initialValue, imageUploadService, onChange }) => {
+export const TextEditor: React.FC<TextEditorProps> = ({ className, initialValue, imageUploadService, onChange }) => {
   const forceUpdate = useForceUpdate();
   const [loaded, setLoaded] = useState(false);
   const { withInlinesWrapper, withHistoryWrapper, withCorrectVoidBehavior, withImages } =
