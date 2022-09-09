@@ -16,6 +16,7 @@ export interface TextAreaProps extends HTMLProps<HTMLTextAreaElement> {
   disabled?: boolean;
   grow?: boolean;
   maxLength?: number;
+  placeholder?: string;
   onChange?: (e) => void;
 }
 
@@ -31,6 +32,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
   disabled,
   grow,
   onChange,
+  placeholder,
   maxLength,
 }) => {
   const id = uniqueId();
@@ -58,7 +60,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
         className="TextArea-textArea"
         value={value}
         onChange={onChange}
-        placeholder=" "
+        placeholder={placeholder}
         spellCheck={spellCheck}
         maxLength={maxLength}
       />
