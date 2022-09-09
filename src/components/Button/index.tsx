@@ -37,6 +37,7 @@ export const Button: React.FC<ButtonProps> = ({
       'Button' +
       (className ? ' ' + className : '') +
       (size ? ' Button--' + size : '') +
+      (type === 'reset' ? ' Button--reset' : '') +
       (grow ? ' Button--grow' : '') +
       (!disabled && !error && !loading && success ? ' Button--success' : '') +
       (!disabled && !error && loading ? ' Button--loading' : '') +

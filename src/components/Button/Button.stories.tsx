@@ -10,6 +10,7 @@ export default {
 };
 
 const knobs = {
+  grow: (): boolean => boolean('Grow', false),
   arrow: (): boolean => boolean('Arrow', false),
   loading: (): boolean => boolean('Loading', false),
   error: (): boolean => boolean('Error', false),
@@ -17,6 +18,7 @@ const knobs = {
   disabled: (): boolean => boolean('Disabled', false),
   size: (): undefined | 'small' | 'normal' | 'tiny' =>
     select('Size', [undefined, 'small', 'normal', 'tiny'], undefined),
+  type: (): 'submit' | 'reset' | 'button' => select('Type', ['submit', 'reset', 'button'], 'reset'),
 };
 
 export const Default: React.FC = () => (
@@ -76,14 +78,18 @@ export const Default: React.FC = () => (
       <Button text="Click me!" arrow size="tiny" />
     </div>
 
-    <Button
-      text="Click me!"
-      arrow={knobs.arrow()}
-      size={knobs.size()}
-      disabled={knobs.disabled()}
-      error={knobs.error()}
-      success={knobs.success()}
-      loading={knobs.loading()}
-    />
+    <div>
+      <Button
+        text="Click me!"
+        grow={knobs.grow()}
+        type={knobs.type()}
+        arrow={knobs.arrow()}
+        size={knobs.size()}
+        disabled={knobs.disabled()}
+        error={knobs.error()}
+        success={knobs.success()}
+        loading={knobs.loading()}
+      />
+    </div>
   </div>
 );
