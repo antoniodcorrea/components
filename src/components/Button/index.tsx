@@ -16,7 +16,7 @@ interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
   arrow?: boolean;
   grow?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  size?: 'normal' | 'small';
+  size?: 'normal' | 'small' | 'tiny';
 }
 
 export const Button: React.FC<Props> = ({

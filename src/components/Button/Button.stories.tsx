@@ -15,51 +15,69 @@ const knobs = {
   error: (): boolean => boolean('Error', false),
   success: (): boolean => boolean('Success', false),
   disabled: (): boolean => boolean('Disabled', false),
-  size: (): 'small' | 'normal' => select('Size', [undefined, 'small', 'normal'], undefined),
+  size: (): undefined | 'small' | 'normal' | 'tiny' =>
+    select('Size', [undefined, 'small', 'normal', 'tiny'], undefined),
 };
 
 export const Default: React.FC = () => (
-  <div style={{ display: 'grid', gap: '10px 10px', gridTemplateColumns: '1fr 1fr', alignItems: 'flex-end' }}>
+  <div style={{ display: 'grid', gap: '10px 20px', gridTemplateColumns: '1fr 1fr 1fr', alignItems: 'flex-end' }}>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow />
+      <Button text="Click me!" />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow size="small" />
+      <Button text="Click me!" size="small" />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow success />
+      <Button text="Click me!" size="tiny" />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow success size="small" />
+      <Button text="Click me!" success />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow disabled />
+      <Button text="Click me!" success size="small" />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow disabled size="small" />
+      <Button text="Click me!" success size="tiny" />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow error />
+      <Button text="Click me!" disabled />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow error size="small" />
+      <Button text="Click me!" disabled size="small" />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow loading />
+      <Button text="Click me!" disabled size="tiny" />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow loading size="small" />
+      <Button text="Click me!" error />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow arrow />
+      <Button text="Click me!" error size="small" />
     </div>
     <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
-      <Button text="Click me!" grow arrow size="small" />
+      <Button text="Click me!" error size="tiny" />
+    </div>
+    <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
+      <Button text="Click me!" loading />
+    </div>
+    <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
+      <Button text="Click me!" loading size="small" />
+    </div>
+    <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
+      <Button text="Click me!" loading size="tiny" />
+    </div>
+    <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
+      <Button text="Click me!" arrow />
+    </div>
+    <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
+      <Button text="Click me!" arrow size="small" />
+    </div>
+    <div style={{ width: '200px', outline: '2px solid rgba(255, 0, 255, .0)' }}>
+      <Button text="Click me!" arrow size="tiny" />
     </div>
 
     <Button
       text="Click me!"
-      grow
       arrow={knobs.arrow()}
       size={knobs.size()}
       disabled={knobs.disabled()}

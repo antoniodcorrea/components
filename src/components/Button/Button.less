@@ -104,6 +104,29 @@
     transition: transform @td-fast @ease;
   }
 
+  &--tiny {
+    height: 20px;
+    min-width: 50px;
+    padding: 0 10px;
+
+    @{c}-text {
+      font-size: @fs-micro;
+      font-weight: @fw-medium;
+      text-transform: unset;
+    }
+
+    @{c}-loader {
+      height: 14px;
+      width: 14px;
+    }
+
+    @{c}-arrow,
+    @{c}-successIcon {
+      height: 10px;
+      width: 10px;
+    }
+  }
+
   &--small {
     height: 30px;
     min-width: 120px;
