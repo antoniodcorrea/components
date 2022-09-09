@@ -4,7 +4,7 @@ import uniqueId from 'lodash/uniqueId';
 
 import './TextArea.less';
 
-interface Props extends HTMLProps<HTMLTextAreaElement> {
+export interface TextAreaProps extends HTMLProps<HTMLTextAreaElement> {
   name: string;
   value?: string;
   label?: string;
@@ -19,7 +19,7 @@ interface Props extends HTMLProps<HTMLTextAreaElement> {
   onChange?: (e) => void;
 }
 
-export const TextArea: React.FC<Props> = ({
+export const TextArea: React.FC<TextAreaProps> = ({
   name,
   value = '',
   label,

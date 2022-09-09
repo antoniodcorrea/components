@@ -65,7 +65,7 @@ export { Img } from './Img';
 export { Switch } from './Switch';
 export { Tag } from './Tag';
 export { TagsSkeleton } from './Tag/TagsSkeleton';
-export { TextArea } from './TextArea';
+export { TextArea, TextAreaProps } from './TextArea';
 export { TextButton } from './TextButton';
 export { TextEditor, TextEditorValue, textEditorDefaultValue, toHtml, TextEditorProps } from './TextEditor';
 export { PopOver } from './PopOver';
