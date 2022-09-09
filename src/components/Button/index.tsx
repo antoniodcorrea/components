@@ -6,7 +6,7 @@ import { Spinner } from '../Spinner';
 
 import './Button.less';
 
-interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
+export interface ButtonProps extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
   className?: string;
   text: string;
   success?: boolean;
@@ -19,7 +19,7 @@ interface Props extends Omit<HTMLProps<HTMLButtonElement>, 'size'> {
   size?: 'normal' | 'small' | 'tiny';
 }
 
-export const Button: React.FC<Props> = ({
+export const Button: React.FC<ButtonProps> = ({
   className,
   text,
   success,

@@ -1,6 +1,6 @@
 export { A } from './A';
 export { Frame } from './Frame';
-export { Button } from './Button';
+export { Button, ButtonProps } from './Button';
 export { Checkbox } from './Checkbox';
 export { DatePicker } from './DatePicker';
 export { Fade } from './Fade';
