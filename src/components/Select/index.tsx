@@ -7,7 +7,7 @@ export type SelectValue = {
   label: string;
 };
 
-interface Props {
+export interface SelectProps {
   isCreatable?: boolean;
   className?: string;
   placeholder?: string;
@@ -24,7 +24,7 @@ interface Props {
   onInputChange?: (params: unknown) => void;
 }
 
-export const Select: React.FC<Props> = ({
+export const Select: React.FC<SelectProps> = ({
   isCreatable = false,
   className,
   placeholder,

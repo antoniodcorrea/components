@@ -24,7 +24,7 @@ export { P } from './P';
 export { Palette } from './Palette';
 export { Radio } from './Radio';
 export { Range } from './Range';
-export { Select, SelectValue } from './Select';
+export { Select, SelectValue, SelectProps } from './Select';
 export { Span } from './Span';
 export { Spinner } from './Spinner';
 export { Vote } from './Vote';
