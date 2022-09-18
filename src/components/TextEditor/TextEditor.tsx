@@ -44,7 +44,7 @@ export const TextEditor: React.FC<TextEditorProps> = ({ className, initialValue,
     useWrappers(imageUploadService);
   const [editor] = useState(() =>
     withMarkdown(
-      withImages(withInlinesWrapper(withCorrectVoidBehavior(withHistoryWrapper(withLists(withReact(createEditor()))))))
+      withInlinesWrapper(withImages(withCorrectVoidBehavior(withHistoryWrapper(withLists(withReact(createEditor()))))))
     )
   );
   const [localValue, setLocalValue] = useState<Descendant[]>(textEditorDefaultValue);
