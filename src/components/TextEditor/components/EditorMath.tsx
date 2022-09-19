@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import katex from 'katex';
 
+import './EditorMath.less';
+
 export const EditorMath: React.FC = ({ children }) => {
   const [formula, setFormula] = useState('');
   const [error, setError] = useState<boolean>(false);
@@ -25,11 +27,11 @@ export const EditorMath: React.FC = ({ children }) => {
   }, [children]);
 
   return (
-    <div className={'math' + (error ? ' math--withError' : '')}>
+    <div className={'EditorMath' + (error ? ' math--withError' : '')}>
       {!error && (
-        <div className="math-formula" contentEditable="true" dangerouslySetInnerHTML={{ __html: formula }}></div>
+        <div className="EditorMath-formula" contentEditable="true" dangerouslySetInnerHTML={{ __html: formula }}></div>
       )}
-      <div className={'math-source'}>{children}</div>
+      <div className={'EditorMath-source'}>{children}</div>
     </div>
   );
 };

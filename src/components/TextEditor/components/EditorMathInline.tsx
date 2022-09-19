@@ -23,7 +23,7 @@ export const EditorMathInline: React.FC = ({ children }) => {
 
   return (
     <span
-      className="math-inline"
+      className="EditorMathInline math-inline"
       dangerouslySetInnerHTML={{ __html: formula }}
       style={{ userSelect: !!formula.length ? 'none' : 'unset' }}
     ></span>

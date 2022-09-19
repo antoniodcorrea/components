@@ -1,0 +1,31 @@
+@import '../../../css/imports.less';
+
+@c: .EditorMath;
+
+@{c} {
+  position: relative;
+  margin: 20px 0;
+
+  &-formula {
+    margin-bottom: 5px;
+  }
+
+  &-source {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+  }
+
+  &--withError {
+    margin: unset;
+
+    .math-source {
+      position: relative;
+      color: @c-error;
+      opacity: 1;
+    }
+  }
+}

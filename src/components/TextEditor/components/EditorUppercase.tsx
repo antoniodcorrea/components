@@ -1,3 +1,7 @@
 import React from 'react';
 
-export const EditorUppercase: React.FC = ({ children }) => <span className="uppercase">{children}</span>;
+import './EditorUppercase.less';
+
+export const EditorUppercase: React.FC = ({ children }) => (
+  <span className="EditorUppercase uppercase">{children}</span>
+);

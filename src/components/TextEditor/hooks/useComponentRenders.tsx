@@ -36,9 +36,9 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
       case 'list-item':
         return <EditorLi {...props.attributes}>{props.children}</EditorLi>;
       case 'text':
-        return <p>{props.children}</p>;
+        return <EditorText>{props.children}</EditorText>;
       case 'paragraph':
-        return <p>{props.children}</p>;
+        return <EditorText>{props.children}</EditorText>;
       case 'h1':
         return <EditorH1>{props.children}</EditorH1>;
       case 'h2':
@@ -54,11 +54,7 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
       case 'centered':
         return <EditorCentered>{props.children}</EditorCentered>;
       case 'caption':
-        return (
-          <EditorCentered>
-            <EditorCaption>{props.children}</EditorCaption>
-          </EditorCentered>
-        );
+        return <EditorCaption>{props.children}</EditorCaption>;
       case 'image':
         return (
           <EditorImage

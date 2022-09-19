@@ -6,6 +6,8 @@ import { useCustomEditor } from '../hooks/useCustomEditor';
 import { ImageUpload } from '../types';
 import { ImageElement } from '../types/ImageElement';
 
+import './EditorImage.less';
+
 interface Props {
   attributes: any;
   imageUploadService?: ImageUpload;

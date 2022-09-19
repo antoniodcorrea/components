@@ -1,3 +1,5 @@
 import React from 'react';
 
-export const EditorText: React.FC = ({ children }) => <p>{children}</p>;
+import './EditorText.less';
+
+export const EditorText: React.FC = ({ children }) => <p className="EditorText">{children}</p>;
