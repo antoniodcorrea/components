@@ -3,15 +3,10 @@
 @c: .EditorUl;
 
 @{c} {
-  // Set margin only for ul elements that are not children of another ul
-  :not(&@{c}) > ul {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
   list-style-type: disc;
   list-style-position: inside;
-  margin-top: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   ul:not(.noClass) {
     list-style-type: circle;
@@ -20,5 +15,11 @@
 
   ul:not(.noClass) ul:not(.noClass) {
     list-style-type: square;
+  }
+
+  // Remove margin for nested uls
+  & > ul:not(.noClass) {
+    margin-top: 5px;
+    margin-bottom: 0;
   }
 }
