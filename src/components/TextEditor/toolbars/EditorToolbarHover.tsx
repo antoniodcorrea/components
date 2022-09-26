@@ -37,13 +37,20 @@ export const EditorToolbarHover: React.FC = () => {
       return;
     }
 
+    const textEditorElement = document.getElementById('TextEditor');
+    const textEditorRect = textEditorElement.getBoundingClientRect();
+
     const domSelection = window.getSelection();
     const domRange = domSelection.getRangeAt(0);
-    const rect = domRange.getBoundingClientRect();
+    const domSelectionRect = domRange.getBoundingClientRect();
 
     toolbarElement.classList.add('EditorToolbarHover--active');
-    toolbarElement.style.top = `${rect.top + window.pageYOffset - toolbarElement.offsetHeight}px`;
-    toolbarElement.style.left = `${rect.left + window.pageXOffset - toolbarElement.offsetWidth / 2 + rect.width / 2}px`;
+
+    const toolbarHoverTop = domSelectionRect.top - textEditorRect.top - toolbarElement.offsetHeight;
+    const toolbarHoverLeft =
+      domSelectionRect.left - textEditorRect.left - toolbarElement.offsetWidth / 2 + domSelectionRect.width / 2;
+    toolbarElement.style.top = `${toolbarHoverTop}px`;
+    toolbarElement.style.left = `${toolbarHoverLeft}px`;
   });
 
   const onMouseLeave = (e: React.MouseEvent) => {
