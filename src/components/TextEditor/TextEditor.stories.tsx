@@ -137,6 +137,7 @@ const initialValue = [
     ],
   },
 ];
+
 export default {
   component: TextEditor,
   title: 'TextEditor ',
