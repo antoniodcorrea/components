@@ -74,6 +74,7 @@ export {
   toHtml,
   TextEditorProps,
   textEditorHasValue,
+  textEditorValidateAmountImages,
 } from './TextEditor';
 export { PopOver } from './PopOver';
 export { Tooltip } from './Tooltip';
