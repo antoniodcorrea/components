@@ -115,7 +115,11 @@ export const useCustomEditor: UseCustomEditor = () => {
       ],
     };
 
-    Transforms.insertNodes(editor, image);
+    Transforms.insertNodes(editor, image, {
+      match: (node) =>
+        // Add nodes only when selected block is either paragraph or has no node type, and has no content
+        Editor.isBlock(editor, node) && (node.type === 'paragraph' || !node.type) && node.children[0].text === '',
+    });
   };
 
   const updateImageBlock = (editor: Editor, element: ImageElement, path: number[]): void => {
