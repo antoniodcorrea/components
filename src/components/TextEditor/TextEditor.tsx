@@ -121,6 +121,7 @@ export const TextEditor: React.FC<TextEditorProps> = ({
             onMouseLeave={onDraggingFileEnd}
             onDragEnd={onDraggingFileEnd}
             onDragLeave={onDraggingFileEnd}
+            onMouseOut={onDraggingFileEnd}
           />
         </ErrorBoundary>
       </Slate>
