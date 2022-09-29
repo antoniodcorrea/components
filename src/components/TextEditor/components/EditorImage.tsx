@@ -61,6 +61,8 @@ export const EditorImage: React.FC<Props> = ({ attributes, element, children, im
 
   const removeFilesFromServer = async (src: string) => {
     if (!imageUploadService) {
+      onRemoved();
+
       return;
     }
 

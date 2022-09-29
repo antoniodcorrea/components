@@ -30,6 +30,7 @@ export const EditorToolbar: React.FC = () => {
     toggleBlock,
     toggleFormat,
     insertImageBlockFromToolbar,
+    canInsertImageBlockFromToolbar,
     toggleUl,
   } = useCustomEditor();
 
@@ -149,7 +150,8 @@ export const EditorToolbar: React.FC = () => {
       <Image
         className={
           'EditorToolbar-icon EditorToolbar-image' +
-          (isBlockActive(editor, 'image') ? ' EditorToolbar-icon--active' : '')
+          (isBlockActive(editor, 'image') ? ' EditorToolbar-icon--active' : '') +
+          (!canInsertImageBlockFromToolbar(editor) ? ' EditorToolbar-icon--disabled' : '')
         }
         onClick={onImageClick}
       />

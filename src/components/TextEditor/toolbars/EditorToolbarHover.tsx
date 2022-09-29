@@ -99,29 +99,29 @@ export const EditorToolbarHover: React.FC = () => {
       />
       <Centered
         className={
-          'EditorToolbar-icon EditorToolbar-centered' +
-          (isBlockActive(editor, 'centered') ? ' EditorToolbar-icon--active' : '')
+          'EditorToolbarHover-icon EditorToolbarHover-centered' +
+          (isBlockActive(editor, 'centered') ? ' EditorToolbarHover-icon--active' : '')
         }
         onClick={(e) => onBlockClick(e, 'centered')}
       />
       <Mark
         className={
-          'EditorToolbar-icon EditorToolbar-mark' +
-          (isFormatActive(editor, 'mark') ? ' EditorToolbar-icon--active' : '')
+          'EditorToolbarHover-icon EditorToolbarHover-mark' +
+          (isFormatActive(editor, 'mark') ? ' EditorToolbarHover-icon--active' : '')
         }
         onClick={(e) => onFormatClick(e, 'mark')}
       />
       <Caption
         className={
-          'EditorToolbar-icon EditorToolbar-caption' +
-          (isBlockActive(editor, 'caption') ? ' EditorToolbar-icon--active' : '')
+          'EditorToolbarHover-icon EditorToolbarHover-caption' +
+          (isBlockActive(editor, 'caption') ? ' EditorToolbarHover-icon--active' : '')
         }
         onClick={(e) => onBlockClick(e, 'caption')}
       />
       <Math
         className={
-          'EditorToolbar-icon EditorToolbar-mathBlock' +
-          (isFormatActive(editor, 'mathInline') ? ' EditorToolbar-icon--active' : '')
+          'EditorToolbarHover-icon EditorToolbarHover-mathBlock' +
+          (isFormatActive(editor, 'mathInline') ? ' EditorToolbarHover-icon--active' : '')
         }
         onClick={(e) => onFormatClick(e, 'mathInline')}
       />

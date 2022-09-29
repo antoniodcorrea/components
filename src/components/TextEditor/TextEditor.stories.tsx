@@ -19,7 +19,9 @@ class ImageUpload {
     file: '',
   });
 
-  removeFileFromServer: RemoveFileFromServer = async () => {
+  removeFileFromServer: RemoveFileFromServer = async ({ onRemoved }) => {
+    onRemoved();
+
     return;
   };
 }

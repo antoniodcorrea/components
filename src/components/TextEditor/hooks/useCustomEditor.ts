@@ -16,6 +16,7 @@ type UseCustomEditor = () => {
   unWrapLink: (editor: Editor) => void;
   toggleFormat: (editor: Editor, format: string) => void;
   isFormatActive: (editor: Editor, format: string) => boolean;
+  canInsertImageBlockFromToolbar: (editor: Editor) => boolean;
   insertImageBlockFromToolbar: (editor: Editor) => void;
   updateImageBlock: (editor: Editor, element: ImageElement, path: number[]) => void;
   removeImageBlock: (editor: Editor, path: number[]) => void;
@@ -83,6 +84,17 @@ export const useCustomEditor: UseCustomEditor = () => {
         match: (node) => Editor.isBlock(editor, node),
       }
     );
+  };
+
+  const canInsertImageBlockFromToolbar = (editor: Editor): boolean => {
+    const [match] = Editor.nodes(editor, {
+      match: (node: ParagraphElement | ImageElement) =>
+        Editor.isBlock(editor, node) &&
+        (node.type === 'paragraph' || node.type === 'image' || !node.type) &&
+        node.children[0].text === '',
+    });
+
+    return !!match;
   };
 
   const insertImageBlockFromToolbar = (editor: Editor): void => {
@@ -196,6 +208,7 @@ export const useCustomEditor: UseCustomEditor = () => {
     unWrapLink,
     toggleFormat,
     isFormatActive,
+    canInsertImageBlockFromToolbar,
     insertImageBlockFromToolbar,
     insertImageBlockFromUserSelect,
     updateImageBlock,
