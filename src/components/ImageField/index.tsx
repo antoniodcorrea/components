@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FileRejection } from 'react-dropzone';
-import { ERROR_MESSAGE_DEFAULT, ERROR_MESSAGE_FILE_TOO_BIG, FILE_MAX_SIZE_BYTES } from './constants';
+import {
+  ERROR_MESSAGE_DEFAULT,
+  ERROR_FILE_REJECTED,
+  ERROR_MESSAGE_FILE_TOO_BIG,
+  FILE_MAX_SIZE_BYTES,
+} from './constants';
 
 import { FileType, ImageField as ImageFieldUi } from './ImageField';
 
@@ -65,7 +70,9 @@ export const ImageField: React.FC<Props> = ({
     // Try/catch in case we can not navigate properly
     try {
       const error = fileRejection[0].errors[0].message;
-      setLocalError(error);
+      console.error(error);
+
+      setLocalError(ERROR_FILE_REJECTED);
     } catch {
       setLocalError(ERROR_MESSAGE_DEFAULT);
     }
