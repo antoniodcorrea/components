@@ -91,7 +91,7 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
   // Will capture any image pasted on the editor, send it to imageUploadService service and render it as an Image block
   const withImages = (editor, limitAmountImages) => {
     const { deleteBackward, insertData, isVoid } = editor;
-    const { insertImageBlockFromUserSelect, removeImageBlock } = useCustomEditor();
+    const { insertImageBlockFromUserSelect, removeImageBlock, insertImageBlockFromToolbar } = useCustomEditor();
 
     // Set current item as void
     editor.isVoid = (element) => (element.type === 'image' ? true : isVoid(element));
@@ -115,12 +115,16 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
 
       if (files && files.length > 0) {
         for (const file of files) {
-          const data = await imageUploadService.uploadFileToServer({
-            file,
-            setPercentCompleted,
-          });
+          try {
+            const data = await imageUploadService.uploadFileToServer({
+              file,
+              setPercentCompleted,
+            });
 
-          insertImageBlockFromUserSelect(editor, data?.file);
+            insertImageBlockFromUserSelect(editor, data?.file);
+          } catch (error) {
+            insertImageBlockFromToolbar(editor);
+          }
         }
       } else if (testStringIsValidUrl(text)) {
         insertImageBlockFromUserSelect(editor, text);
