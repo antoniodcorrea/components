@@ -59,13 +59,13 @@ export const EditorImage: React.FC<Props> = ({ attributes, element, children, im
     ReactEditor.focus(editor);
   };
 
-  const removeFilesFromServer = (src: string) => {
+  const removeFilesFromServer = async (src: string) => {
     if (!imageUploadService) {
       return;
     }
 
     try {
-      imageUploadService.removeFileFromServer({
+      await imageUploadService.removeFileFromServer({
         src,
         onRemoved,
       });
