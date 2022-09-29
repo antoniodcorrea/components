@@ -4,13 +4,14 @@ import { withHistory } from 'slate-history';
 import { testStringIsValidUrl } from '@antoniodcorrea/utils';
 
 import { ImageUpload } from '../types';
+import { textEditorValidateAmountImages } from '../utils/textEditorValidateAmountImages';
 import { useCustomEditor } from './useCustomEditor';
 
 type UseWrappers = (imageUploadService: ImageUpload) => {
   withInlinesWrapper: (editor: Editor) => Editor;
   withHistoryWrapper: (editor: Editor) => Editor;
   withCorrectVoidBehavior: (editor: Editor) => Editor;
-  withImages: (editor: Editor) => Editor;
+  withImages: (editor: Editor, limitAmountImages: number) => Editor;
 };
 
 export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
@@ -88,7 +89,7 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
   };
 
   // Will capture any image pasted on the editor, send it to imageUploadService service and render it as an Image block
-  const withImages = (editor) => {
+  const withImages = (editor, limitAmountImages) => {
     const { deleteBackward, insertData, isVoid } = editor;
     const { insertImageBlockFromUserSelect, removeImageBlock } = useCustomEditor();
 
@@ -96,6 +97,12 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
     editor.isVoid = (element) => (element.type === 'image' ? true : isVoid(element));
 
     editor.insertData = async (data) => {
+      const validatedAmountImages = textEditorValidateAmountImages(editor.children, limitAmountImages);
+
+      if (!validatedAmountImages) {
+        return;
+      }
+
       // If we don't have image upload service available
       if (!imageUploadService) {
         insertData(data);
