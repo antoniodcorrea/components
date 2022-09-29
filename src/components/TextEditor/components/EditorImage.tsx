@@ -70,6 +70,8 @@ export const EditorImage: React.FC<Props> = ({ attributes, element, children, im
         onRemoved,
       });
     } catch (error) {
+      console.log('Error components', error);
+
       console.error(error);
       onRemoved();
     }
