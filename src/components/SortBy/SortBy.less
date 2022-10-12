@@ -99,11 +99,13 @@
     }
 
     &:hover {
-      @{c}-sortIcon {
-        transform: scaleY(-1);
+      &:not(@{c}-listItem--clicked) {
+        @{c}-sortIcon {
+          transform: scaleY(-1);
 
-        &@{c}-sortIcon--asc {
-          transform: scaleY(1);
+          &@{c}-sortIcon--asc {
+            transform: scaleY(1);
+          }
         }
       }
     }

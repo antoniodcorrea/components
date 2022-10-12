@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-import { boolean, select, withKnobs } from '@storybook/addon-knobs';
+import { boolean, withKnobs } from '@storybook/addon-knobs';
 import { SortBy } from '.';
+import { QueryStringWrapper } from '@antoniodcorrea/utils';
 
 export default {
   component: SortBy,
@@ -10,32 +11,41 @@ export default {
 };
 
 const knobs = {
-  sort: (): string => select('Sort', ['sort1', '-sort1', 'sort2', '-sort2', 'sort3', '-sort3', undefined], '-sort1'),
   loading: (): boolean => boolean('Loading', false),
 };
 
-export const Default: React.FC = () => (
-  <div style={{ padding: '10px' }}>
-    <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-      <SortBy
-        href="http://example.com"
-        options={[
-          {
-            label: 'sort1',
-            field: 'sort1',
-          },
-          {
-            label: 'sort2',
-            field: 'sort2',
-          },
-          {
-            label: 'sort3',
-            field: 'sort3',
-          },
-        ]}
-        currentSort={knobs.sort()}
-        loading={knobs.loading()}
-      />
+export const Default: React.FC = () => {
+  const [sort, setSort] = useState<string>('sort1');
+
+  const onItemClick = (url: string) => {
+    const sort = QueryStringWrapper.getOneSearchParam(url, 'sort');
+    setSort(sort);
+  };
+
+  return (
+    <div style={{ padding: '10px' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <SortBy
+          href="http://example.com"
+          options={[
+            {
+              label: 'sort1',
+              field: 'sort1',
+            },
+            {
+              label: 'sort2',
+              field: 'sort2',
+            },
+            {
+              label: 'sort3',
+              field: 'sort3',
+            },
+          ]}
+          currentSort={sort}
+          loading={knobs.loading()}
+          onItemClick={onItemClick}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};

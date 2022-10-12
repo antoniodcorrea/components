@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Sort from '../../assets/svg/sort.svg';
 import { URLWrapper } from '@antoniodcorrea/utils';
@@ -22,12 +22,15 @@ interface Props {
 }
 
 export const SortBy: React.FC<Props> = ({ className, href, options, currentSort, loading, onItemClick = null }) => {
+  const [clicked, setClicked] = useState<boolean>(false);
   const url = new URLWrapper(href);
   url.deleteSearchParam('page[offset]'); // Reset offset on click
   const currentSortIsAsc = !currentSort?.startsWith('-');
   const currentSortIsDesc = currentSort?.startsWith('-');
 
   const onItemClickLocal = (e: React.MouseEvent<HTMLAnchorElement>, url: string) => {
+    setClicked(true);
+
     if (!!onItemClick) {
       e.preventDefault();
       onItemClick(url);
@@ -46,7 +49,15 @@ export const SortBy: React.FC<Props> = ({ className, href, options, currentSort,
         const Icon = item?.icon;
 
         return (
-          <li className={'SortBy-listItem' + (isActiveItem ? ' SortBy-listItem--active' : '')} key={index}>
+          <li
+            className={
+              'SortBy-listItem' +
+              (isActiveItem ? ' SortBy-listItem--active' : '') +
+              (clicked ? ' SortBy-listItem--clicked' : '')
+            }
+            key={index}
+            onMouseLeave={() => setClicked(false)}
+          >
             <A
               href={displayedUrl}
               styled={false}
