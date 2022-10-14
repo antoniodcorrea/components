@@ -153,12 +153,14 @@ export const useCustomEditor: UseCustomEditor = () => {
   };
 
   const wrapLink = (editor: Editor, url: string): void => {
+    const urlStartsWithProtocol = url.startsWith('http');
+    const urlWithProtocol = urlStartsWithProtocol ? url : `https://${url}`;
     const { selection } = editor;
     const isCollapsed = selection && Range.isCollapsed(selection);
     const link: AnchorElement = {
       type: 'link',
-      url,
-      children: isCollapsed ? [{ text: url, type: 'text' }] : [],
+      url: urlWithProtocol,
+      children: isCollapsed ? [{ text: urlWithProtocol, type: 'text' }] : [],
     };
 
     if (isCollapsed) {
