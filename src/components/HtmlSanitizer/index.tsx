@@ -3,6 +3,8 @@ import DOMPurify from 'isomorphic-dompurify';
 
 interface Props {
   html: string;
+  tagsAllowed?: Array<string>;
+  attributesAllowed?: Array<string>;
 }
 
 // set all elements owning target to target=_blank
@@ -15,10 +17,10 @@ const addTargetHook = (node) => {
 };
 DOMPurify.addHook('afterSanitizeAttributes', addTargetHook);
 
-export const HtmlSanitizer: React.FC<Props> = ({ html }) => {
+export const HtmlSanitizer: React.FC<Props> = ({ html, tagsAllowed, attributesAllowed }) => {
   if (!html) return null;
 
-  const sanitizedHtml = DOMPurify.sanitize(html, { ADD_ATTR: ['target'] });
+  const sanitizedHtml = DOMPurify.sanitize(html, { ADD_TAGS: tagsAllowed, ADD_ATTR: ['target', ...attributesAllowed] });
 
   return <div className="HtmlSanitizer" id="HtmlSanitizer" dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
 };
