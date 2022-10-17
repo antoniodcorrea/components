@@ -64,7 +64,7 @@ export const toHtml = (node: TextEditorElement | TextElement): string => {
     case 'image':
       return `<img src="${escapeHtml(node.image?.original)}" data-ratio="${escapeHtml(node.ratio)}" />`;
     case 'youtube':
-      return `<iframe src="https://www.youtube.com/embed/${node.videoId}?controls=0" allow="modestbranding" aria-label="Youtube video" frameBorder="0" ></iframe>`;
+      return `<div class="video"><iframe src="https://www.youtube.com/embed/${node.videoId}?controls=0" allow="modestbranding" aria-label="Youtube video" frameBorder="0" ></iframe></div>`;
     case 'paragraph':
       return `<p>${children}</p>`;
     case 'centered':
