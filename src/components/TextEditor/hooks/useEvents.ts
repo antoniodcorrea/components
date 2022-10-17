@@ -8,7 +8,7 @@ type UseEvents = (editor: Editor) => {
 
 export const useEvents: UseEvents = (editor) => {
   const onKeyDown = (event: React.KeyboardEvent) => {
-    const { toggleFormat, breakLine, insertTab } = useCustomEditor();
+    const { toggleFormat, breakLine, breakParagraph, insertTab } = useCustomEditor();
 
     const node = Node.parent(editor, editor.selection.anchor.path);
 
@@ -22,6 +22,13 @@ export const useEvents: UseEvents = (editor) => {
     if (event.key === 'Tab' && node.type === 'list-item') {
       event.preventDefault();
       indentItem(editor);
+
+      return;
+    }
+
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault();
+      breakParagraph(editor);
 
       return;
     }

@@ -94,7 +94,7 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
     const { insertImageBlockFromUserSelect, removeImageBlock, insertImageBlockFromToolbar } = useCustomEditor();
 
     // Set current item as void
-    editor.isVoid = (element) => (element.type === 'image' ? true : isVoid(element));
+    editor.isVoid = (element) => (element.type === 'image' || element.type === 'youtube' ? true : isVoid(element));
 
     editor.insertData = async (data) => {
       const validatedAmountImages = textEditorValidateAmountImages(editor.children, limitAmountImages);

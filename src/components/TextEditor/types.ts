@@ -3,15 +3,18 @@ import { ImageElement } from './types/ImageElement';
 import { MathBlockElement } from './types/MathBockElement';
 import { ParagraphElement } from './types/ParagraphElement';
 import { TextElement } from './types/TextElement';
+import { YoutubeElement } from './types/YoutubeElement';
 import { BaseEditor } from 'slate';
 import { ReactEditor } from 'slate-react';
 
-export type TextEditorValue = Array<ParagraphElement | AnchorElement | ImageElement | TextElement | MathBlockElement>;
+export type TextEditorValue = Array<
+  ParagraphElement | AnchorElement | ImageElement | TextElement | MathBlockElement | YoutubeElement
+>;
 
 declare module 'slate' {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor & { type: string };
-    Element: ParagraphElement | AnchorElement | ImageElement | MathBlockElement;
+    Element: ParagraphElement | AnchorElement | ImageElement | MathBlockElement | YoutubeElement;
     Text: TextElement;
   }
 }

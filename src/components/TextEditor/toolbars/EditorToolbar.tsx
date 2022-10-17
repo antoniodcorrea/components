@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSlate } from 'slate-react';
 
-import { ENTER_URL_MESSAGE } from '../constants';
+import { ENTER_URL_MESSAGE, ENTER_VIDEO_URL_MESSAGE } from '../constants';
 import { useCustomEditor } from '../hooks/useCustomEditor';
 import Centered from '../../../assets/svg/centered.svg';
 import Caption from '../../../assets/svg/caption.svg';
@@ -9,6 +9,7 @@ import Italic from '../../../assets/svg/italic.svg';
 import Ul from '../../../assets/svg/ul.svg';
 import Bold from '../../../assets/svg/bold.svg';
 import Link from '../../../assets/svg/link.svg';
+import Video from '../../../assets/svg/video.svg';
 import Image from '../../../assets/svg/image.svg';
 import Uppercase from '../../../assets/svg/uppercase.svg';
 import Mark from '../../../assets/svg/mark.svg';
@@ -30,8 +31,9 @@ export const EditorToolbar: React.FC = () => {
     toggleBlock,
     toggleFormat,
     insertImageBlockFromToolbar,
-    canInsertImageBlockFromToolbar,
+    canInsertImageOrVideoBlockFromToolbar,
     toggleUl,
+    insertVideoBlockFromToolbar,
   } = useCustomEditor();
 
   const onFormatClick = (e: React.MouseEvent, format: string) => {
@@ -71,6 +73,15 @@ export const EditorToolbar: React.FC = () => {
     wrapLink(editor, url);
   };
 
+  const onVideoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    const url = window.prompt(ENTER_VIDEO_URL_MESSAGE);
+    if (!url) return;
+
+    insertVideoBlockFromToolbar(editor, url);
+  };
+
   return (
     <div className="EditorToolbar">
       <Bold
@@ -106,6 +117,14 @@ export const EditorToolbar: React.FC = () => {
           'EditorToolbar-icon EditorToolbar-link' + (isBlockActive(editor, 'link') ? ' EditorToolbar-icon--active' : '')
         }
         onClick={onLinkClick}
+      />
+      <Video
+        className={
+          'EditorToolbar-icon EditorToolbar-video' +
+          (isBlockActive(editor, 'video') ? ' EditorToolbar-icon--active' : '') +
+          (!canInsertImageOrVideoBlockFromToolbar(editor) ? ' EditorToolbar-icon--disabled' : '')
+        }
+        onClick={onVideoClick}
       />
       <Mark
         className={
@@ -151,7 +170,7 @@ export const EditorToolbar: React.FC = () => {
         className={
           'EditorToolbar-icon EditorToolbar-image' +
           (isBlockActive(editor, 'image') ? ' EditorToolbar-icon--active' : '') +
-          (!canInsertImageBlockFromToolbar(editor) ? ' EditorToolbar-icon--disabled' : '')
+          (!canInsertImageOrVideoBlockFromToolbar(editor) ? ' EditorToolbar-icon--disabled' : '')
         }
         onClick={onImageClick}
       />

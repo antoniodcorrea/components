@@ -20,6 +20,7 @@ import { EditorUnderlined } from '../components/EditorUnderlined';
 import { EditorUppercase } from '../components/EditorUppercase';
 import { EditorMathInline } from '../components/EditorMathInline';
 import { ImageUpload } from '../types';
+import { EditorVideo } from '../components/EditorVideo';
 
 type UseComponentRenders = (imageUploadService: ImageUpload) => {
   renderElement: (props) => React.ReactElement;
@@ -64,6 +65,8 @@ export const useComponentRenders: UseComponentRenders = (imageUploadService: Ima
             imageUploadService={imageUploadService}
           />
         );
+      case 'youtube':
+        return <EditorVideo element={props.element} {...props} />;
       default:
         return <EditorText>{props.children}</EditorText>;
     }

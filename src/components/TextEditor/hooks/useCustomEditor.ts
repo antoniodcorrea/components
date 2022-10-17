@@ -5,9 +5,14 @@ import { AnchorElement } from '../types/AnchorElement';
 import { ImageElement } from '../types/ImageElement';
 import { ParagraphElement } from '../types/ParagraphElement';
 import { TextElement } from '../types/TextElement';
+import { YoutubeElement } from '../types/YoutubeElement';
+
+const VIDEO_YOUTUBE_REGEX =
+  /^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(?:youtube\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(?:\S+)?$/;
 
 type UseCustomEditor = () => {
   breakLine: (editor: Editor) => void;
+  breakParagraph: (editor: Editor) => void;
   insertTab: (editor: Editor) => void;
   isBlockActive: (editor: Editor, blockType: string) => boolean;
   toggleBlock: (editor: Editor, blockType: string) => void;
@@ -16,11 +21,13 @@ type UseCustomEditor = () => {
   unWrapLink: (editor: Editor) => void;
   toggleFormat: (editor: Editor, format: string) => void;
   isFormatActive: (editor: Editor, format: string) => boolean;
-  canInsertImageBlockFromToolbar: (editor: Editor) => boolean;
+  canInsertImageOrVideoBlockFromToolbar: (editor: Editor) => boolean;
   insertImageBlockFromToolbar: (editor: Editor) => void;
+  insertImageBlockFromUserSelect: (editor: Editor, src: string | ArrayBuffer) => void;
   updateImageBlock: (editor: Editor, element: ImageElement, path: number[]) => void;
   removeImageBlock: (editor: Editor, path: number[]) => void;
-  insertImageBlockFromUserSelect: (editor: Editor, src: string | ArrayBuffer) => void;
+  insertVideoBlockFromToolbar: (editor: Editor, src: string) => void;
+  removeVideoBlock: (editor: Editor, path: number[]) => void;
 };
 
 export const useCustomEditor: UseCustomEditor = () => {
@@ -30,6 +37,19 @@ export const useCustomEditor: UseCustomEditor = () => {
 
   const breakLine = (editor: Editor) => {
     Transforms.insertText(editor, '\n\u2060');
+  };
+
+  const breakParagraph = (editor: Editor) => {
+    const paragraph: ParagraphElement = {
+      type: 'paragraph',
+      children: [
+        {
+          type: 'text',
+          text: '',
+        },
+      ],
+    };
+    Transforms.insertNodes(editor, paragraph);
   };
 
   const isBlockActive = (editor: Editor, blockType: string): boolean => {
@@ -86,7 +106,7 @@ export const useCustomEditor: UseCustomEditor = () => {
     );
   };
 
-  const canInsertImageBlockFromToolbar = (editor: Editor): boolean => {
+  const canInsertImageOrVideoBlockFromToolbar = (editor: Editor): boolean => {
     const [match] = Editor.nodes(editor, {
       match: (node: ParagraphElement | ImageElement) =>
         Editor.isBlock(editor, node) &&
@@ -137,6 +157,45 @@ export const useCustomEditor: UseCustomEditor = () => {
   const updateImageBlock = (editor: Editor, element: ImageElement, path: number[]): void => {
     Transforms.removeNodes(editor, { at: path });
     Transforms.insertNodes(editor, element, { at: path });
+  };
+
+  const insertVideoBlockFromToolbar = (editor: Editor, src: string): void => {
+    const youtubeRegex = VIDEO_YOUTUBE_REGEX;
+    const matches = src?.trim()?.match(youtubeRegex);
+    const path = editor.selection.anchor.path;
+    const parentPath = Path.parent(path);
+    const node = SlateNode.get(editor, parentPath);
+    const canAddVideo =
+      Editor.isBlock(editor, node) && (node.type === 'paragraph' || !node.type) && node.children[0].text === '';
+
+    const [_, videoId] = matches;
+    const video: YoutubeElement = {
+      type: 'youtube',
+      videoId,
+      children: [{ type: 'text', text: '' }],
+    };
+    const paragraph: ParagraphElement = {
+      type: 'paragraph',
+      children: [{ type: 'text', text: '' }],
+    };
+    if (canAddVideo) {
+      Transforms.insertNodes(editor, [video, paragraph]);
+    } else {
+      wrapLink(editor, src);
+    }
+  };
+
+  const removeVideoBlock = (editor: Editor, path: number[]): void => {
+    const text = {
+      type: 'paragraph',
+      children: [
+        {
+          text: '',
+        },
+      ],
+    };
+    Transforms.removeNodes(editor, { at: path });
+    Transforms.insertNodes(editor, text, { at: path });
   };
 
   const removeImageBlock = (editor: Editor, path: number[]): void => {
@@ -203,6 +262,7 @@ export const useCustomEditor: UseCustomEditor = () => {
   return {
     insertTab,
     breakLine,
+    breakParagraph,
     isBlockActive,
     toggleBlock,
     toggleUl,
@@ -210,10 +270,12 @@ export const useCustomEditor: UseCustomEditor = () => {
     unWrapLink,
     toggleFormat,
     isFormatActive,
-    canInsertImageBlockFromToolbar,
+    canInsertImageOrVideoBlockFromToolbar,
     insertImageBlockFromToolbar,
     insertImageBlockFromUserSelect,
     updateImageBlock,
     removeImageBlock,
+    insertVideoBlockFromToolbar,
+    removeVideoBlock,
   };
 };
