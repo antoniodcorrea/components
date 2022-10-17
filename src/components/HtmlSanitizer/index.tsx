@@ -17,10 +17,13 @@ const addTargetHook = (node) => {
 };
 DOMPurify.addHook('afterSanitizeAttributes', addTargetHook);
 
-export const HtmlSanitizer: React.FC<Props> = ({ html, tagsAllowed, attributesAllowed }) => {
+export const HtmlSanitizer: React.FC<Props> = ({ html, tagsAllowed, attributesAllowed = [] }) => {
   if (!html) return null;
 
-  const sanitizedHtml = DOMPurify.sanitize(html, { ADD_TAGS: tagsAllowed, ADD_ATTR: ['target', ...attributesAllowed] });
+  const sanitizedHtml = DOMPurify.sanitize(html, {
+    ADD_TAGS: tagsAllowed,
+    ADD_ATTR: ['target', ...attributesAllowed],
+  });
 
   return <div className="HtmlSanitizer" id="HtmlSanitizer" dangerouslySetInnerHTML={{ __html: sanitizedHtml }} />;
 };
