@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import katex from 'katex';
 
+import './EditorMathInline.less';
+
 export const EditorMathInline: React.FC = ({ children }) => {
   const [formula, setFormula] = useState<string>('');
 
@@ -22,10 +24,15 @@ export const EditorMathInline: React.FC = ({ children }) => {
   }, [children]);
 
   return (
-    <span
-      className="EditorMathInline math-inline"
-      dangerouslySetInnerHTML={{ __html: formula }}
-      style={{ userSelect: !!formula.length ? 'none' : 'unset' }}
-    ></span>
+    <span className="EditorMathInline">
+      <span
+        className="EditorMathInline-formula"
+        contentEditable="true"
+        dangerouslySetInnerHTML={{ __html: formula }}
+      ></span>
+      <span className="EditorMathInline-source" contentEditable="false">
+        {children}
+      </span>
+    </span>
   );
 };
