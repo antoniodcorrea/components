@@ -2,6 +2,7 @@ import { Editor, Node } from 'slate';
 
 import { useCustomEditor } from './useCustomEditor';
 import { indentItem, undentItem } from '../plugins/withLists';
+
 type UseEvents = (editor: Editor) => {
   onKeyDown: (e: React.KeyboardEvent) => void;
 };
@@ -26,8 +27,9 @@ export const useEvents: UseEvents = (editor) => {
       return;
     }
 
-    if (event.key === 'Enter' && !event.shiftKey) {
+    if (event.key === 'Enter' && !event.shiftKey && node.type !== 'list-item') {
       event.preventDefault();
+
       breakParagraph(editor);
 
       return;
