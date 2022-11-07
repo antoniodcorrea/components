@@ -1,6 +1,6 @@
 import React from 'react';
 import Dropzone, { FileRejection } from 'react-dropzone';
-
+import { Img } from '../Img';
 import { Loader } from '../Loader';
 import { Cross, Upload } from '../Svg';
 
@@ -71,7 +71,7 @@ export const ImageField: React.FC<Props> = ({
       onMouseLeave={onImageFieldLeave}
     >
       {hasImage && !error && (
-        <img className="ImageField-image" src={image} alt={fileName} title={fileName} data-ratio={ratio} />
+        <Img className="ImageField-image" src={image} alt={fileName} title={fileName} data-ratio={ratio} />
       )}
       <div className="ImageField-utils">
         <div className={'ImageField-progress ' + (percentCompleted > 0 ? 'ImageField--loading' : '')}>
