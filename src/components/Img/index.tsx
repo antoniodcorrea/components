@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { ImgHTMLAttributes, useState } from 'react';
 
 import './Img.less';
 
-interface Props {
+interface Props extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
   src: string;
   sizes?: string;
@@ -11,7 +11,7 @@ interface Props {
   alt: string;
 }
 
-export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt }) => {
+export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt, ...props }) => {
   const [loaded, setLoaded] = useState(false);
 
   const onImageDecode = (img) => {
@@ -22,7 +22,7 @@ export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt
 
       if (!srcSet) return;
 
-      // Conflict betweeen img.decode and srcSet:
+      // Conflict between img.decode and srcSet:
       // https://stackoverflow.com/questions/65146920/domexception-invalid-image-request
       // We need to set srcSet after image is loaded
       const srcSetArray = srcSet
@@ -43,6 +43,7 @@ export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt
       alt={alt}
       ref={onImageDecode}
       loading="lazy"
+      {...props}
     />
   );
 };
