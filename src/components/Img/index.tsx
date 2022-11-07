@@ -13,10 +13,16 @@ interface Props extends ImgHTMLAttributes<HTMLImageElement> {
 
 export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt, ...props }) => {
   const [loaded, setLoaded] = useState(false);
+  const [loadFailed, setLoadFailed] = useState(false);
+
   const [srcInState, setSrcInState] = useState<string>(null);
 
   const onImageDecode = (img) => {
-    if (!img) return;
+    if (!img) {
+      setLoadFailed(true);
+
+      return;
+    }
 
     img.decode().then(() => {
       setLoaded(true);
@@ -42,7 +48,12 @@ export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt
 
   return (
     <img
-      className={'Img' + (className ? ` ${className}` : '') + (loaded ? ' Img--loaded' : '')}
+      className={
+        'Img' +
+        (className ? ` ${className}` : '') +
+        (loaded ? ' Img--loaded' : '') +
+        (loadFailed ? ' Img--loadFailed' : '')
+      }
       src={srcInState}
       sizes={sizes}
       title={title}
