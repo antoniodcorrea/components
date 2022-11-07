@@ -2,8 +2,6 @@ import React, { ImgHTMLAttributes, useEffect, useState } from 'react';
 
 import './Img.less';
 
-const PLACEHOLDER_IMAGE = 'https://via.placeholder.com/500/ffffff/ffffff';
-
 interface Props extends ImgHTMLAttributes<HTMLImageElement> {
   className?: string;
   src: string;
@@ -15,7 +13,7 @@ interface Props extends ImgHTMLAttributes<HTMLImageElement> {
 
 export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt, ...props }) => {
   const [loaded, setLoaded] = useState(false);
-  const [srcInState, setSrcInState] = useState<string>(PLACEHOLDER_IMAGE);
+  const [srcInState, setSrcInState] = useState<string>(null);
 
   const onImageDecode = (img) => {
     if (!img) return;
