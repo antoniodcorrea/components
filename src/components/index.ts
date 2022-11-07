@@ -85,6 +85,6 @@ export { SortBy } from './SortBy';
 export { Ellipsis } from './Ellipsis';
 export { Space } from './Space';
 export { HideShow } from './HideShow';
-export { HtmlSanitizer } from './HtmlSanitizer';
+// export { HtmlSanitizer } from './HtmlSanitizer';
 export { CarouselField, CarouselFieldSlide } from './CarouselField';
 export { Sortable, SortableSortProps } from './Sortable';
