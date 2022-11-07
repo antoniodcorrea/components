@@ -38,7 +38,7 @@ export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt
   // Load image only on frontend
   useEffect(() => {
     setSrcInState(src);
-  }, []);
+  }, [src]);
 
   return (
     <img
