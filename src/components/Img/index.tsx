@@ -1,4 +1,4 @@
-import React, { ImgHTMLAttributes, useState } from 'react';
+import React, { ImgHTMLAttributes, useEffect, useState } from 'react';
 
 import './Img.less';
 
@@ -13,6 +13,7 @@ interface Props extends ImgHTMLAttributes<HTMLImageElement> {
 
 export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt, ...props }) => {
   const [loaded, setLoaded] = useState(false);
+  const [srcInState, setSrcInState] = useState<string>(null);
 
   const onImageDecode = (img) => {
     if (!img) return;
@@ -34,10 +35,15 @@ export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt
     });
   };
 
+  // Load image only on frontend
+  useEffect(() => {
+    setSrcInState(src);
+  }, []);
+
   return (
     <img
       className={'Img' + (className ? ` ${className}` : '') + (loaded ? ' Img--loaded' : '')}
-      src={src}
+      src={srcInState}
       sizes={sizes}
       title={title}
       alt={alt}
