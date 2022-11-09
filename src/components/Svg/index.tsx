@@ -11,6 +11,7 @@ import CheckSvg from '../../assets/svg/check.svg';
 import CircleSvg from '../../assets/svg/circle.svg';
 import CrossSvg from '../../assets/svg/cross.svg';
 import DotsVerticalSvg from '../../assets/svg/dotsVertical.svg';
+import EarthSvg from '../../assets/svg/earth.svg';
 import EditSvg from '../../assets/svg/edit.svg';
 import EditCircleSvg from '../../assets/svg/editCircle.svg';
 import EyeSvg from '../../assets/svg/eye.svg';
@@ -76,25 +77,21 @@ export interface Props extends SVGProps<SVGElement> {
 
 export type SvgSpriteType = (SvgComponent: React.FC<Props>) => (props: Props) => JSX.Element;
 
-const Svg: SvgSpriteType = (SvgComponent) => ({
-  className,
-  size = 'normal',
-  onClick,
-  filled,
-  ...props
-}): React.ReactElement => (
-  <SvgComponent
-    className={
-      'Svg ' +
-      (className ? className : '') +
-      (size ? ' Svg-' + size : '') +
-      (onClick ? ' Svg--hover' : '') +
-      (filled ? ' Svg--filled' : '')
-    }
-    onClick={onClick}
-    {...props}
-  />
-);
+const Svg: SvgSpriteType = (SvgComponent) => {
+  return ({ className, size = 'normal', onClick, filled, ...props }): React.ReactElement => (
+    <SvgComponent
+      className={
+        'Svg ' +
+        (className ? className : '') +
+        (size ? ' Svg-' + size : '') +
+        (onClick ? ' Svg--hover' : '') +
+        (filled ? ' Svg--filled' : '')
+      }
+      onClick={onClick}
+      {...props}
+    />
+  );
+};
 
 export const Triangle: React.FC<Props> = (props) => Svg(TriangleSvg)(props);
 export const Square: React.FC<Props> = (props) => Svg(SquareSvg)(props);
@@ -118,6 +115,7 @@ export const Link: React.FC<Props> = (props) => Svg(LinkSvg)(props);
 export const Bookmark: React.FC<Props> = (props) => Svg(BookmarkSvg)(props);
 export const BookmarkFilled: React.FC<Props> = (props) => Svg(BookmarkFilledSvg)(props);
 export const BookmarkWithBackground: React.FC<Props> = (props) => Svg(BookmarkWithBackgroundSvg)(props);
+export const Earth: React.FC<Props> = (props) => Svg(EarthSvg)(props);
 export const Edit: React.FC<Props> = (props) => Svg(EditSvg)(props);
 export const PlusCircle: React.FC<Props> = (props) => Svg(PlusCircleSvg)(props);
 export const EditCircle: React.FC<Props> = (props) => Svg(EditCircleSvg)(props);

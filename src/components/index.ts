@@ -51,6 +51,7 @@ export {
   BookmarkFilled,
   BookmarkWithBackground,
   Edit,
+  Earth,
   PlusCircle,
   EditCircle,
   PlusCircleWithBackground,
