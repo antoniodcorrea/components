@@ -11,6 +11,7 @@ import Centered from '../../../assets/svg/centered.svg';
 import Caption from '../../../assets/svg/caption.svg';
 import Mark from '../../../assets/svg/mark.svg';
 import Math from '../../../assets/svg/math.svg';
+import Quote from '../../../assets/svg/quote.svg';
 
 import './EditorToolbarHover.less';
 
@@ -124,6 +125,13 @@ export const EditorToolbarHover: React.FC = () => {
           (isFormatActive(editor, 'mathInline') ? ' EditorToolbarHover-icon--active' : '')
         }
         onClick={(e) => onFormatClick(e, 'mathInline')}
+      />
+      <Quote
+        className={
+          'EditorToolbarHover-icon EditorToolbarHover-quote' +
+          (isBlockActive(editor, 'quote') ? ' EditorToolbarHover-icon--active' : '')
+        }
+        onClick={(e) => onBlockClick(e, 'quote')}
       />
     </div>
   );

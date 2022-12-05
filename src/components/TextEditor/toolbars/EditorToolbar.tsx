@@ -17,6 +17,7 @@ import CodeBlock from '../../../assets/svg/codeBlock.svg';
 import H1 from '../../../assets/svg/iconH1.svg';
 import H2 from '../../../assets/svg/iconH2.svg';
 import Math from '../../../assets/svg/math.svg';
+import Quote from '../../../assets/svg/quote.svg';
 
 import './EditorToolbar.less';
 
@@ -180,6 +181,13 @@ export const EditorToolbar: React.FC = () => {
           (isBlockActive(editor, 'caption') ? ' EditorToolbar-icon--active' : '')
         }
         onClick={(e) => onBlockClick(e, 'caption')}
+      />
+      <Quote
+        className={
+          'EditorToolbar-icon EditorToolbar-quote' +
+          (isBlockActive(editor, 'quote') ? ' EditorToolbar-icon--active' : '')
+        }
+        onClick={(e) => onBlockClick(e, 'quote')}
       />
     </div>
   );
