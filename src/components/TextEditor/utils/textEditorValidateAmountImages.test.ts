@@ -1,4 +1,4 @@
-import { textEditorValueValidateAmountImages } from './textEditorValidateAmountImages';
+import { textEditorValidateAmountImages } from './textEditorValidateAmountImages';
 
 const imageElement = {
   type: 'image',
@@ -17,17 +17,17 @@ const imageElement = {
 };
 describe('Correctly returns', () => {
   it('Correctly returns true', () => {
-    const trespassedAmountImages = textEditorValueValidateAmountImages([imageElement], 1);
+    const trespassedAmountImages = textEditorValidateAmountImages([imageElement], 1);
 
     expect(trespassedAmountImages).toBeTruthy();
   });
   it('Correctly returns true', () => {
-    const trespassedAmountImages = textEditorValueValidateAmountImages([imageElement], 0);
+    const trespassedAmountImages = textEditorValidateAmountImages([imageElement], 0);
 
     expect(trespassedAmountImages).toBeFalsy();
   });
   it('Correctly returns false', () => {
-    const trespassedAmountImages = textEditorValueValidateAmountImages([
+    const trespassedAmountImages = textEditorValidateAmountImages([
       imageElement,
       imageElement,
       imageElement,
