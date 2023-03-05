@@ -17,7 +17,7 @@ export { FileField } from './FileField';
 export { FileFieldMultiple } from './FileFieldMultiple';
 export { Input, Props as InputProps } from './Input';
 export { Flex } from './Flex';
-export { Loader } from './Loader';
+export { ProgressBar } from './ProgressBar';
 export { Notification } from './Notification';
 export { NotificationDot } from './NotificationDot';
 export { P } from './P';

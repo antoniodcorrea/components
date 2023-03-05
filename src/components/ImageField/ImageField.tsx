@@ -1,7 +1,7 @@
 import React from 'react';
 import Dropzone, { FileRejection } from 'react-dropzone';
 import { Img } from '../Img';
-import { Loader } from '../Loader';
+import { ProgressBar } from '../ProgressBar';
 import { Cross, Upload } from '../Svg';
 
 import './ImageField.less';
@@ -75,7 +75,7 @@ export const ImageField: React.FC<Props> = ({
       )}
       <div className="ImageField-utils">
         <div className={'ImageField-progress ' + (percentCompleted > 0 ? 'ImageField--loading' : '')}>
-          <Loader loaded={percentCompleted} grow />
+          <ProgressBar loaded={percentCompleted} grow />
         </div>
         <Dropzone
           multiple={false}

@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone';
 
 import { A } from '../A';
 import { Hr } from '../Hr';
-import { Loader } from '../Loader';
+import { ProgressBar } from '../ProgressBar';
 import { Span } from '../Span';
 import { Input } from '../Input';
 import { Cross, Upload, Eye } from '../Svg';
@@ -93,7 +93,7 @@ export const FileField: React.FC<Props> = ({
               {buttonTextToRender}
             </Span>
             <div className={'FileField-progress ' + (percentCompleted > 0 ? 'FileField--loading' : '')}>
-              <Loader loaded={percentCompleted} grow />
+              <ProgressBar loaded={percentCompleted} grow />
             </div>
           </div>
         )}
