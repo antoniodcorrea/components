@@ -26,6 +26,7 @@ export const Img: React.FC<Props> = ({ className, src, sizes, srcSet, title, alt
 
     img.decode().then(() => {
       setLoaded(true);
+      setLoadFailed(false);
 
       if (!srcSet) return;
 
