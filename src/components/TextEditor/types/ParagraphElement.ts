@@ -11,6 +11,7 @@ export type ParagraphElementType =
   | 'centered'
   | 'caption'
   | 'bulleted-list'
+  | 'numbered-list'
   | 'list-item';
 export type ParagraphElement = {
   type: ParagraphElementType;

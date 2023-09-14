@@ -4,16 +4,15 @@
 
 @{c} {
   max-width: 300px;
-  padding: 10px 15px;
+  padding: 20px 30px;
   opacity: 0;
   background: @c-background;
-  outline: 2px solid @c-traslucid--light;
+  outline: 1px solid @c-traslucid;
   transition: opacity @td-fast @ease;
   z-index: 1000;
   pointer-events: none;
-  border-radius: 4px;
-
-  .boxShadow;
+  border-radius: 8px;
+  box-shadow: 0 0 20px 10px @c-traslucid--lightest;
 
   &-text {
     font-weight: @fw-semibold;

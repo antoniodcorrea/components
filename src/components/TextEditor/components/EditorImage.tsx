@@ -9,6 +9,7 @@ import { ImageElement } from '../types/ImageElement';
 import './EditorImage.less';
 
 interface Props {
+  children: React.ReactNode;
   attributes: any;
   imageUploadService?: ImageUpload;
   element: ImageElement;
@@ -107,7 +108,10 @@ export const EditorImage: React.FC<Props> = ({ attributes, element, children, im
         onRemove={removeFilesFromServer}
         percentCompleted={percentCompleted}
         ratio={ratio}
-        accept=".jpg,.jpeg,.png"
+        accept={{
+          ['image/jpg']: ['.jpg,.jpeg'],
+          ['image/png']: ['.png'],
+        }}
       />
       <Fade mounted={!!imageError} position="absolute">
         <span className="EditorImage-error">{imageError}</span>

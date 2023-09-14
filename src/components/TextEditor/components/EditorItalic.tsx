@@ -1,3 +1,6 @@
 import React from 'react';
 
-export const EditorItalic: React.FC = ({ children }) => <em className="EditorItalic">{children}</em>;
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorItalic: React.FC<Props> = ({ children }) => <em className="EditorItalic">{children}</em>;

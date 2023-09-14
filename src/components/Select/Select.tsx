@@ -1,11 +1,5 @@
 import React from 'react';
-import Select, {
-  components as Components,
-  ContainerProps,
-  IndicatorProps,
-  MenuProps,
-  MultiValueProps,
-} from 'react-select';
+import Select, { components as Components, ContainerProps, MenuProps, MultiValueProps } from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 
 import ArrowDown from '../../assets/svg/arrowDown.svg';
@@ -67,7 +61,7 @@ const SelectContainer = ({ children, ...props }: ContainerProps<any, any>): JSX.
   <Components.SelectContainer {...props}>{children}</Components.SelectContainer>
 );
 
-const DropdownIndicator = (props: IndicatorProps<any, any>): JSX.Element => (
+const DropdownIndicator = (props): JSX.Element => (
   <Components.DropdownIndicator {...props}>
     <ArrowDown className="Select__multi-value__dropdown__svg" />
   </Components.DropdownIndicator>
@@ -102,7 +96,7 @@ export const SelectUi: React.FC<Props> = ({
   <div className={'Select ' + (className ? className : ' ') + (grow ? ' Select--grow' : ' ') + (' Select--' + height)}>
     <SelectComponent
       isCreatable={isCreatable}
-      className="Select__container"
+      className={'Select__container ' + (value.length ? 'Select__container--hasValue' : '')}
       classNamePrefix="Select"
       closeMenuOnSelect
       value={value}

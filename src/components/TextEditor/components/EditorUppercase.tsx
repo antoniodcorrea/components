@@ -2,6 +2,9 @@ import React from 'react';
 
 import './EditorUppercase.less';
 
-export const EditorUppercase: React.FC = ({ children }) => (
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorUppercase: React.FC<Props> = ({ children }) => (
   <span className="EditorUppercase uppercase">{children}</span>
 );

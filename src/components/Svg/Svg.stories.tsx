@@ -38,7 +38,7 @@ export default {
 
 const knobs = {
   name: (): string => select('Name', ['square', 'triangle', 'circle'], 'circle'),
-  size: (): IconSize =>
+  size: (): IconSize | undefined=>
     select('Size', ['nano', 'micro', 'small', 'normal', 'medium', 'big', 'biggest', 'huge', undefined], 'big'),
   filled: (): boolean => boolean('filled', false),
 };

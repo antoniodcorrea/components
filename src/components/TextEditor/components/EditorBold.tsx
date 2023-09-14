@@ -1,3 +1,7 @@
 import React from 'react';
 
-export const EditorBold: React.FC = ({ children }) => <strong>{children}</strong>;
+interface Props {
+  children: React.ReactNode;
+}
+
+export const EditorBold: React.FC<Props> = ({ children }) => <strong>{children}</strong>;

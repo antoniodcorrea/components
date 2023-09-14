@@ -2,4 +2,7 @@ import React from 'react';
 
 import './EditorText.less';
 
-export const EditorText: React.FC = ({ children }) => <p className="EditorText">{children}</p>;
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorText: React.FC<Props> = ({ children }) => <p className="EditorText">{children}</p>;

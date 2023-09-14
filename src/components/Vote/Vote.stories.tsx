@@ -9,9 +9,9 @@ export default {
   title: 'Vote',
 };
 
-export const Empty: React.ReactNode = () => {
-  const [vote, setVote] = useState(undefined);
-  const [loading, setLoading] = useState(undefined);
+export const Empty: React.FC = () => {
+  const [vote, setVote] = useState<boolean | undefined>(undefined);
+  const [loading, setLoading] = useState<boolean | undefined>(undefined);
   const onVoteChange = (vote) => {
     setLoading(true);
     setTimeout(() => {

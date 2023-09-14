@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { boolean, withKnobs } from '@storybook/addon-knobs';
+import { boolean, withKnobs, select } from '@storybook/addon-knobs';
 import { Fade } from '../Fade';
 import { Frame } from '../Frame';
 import { Hr } from '../Hr';
@@ -14,6 +14,39 @@ export default {
 
 const knobs = {
   mounted: (): boolean => boolean('Mounted', true),
+  placement: ():
+    | 'top'
+    | 'bottom'
+    | 'right'
+    | 'left'
+    | 'auto'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right-start'
+    | 'right-end'
+    | 'left-start'
+    | 'left-end' =>
+    select(
+      'Placement',
+      [
+        'top',
+        'bottom',
+        'right',
+        'left',
+        'auto',
+        'top-start',
+        'top-end',
+        'bottom-start',
+        'bottom-end',
+        'right-start',
+        'right-end',
+        'left-start',
+        'left-end',
+      ],
+      'top'
+    ),
 };
 
 export const Default: React.FC = () => (
@@ -41,8 +74,8 @@ export const Default: React.FC = () => (
     </Frame>
     <Hr spacer />
 
-    <Fade mounted={knobs.mounted()}>
-      <PopOver elementId="MyElement" placement="right-start">
+    <Fade mounted={knobs.mounted()} appear>
+      <PopOver elementId="MyElement" placement={knobs.placement()}>
         <Frame padding="big">
           <ul style={{ maxHeight: '200px', overflowY: 'scroll', padding: '10px' }}>
             <li>One</li>

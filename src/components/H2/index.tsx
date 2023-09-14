@@ -9,7 +9,7 @@ interface Props extends HTMLProps<HTMLHeadingElement> {
   center?: boolean;
 }
 
-export const H2: React.SFC<Props> = ({ children, className, grow, center, ...props }) => (
+export const H2: React.FC<Props> = ({ children, className, grow, center, ...props }) => (
   <h2
     className={(className ? className + ' ' : '') + 'H2' + (grow ? ' H2-grow' : '') + (center ? ' H2-center' : '')}
     {...props}

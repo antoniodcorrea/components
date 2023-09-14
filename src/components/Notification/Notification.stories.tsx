@@ -1,6 +1,4 @@
 import React from 'react';
-
-import { withKnobs } from '@storybook/addon-knobs';
 import { A } from '../A';
 import { Hr } from '../Hr';
 import { Span } from '../Span';
@@ -9,7 +7,7 @@ import { Notification } from '.';
 export default {
   component: Notification,
   title: 'Notification',
-  decorators: [withKnobs],
+  decorators: [],
 };
 
 export const Default: React.FC = () => (

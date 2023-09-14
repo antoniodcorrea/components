@@ -33,8 +33,11 @@ export const Default: React.FC = () => {
         onRemove={removeFilesFromServer}
         percentCompleted={0}
         removable
-        maxSize={10}
-        accept=".jpg,.jpeg,.png"
+        maxSize={5242880}
+        accept={{
+          ['image/png']: ['.png'],
+          ['image/jpg']: ['.jpg'],
+        }}
       />
     </div>
   );

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { URLWrapper } from '@antoniodcorrea/utils';
 import { FileField as FileFieldUi } from './FileField';
+import { Accept } from 'react-dropzone';
 
 import './FileField.less';
 
@@ -15,7 +16,7 @@ export interface Props {
   grow?: boolean;
   percentCompleted?: number;
   removable?: boolean;
-  accept?: string;
+  accept?: Accept;
   size?: string;
   maxSize?: number;
   error?: boolean;

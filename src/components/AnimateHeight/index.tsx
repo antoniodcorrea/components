@@ -8,6 +8,7 @@ import './AnimateHeight.less';
 export type FadeSpeed = 'slow' | 'normal' | 'fast' | 'fastest';
 
 interface Props {
+  children: React.ReactNode;
   className?: string;
   mounted?: boolean;
   ease?: number[] | string;
@@ -62,7 +63,6 @@ export const AnimateHeight: React.FC<Props> = ({
               duration: speedMap[speed],
             },
           },
-
         }}
         className={'AnimateHeight' + (className ? ` ${className}` : '')}
       >

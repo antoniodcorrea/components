@@ -174,7 +174,10 @@ export const CarouselField: React.FC<Props> = ({
         uploadFiles={onFileUploadRequest}
         onRemove={onFileRemove}
         percentCompleted={percentCompleted}
-        accept=".jpg,.jpeg,.png"
+        accept={{
+          ['image/png']: ['.png'],
+          ['image/jpg']: ['.jpg,.jpeg'],
+        }}
         maxSize={maxSize}
       />
       <Input
@@ -192,7 +195,7 @@ export const CarouselField: React.FC<Props> = ({
               data-id={item.id}
               data-order={item.order}
             >
-              <div className="CarouselField-overlay" onMouseDown={() => onImageListClick(item)} />
+              <div className="CarouselField-overlay" onMouseDown={() => onImageListClick(item)} id="handle" />
               <img src={item?.image?.original} />
               <Cross
                 id="Remove"

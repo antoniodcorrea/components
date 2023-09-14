@@ -5,7 +5,14 @@ import { H1 } from '../H1';
 import { Hr } from '../Hr';
 import { Sortable } from '.';
 import { sortArrayByIdAndOrder } from '@antoniodcorrea/utils';
-const originalArticles = [
+
+type ArticleItem = {
+  id: number;
+  order: number;
+  title: string;
+};
+
+const originalArticles: Array<ArticleItem> = [
   {
     id: 1,
     order: 0,
@@ -40,7 +47,7 @@ export default {
 };
 
 export const Default: React.FC = () => {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<Array<ArticleItem>>([]);
 
   const onSortChange = (returnData) => {
     const sortedArticles = sortArrayByIdAndOrder({ data: articles, id: returnData.id, order: returnData.order });
@@ -76,7 +83,7 @@ export const Default: React.FC = () => {
               <span>
                 item {item.id} <span style={{ color: 'lightgray' }}>— order: {item.order}</span>
               </span>
-              <span className="Sortable-sortableItemHandle Sortable-handle" id="Handle">
+              <span className="Sortable-sortableItemHandle Sortable-handle" id="handle">
                 ≡
               </span>
             </li>

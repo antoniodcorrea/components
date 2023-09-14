@@ -3,7 +3,10 @@ import katex from 'katex';
 
 import './EditorMathInline.less';
 
-export const EditorMathInline: React.FC = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorMathInline: React.FC<Props> = ({ children }) => {
   const [formula, setFormula] = useState<string>('');
 
   useEffect(() => {

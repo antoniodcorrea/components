@@ -5,7 +5,7 @@ import { AnchorElement } from '../types/AnchorElement';
 import './EditorA.less';
 
 interface Props {
-  children: React.ReactChildren;
+  children: React.ReactNode;
   element: AnchorElement;
 }
 

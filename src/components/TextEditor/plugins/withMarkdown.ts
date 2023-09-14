@@ -1,4 +1,5 @@
 import { Editor, Transforms, Range, Point } from 'slate';
+import { TextEditorElement } from '../types/TextEditorElement';
 
 const noBackspace = ['bulleted-list', 'numbered-list', 'list-item', 'paragraph'];
 
@@ -28,7 +29,7 @@ export const withMarkdown = (editor: Editor): Editor => {
     if (text === ' ' && selection && Range.isCollapsed(selection)) {
       const { anchor } = selection;
       const block = Editor.above(editor, {
-        match: (n) => Editor.isBlock(editor, n),
+        match: (node: TextEditorElement) => Editor.isBlock(editor, node),
       });
       const path = block ? block[1] : [];
       const start = Editor.start(editor, path);
@@ -39,12 +40,12 @@ export const withMarkdown = (editor: Editor): Editor => {
       if (type) {
         Transforms.select(editor, range);
         Transforms.delete(editor);
-        Transforms.setNodes(editor, { type }, { match: (n) => Editor.isBlock(editor, n) });
+        Transforms.setNodes(editor, { type }, { match: (node: TextEditorElement) => Editor.isBlock(editor, node) });
 
         if (type === 'list-item') {
           const list = { type: LIST_WRAPPER[beforeText], children: [] };
           Transforms.wrapNodes(editor, list, {
-            match: (n) => n.type === 'list-item',
+            match: (node: TextEditorElement) => node.type === 'list-item',
           });
         }
 
@@ -74,7 +75,7 @@ export const withMarkdown = (editor: Editor): Editor => {
 
     if (selection && Range.isCollapsed(selection)) {
       const match = Editor.above(editor, {
-        match: (n) => Editor.isBlock(editor, n),
+        match: (node: TextEditorElement) => Editor.isBlock(editor, node),
       });
 
       if (match) {
@@ -86,7 +87,7 @@ export const withMarkdown = (editor: Editor): Editor => {
 
           if (block.type === 'list-item') {
             Transforms.unwrapNodes(editor, {
-              match: (n) => n.type === 'bulleted-list' || n.type === 'numbered-list',
+              match: (node: TextEditorElement) => node.type === 'bulleted-list' || node.type === 'numbered-list',
               split: true,
             });
           }

@@ -7,7 +7,7 @@ import { A } from '.';
 export default {
   component: A,
   title: 'A',
-  decorators: [withKnobs],
+  decorators: [withKnobs,],
 };
 
 const knobs = {

@@ -8,6 +8,7 @@ export type NotificationType = 'success' | 'error' | 'alert';
 export type NotificationSize = 'small' | 'normal' | 'big';
 
 interface Props {
+  children?: React.ReactNode;
   className?: string;
   id?: string;
   type?: NotificationType;

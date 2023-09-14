@@ -5,9 +5,11 @@ import { FileField } from '../FileField';
 import { FileUploadItem } from './types';
 
 import './FileFieldMultiple.less';
+import { Accept } from 'react-dropzone';
 
 interface Props {
   files?: FileUploadItem[];
+  accept: Accept;
   onPressFileUpdated: (file: File, index) => Promise<void>;
   onNameChange: (fileName: string, index) => void;
   onPressFileRemove: (src: string) => Promise<void>;
@@ -17,6 +19,7 @@ interface Props {
 
 export const FileFieldMultiple: React.FC<Props> = ({
   files,
+  accept,
   onPressFileUpdated,
   onPressFileRemove,
   onAddFile,
@@ -29,9 +32,9 @@ export const FileFieldMultiple: React.FC<Props> = ({
         <FileField
           key={item.url}
           className="ControlProject-file"
-          name="Some file"
+          name="Some file" // TODO: pass name as props
           fileName={item.name}
-          accept=".pdf"
+          accept={accept}
           fileUrl={item.url}
           uploadFiles={(file) => onPressFileUpdated(file, index)}
           onRemove={onPressFileRemove}

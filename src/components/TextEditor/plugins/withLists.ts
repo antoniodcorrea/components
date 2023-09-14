@@ -3,6 +3,7 @@
 import { Editor, Point, Range, Transforms } from 'slate';
 
 import { ParagraphElementType } from '../types/ParagraphElement';
+import { TextEditorElement } from '../types/TextEditorElement';
 
 const defaultMax = 5;
 
@@ -135,9 +136,9 @@ const indentItem = (editor: Editor, maxDepth = defaultMax): void => {
 const unSetList = (editor: Editor): void => {
   const { selection } = editor;
 
-  if (selection && Range.isCollapsed(selection)) {
+  if (selection) {
     const match = Editor.above(editor, {
-      match: (n) => Editor.isBlock(editor, n),
+      match: (node: TextEditorElement) => Editor.isBlock(editor, node),
     });
 
     if (match) {

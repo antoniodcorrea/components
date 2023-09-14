@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import { speedMap } from './speedMap';
@@ -8,6 +8,7 @@ import './AnimateSheet.less';
 export type FadeSpeed = 'slow' | 'normal' | 'fast' | 'fastest';
 
 interface Props {
+  children: React.ReactNode;
   className?: string;
   mounted: boolean;
   ease?: number[] | string;

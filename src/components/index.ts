@@ -71,7 +71,6 @@ export { TextButton } from './TextButton';
 export {
   TextEditor,
   TextEditorValue,
-  textEditorDefaultValue,
   toHtml,
   TextEditorProps,
   textEditorHasValue,
@@ -87,5 +86,6 @@ export { Ellipsis } from './Ellipsis';
 export { Space } from './Space';
 export { HideShow } from './HideShow';
 export { HtmlSanitizer } from './HtmlSanitizer';
+// export { ErrorBoundary } from './ErrorBoundary';
 export { CarouselField, CarouselFieldSlide } from './CarouselField';
 export { Sortable, SortableSortProps } from './Sortable';

@@ -3,7 +3,10 @@ import katex from 'katex';
 
 import './EditorMath.less';
 
-export const EditorMath: React.FC = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorMath: React.FC<Props> = ({ children }) => {
   const [formula, setFormula] = useState('');
   const [error, setError] = useState<boolean>(false);
   const child = React.Children.only(children[0]);

@@ -1,3 +1,6 @@
 import React from 'react';
 
-export const EditorUnderlined: React.FC = ({ children }) => <u className="EditorUnderlined">{children}</u>;
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorUnderlined: React.FC<Props> = ({ children }) => <u className="EditorUnderlined">{children}</u>;

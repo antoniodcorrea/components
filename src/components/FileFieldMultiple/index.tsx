@@ -2,14 +2,16 @@ import React from 'react';
 
 import { FileFieldMultiple as FileFieldMultipleUi } from './FileFieldMultiple';
 import { FileUploadItem, ImageUpload } from './types';
+import { Accept } from 'react-dropzone';
 
 interface Props {
   files: Array<FileUploadItem>;
+  accept: Accept;
   imageUploadService: ImageUpload;
   onChange: (files: Array<FileUploadItem>) => void;
 }
 
-export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, onChange }) => {
+export const FileFieldMultiple: React.FC<Props> = ({ files, accept, imageUploadService, onChange }) => {
   // If there are no files, or every input already has a file
   const renderAdd = !files?.length || files?.every((item) => !!item.url);
 
@@ -127,6 +129,7 @@ export const FileFieldMultiple: React.FC<Props> = ({ files, imageUploadService, 
       onPressFileRemove={onPressFileRemove}
       onAddFile={onAddFile}
       renderAdd={renderAdd}
+      accept={accept}
     />
   );
 };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TextEditorValue } from './types';
 
 import { withKnobs } from '@storybook/addon-knobs';
@@ -26,7 +26,7 @@ class ImageUpload {
   };
 }
 
-const initialValue = [
+const initialValue: TextEditorValue = [
   {
     type: 'h1',
     children: [
@@ -148,7 +148,6 @@ export default {
 
 export const Default: React.FC = () => {
   const imageUpload = new ImageUpload();
-  const [value, setValue] = useState<TextEditorValue>([]);
 
   const onChangeTextEditorValue = (editorData) => {
     const dataToHtml = toHtml({
@@ -156,7 +155,6 @@ export const Default: React.FC = () => {
       children: editorData,
     });
 
-    console.clear();
     console.log('=======');
     console.log('dataToHtml');
     console.log(dataToHtml);
@@ -165,18 +163,12 @@ export const Default: React.FC = () => {
     console.log('=======');
   };
 
-  useEffect(() => {
-    setValue(initialValue);
-  }, []);
-
-  console.log('initialValue: ', initialValue);
-
   return (
     <div>
       <H1>Sortable list</H1>
       <Hr spacer />
-      <div style={{ width: '500px' }}>
-        <TextEditor initialValue={value} onChange={onChangeTextEditorValue} imageUploadService={imageUpload} />
+      <div style={{ width: '800px' }}>
+        <TextEditor initialValue={initialValue} onChange={onChangeTextEditorValue} imageUploadService={imageUpload} />
       </div>
     </div>
   );

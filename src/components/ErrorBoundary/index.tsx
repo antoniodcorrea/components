@@ -2,8 +2,10 @@ import React from 'react';
 import './ErrorBoundary.less';
 
 interface Props {
+  children: React.ReactNode;
   message: string;
 }
+
 interface State {
   hasError: boolean;
 }

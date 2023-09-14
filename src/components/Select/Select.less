@@ -147,22 +147,22 @@
     align-items: center;
     height: 20px;
     min-width: unset;
-    padding: 0 2px 0 15px;
+    padding: 0 0 0 8px;
     background: @c-background;
-    border: 2px solid @gradientColors[blue-1];
+    border: 1px solid @gradientColors[black-2];
     transition: border @td-fast @ease;
-    border-radius: 15.5px;
+    border-radius: 4px;
 
     &:hover {
-      border: 2px solid @gradientColors[blue-2];
+      border: 1px solid @gradientColors[black-1];
       cursor: pointer;
 
       @{c}__multi-value__label:not(.noClass) {
-        color: @gradientColors[blue-2];
+        color: @gradientColors[black-1];
       }
 
       @{c}__multi-value__remove:not(.noClass) {
-        fill: @gradientColors[blue-2];
+        fill: @gradientColors[black-1];
       }
     }
   }
@@ -175,7 +175,7 @@
     line-height: @fh-small;
     text-transform: capitalize;
     white-space: nowrap;
-    color: @gradientColors[blue-1];
+    color: @gradientColors[black-2];
     text-overflow: unset;
     transition: color @td-fast @ease;
 
@@ -188,7 +188,7 @@
     height: 100%;
     padding-left: 10px;
     padding-right: 10px;
-    fill: @gradientColors[blue-1];
+    fill: @gradientColors[black-2];
     transition: fill @td-fast @ease;
     border-radius: 0;
 
@@ -199,7 +199,7 @@
 
     &:hover:not(.noClass):not(.noClass2) {
       background: @c-transparent;
-      fill: @c-errorAccent;
+      fill: @gradientColors[black-1];
       cursor: pointer;
     }
   }

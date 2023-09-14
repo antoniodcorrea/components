@@ -10,7 +10,7 @@ export default {
 };
 
 const knobs = {
-  size: (): SpinnerSize =>
+  size: (): SpinnerSize | undefined =>
     select('Size', [undefined, 'nano', 'micro', 'small', 'normal', 'medium', 'big', 'biggest', 'huge'], undefined),
 };
 export const Default: React.FC = () => <Spinner size={knobs.size()} />;

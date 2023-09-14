@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import { withKnobs } from '@storybook/addon-knobs';
-import { CarouselField } from '.';
+import { CarouselField, CarouselFieldSlide } from '.';
 
-const originalImages = [
+const originalImages: Array<CarouselFieldSlide> = [
   {
     id: 1,
     order: 1,
     title: 'https://picsum.photos/id/1/1000',
-    images: {
+    image: {
       original: 'https://picsum.photos/id/1/1000',
     },
   },
@@ -16,7 +16,7 @@ const originalImages = [
     id: 2,
     order: 2,
     title: 'https://picsum.photos/id/2/1000',
-    images: {
+    image: {
       original: 'https://picsum.photos/id/2/1000',
     },
   },
@@ -24,7 +24,7 @@ const originalImages = [
     id: 3,
     order: 3,
     title: 'https://picsum.photos/id/3/1000',
-    images: {
+    image: {
       original: 'https://picsum.photos/id/3/1000',
     },
   },
@@ -32,7 +32,7 @@ const originalImages = [
     id: 4,
     order: 4,
     title: 'https://picsum.photos/id/4/1000',
-    images: {
+    image: {
       original: 'https://picsum.photos/id/4/1000',
     },
   },
@@ -40,7 +40,7 @@ const originalImages = [
     id: 5,
     order: 5,
     title: 'https://picsum.photos/id/5/1000',
-    images: {
+    image: {
       original: 'https://picsum.photos/id/5/1000',
     },
   },
@@ -48,7 +48,7 @@ const originalImages = [
     id: 6,
     order: 6,
     title: 'https://picsum.photos/id/6/1000',
-    images: {
+    image: {
       original: 'https://picsum.photos/id/6/1000',
     },
   },
@@ -61,7 +61,7 @@ export default {
 };
 
 export const Default: React.FC = () => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<Array<CarouselFieldSlide>>([]);
 
   const onImagesChange = (images) => {
     setImages(images);
@@ -70,13 +70,13 @@ export const Default: React.FC = () => {
   const onFileUpload = (e) => {
     console.log(e);
 
-    return null;
+    return Promise.resolve({ file: '' });
   };
 
-  const onFileRemove = (e) => {
+  const onFileRemove = (e: string) => {
     console.log(e);
 
-    return null;
+    return Promise.resolve();
   };
 
   useEffect(() => {

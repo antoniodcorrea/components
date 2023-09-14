@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FileRejection } from 'react-dropzone';
+import { Accept, FileRejection } from 'react-dropzone';
 import {
   ERROR_MESSAGE_DEFAULT,
   ERROR_FILE_REJECTED,
@@ -7,7 +7,7 @@ import {
   FILE_MAX_SIZE_BYTES,
 } from './constants';
 
-import { FileType, ImageField as ImageFieldUi } from './ImageField';
+import { ImageField as ImageFieldUi } from './ImageField';
 
 export interface Props {
   name?: string;
@@ -17,7 +17,7 @@ export interface Props {
   rounded?: boolean;
   label?: string;
   removable?: boolean;
-  accept?: FileType;
+  accept?: Accept;
   percentCompleted: number;
   disabled?: boolean;
   maxSize?: number;

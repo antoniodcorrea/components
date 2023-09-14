@@ -1,4 +1,4 @@
-import { TextElement } from "./TextElement";
+import { TextElement } from './TextElement';
 
 export type MathBlockElement = {
   type: 'math';

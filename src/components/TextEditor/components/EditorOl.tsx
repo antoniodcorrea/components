@@ -2,7 +2,10 @@ import React from 'react';
 
 import './EditorOl.less';
 
-export const EditorOl: React.FC = ({ children, ...props }) => (
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorOl: React.FC<Props> = ({ children, ...props }) => (
   <ol className="EditorOl" {...props}>
     {children}
   </ol>

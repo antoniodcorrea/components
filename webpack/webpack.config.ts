@@ -8,16 +8,16 @@ module.exports = {
   name: 'Components',
   entry: path.join(ROUTE_SRC, 'components/index.ts'),
   output: {
+    library: 'Components',
     filename: 'index.js',
     path: ROUTE_DIST,
-    libraryTarget: 'commonjs2',
-    globalObject: '(typeof self !== \'undefined\' ? self : this)', // https://stackoverflow.com/questions/49111086/webpack-4-universal-library-target
-    library: 'Components',
+    libraryTarget: 'umd',
+    globalObject: 'this',
     umdNamedDefine: true,
   },
   // For node, as we want to do SSR with them
-  target: 'node',
-  devtool: '#source-map',
+  target: 'web',
+  devtool: 'eval-cheap-module-source-map',
   // Don't include node_modules neither React in the modules bundles
   externals: [nodeExternals(), 'react', 'react-datepicker'],
   resolve: {
@@ -27,7 +27,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx|ts|tsx)$/,
-        loader: ['ts-loader'],
+        use: ['ts-loader'],
         exclude: /node_modules/,
       },
       {

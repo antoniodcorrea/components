@@ -12,10 +12,10 @@
   &-label {
     display: flex;
     height: 20px;
-    font-size: @fs-small;
-    font-weight: @fw-bold;
+    font-size: @fs-normalSmall;
+    font-weight: @fw-medium;
     white-space: nowrap;
-    color: @gradientColors[black-3];
+    color: @gradientColors[black-4];
     overflow: hidden;
     background: @c-transparent;
     pointer-events: none;
@@ -23,40 +23,39 @@
   }
 
   &-textArea {
-    padding: 20px;
+    padding: 15px;
     font-family: @ff-sans;
-    font-size: @fs-normal;
-    font-weight: @fw-semibold;
+    font-size: @fs-normalSmall;
+    font-weight: @fw-medium;
     line-height: @fh-normal;
     color: @gradientColors[black-2];
     overflow: auto;
-    background: @gradientColors[black-5];
+    background: @c-background;
     border: none;
-    outline: 2px solid transparent;
-    transition: color @td-fast @ease, box-shadow @td-fast @ease;
+    outline: 1px solid @gradientColors[black-4];
+    transition: color @td-fast @ease, outline @td-fast @ease;
     resize: none;
-    box-shadow: 0 0 0 0 @c-shadow;
-    border-radius: 8px;
+    border-radius: 4px;
 
     &:focus,
     &:not(:placeholder-shown) {
-      box-shadow: 4px 4px 0 0 @c-shadow;
+      outline: 1px solid @gradientColors[black-3];
     }
 
     @{c}--success & {
-      outline: 2px solid @gradientColors[blue-2];
+      outline: 1px solid @gradientColors[blue-2];
       box-shadow: 0 0 0 0 @c-shadow;
     }
 
     @{c}--error & {
-      outline: 2px solid @c-errorAccent;
+      outline: 1px solid @c-errorAccent;
       box-shadow: 0 0 0 0 @c-shadow;
     }
 
     @{c}--disabled &,
     @{c}--readOnly & {
       color: @c-accentLight;
-      box-shadow: 0 0 0 0 @c-shadow;
+      outline: 1px solid @gradientColors[black-4];
       pointer-events: none;
       user-select: none;
     }

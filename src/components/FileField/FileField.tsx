@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropzone from 'react-dropzone';
+import Dropzone, { Accept } from 'react-dropzone';
 
 import { A } from '../A';
 import { Hr } from '../Hr';
@@ -20,7 +20,7 @@ export interface Props {
   maxSize: number;
   percentCompleted?: number;
   removable?: boolean;
-  accept?: string;
+  accept?: Accept;
   size?: string;
   error?: boolean;
   success?: boolean;

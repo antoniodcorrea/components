@@ -2,4 +2,7 @@ import React from 'react';
 
 import './EditorCentered.less';
 
-export const EditorCentered: React.FC = ({ children }) => <p className="EditorCentered centered">{children}</p>;
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorCentered: React.FC<Props> = ({ children }) => <p className="EditorCentered centered">{children}</p>;

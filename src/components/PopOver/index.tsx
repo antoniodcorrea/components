@@ -5,6 +5,7 @@ import { createPopper } from '@popperjs/core';
 import './PopOver.less';
 
 interface Props {
+  children: React.ReactNode;
   elementId: string;
   placement?:
     | 'top'

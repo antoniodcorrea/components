@@ -2,7 +2,11 @@ import React from 'react';
 
 import './EditorCode.less';
 
-export const EditorCode: React.FC = ({ children }) => (
+interface Props {
+  children: React.ReactNode;
+}
+
+export const EditorCode: React.FC<Props> = ({ children }) => (
   <pre className="EditorCode">
     <code>{children}</code>
   </pre>

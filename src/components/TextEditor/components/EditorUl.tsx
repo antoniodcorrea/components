@@ -2,7 +2,10 @@ import React from 'react';
 
 import './EditorUl.less';
 
-export const EditorUl: React.FC = ({ children, ...props }) => (
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorUl: React.FC<Props> = ({ children, ...props }) => (
   <ul className="EditorUl" {...props}>
     {children}
   </ul>

@@ -32,7 +32,7 @@ export const Default: React.FC = () => {
         <FileField
           label="My file"
           name="Some file"
-          accept=".pdf"
+          accept={{ ['application/pdf']: ['pdf'] }}
           fileUrl="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
           uploadFiles={uploadFilesToServer}
           onRemove={removeFilesFromServer}

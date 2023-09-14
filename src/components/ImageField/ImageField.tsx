@@ -1,12 +1,10 @@
 import React from 'react';
-import Dropzone, { FileRejection } from 'react-dropzone';
+import Dropzone, { Accept, FileRejection } from 'react-dropzone';
 import { Img } from '../Img';
 import { ProgressBar } from '../ProgressBar';
 import { Cross, Upload } from '../Svg';
 
 import './ImageField.less';
-
-export type FileType = '.jpg,.jpeg,.png' | 'image/*' | '.jpg,.jpeg' | '.png' | '.pdf' | 'video/*' | 'audio/*';
 
 export interface Props {
   className: string;
@@ -16,7 +14,7 @@ export interface Props {
   grow: boolean;
   percentCompleted: number;
   removable: boolean;
-  accept: FileType;
+  accept: Accept;
   maxSize: number;
   error: string;
   success: boolean;

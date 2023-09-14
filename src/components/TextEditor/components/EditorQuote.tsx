@@ -2,4 +2,9 @@ import React from 'react';
 
 import './EditorQuote.less';
 
-export const EditorQuote: React.FC = ({ children }) => <blockquote className="EditorQuote">{children}</blockquote>;
+interface Props {
+  children: React.ReactNode;
+}
+export const EditorQuote: React.FC<Props> = ({ children }) => (
+  <blockquote className="EditorQuote">{children}</blockquote>
+);

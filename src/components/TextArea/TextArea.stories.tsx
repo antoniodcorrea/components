@@ -46,6 +46,7 @@ export const Empty: React.ReactNode = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow
+        placeholder="Write here..."
         onChange={(e): void => setValue(e.currentTarget.value)}
       />
       <Hr spacer />
@@ -59,6 +60,7 @@ export const Empty: React.ReactNode = () => {
         success={knobs.success()}
         disabled={knobs.disabled()}
         grow
+        placeholder="Write here..."
         onChange={(e): void => setValue2(e.currentTarget.value)}
       />
     </div>

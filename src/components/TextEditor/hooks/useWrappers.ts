@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Editor, Node as SlateNode, Path as SlatePath, Range, Transforms } from 'slate';
+import { Editor, Node as SlateNode, Path as SlatePath, Range, Transforms, Node } from 'slate';
 import { withHistory } from 'slate-history';
 
 import { testStringIsValidUrl } from '@antoniodcorrea/utils';
 import { ImageUpload } from '../types';
 import { textEditorValidateAmountImages } from '../utils/textEditorValidateAmountImages';
 import { useCustomEditor } from './useCustomEditor';
+import { TextEditorElement } from '../types/TextEditorElement';
 
 type UseWrappers = (imageUploadService: ImageUpload) => {
   withInlinesWrapper: (editor: Editor) => Editor;
@@ -55,7 +56,7 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
 
       const selectedNodePath = SlatePath.parent(editor.selection.anchor.path);
       const selectedNode = SlateNode.get(editor, selectedNodePath);
-      if (Editor.isVoid(editor, selectedNode)) {
+      if (Editor.isVoid(editor, selectedNode as TextEditorElement)) {
         Editor.insertNode(editor, {
           type: 'paragraph',
           children: [
@@ -78,7 +79,7 @@ export const useWrappers: UseWrappers = (imageUploadService: ImageUpload) => {
         return deleteBackward(unit);
       const prevNodePath = SlatePath.previous(SlatePath.parent(editor.selection.anchor.path));
       const prevNode = SlateNode.get(editor, prevNodePath);
-      if (Editor.isVoid(editor, prevNode)) {
+      if (Editor.isVoid(editor, prevNode as TextEditorElement)) {
         return Transforms.removeNodes(editor);
       }
 

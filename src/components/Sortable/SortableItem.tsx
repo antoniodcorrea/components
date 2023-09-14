@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 import { DraggableSyntheticListeners } from '@dnd-kit/core';
 import { useSortable } from '@dnd-kit/sortable';
@@ -9,7 +9,7 @@ import './Sortable.less';
 import './SortableItem.less';
 
 export interface Props {
-  children: React.ReactChild;
+  children: React.ReactNode;
   id: string;
   transform?: Transform | null;
   listeners?: DraggableSyntheticListeners;
@@ -41,37 +41,28 @@ export const SortableItem: React.FC<Props> = ({ children, id, onRemove }) => {
     // Due to particularities with SVG we need to render outerHTML or innerHTML depending on the case, as well as getting correctly the class
 
     // Get current handle
-    const handle = node.current?.querySelector('#Handle') as HTMLElement;
+    const handle = (node.current?.querySelector('#handle') as HTMLElement) || node.current;
+
     if (!handle) return;
 
-    // Get tag to create new element
+    // Get handle React properties to create new element
     const tag = handle.tagName;
     const classCastedAsSvgClass = handle.className as unknown as SVGAnimatedString;
     const isSvg = !!classCastedAsSvgClass?.baseVal;
     const className = isSvg ? classCastedAsSvgClass.baseVal : handle.className;
     const html = isSvg ? handle.outerHTML : handle.innerHTML;
 
-    // Create new element using original handle tag and its innerHtml
-    const handleWrapper: React.ReactElement = React.createElement(tag.toLowerCase(), {
+    const newHandleReactElement: React.ReactElement = React.createElement(tag.toLowerCase(), {
       id: handle.id,
       dangerouslySetInnerHTML: { __html: html },
       className,
       ...listeners,
       ...attributes,
     });
-
-    // Render clone within handle and do actions asynchronously
-    ReactDOM.render(handleWrapper, handle, () => {
-      // Replace outer handle with inner one
-      const outerHandle = node.current.querySelector('#Handle');
-      // innerHandle.classList.add(className);
-      handle.parentElement.replaceChild(outerHandle.firstChild, outerHandle);
-      // Finally restore classes to element
-      handle.classList.add(...className.split(' '));
-    });
+    ReactDOM.createRoot(handle).render(newHandleReactElement);
   }, []);
 
-  const clonedChildren = React.Children.map(children, (child) => {
+  const clonedChildren = React.Children.map(children, (child: React.ReactNode) => {
     if (!React.isValidElement(child)) return;
 
     return React.cloneElement(child, {
@@ -91,5 +82,5 @@ export const SortableItem: React.FC<Props> = ({ children, id, onRemove }) => {
     });
   });
 
-  return <>{clonedChildren}</>;
+  return clonedChildren;
 };

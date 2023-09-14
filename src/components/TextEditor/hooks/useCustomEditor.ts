@@ -6,6 +6,7 @@ import { ImageElement } from '../types/ImageElement';
 import { ParagraphElement } from '../types/ParagraphElement';
 import { TextElement } from '../types/TextElement';
 import { YoutubeElement } from '../types/YoutubeElement';
+import { TextEditorElement } from '../types/TextEditorElement';
 
 const VIDEO_YOUTUBE_REGEX =
   /^(?:(?:https?:)?\/\/)?(?:(?:www|m)\.)?(?:(?:youtube\.com|youtu.be))(?:\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(?:\S+)?$/;
@@ -95,23 +96,18 @@ export const useCustomEditor: UseCustomEditor = () => {
   const toggleBlock = (editor: Editor, blockType: string): void => {
     const isActive = isBlockActive(editor, blockType);
 
-    Transforms.setNodes(
-      editor,
-      {
-        type: isActive ? null : blockType,
-      },
-      {
-        match: (node) => Editor.isBlock(editor, node),
-      }
-    );
+    Transforms.setNodes(editor, {
+      type: isActive ? 'paragraph' : blockType,
+    });
   };
 
   const canInsertImageOrVideoBlockFromToolbar = (editor: Editor): boolean => {
     const [match] = Editor.nodes(editor, {
       match: (node: ParagraphElement | ImageElement) =>
+        // Add nodes only when selected block is either paragraph or image or has no node type, and has children with no content
         Editor.isBlock(editor, node) &&
         (node.type === 'paragraph' || node.type === 'image' || !node.type) &&
-        node.children[0].text === '',
+        node.children?.[0]?.text === '',
     });
 
     return !!match;
@@ -127,9 +123,9 @@ export const useCustomEditor: UseCustomEditor = () => {
     };
 
     Transforms.setNodes(editor, image, {
-      match: (node) =>
-        // Add nodes only when selected block is either paragraph or has no node type, and has no content
-        Editor.isBlock(editor, node) && (node.type === 'paragraph' || !node.type) && node.children[0].text === '',
+      match: (node: TextEditorElement) =>
+        // Add nodes only when selected block is either or has no node type, and has children with no content
+        Editor.isBlock(editor, node) && (node.type === 'paragraph' || !node.type) && node.children?.[0]?.text === '',
     });
   };
 
@@ -146,9 +142,8 @@ export const useCustomEditor: UseCustomEditor = () => {
         },
       ],
     };
-
     Transforms.insertNodes(editor, image, {
-      match: (node) =>
+      match: (node: TextEditorElement) =>
         // Add nodes only when selected block is either paragraph or has no node type, and has no content
         Editor.isBlock(editor, node) && (node.type === 'paragraph' || !node.type) && node.children[0].text === '',
     });
@@ -164,10 +159,9 @@ export const useCustomEditor: UseCustomEditor = () => {
     const matches = src?.trim()?.match(youtubeRegex);
     const path = editor.selection.anchor.path;
     const parentPath = Path.parent(path);
-    const node = SlateNode.get(editor, parentPath);
+    const node = SlateNode.get(editor, parentPath) as TextEditorElement;
     const canAddVideo =
       Editor.isBlock(editor, node) && (node.type === 'paragraph' || !node.type) && node.children[0].text === '';
-
     const [_, videoId] = matches;
     const video: YoutubeElement = {
       type: 'youtube',

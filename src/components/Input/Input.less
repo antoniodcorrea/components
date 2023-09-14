@@ -7,14 +7,14 @@
   position: relative;
   flex-direction: column;
   justify-content: space-between;
-  height: 80px;
+  height: 70px;
   font-family: @ff-sans;
   text-align: left;
 
   &-label {
     display: flex;
-    font-size: @fs-normal;
-    font-weight: @fw-bold;
+    font-size: @fs-normalSmall;
+    font-weight: @fw-medium;
     white-space: nowrap;
     color: @gradientColors[black-4];
     overflow: hidden;
@@ -29,21 +29,18 @@
   }
 
   &-input {
-    height: 40px;
+    height: 30px;
     width: 100%;
     padding-left: 12px;
     padding-right: 12px;
-    font-size: @fs-normal;
-    font-weight: @fw-semibold;
+    font-size: @fs-normalSmall;
+    font-weight: @fw-medium;
     color: @gradientColors[black-2];
     box-sizing: border-box;
-    background: @gradientColors[black-5];
     border: 0;
-    outline: 2px solid @c-transparent;
+    outline: 1px solid @gradientColors[black-4];
     transition: color @td-fast @ease, box-shadow @td-fast @ease, outline-color @td-fast @ease;
-    box-shadow: 0 0 0 0 @c-shadow;
-    outline-offset: -2px;
-    border-radius: 8px;
+    border-radius: 4px;
 
     &::placeholder {
       font-weight: @fw-regular;
@@ -55,8 +52,7 @@
 
     &:focus,
     &:not(:placeholder-shown) {
-      outline: 2px solid @c-transparent;
-      box-shadow: 4px 4px 0 0 @c-shadow;
+      outline: 1px solid @gradientColors[black-3];
     }
 
     &[type='date']::-webkit-inner-spin-button,
@@ -67,25 +63,23 @@
       -webkit-appearance: none;
     }
 
-    @{c}--disabled &,
-    @{c}--readOnly & {
-      color: @c-accentLight;
-      box-shadow: 0 0 0 0 @c-shadow;
-    }
-
-    @{c}--disabled & {
+    @{c}--disabled:not(.noClass) & {
       pointer-events: none;
       user-select: none;
     }
 
     @{c}--success:not(.noClass) & {
-      outline: 2px solid @gradientColors[blue-2];
-      box-shadow: 0 0 0 0 @c-shadow;
+      outline: 1px solid @gradientColors[blue-2];
+    }
+
+    @{c}--disabled:not(.noClass) &,
+    @{c}--readOnly:not(.noClass) & {
+      color: @c-accentLight;
+      outline: 1px solid @gradientColors[black-4];
     }
 
     @{c}--error:not(.noClass) & {
-      outline: 2px solid @c-errorAccent;
-      box-shadow: 0 0 0 0 @c-shadow;
+      outline: 1px solid @c-errorAccent;
     }
   }
 
