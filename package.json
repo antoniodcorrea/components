@@ -1,6 +1,6 @@
 {
   "name": "@antoniodcorrea/components",
-  "version": "1.0.246",
+  "version": "1.0.256",
   "description": "Components library from antoniodcorrea",
   "author": {
     "name": "Antonio Diaz",
@@ -58,7 +58,6 @@
     "@types/react-select": "^5.0.1",
     "babel-loader": "^9.1.3",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
-    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.48.0",

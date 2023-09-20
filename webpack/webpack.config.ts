@@ -1,25 +1,24 @@
 import path from 'path';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import nodeExternals from 'webpack-node-externals';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { ROUTE_SRC, ROUTE_DIST } from './constants';
 
 module.exports = {
   name: 'Components',
+  mode: 'production',
   entry: path.join(ROUTE_SRC, 'components/index.ts'),
   output: {
     library: 'Components',
     filename: 'index.js',
     path: ROUTE_DIST,
     libraryTarget: 'umd',
-    globalObject: 'this',
     umdNamedDefine: true,
+    clean: true,
   },
   // For node, as we want to do SSR with them
-  target: 'web',
-  devtool: 'eval-cheap-module-source-map',
+  target: 'node',
   // Don't include node_modules neither React in the modules bundles
-  externals: [nodeExternals(), 'react', 'react-datepicker'],
+  externals: [nodeExternals()],
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.svg'],
   },
@@ -40,17 +39,8 @@ module.exports = {
       },
     ],
   },
-  // Messages on the console
   stats: 'errors-only',
   plugins: [
-    // Clean before each build
-    new CleanWebpackPlugin({
-      dry: false,
-      verbose: true,
-      protectWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: [path.join(ROUTE_DIST, '/**/*')],
-      cleanAfterEveryBuildPatterns: [path.join(ROUTE_DIST, 'build')],
-    }),
     new MiniCssExtractPlugin({
       filename: 'index.css',
     }),
