@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 import { SelectUi } from './Select';
 
@@ -42,7 +42,7 @@ export const Select: React.FC<SelectProps> = ({
 }) => {
   const [focus, setFocus] = useState(false);
   const focusOrContent = (!!value?.length && value[0] !== null) || focus;
-
+  const instanceId = useId();
   const onSelectValueChange = (values) => {
     const isArray = Array.isArray(values);
     const valuesArray = !isArray ? [values] : values;
@@ -54,6 +54,7 @@ export const Select: React.FC<SelectProps> = ({
 
   return (
     <SelectUi
+      instanceId={instanceId}
       isCreatable={isCreatable}
       className={className}
       placeholder={placeholder}

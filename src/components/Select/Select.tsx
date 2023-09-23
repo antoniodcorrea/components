@@ -9,6 +9,7 @@ import { SelectValue } from '.';
 import './Select.less';
 
 interface Props {
+  instanceId: string;
   isCreatable?: boolean;
   className?: string;
   placeholder?: string;
@@ -75,6 +76,7 @@ const SelectComponent = ({ isCreatable, ...props }) =>
   isCreatable ? <CreatableSelect {...props} /> : <Select {...props} />;
 
 export const SelectUi: React.FC<Props> = ({
+  instanceId,
   isCreatable,
   className,
   options,
@@ -95,6 +97,7 @@ export const SelectUi: React.FC<Props> = ({
 }) => (
   <div className={'Select ' + (className ? className : ' ') + (grow ? ' Select--grow' : ' ') + (' Select--' + height)}>
     <SelectComponent
+      instanceId={instanceId}
       isCreatable={isCreatable}
       className={'Select__container ' + (value.length ? 'Select__container--hasValue' : '')}
       classNamePrefix="Select"
