@@ -13,14 +13,7 @@ interface Props extends HTMLProps<HTMLInputElement> {
 
 export const Switch: React.FC<Props> = ({ name, checked = false, className, ...props }) => (
   <label className={'Switch' + (className ? ` ${className}` : '')}>
-    <input
-      className="Switch-input"
-      type="checkbox"
-      name={name}
-      /*defaultChecked={checked} This may be needed*/
-      checked={!!checked}
-      {...props}
-    />
+    <input className="Switch-input" type="checkbox" name={name} defaultChecked={!!checked} {...props} />
     <span className="Switch-slider " />
     <span className="Switch-icons">
       <span className="Switch-icon Switch-true">
