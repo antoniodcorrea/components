@@ -6,7 +6,7 @@ import { ROUTE_SRC, ROUTE_DIST } from './constants';
 module.exports = {
   name: 'Components',
   mode: 'production',
-  entry: path.join(ROUTE_SRC, 'components/index.ts'),
+  entry: path.join(ROUTE_SRC, 'index.ts'),
   output: {
     library: 'Components',
     filename: 'index.js',
