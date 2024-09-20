@@ -1,1 +1,1 @@
-export { useShowPageOnLoad } from './useShowPageOnLoad';
+export { useShowPageOnLoad } from './useShowPageOnLoad/useShowPageOnLoad';
