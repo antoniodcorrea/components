@@ -17,6 +17,7 @@ Whole process
     git add . && git commit -m "[COMMIT_MESSAGE]"
     npm version patch | minor | major
     npm run publish:custom
+    git push
 
 Only publish:
 
