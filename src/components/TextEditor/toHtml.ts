@@ -70,7 +70,7 @@ export const toHtml = (node: TextEditorElement | TextElement): string => {
     case 'centered':
       return `<p class="centered" style="text-align: center">${children}</p>`;
     case 'caption':
-      return `<p class="centered" style="text-align: center"><figcaption>${children}</figcaption></p>`;
+      return `<figcaption>${children}</figcaption>`;
     case 'text':
       return `<p>${children}</p>`;
     case 'link':
