@@ -57,6 +57,7 @@ export const A: React.FC<Props> = ({
           href={href}
           target={target}
           data-id="backend-anchor"
+          draggable="false"
         >
           {children}
         </a>
@@ -70,6 +71,7 @@ export const A: React.FC<Props> = ({
           to={href}
           target={target}
           data-id="frontend-anchor"
+          draggable="false"
         >
           {children}
         </Link>
