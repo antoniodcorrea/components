@@ -39,7 +39,10 @@
     box-sizing: border-box;
     border: 0;
     outline: 1px solid @gradientColors[black-4];
-    transition: color @td-fast @ease, box-shadow @td-fast @ease, outline-color @td-fast @ease;
+    transition:
+      color @td-fast @ease,
+      box-shadow @td-fast @ease,
+      outline-color @td-fast @ease;
     border-radius: 4px;
 
     &::placeholder {
@@ -89,7 +92,7 @@
     top: 6px;
     bottom: 0;
     right: 10px;
-    fill: @c-accentLight;
+    fill: @c-traslucid;
     transition: fill @td-fast @ease;
 
     &:hover {

@@ -44,6 +44,8 @@ export const Input: React.FC<Props> = ({
   const [passwordShown, setPasswordShown] = useState<boolean>(false);
   const computedType = type === 'password' && passwordShown ? 'text' : type;
 
+  const handlePasswordShown = () => setPasswordShown(!passwordShown);
+
   return (
     <div
       className={
@@ -81,15 +83,7 @@ export const Input: React.FC<Props> = ({
           {...props}
         />
         {type === 'password' && !!value && (
-          <EyeSmall
-            className="Input-passwordShowIcon"
-            onMouseDown={() => {
-              setPasswordShown(true);
-            }}
-            onMouseUp={() => {
-              setPasswordShown(false);
-            }}
-          />
+          <EyeSmall className="Input-passwordShowIcon" onMouseDown={handlePasswordShown} />
         )}
       </div>
       <div className="Input-errorContent">
