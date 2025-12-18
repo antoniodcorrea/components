@@ -1,20 +1,20 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
 
 import { Palette } from '.';
 
 const defaultProps = {};
 
 describe('Palette (Snapshot)', () => {
-  it('Palette renders properly', () => {
-    const component = shallow(<Palette {...defaultProps} />);
-    expect(component).toMatchSnapshot();
+  it('renders properly', () => {
+    const { container } = render(<Palette {...defaultProps} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
 
 describe('Palette', () => {
-  it('Palette is a myComponent type <div>', () => {
-    const component = shallow(<Palette {...defaultProps} />);
-    expect(component.type()).toEqual('div');
+  it('renders as a div', () => {
+    const { container } = render(<Palette {...defaultProps} />);
+    expect(container.firstChild?.nodeName).toBe('DIV');
   });
 });

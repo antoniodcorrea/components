@@ -9,7 +9,8 @@ module.exports = {
     },
   },
   testRegex: ['./*/.*test.(jsx?|tsx?)$', './src/*/.*test.(jsx?|tsx?)$'],
-  setupFiles: ['<rootDir>/tools/jest/setupTests.js'],
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ['<rootDir>/tools/jest/setupTests.js'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2)$': '<rootDir>/tools/jest/fileMock.js',
     '\\.(css|less)$': '<rootDir>/tools/jest/styleMock.js',

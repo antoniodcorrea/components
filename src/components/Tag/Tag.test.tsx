@@ -1,20 +1,32 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 
 import { Tag } from '.';
 
 const defaultProps = {};
 
 describe('Tag (Snapshot)', () => {
-  it('Tag renders properly', () => {
-    const component = shallow(<Tag {...defaultProps}>Test</Tag>);
-    expect(component).toMatchSnapshot();
+  it('renders properly', () => {
+    const { container } = render(
+      <Tag {...defaultProps}>Test</Tag>
+    );
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
 
 describe('Tag', () => {
-  it('Tag is a myComponent type <div>', () => {
-    const component = shallow(<Tag {...defaultProps}>Test</Tag>);
-    expect(component.type()).toEqual('div');
+  it('renders as a div', () => {
+    const { container } = render(
+      <Tag {...defaultProps}>Test</Tag>
+    );
+
+    expect(container.firstChild?.nodeName).toBe('DIV');
+  });
+
+  it('renders children content', () => {
+    render(<Tag {...defaultProps}>Test</Tag>);
+
+    expect(screen.getByText('Test')).toBeInTheDocument();
   });
 });

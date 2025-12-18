@@ -1,5 +1,5 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
 
 import { Tooltip } from '.';
 
@@ -9,13 +9,13 @@ const props = {
 };
 
 describe('Tooltip', () => {
-  const wrapper = shallow(<Tooltip {...props} />);
-
   test('component renders', () => {
-    expect(wrapper.exists()).toBe(true);
+    const { container } = render(<Tooltip {...props} />);
+    expect(container.firstChild).not.toBeNull();
   });
 
   test('has a ".Tooltip" wrapper', () => {
-    expect(wrapper.find('.Tooltip')).toHaveLength(1);
+    const { container } = render(<Tooltip {...props} />);
+    expect(container.querySelector('.Tooltip')).not.toBeNull();
   });
 });

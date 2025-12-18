@@ -1,5 +1,5 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render, screen } from '@testing-library/react';
 
 import { PopOver } from '.';
 
@@ -9,13 +9,23 @@ const props = {
 };
 
 describe('PopOver', () => {
-  const wrapper = shallow(<PopOver {...props} />);
-
   test('component renders', () => {
-    expect(wrapper.exists()).toBe(true);
+    render(
+      <PopOver {...props}>
+        <span>trigger</span>
+      </PopOver>
+    );
+
+    expect(screen.getByText('trigger')).toBeInTheDocument();
   });
 
   test('has a ".PopOver" wrapper', () => {
-    expect(wrapper.find('.PopOver')).toHaveLength(1);
+    const { container } = render(
+      <PopOver {...props}>
+        <span>trigger</span>
+      </PopOver>
+    );
+
+    expect(container.querySelector('.PopOver')).toBeInTheDocument();
   });
 });

@@ -14,7 +14,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "declaration": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": ["./tools/**/*", "./src/**/*", "src/index.ts", "./build/webpack.config.ts"],
   "exclude": ["node_modules", "**/*.stories.*", "**/*.test.*", "./dist"]
