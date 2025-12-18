@@ -11,3 +11,4 @@ dist/*
 components/*
 .vscode
 __snapshots__
+.idea

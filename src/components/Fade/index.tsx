@@ -7,7 +7,7 @@ import './Fade.less';
 
 export type FadeSpeed = 'debug' | 'slow' | 'normal' | 'fast' | 'fastest';
 
-interface Props extends HTMLProps<HTMLDivElement> {
+export interface Props extends HTMLProps<HTMLDivElement> {
   className?: string;
   mounted?: boolean;
   disabled?: boolean;

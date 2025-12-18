@@ -7,7 +7,7 @@ import './FadeInOut.less';
 
 export type FadeSpeed = 'debug' | 'slow' | 'normal' | 'fast' | 'fastest';
 
-interface Props extends HTMLProps<HTMLDivElement> {
+export interface Props extends HTMLProps<HTMLDivElement> {
   className?: string;
   children: React.ReactNode | React.ReactNode[];
   valueToUpdate: string | boolean | number;

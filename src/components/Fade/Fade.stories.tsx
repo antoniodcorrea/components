@@ -25,7 +25,7 @@ export const OneElement: React.FC = () => {
         height: '100vh',
       }}
     >
-      <Fade speed={speed} mounted={mounted} direction={direction}>
+      <Fade appear speed={speed} mounted={mounted} direction={direction}>
         <div style={{ width: '50px', height: '50px', background: 'black' }} />
       </Fade>
     </div>
@@ -40,11 +40,11 @@ export const ManyElements: React.FC = () => {
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column', padding: '50px' }}>
-      <Fade speed={speed} mounted={mounted} direction={direction} delayOut={300} unmountOnExit={unmountOnExit}>
+      <Fade appear speed={speed} mounted={mounted} direction={direction} delayOut={300} unmountOnExit={unmountOnExit}>
         <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
       </Fade>
       <Fade
-        speed={speed}
+        appear speed={speed}
         mounted={mounted}
         direction={direction}
         delayIn={75}
@@ -54,7 +54,7 @@ export const ManyElements: React.FC = () => {
         <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
       </Fade>
       <Fade
-        speed={speed}
+        appear speed={speed}
         mounted={mounted}
         direction={direction}
         delayIn={150}
@@ -64,7 +64,7 @@ export const ManyElements: React.FC = () => {
         <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
       </Fade>
       <Fade
-        speed={speed}
+        appear speed={speed}
         mounted={mounted}
         direction={direction}
         delayIn={225}
@@ -73,7 +73,7 @@ export const ManyElements: React.FC = () => {
       >
         <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
       </Fade>
-      <Fade speed={speed} mounted={mounted} direction={direction} delayIn={300} unmountOnExit={unmountOnExit}>
+      <Fade appear speed={speed} mounted={mounted} direction={direction} delayIn={300} unmountOnExit={unmountOnExit}>
         <div style={{ width: '50px', height: '50px', background: 'black', marginBottom: '5px' }} />
       </Fade>
     </div>
