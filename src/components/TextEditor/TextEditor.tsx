@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createEditor, Descendant } from 'slate';
 import { Editable, Slate, withReact } from 'slate-react';
 
-import { DEFAULT_LIMIT_AMOUNT_IMAGES, PLACEHOLDER_TEXT } from './constants';
+import { DEFAULT_LIMIT_AMOUNT_IMAGES, PLACEHOLDER_TEXT, TEXT_EDITOR_EMPTY_VALUE } from './constants';
 import { EditorToolbar } from './toolbars/EditorToolbar';
 import { EditorToolbarHover } from './toolbars/EditorToolbarHover';
 import { ImageUpload, TextEditorValue } from './types';
@@ -31,13 +31,15 @@ export interface TextEditorProps {
 
 export const TextEditor: React.FC<TextEditorProps> = ({
   className,
-  initialValue = [],
+  initialValue = TEXT_EDITOR_EMPTY_VALUE,
   imageUploadService,
   onChange,
   limitAmountImages = DEFAULT_LIMIT_AMOUNT_IMAGES,
   validatedImagesCallback = () => {},
   onDraggingFileEndCallback = () => {},
 }) => {
+  const normalizedInitialValue = initialValue.length === 0 ? TEXT_EDITOR_EMPTY_VALUE : initialValue;
+
   const { withInlinesWrapper, withHistoryWrapper, withCorrectVoidBehavior, withImages } =
     useWrappers(imageUploadService);
   const [editor] = useState(() =>
@@ -65,8 +67,8 @@ export const TextEditor: React.FC<TextEditorProps> = ({
   };
 
   return (
-    <div className={'TextEditor' + (className ? ` ${className}` : '')} id="TextEditor" key={initialValue.toString()}>
-      <Slate editor={editor} initialValue={initialValue} onChange={setLocalValueOrDefault}>
+    <div className={'TextEditor' + (className ? ` ${className}` : '')} id="TextEditor" key={normalizedInitialValue.toString()}>
+      <Slate editor={editor} initialValue={normalizedInitialValue} onChange={setLocalValueOrDefault}>
         <EditorToolbarHover />
         <EditorToolbar />
         <ErrorBoundary message="Something went wrong">

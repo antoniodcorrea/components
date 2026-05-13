@@ -9,6 +9,8 @@ type UseEvents = (editor: Editor) => {
 
 export const useEvents: UseEvents = (editor) => {
   const onKeyDown = (event: React.KeyboardEvent) => {
+    if (!editor.selection) return;
+
     const { toggleFormat, breakLine, breakParagraph, insertTab } = useCustomEditor();
 
     const node = Node.parent(editor, editor.selection.anchor.path);
