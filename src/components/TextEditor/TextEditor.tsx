@@ -77,6 +77,11 @@ export const TextEditor: React.FC<TextEditorProps> = ({
             className={'TextEditor-textBox'}
             renderElement={renderElement}
             renderLeaf={renderLeaf}
+            renderPlaceholder={({ children, attributes }) => (
+              <span {...attributes} style={{ ...attributes.style, top: 'unset' }}>
+                {children}
+              </span>
+            )}
             onKeyDown={onKeyDown}
             onDragOver={onDragOver}
             onMouseLeave={onDraggingFileEnd}
