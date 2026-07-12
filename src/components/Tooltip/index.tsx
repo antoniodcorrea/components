@@ -13,9 +13,17 @@ interface Props {
   placement?: 'top' | 'bottom' | 'right' | 'left';
   delay?: number; // In seconds
   timeShown?: number; // In seconds
+  className?: string;
 }
 
-export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, timeShown, placement = 'right' }) => {
+export const Tooltip: React.FC<Props> = ({
+  content,
+  parentElementId,
+  delay,
+  timeShown,
+  placement = 'right',
+  className,
+}) => {
   let MountDelayed;
   let UnMountDelayed;
   const tooltipElementRef = useRef(null);
@@ -78,7 +86,11 @@ export const Tooltip: React.FC<Props> = ({ content, parentElementId, delay, time
   }, [placement, parentElementId]);
 
   return (
-    <div className="Tooltip" ref={tooltipElementRef} aria-describedby="tooltip">
+    <div
+      className={'Tooltip' + (className ? ' ' + className : '')}
+      ref={tooltipElementRef}
+      aria-describedby="tooltip"
+    >
       <span className="Tooltip-text">{content}</span>
       <div className="Tooltip-arrow" data-popper-arrow />
     </div>
